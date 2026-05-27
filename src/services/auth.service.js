@@ -1,12 +1,9 @@
 import bcrypt from "bcrypt";
 import pool from "../config/db.js";
 
-import { ApiError } from "../utils/ApiErrors.js";
+import { ApiError } from "../utils/ApiError.js";
 
-import {
-  generateAccessToken,
-  generateRefreshToken,
-} from "../utils/jwt.js";
+import { generateAccessToken, generateRefreshToken } from "../utils/jwt.js";
 
 export const registerUserService = async ({
   full_name,
@@ -14,15 +11,14 @@ export const registerUserService = async ({
   password,
   role,
   phone,
-  location
+  location,
 }) => {
-
   const existingUser = await pool.query(
     `
     SELECT * FROM users
     WHERE email = $1
     `,
-    [email]
+    [email],
   );
 
   if (existingUser.rows.length > 0) {
@@ -55,23 +51,19 @@ export const registerUserService = async ({
     location,
     created_at
     `,
-    [full_name, email, hashedPassword, role, phone, location || "student"]
+    [full_name, email, hashedPassword, role || "student", phone, location],
   );
 
   return result.rows[0];
 };
 
-export const loginUserService = async ({
-  email,
-  password,
-}) => {
-
+export const loginUserService = async ({ email, password }) => {
   const userResult = await pool.query(
     `
     SELECT * FROM users
     WHERE email = $1
     `,
-    [email]
+    [email],
   );
 
   if (userResult.rows.length === 0) {
@@ -80,10 +72,7 @@ export const loginUserService = async ({
 
   const user = userResult.rows[0];
 
-  const isPasswordCorrect = await bcrypt.compare(
-    password,
-    user.password
-  );
+  const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
   if (!isPasswordCorrect) {
     throw new ApiError(401, "Invalid credentials");
@@ -99,7 +88,7 @@ export const loginUserService = async ({
     SET refresh_token = $1
     WHERE id = $2
     `,
-    [refreshToken, user.id]
+    [refreshToken, user.id],
   );
 
   delete user.password;

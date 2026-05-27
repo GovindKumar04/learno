@@ -1,9 +1,8 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "dotenv/config";
 
 import { app } from "./app.js";
 import pool from "./config/db.js";
-import connectDB from "./config/mongodb.js";
+import connectMongoDB from "./config/mongodb.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,7 +15,7 @@ async function startServer() {
     console.log("✅ PostgreSQL connected");
 
    
-    await connectDB();
+    await connectMongoDB();
     console.log("✅ MongoDB connected");
 
     

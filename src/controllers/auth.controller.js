@@ -3,7 +3,7 @@ import {
   registerUserService,
   loginUserService,
 } from "../services/auth.service.js";
-import { ApiError } from "../utils/ApiErrors.js";
+import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import pool from "../config/db.js";
 
@@ -15,7 +15,7 @@ const cookieOptions = {
 
 export const registerUser = asyncHandler(async (req, res) => {
   const { full_name, email, password, role, phone, location } = req.body;
-
+  if(role==="admin") throw new ApiError(401, "Admin user can't we registred");
   if (!full_name || !email || !password || !role || !phone || !location) {
     throw new ApiError(400, "All fields are required");
   }

@@ -1,10 +1,12 @@
 import jwt from "jsonwebtoken";
 
-import { ApiError } from "../utils/ApiErrors.js";
+import { ApiError } from "../utils/ApiError.js";
 
-const verifyJWT = (req, res, next) => {
+export const verifyJWT = (req, res, next) => {
   try {
-    const token = req.cookies?.accessToken;
+    const token =
+      req.cookies?.accessToken ||
+      req.headers.authorization?.replace("Bearer ", "");
 
     if (!token) {
       throw new ApiError(401, "Unauthorized");
@@ -19,5 +21,3 @@ const verifyJWT = (req, res, next) => {
     next(new ApiError(401, "Invalid token"));
   }
 };
-
-export { verifyJWT };
