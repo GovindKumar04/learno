@@ -30,15 +30,21 @@ const createCourse = asyncHandler(async (req, res) => {
 });
 
 const getAllCourses = asyncHandler(async (req, res) => {
-  // FIX: ensure numeric types for skip/limit
   const pageNum = Number(req.query.page) || 1;
   const limitNum = Number(req.query.limit) || 10;
-  const { category, level } = req.query;
+  const { search } = req.query;
 
   const filter = {};
-  if (category) filter.category = category;
-  if (level) filter.level = level;
   if (req.user.role !== "admin") filter.isPublished = true;
+
+  if (search && search.trim()) {
+    const regex = { $regex: search.trim(), $options: "i" };
+    filter.$or = [
+      { title: regex },
+      { category: regex },
+      { description: regex },
+    ];
+  }
 
   const [courses, total] = await Promise.all([
     Course.find(filter)

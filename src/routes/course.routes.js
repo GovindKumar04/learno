@@ -16,6 +16,13 @@ import {
   uploadMaterials,
   deleteMaterial,
 } from "../controllers/material.controller.js";
+import {
+  addOrUpdateReview,
+  deleteReview,
+  getReviews,
+  getTestimonials,
+  toggleFeatured,
+} from "../controllers/review.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
@@ -70,5 +77,12 @@ courseRouter.delete(
   requireRole("admin"),
   deleteMaterial,
 );
+
+// ─── Reviews & Testimonials ───────────────────────────────
+courseRouter.get("/:courseId/reviews", getReviews);
+courseRouter.get("/:courseId/reviews/testimonials", getTestimonials);
+courseRouter.post("/:courseId/reviews", requireRole("student"), addOrUpdateReview);
+courseRouter.delete("/:courseId/reviews", deleteReview);
+courseRouter.patch("/:courseId/reviews/featured", requireRole("admin"), toggleFeatured);
 
 export { courseRouter };

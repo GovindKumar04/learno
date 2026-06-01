@@ -1,8 +1,10 @@
+import jwt from "jsonwebtoken";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { registerUserService, loginUserService } from "../services/auth.service.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { cookieOptions } from "../middlewares/cookie.options.js";
+import { generateAccessToken } from "../utils/jwt.utils.js";
 import pool from "../config/db.js";
 
 export const registerUser = asyncHandler(async (req, res) => {
@@ -74,7 +76,6 @@ export const refreshAccessToken = asyncHandler(async (req, res) => {
   const user = result.rows[0];
   if (user.refresh_token !== token) throw new ApiError(401, "Refresh token mismatch");
 
-  const { generateAccessToken } = await import("../utils/jwt.utils.js");
   const newAccessToken = generateAccessToken(user);
 
   return res
