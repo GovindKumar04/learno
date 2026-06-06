@@ -118,6 +118,15 @@ const courseSchema = new mongoose.Schema(
       default: 0,
     },
 
+    // Number of offline classes this course runs. Used to judge offline
+    // course-completion for certificates: a student qualifies once they've
+    // attended at least the required % of these classes (see certificate flow).
+    totalClasses: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
 
     totalStudentsEnrolled: {
       type: Number,
@@ -149,6 +158,12 @@ const courseSchema = new mongoose.Schema(
     priceOffline: {
       type: Number,
       default: 0,
+    },
+
+    // Delivery modes this course is offered in. A course can be online, offline, or both.
+    modes: {
+      type: [{ type: String, enum: ["online", "offline"] }],
+      default: ["online", "offline"],
     },
 
     demandReasons: [
@@ -201,5 +216,15 @@ const courseSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+// A course cannot be published without a price assigned (price / priceOnline / priceOffline).
+courseSchema.pre("validate", function () {
+  if (this.isPublished) {
+    const hasPrice = this.price > 0 || this.priceOnline > 0 || this.priceOffline > 0;
+    if (!hasPrice) {
+      this.invalidate("price", "A course must have a price before it can be published");
+    }
+  }
+});
 
 export const Course = mongoose.model("Course", courseSchema);

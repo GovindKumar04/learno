@@ -37,9 +37,14 @@ const createOrder = asyncHandler(async (req, res) => {
     throw new ApiError(400, "enrollmentType must be 'online' or 'offline'");
   }
 
-  const course = await Course.findById(courseId).select("title priceOnline priceOffline price isPublished");
+  const course = await Course.findById(courseId).select("title priceOnline priceOffline price isPublished modes");
   if (!course) throw new ApiError(404, "Course not found");
   if (!course.isPublished) throw new ApiError(403, "Course is not available");
+
+  // The course must actually be offered in the requested mode.
+  if (Array.isArray(course.modes) && course.modes.length && !course.modes.includes(enrollmentType)) {
+    throw new ApiError(400, `This course is not available ${enrollmentType}.`);
+  }
 
   // Determine price in paise
   const priceINR = enrollmentType === "offline"
@@ -52,10 +57,12 @@ const createOrder = asyncHandler(async (req, res) => {
   const existing = await Enrollment.findOne({ userId, courseId, isActive: true });
   if (existing) throw new ApiError(409, "You are already enrolled in this course");
 
-  // Check for an existing pending order to avoid duplicates
+  // Check for an existing pending order to avoid duplicates.
+  // Scoped by enrollmentType so switching online↔offline doesn't return a
+  // stale order priced for the other mode.
   const existingPending = await pool.query(
-    "SELECT * FROM payments WHERE user_id = $1 AND course_id = $2 AND status = 'pending' ORDER BY created_at DESC LIMIT 1",
-    [userId, courseId]
+    "SELECT * FROM payments WHERE user_id = $1 AND course_id = $2 AND enrollment_type = $3 AND status = 'pending' ORDER BY created_at DESC LIMIT 1",
+    [userId, courseId, enrollmentType]
   );
   if (existingPending.rows.length > 0) {
     const p = existingPending.rows[0];

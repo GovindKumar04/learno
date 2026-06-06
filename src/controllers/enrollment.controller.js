@@ -4,6 +4,8 @@ import { Course } from "../models/course.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { sendBroadcastMail } from "../utils/mail.util.js";
+import { getOfflineAttendance } from "../utils/attendance.util.js";
 import pool from "../config/db.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -46,6 +48,11 @@ const enrollStudent = asyncHandler(async (req, res) => {
   // Verify the course exists
   const course = await Course.findById(courseId);
   if (!course) throw new ApiError(404, "Course not found");
+
+  // The course must actually be offered in the chosen mode
+  if (Array.isArray(course.modes) && course.modes.length && !course.modes.includes(enrollmentType)) {
+    throw new ApiError(400, `This course is not available ${enrollmentType}.`);
+  }
 
   // Check for existing enrollment (active or inactive)
   const existing = await Enrollment.findOne({ userId, courseId });
@@ -100,13 +107,15 @@ const unenrollStudent = asyncHandler(async (req, res) => {
 // Student sees their own enrolled courses with progress
 // ─────────────────────────────────────────────────────────────────────────────
 const getMyCourses = asyncHandler(async (req, res) => {
-  const enrollments = await Enrollment.find({
+  const enrollments = (await Enrollment.find({
     userId: req.user.id,
     isActive: true,
   }).populate({
     path: "courseId",
     select: "title description thumbnail category level price slug duration",
-  });
+  }))
+    // Drop enrollments whose course was deleted (populated courseId is null).
+    .filter((e) => e.courseId);
 
   // Attach progress percentage to each enrollment
   const progressDocs = await Progress.find({
@@ -122,15 +131,35 @@ const getMyCourses = asyncHandler(async (req, res) => {
     };
   });
 
-  const result = enrollments.map((e) => ({
-    enrollmentId: e._id,
-    enrolledAt: e.createdAt,
-    course: e.courseId,
-    progress: progressMap[e.courseId._id.toString()] || {
-      completionPercent: 0,
-      lastAccessedAt: null,
-    },
-  }));
+  const result = await Promise.all(
+    enrollments.map(async (e) => {
+      const progress = progressMap[e.courseId._id.toString()] || {
+        completionPercent: 0,
+        lastAccessedAt: null,
+      };
+      const base = {
+        enrollmentId: e._id,
+        enrolledAt: e.createdAt,
+        enrollmentType: e.enrollmentType,
+        course: e.courseId,
+        progress,
+      };
+
+      // Offline courses are tracked by attendance, not online progress.
+      if (e.enrollmentType === "offline") {
+        const att = await getOfflineAttendance(e.userId, e.courseId._id);
+        return {
+          ...base,
+          attendance: att
+            ? { present: att.present, totalClasses: att.totalClasses, rate: att.rate, eligible: att.eligible, classesNeeded: att.classesNeeded }
+            : null,
+          completed: !!(att && att.eligible),
+        };
+      }
+
+      return { ...base, completed: progress.completionPercent === 100 };
+    })
+  );
 
   return res.json(new ApiResponse(200, result));
 });
@@ -174,7 +203,7 @@ const getCourseStudents = asyncHandler(async (req, res) => {
   const userIds = enrollments.map((e) => e.userId);
   const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
   const usersResult = await pool.query(
-    `SELECT id, full_name, email, phone, avatar FROM users WHERE id IN (${placeholders})`,
+    `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
     userIds
   );
   const usersMap = {};
@@ -212,10 +241,12 @@ const getCourseStudents = asyncHandler(async (req, res) => {
 const getStudentEnrollments = asyncHandler(async (req, res) => {
   const { userId } = req.params;
 
-  const enrollments = await Enrollment.find({
+  const enrollments = (await Enrollment.find({
     userId: userId,
     isActive: true,
-  }).populate("courseId", "title thumbnail category level");
+  }).populate("courseId", "title thumbnail category level"))
+    // Drop enrollments whose course was deleted (populated courseId is null).
+    .filter((e) => e.courseId);
 
   const progressDocs = await Progress.find({
     userId: userId,
@@ -263,7 +294,7 @@ const getAllEnrollments = asyncHandler(async (req, res) => {
   const userIds = enrollments.map((e) => e.userId);
   const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
   const usersResult = await pool.query(
-    `SELECT id, full_name, email, phone FROM users WHERE id IN (${placeholders})`,
+    `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
     userIds
   );
   const usersMap = {};
@@ -278,13 +309,22 @@ const getAllEnrollments = asyncHandler(async (req, res) => {
   }));
 
   if (search) {
-    const s = search.toLowerCase();
-    data = data.filter(
-      (d) =>
-        d.user?.full_name?.toLowerCase().includes(s) ||
-        d.user?.email?.toLowerCase().includes(s) ||
-        d.course?.title?.toLowerCase().includes(s)
-    );
+    // Every word must appear somewhere in the row (name/email/roll/course) — AND
+    // match — so "govind kumar business analytics" matches across fields.
+    const terms = search.toLowerCase().split(/\s+/).filter(Boolean);
+    data = data.filter((d) => {
+      const haystack = [
+        d.user?.full_name,
+        d.user?.email,
+        d.user?.roll_number,
+        d.course?.title,
+        d.course?.category,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return terms.every((t) => haystack.includes(t));
+    });
   }
 
   return res.json(
@@ -298,6 +338,111 @@ const getAllEnrollments = asyncHandler(async (req, res) => {
   );
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// GET /enrollments/unenrolled-students  (admin only)
+// Students (PostgreSQL) who have NO active enrollment in any course (Mongo).
+// ─────────────────────────────────────────────────────────────────────────────
+const getUnenrolledStudents = asyncHandler(async (req, res) => {
+  const { search = "" } = req.query;
+
+  // Distinct PG user ids that currently have an active enrollment
+  const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
+  const enrolledSet = new Set(enrolledIds.map(String));
+
+  const conditions = ["role = 'student'"];
+  const params = [];
+  if (search) {
+    params.push(`%${search}%`);
+    conditions.push(
+      `(full_name ILIKE $${params.length} OR email ILIKE $${params.length} OR roll_number ILIKE $${params.length})`
+    );
+  }
+
+  const result = await pool.query(
+    `SELECT id, full_name, email, roll_number, phone, location, avatar, created_at
+       FROM users
+      WHERE ${conditions.join(" AND ")}
+      ORDER BY created_at DESC`,
+    params
+  );
+
+  const students = result.rows.filter((u) => !enrolledSet.has(String(u.id)));
+
+  return res.json(new ApiResponse(200, { students, total: students.length }));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /enrollments/broadcast  (admin only)
+// Bulk-email students. Body: { subject, message, userIds? }
+//   - userIds given  → email those students
+//   - userIds absent → email ALL students with no active enrollment
+// ─────────────────────────────────────────────────────────────────────────────
+const broadcastEmail = asyncHandler(async (req, res) => {
+  const { subject, message, userIds } = req.body;
+
+  if (!subject?.trim() || !message?.trim()) {
+    throw new ApiError(400, "subject and message are required");
+  }
+
+  // Resolve the target id list
+  let targetIds;
+  if (Array.isArray(userIds) && userIds.length > 0) {
+    targetIds = userIds;
+  } else {
+    const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
+    const enrolledSet = new Set(enrolledIds.map(String));
+    const all = await pool.query("SELECT id FROM users WHERE role = 'student'");
+    targetIds = all.rows.map((r) => r.id).filter((id) => !enrolledSet.has(String(id)));
+  }
+
+  if (targetIds.length === 0) throw new ApiError(400, "No recipients to email");
+
+  // Fetch emails — restricted to students, so a stray id can't target staff
+  const placeholders = targetIds.map((_, i) => `$${i + 1}`).join(", ");
+  const usersResult = await pool.query(
+    `SELECT id, full_name, email FROM users WHERE role = 'student' AND id IN (${placeholders})`,
+    targetIds
+  );
+
+  if (usersResult.rows.length === 0) throw new ApiError(404, "No matching students found");
+
+  const subjectClean = subject.trim();
+  const messageClean = message.trim();
+
+  // Send in throttled batches so a large blast doesn't overwhelm the SMTP
+  // server or trip provider rate limits (e.g. Gmail). Within a batch we send
+  // in parallel; between batches we pause.
+  const BATCH_SIZE = 20;
+  const BATCH_DELAY_MS = 1000;
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const recipients = usersResult.rows;
+  let sent = 0;
+  let failed = 0;
+
+  for (let i = 0; i < recipients.length; i += BATCH_SIZE) {
+    const batch = recipients.slice(i, i + BATCH_SIZE);
+    const results = await Promise.allSettled(
+      batch.map((u) =>
+        sendBroadcastMail({ name: u.full_name, email: u.email, subject: subjectClean, message: messageClean })
+      )
+    );
+    sent += results.filter((r) => r.status === "fulfilled").length;
+    failed += results.filter((r) => r.status === "rejected").length;
+
+    // Pause before the next batch (not after the last one)
+    if (i + BATCH_SIZE < recipients.length) await sleep(BATCH_DELAY_MS);
+  }
+
+  return res.json(
+    new ApiResponse(
+      200,
+      { sent, failed, total: recipients.length },
+      `Email sent to ${sent} student(s)${failed ? `, ${failed} failed` : ""}`
+    )
+  );
+});
+
 export {
   checkMyEnrollment,
   enrollStudent,
@@ -306,4 +451,6 @@ export {
   getCourseStudents,
   getStudentEnrollments,
   getAllEnrollments,
+  getUnenrolledStudents,
+  broadcastEmail,
 };

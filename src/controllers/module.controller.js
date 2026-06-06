@@ -5,6 +5,7 @@ import { deleteFromCloudinary } from "../utils/cloudinary.util.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { hasOnlineCourseAccess, stripMaterialUrls } from "../utils/courseAccess.js";
 
 // POST /api/courses/:courseId/modules
 const createModule = asyncHandler(async (req, res) => {
@@ -37,12 +38,18 @@ const createModule = asyncHandler(async (req, res) => {
 });
 
 // GET /api/courses/:courseId/modules
+// Material file URLs are returned only to admins / online-enrolled students;
+// everyone else gets the curriculum outline (titles, types) with locked materials.
 const getModules = asyncHandler(async (req, res) => {
   const modules = await Module.find({ course: req.params.courseId })
     .populate("materials")
     .sort("order");
 
-  return res.json(new ApiResponse(200, modules));
+  const plain = modules.map((m) => m.toObject());
+  const allowed = await hasOnlineCourseAccess(req.user, req.params.courseId);
+  if (!allowed) stripMaterialUrls(plain);
+
+  return res.json(new ApiResponse(200, plain));
 });
 
 // PATCH /api/courses/:courseId/modules/:moduleId

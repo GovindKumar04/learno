@@ -1,8 +1,14 @@
 import express from "express";
 import {
-  joinAffiliate,
+  applyAffiliate,
   getMyAffiliate,
   trackClick,
+  getApplications,
+  reviewApplication,
+  getResources,
+  createResource,
+  updateResource,
+  deleteResource,
   getAllAffiliates,
   updateAffiliate,
   getCommissions,
@@ -13,19 +19,27 @@ import { requireRole } from "../middlewares/role.middleware.js";
 
 const affiliateRouter = express.Router();
 
-// Public — referral link click tracking (no auth)
+// Public — referral link click tracking + third-party applications (no auth)
 affiliateRouter.get("/track/:code", trackClick);
+affiliateRouter.post("/apply", applyAffiliate);
 
 // Everything below requires login
 affiliateRouter.use(verifyJWT);
 
-// Any logged-in user — opt in / view own dashboard
-affiliateRouter.post("/join", joinAffiliate);
+// Any logged-in user — view own affiliate dashboard
 affiliateRouter.get("/me", getMyAffiliate);
 
-// Admin — manage affiliates & commissions
-// (specific /commissions routes declared before /:userId to avoid capture)
+// Resources — affiliates read, admin manages
+affiliateRouter.get("/resources", requireRole("admin", "affiliate"), getResources);
+affiliateRouter.post("/resources", requireRole("admin"), createResource);
+affiliateRouter.patch("/resources/:id", requireRole("admin"), updateResource);
+affiliateRouter.delete("/resources/:id", requireRole("admin"), deleteResource);
+
+// Admin — manage applications, affiliates & commissions
+// (specific routes declared before /:userId to avoid capture)
 affiliateRouter.get("/", requireRole("admin"), getAllAffiliates);
+affiliateRouter.get("/applications", requireRole("admin"), getApplications);
+affiliateRouter.patch("/applications/:id", requireRole("admin"), reviewApplication);
 affiliateRouter.get("/commissions", requireRole("admin"), getCommissions);
 affiliateRouter.patch("/commissions/:id", requireRole("admin"), updateCommissionStatus);
 affiliateRouter.patch("/:userId", requireRole("admin"), updateAffiliate);

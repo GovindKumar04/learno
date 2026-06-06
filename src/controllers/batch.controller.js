@@ -174,7 +174,7 @@ const getAllBatches = asyncHandler(async (req, res) => {
 // ─────────────────────────────────────────────────────────────────────────────
 const getMyBatches = asyncHandler(async (req, res) => {
   const batches = await Batch.find({ instructorId: req.user.id })
-    .populate("courseId", "title category thumbnail")
+    .populate("courseId", "title category thumbnail slug")
     .sort({ createdAt: -1 });
 
   const usersMap = await fetchUsersMap(batches.flatMap((b) => b.studentIds || []));

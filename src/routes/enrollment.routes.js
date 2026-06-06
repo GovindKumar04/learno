@@ -7,6 +7,8 @@ import {
   getCourseStudents,
   getStudentEnrollments,
   getAllEnrollments,
+  getUnenrolledStudents,
+  broadcastEmail,
 } from "../controllers/enrollment.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
@@ -17,6 +19,10 @@ enrollmentRouter.use(verifyJWT);
 
 // Admin: all enrollments
 enrollmentRouter.get("/", requireRole("admin"), getAllEnrollments);
+
+// Admin: students with no active enrollment + bulk email them
+enrollmentRouter.get("/unenrolled-students", requireRole("admin"), getUnenrolledStudents);
+enrollmentRouter.post("/broadcast", requireRole("admin"), broadcastEmail);
 
 // Student sees their own enrolled courses
 enrollmentRouter.get("/my-courses", getMyCourses);

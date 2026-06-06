@@ -2,6 +2,7 @@ import express from "express";
 import {
   createCourse,
   getAllCourses,
+  getCourseCategories,
   getCourseById,
   getCourseBySlug,
   updateCourse,
@@ -39,6 +40,7 @@ courseRouter.post(
   createCourse,
 );
 courseRouter.get("/", optionalAuth, getAllCourses);
+courseRouter.get("/categories", optionalAuth, getCourseCategories);  // distinct categories
 courseRouter.get("/slug/:slug", optionalAuth, getCourseBySlug);  // by URL slug
 courseRouter.get("/:courseId", optionalAuth, getCourseById);
 

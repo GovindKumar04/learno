@@ -1,0 +1,1593 @@
+[{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4366"
+  },
+  "title": "Module 1 — Web Basics",
+  "description": "Learn the fundamentals of how the internet works and build your first web pages. You will understand client-server architecture and build static websites.",
+  "course": {
+    "$oid": "6a211110c53f47db6dd34db8"
+  },
+  "order": 1,
+  "topics": [
+    "Internet & Web Architecture",
+    "HTML, CSS, JS Fundamentals",
+    "Client vs Server",
+    "Responsive Design",
+    "Developer Tools"
+  ],
+  "skills": [
+    "HTML/CSS",
+    "Responsive Pages",
+    "Basic JavaScript"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.439Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4367"
+  },
+  "title": "Module 2 — Advanced JavaScript",
+  "description": "Deep dive into modern JavaScript and problem-solving essentials. You will be able to work with APIs, DOM, ES6+, and asynchronous JS.",
+  "course": {
+    "$oid": "6a211110c53f47db6dd34db8"
+  },
+  "order": 2,
+  "topics": [
+    "ES6+ Concepts",
+    "Async/Await",
+    "Callbacks & Promises",
+    "DOM Manipulation",
+    "Data Structures",
+    "API Handling"
+  ],
+  "skills": [
+    "Advanced JS",
+    "API Workflows",
+    "Problem Solving"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.442Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4368"
+  },
+  "title": "Module 3 — React Development",
+  "description": "Learn React — the most in-demand frontend library. You will build reusable components and dynamic applications.",
+  "course": {
+    "$oid": "6a211110c53f47db6dd34db8"
+  },
+  "order": 3,
+  "topics": [
+    "React Components",
+    "Props & State",
+    "React Router",
+    "Custom Hooks",
+    "Context API",
+    "API Integration with Axios",
+    "Tailwind + UI Libraries"
+  ],
+  "skills": [
+    "React.js",
+    "State Management",
+    "Reusable UI"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.444Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4369"
+  },
+  "title": "Module 4 — Backend Development with Node.js",
+  "description": "Learn server-side programming and build secure REST APIs. You will be able to build complete backend systems using Node + Express.",
+  "course": {
+    "$oid": "6a211110c53f47db6dd34db8"
+  },
+  "order": 4,
+  "topics": [
+    "Node.js Basics",
+    "Express.js Routing",
+    "CRUD Operations",
+    "JWT Authentication",
+    "Middleware",
+    "MongoDB + Mongoose",
+    "Security Best Practices"
+  ],
+  "skills": [
+    "API Development",
+    "DB Modeling",
+    "Auth Systems"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.446Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436a"
+  },
+  "title": "Module 5 — Deployment & DevOps Basics",
+  "description": "Learn essential developer tools and deploy your apps. You will deploy both frontend and backend servers live.",
+  "course": {
+    "$oid": "6a211110c53f47db6dd34db8"
+  },
+  "order": 5,
+  "topics": [
+    "Git & GitHub",
+    "Frontend Deployment",
+    "Backend Deployment",
+    "Environment Variables",
+    "CI/CD Basics",
+    "Cloud Hosting (Vercel, Render)"
+  ],
+  "skills": [
+    "Git Workflow",
+    "Cloud Deployment",
+    "Version Control"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.447Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436b"
+  },
+  "title": "Module 1 — Python for Data Science",
+  "description": "Build a strong Python foundation for data work. You will manipulate data using Python and its core libraries.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbe"
+  },
+  "order": 1,
+  "topics": [
+    "Python Basics",
+    "NumPy",
+    "pandas",
+    "Jupyter Notebooks",
+    "Data Structures"
+  ],
+  "skills": [
+    "Python",
+    "pandas",
+    "NumPy"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.461Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436c"
+  },
+  "title": "Module 2 — Data Wrangling & Visualization",
+  "description": "Clean, transform, and visualize real datasets. You will prepare messy data and create insightful charts.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbe"
+  },
+  "order": 2,
+  "topics": [
+    "Data Cleaning",
+    "Feature Engineering",
+    "Matplotlib",
+    "Seaborn",
+    "Exploratory Data Analysis"
+  ],
+  "skills": [
+    "Data Cleaning",
+    "Visualization",
+    "EDA"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.463Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436d"
+  },
+  "title": "Module 3 — Statistics & Probability",
+  "description": "Understand the math powering data science. You will apply statistical tests and probability to data.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbe"
+  },
+  "order": 3,
+  "topics": [
+    "Descriptive Statistics",
+    "Probability Distributions",
+    "Hypothesis Testing",
+    "Correlation",
+    "Regression Basics"
+  ],
+  "skills": [
+    "Statistics",
+    "Hypothesis Testing",
+    "Probability"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.465Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436e"
+  },
+  "title": "Module 4 — Machine Learning",
+  "description": "Build and evaluate predictive models. You will train supervised and unsupervised models with scikit-learn.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbe"
+  },
+  "order": 4,
+  "topics": [
+    "Supervised Learning",
+    "Unsupervised Learning",
+    "Model Evaluation",
+    "scikit-learn",
+    "Feature Selection"
+  ],
+  "skills": [
+    "Machine Learning",
+    "scikit-learn",
+    "Model Evaluation"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.467Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a436f"
+  },
+  "title": "Module 5 — Big Data & Capstone",
+  "description": "Work with large-scale data and complete a capstone project. You will process big data and present an end-to-end project.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbe"
+  },
+  "order": 5,
+  "topics": [
+    "Apache Spark",
+    "SQL for Analytics",
+    "Data Pipelines",
+    "Capstone Project",
+    "Model Deployment"
+  ],
+  "skills": [
+    "Apache Spark",
+    "SQL",
+    "Project Delivery"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.470Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4370"
+  },
+  "title": "Module 1 — Cloud & AWS Fundamentals",
+  "description": "Understand cloud computing and core AWS services. You will navigate the AWS console and core service categories.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbf"
+  },
+  "order": 1,
+  "topics": [
+    "Cloud Concepts",
+    "AWS Global Infrastructure",
+    "IAM",
+    "Billing & Pricing",
+    "AWS CLI"
+  ],
+  "skills": [
+    "AWS Fundamentals",
+    "IAM",
+    "Cloud Concepts"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.479Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4371"
+  },
+  "title": "Module 2 — Compute & Networking",
+  "description": "Deploy compute resources and design secure networks. You will launch EC2 instances and configure VPCs.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbf"
+  },
+  "order": 2,
+  "topics": [
+    "EC2",
+    "Auto Scaling",
+    "Load Balancing",
+    "VPC",
+    "Security Groups"
+  ],
+  "skills": [
+    "EC2",
+    "VPC",
+    "Networking"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.482Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4372"
+  },
+  "title": "Module 3 — Storage & Databases",
+  "description": "Use AWS storage and managed database services. You will store data with S3 and run managed databases.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbf"
+  },
+  "order": 3,
+  "topics": [
+    "S3",
+    "EBS",
+    "RDS",
+    "DynamoDB",
+    "Backup & Recovery"
+  ],
+  "skills": [
+    "S3",
+    "RDS",
+    "DynamoDB"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.483Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4373"
+  },
+  "title": "Module 4 — Infrastructure as Code & DevOps",
+  "description": "Automate infrastructure and deployments. You will provision infrastructure with Terraform and set up CI/CD.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbf"
+  },
+  "order": 4,
+  "topics": [
+    "Terraform",
+    "CloudFormation",
+    "CI/CD Pipelines",
+    "Docker on AWS",
+    "Monitoring (CloudWatch)"
+  ],
+  "skills": [
+    "Terraform",
+    "CI/CD",
+    "Docker"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.485Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4374"
+  },
+  "title": "Module 5 — Architecture & Security Best Practices",
+  "description": "Design scalable, secure, cost-optimized architectures. You will apply the Well-Architected Framework to real solutions.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dbf"
+  },
+  "order": 5,
+  "topics": [
+    "Well-Architected Framework",
+    "High Availability",
+    "Cost Optimization",
+    "Security Best Practices",
+    "Capstone Architecture"
+  ],
+  "skills": [
+    "Solution Architecture",
+    "Cost Optimization",
+    "Security"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.487Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4375"
+  },
+  "title": "Module 1 — Math & Python for AI",
+  "description": "Build the math and coding foundation for AI. You will apply linear algebra and Python to ML problems.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc0"
+  },
+  "order": 1,
+  "topics": [
+    "Linear Algebra",
+    "Calculus for ML",
+    "Probability",
+    "NumPy",
+    "pandas"
+  ],
+  "skills": [
+    "Python",
+    "Linear Algebra",
+    "Math for ML"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.498Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.498Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4376"
+  },
+  "title": "Module 2 — Machine Learning Foundations",
+  "description": "Learn classical machine learning algorithms. You will train and evaluate ML models with scikit-learn.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc0"
+  },
+  "order": 2,
+  "topics": [
+    "Regression",
+    "Classification",
+    "Clustering",
+    "Model Evaluation",
+    "scikit-learn"
+  ],
+  "skills": [
+    "Machine Learning",
+    "scikit-learn",
+    "Model Evaluation"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.501Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.501Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4377"
+  },
+  "title": "Module 3 — Deep Learning",
+  "description": "Build neural networks with modern frameworks. You will design and train deep neural networks.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc0"
+  },
+  "order": 3,
+  "topics": [
+    "Neural Networks",
+    "Backpropagation",
+    "TensorFlow",
+    "PyTorch",
+    "CNNs"
+  ],
+  "skills": [
+    "Deep Learning",
+    "TensorFlow",
+    "PyTorch"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.502Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.502Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4378"
+  },
+  "title": "Module 4 — Computer Vision & NLP",
+  "description": "Apply deep learning to images and language. You will build computer vision and natural language models.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc0"
+  },
+  "order": 4,
+  "topics": [
+    "Image Classification",
+    "Object Detection",
+    "Text Processing",
+    "Transformers",
+    "Transfer Learning"
+  ],
+  "skills": [
+    "Computer Vision",
+    "NLP",
+    "Transformers"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.504Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.504Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4379"
+  },
+  "title": "Module 5 — MLOps & Capstone",
+  "description": "Deploy and operate ML models in production. You will build an end-to-end ML pipeline and deploy a model.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc0"
+  },
+  "order": 5,
+  "topics": [
+    "Model Deployment",
+    "MLOps Pipelines",
+    "Model Monitoring",
+    "Docker & APIs",
+    "Capstone Project"
+  ],
+  "skills": [
+    "MLOps",
+    "Model Deployment",
+    "Project Delivery"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.505Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.505Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437a"
+  },
+  "title": "Module 1 — Mobile Development Foundations",
+  "description": "Understand mobile platforms and development setup. You will set up your environment and build your first app.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc1"
+  },
+  "order": 1,
+  "topics": [
+    "Mobile Platforms",
+    "Dev Environment Setup",
+    "JavaScript/Dart Basics",
+    "App Anatomy",
+    "Emulators"
+  ],
+  "skills": [
+    "Environment Setup",
+    "Mobile Basics"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.521Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.521Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437b"
+  },
+  "title": "Module 2 — React Native Core",
+  "description": "Build cross-platform apps with React Native. You will create UIs with components, styling, and navigation.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc1"
+  },
+  "order": 2,
+  "topics": [
+    "Components & Props",
+    "State & Hooks",
+    "Styling & Flexbox",
+    "Lists & ScrollViews",
+    "Navigation"
+  ],
+  "skills": [
+    "React Native",
+    "UI Building",
+    "Navigation"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.523Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.523Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437c"
+  },
+  "title": "Module 3 — State Management & APIs",
+  "description": "Manage app state and connect to backends. You will integrate REST APIs and manage global state.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc1"
+  },
+  "order": 3,
+  "topics": [
+    "Context API",
+    "Redux Toolkit",
+    "REST API Integration",
+    "Async Storage",
+    "Forms & Validation"
+  ],
+  "skills": [
+    "State Management",
+    "API Integration"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.524Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.524Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437d"
+  },
+  "title": "Module 4 — Native Features & Firebase",
+  "description": "Use device features and a real-time backend. You will access native modules and integrate Firebase.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc1"
+  },
+  "order": 4,
+  "topics": [
+    "Camera & Location",
+    "Push Notifications",
+    "Firebase Auth",
+    "Firestore",
+    "Native Modules"
+  ],
+  "skills": [
+    "Firebase",
+    "Native Integrations",
+    "Push Notifications"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.525Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437e"
+  },
+  "title": "Module 5 — Testing, Optimization & Deployment",
+  "description": "Polish, test, and publish your app to the stores. You will optimize performance and publish to app stores.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc1"
+  },
+  "order": 5,
+  "topics": [
+    "Performance Optimization",
+    "Debugging",
+    "Testing",
+    "App Store Deployment",
+    "Play Store Deployment"
+  ],
+  "skills": [
+    "App Store Deployment",
+    "Performance",
+    "Testing"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.527Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.527Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a437f"
+  },
+  "title": "Module 1 — Cyber Security & Ethical Hacking Fundamentals",
+  "description": "Start your journey by understanding how hackers think and how systems get hacked. You will understand attack lifecycle, cyber laws, fundamentals of hacking & security principles.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc2"
+  },
+  "order": 1,
+  "topics": [
+    "Introduction to Cyber Security",
+    "Types of Hackers",
+    "Cyber Laws in India",
+    "Footprinting & Reconnaissance",
+    "Scanning Targets"
+  ],
+  "skills": [
+    "Recon",
+    "Scanning",
+    "Threat Understanding"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.537Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4380"
+  },
+  "title": "Module 2 — Network Security & Defense",
+  "description": "Learn how networks operate, how they get hacked, and how to defend them. You will gain strong fundamentals in networking and secure architecture.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc2"
+  },
+  "order": 2,
+  "topics": [
+    "TCP/IP Model",
+    "Firewalls, IDS & IPS",
+    "Proxy Servers",
+    "Packet Analysis with Wireshark",
+    "VPN & Secure Communications"
+  ],
+  "skills": [
+    "Network Monitoring",
+    "Packet Analysis"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.539Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.539Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4381"
+  },
+  "title": "Module 3 — Kali Linux & Ethical Hacking Tools",
+  "description": "Master the most popular tools used by professional ethical hackers. You will perform attacks using Kali Linux and automate tasks.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc2"
+  },
+  "order": 3,
+  "topics": [
+    "Kali Linux Overview",
+    "Nmap Scanning",
+    "Hydra Brute Force",
+    "Metasploit Framework",
+    "Password Attacks"
+  ],
+  "skills": [
+    "Kali Linux",
+    "Metasploit",
+    "Brute Force Attacks"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.540Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.540Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4382"
+  },
+  "title": "Module 4 — Web Application Penetration Testing",
+  "description": "Learn how to hack websites and web apps ethically using OWASP standards.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc2"
+  },
+  "order": 4,
+  "topics": [],
+  "skills": [],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.541Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4383"
+  },
+  "title": "Module 5 — Incident Response, SOC & Bug Bounty",
+  "description": "Learn how companies detect, analyse and respond to cyber attacks. You will be ready for SOC analyst & bug bounty roles.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc2"
+  },
+  "order": 5,
+  "topics": [
+    "SOC Operations",
+    "Incident Response Process",
+    "Log Analysis",
+    "SIEM Tools Overview",
+    "Bug Bounty Platforms"
+  ],
+  "skills": [
+    "Incident Response",
+    "Log Analysis"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.543Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.543Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4384"
+  },
+  "title": "Module 1 — UI/UX Foundations",
+  "description": "Understand the core principles of UX and UI, user psychology, and how design solves problems.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc8"
+  },
+  "order": 1,
+  "topics": [],
+  "skills": [],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.552Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.552Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4385"
+  },
+  "title": "Module 2 — Wireframing & User Flow",
+  "description": "Structure information and create intuitive user journeys.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc8"
+  },
+  "order": 2,
+  "topics": [],
+  "skills": [],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.554Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.554Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4386"
+  },
+  "title": "Module 3 — Visual Design",
+  "description": "Learn color, typography, UI patterns, spacing and design systems. Create polished UI screens using visual hierarchy and scalable UI systems.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc8"
+  },
+  "order": 3,
+  "topics": [
+    "Color Theory",
+    "Typography",
+    "Design Systems",
+    "Spacing & Grids",
+    "Figma Components",
+    "UI Patterns"
+  ],
+  "skills": [
+    "Visual Design",
+    "Typography",
+    "Design Systems"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.555Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.555Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4387"
+  },
+  "title": "Module 4 — Prototyping & Testing",
+  "description": "Build interactive prototypes and validate with real users. Create clickable prototypes, micro-interactions, and conduct usability testing.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc8"
+  },
+  "order": 4,
+  "topics": [
+    "Interactive Prototypes",
+    "Smart Animate",
+    "Micro-interactions",
+    "Usability Testing",
+    "A/B Testing",
+    "Feedback Loops"
+  ],
+  "skills": [
+    "Prototyping",
+    "User Testing",
+    "Interaction Design",
+    "Animation"
+  ],
+  "project": "Mobile App Prototype",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.557Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.557Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4388"
+  },
+  "title": "Module 5 — Projects & Portfolio",
+  "description": "Build real-world case studies that make you job-ready. Complete 3 polished case studies and build your UI/UX portfolio.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dc8"
+  },
+  "order": 5,
+  "topics": [
+    "E-commerce App UX",
+    "Dashboard Design",
+    "Food Delivery App",
+    "Case Study Writing",
+    "Portfolio Presentation"
+  ],
+  "skills": [
+    "Case Studies",
+    "Portfolio Building",
+    "Storytelling",
+    "Problem-solving"
+  ],
+  "project": "E-commerce Case Study, Dashboard UI Case Study",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.559Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.559Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4389"
+  },
+  "title": "Module 1 — Digital Marketing Fundamentals",
+  "description": "Understand how digital marketing works in real businesses. You will gain a complete picture of digital channels, funnels & user behavior.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 1,
+  "topics": [
+    "Intro to Digital Marketing",
+    "Marketing Funnels",
+    "Paid vs Organic Strategies",
+    "Customer Psychology"
+  ],
+  "skills": [
+    "Marketing Strategy",
+    "Consumer Behavior"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.570Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438a"
+  },
+  "title": "Module 2 — SEO (Search Engine Optimization)",
+  "description": "Become an SEO expert by learning modern ranking strategies. You will optimize websites to rank on Google search results.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 2,
+  "topics": [
+    "Keyword Research",
+    "On-Page Optimization",
+    "Technical SEO",
+    "Backlink Building",
+    "Search Console Tracking"
+  ],
+  "skills": [
+    "SEO Tools",
+    "Keyword Analysis",
+    "Backlink Strategy"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.572Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438b"
+  },
+  "title": "Module 3 — Google Ads (Performance Marketing)",
+  "description": "Run profitable ad campaigns using Google Ads. You will create high-ROI search and display campaigns.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 3,
+  "topics": [
+    "Google Ads Dashboard",
+    "Search Campaigns",
+    "Display & Video Ads",
+    "Keyword Bidding Strategies",
+    "Performance Optimization"
+  ],
+  "skills": [
+    "PPC Advertising",
+    "Campaign Optimization"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.573Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438c"
+  },
+  "title": "Module 4 — Meta Ads (Facebook & Instagram)",
+  "description": "Learn how to run paid campaigns for social platforms. You will build creatives, audiences & conversion setups.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 4,
+  "topics": [
+    "Ad Manager Setup",
+    "Audience Targeting",
+    "Creative Strategy",
+    "Retargeting Ads",
+    "Analytics & Reporting"
+  ],
+  "skills": [
+    "Paid Social",
+    "Audience Research"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.575Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.575Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438d"
+  },
+  "title": "Module 5 — Social Media & Content Branding",
+  "description": "Master content creation for Instagram, LinkedIn & YouTube. You will create content that grows followers & brand visibility.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 5,
+  "topics": [
+    "Content Strategy",
+    "Hashtags & Trends",
+    "Brand Personality",
+    "Reels & Short Video Strategy"
+  ],
+  "skills": [
+    "Branding",
+    "Content Strategy"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.577Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.577Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438e"
+  },
+  "title": "Module 6 — Analytics, Reporting & Freelancing",
+  "description": "Understand analytics & build a professional portfolio. You will become capable of measuring and presenting marketing performance.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dce"
+  },
+  "order": 6,
+  "topics": [
+    "Google Analytics 4 (GA4)",
+    "Tracking Setup",
+    "Lead Reporting",
+    "Building Client Proposals"
+  ],
+  "skills": [
+    "Analytics",
+    "Reporting"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.579Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.579Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a438f"
+  },
+  "title": "Module 1 — Excel for Data Analysis",
+  "description": "Build a strong foundation in Excel — the #1 tool for analysts. You will analyze datasets, create dashboards, and automate workflows.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dd5"
+  },
+  "order": 1,
+  "topics": [
+    "Advanced Excel Functions",
+    "Pivot Tables & Pivot Charts",
+    "Data Cleaning & Validation",
+    "Business Dashboards"
+  ],
+  "skills": [
+    "Data Cleaning",
+    "Pivot Tables",
+    "Excel Automation"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.588Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.588Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4390"
+  },
+  "title": "Module 2 — SQL for Analysts",
+  "description": "Learn SQL to query, filter, sort, join, and analyze large datasets. You will be able to write professional SQL queries used in companies.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dd5"
+  },
+  "order": 2,
+  "topics": [
+    "Basic to Advanced SQL Queries",
+    "Joins, CTEs, Aggregations",
+    "Window Functions",
+    "Real Data Analysis with SQL"
+  ],
+  "skills": [
+    "SQL Query Writing",
+    "Database Analysis"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.589Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.589Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4391"
+  },
+  "title": "Module 3 — Power BI & Data Visualization",
+  "description": "Create beautiful dashboards and interactive reports. You will build BI reports that deliver insights for businesses.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dd5"
+  },
+  "order": 3,
+  "topics": [
+    "Power BI Interface",
+    "Data Modeling",
+    "DAX Measures",
+    "Publishing & Sharing Dashboards"
+  ],
+  "skills": [
+    "Data Visualization",
+    "Report Building",
+    "Data Modeling"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.591Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.591Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4392"
+  },
+  "title": "Module 4 — Business & Marketing Analytics",
+  "description": "Understand KPIs, metrics & frameworks used by real companies. You will be able to analyze growth, retention, and marketing data.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dd5"
+  },
+  "order": 4,
+  "topics": [
+    "Business Metrics & KPIs",
+    "Marketing Funnel Analysis",
+    "Customer Segmentation",
+    "Cohort & Retention Analysis"
+  ],
+  "skills": [
+    "KPI Analysis",
+    "Segmentation",
+    "Funnel Understanding"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.593Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.593Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4393"
+  },
+  "title": "Module 5 — Capstone Projects + Portfolio",
+  "description": "Work on real analytics projects and build your portfolio. Your portfolio will showcase your analytical skills to employers.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34dd5"
+  },
+  "order": 5,
+  "topics": [
+    "E-commerce Analysis",
+    "Financial Data Analysis",
+    "Supply Chain Dashboard",
+    "Case Study Preparation"
+  ],
+  "skills": [
+    "Problem Solving",
+    "Analytical Thinking"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.594Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.594Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4394"
+  },
+  "title": "Module 1 — Node.js Fundamentals",
+  "description": "Learn server-side JavaScript and the Node.js runtime. You will understand the event loop, modules, and build command-line scripts.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34ddb"
+  },
+  "order": 1,
+  "topics": [
+    "Node.js Runtime",
+    "Event Loop",
+    "Modules & npm",
+    "File System",
+    "Async Programming"
+  ],
+  "skills": [
+    "Node.js",
+    "Async JS",
+    "npm"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.604Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.604Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4395"
+  },
+  "title": "Module 2 — Express & REST APIs",
+  "description": "Build RESTful web servers with Express.js. You will create routes, middleware, and structured REST APIs.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34ddb"
+  },
+  "order": 2,
+  "topics": [
+    "Express Setup",
+    "Routing",
+    "Middleware",
+    "REST Principles",
+    "Error Handling"
+  ],
+  "skills": [
+    "Express.js",
+    "REST API Design",
+    "Middleware"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.606Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.606Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4396"
+  },
+  "title": "Module 3 — Databases with MongoDB & Mongoose",
+  "description": "Model and persist data using MongoDB and Mongoose. You will design schemas and perform CRUD with relationships.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34ddb"
+  },
+  "order": 3,
+  "topics": [
+    "MongoDB Basics",
+    "Mongoose Schemas",
+    "CRUD Operations",
+    "Relationships & Population",
+    "Indexes"
+  ],
+  "skills": [
+    "MongoDB",
+    "Data Modeling",
+    "Mongoose"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.608Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.608Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4397"
+  },
+  "title": "Module 4 — Authentication & Security",
+  "description": "Secure your APIs with authentication and best practices. You will implement JWT auth, password hashing, and protect routes.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34ddb"
+  },
+  "order": 4,
+  "topics": [
+    "JWT Authentication",
+    "Password Hashing (bcrypt)",
+    "Role-Based Access",
+    "Input Validation",
+    "Security Best Practices"
+  ],
+  "skills": [
+    "Auth Systems",
+    "Security",
+    "Access Control"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.610Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a211cf1be22dc11c05a4398"
+  },
+  "title": "Module 5 — Deployment & Optimization",
+  "description": "Deploy backend apps to cloud platforms like a real developer. You will deploy Node.js and Laravel apps to production servers.",
+  "course": {
+    "$oid": "6a211111c53f47db6dd34ddb"
+  },
+  "order": 5,
+  "topics": [
+    "Git & GitHub Workflow",
+    "Node Deployment (Render / Railway)",
+    "Laravel Deployment (cPanel / VPS)",
+    "Environment Secrets",
+    "Postman API Testing"
+  ],
+  "skills": [
+    "DevOps Basics",
+    "API Testing",
+    "Cloud Deployment"
+  ],
+  "project": "",
+  "materials": [],
+  "createdAt": {
+    "$date": "2026-06-04T06:36:33.612Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-04T06:36:33.612Z"
+  },
+  "__v": 0
+}]

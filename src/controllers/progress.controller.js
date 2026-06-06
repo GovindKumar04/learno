@@ -2,9 +2,11 @@ import { Progress } from "../models/progress.model.js";
 import { Enrollment } from "../models/enrollment.model.js";
 import { Course } from "../models/course.model.js";
 import { Module } from "../models/module.model.js";
+import { TeachingRequest } from "../models/teachingRequest.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { getOfflineAttendance } from "../utils/attendance.util.js";
 import pool from "../config/db.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -58,6 +60,11 @@ const markMaterialWatched = asyncHandler(async (req, res) => {
   });
   if (!enrollment) {
     throw new ApiError(403, "You are not enrolled in this course");
+  }
+  // Only online enrollments accrue material-watch progress; offline students are
+  // assessed by attendance, not by watching online content.
+  if (enrollment.enrollmentType !== "online") {
+    throw new ApiError(403, "Offline courses are tracked by attendance, not online progress");
   }
 
   let progress = await Progress.findOne({ userId: req.user.id, courseId });
@@ -179,15 +186,19 @@ const getCourseProgress = asyncHandler(async (req, res) => {
   const pageNum = Number(page);
   const limitNum = Number(limit);
 
-  const course = await Course.findById(courseId).select("title instructorId");
+  const course = await Course.findById(courseId).select("title");
   if (!course) throw new ApiError(404, "Course not found");
 
-  // Instructors can only see progress for their own courses
-  if (
-    req.user.role === "instructor" &&
-    course.instructorId !== req.user.id
-  ) {
-    throw new ApiError(403, "Access denied");
+  // Instructors may view progress only for courses they were approved to teach.
+  // (Courses have no instructorId field; authorization is by approved teaching
+  // request — the same basis used to assign batch instructors.)
+  if (req.user.role === "instructor") {
+    const approved = await TeachingRequest.findOne({
+      courseId,
+      instructorId: req.user.id,
+      status: "approved",
+    });
+    if (!approved) throw new ApiError(403, "Access denied — you don't teach this course");
   }
 
   const [progressDocs, total] = await Promise.all([
@@ -216,28 +227,48 @@ const getCourseProgress = asyncHandler(async (req, res) => {
 
   const totalMaterials = await getTotalMaterials(courseId);
 
-  const students = progressDocs.map((p) => ({
-    userId: p.userId,
-    user: usersMap[p.userId] || { id: p.userId },
-    completionPercent: p.completionPercent,
-    completedMaterials: new Set(
-      p.completedMaterials.map((m) => m.materialId.toString())
-    ).size,
-    totalMaterials,
-    lastAccessedAt: p.lastAccessedAt,
-    completedAt: p.completedAt,
-  }));
+  // Enrollment mode per student — offline students are measured by attendance,
+  // online students by materials watched.
+  const enrolls = await Enrollment.find({ courseId, userId: { $in: userIds }, isActive: true }).select("userId enrollmentType");
+  const typeMap = {};
+  enrolls.forEach((e) => (typeMap[e.userId] = e.enrollmentType));
 
-  // Summary stats for the top of the admin view
-  const avgCompletion =
-    progressDocs.length > 0
-      ? Math.round(
-          progressDocs.reduce((s, p) => s + p.completionPercent, 0) /
-            progressDocs.length
-        )
-      : 0;
-  const fullyCompleted = progressDocs.filter(
-    (p) => p.completionPercent === 100
+  const students = await Promise.all(
+    progressDocs.map(async (p) => {
+      if (typeMap[p.userId] === "offline") {
+        const att = await getOfflineAttendance(p.userId, courseId);
+        return {
+          userId: p.userId,
+          user: usersMap[p.userId] || { id: p.userId },
+          mode: "offline",
+          completionPercent: att?.rate || 0,
+          completedMaterials: att?.present || 0,    // present classes
+          totalMaterials: att?.totalClasses || 0,   // total classes
+          lastAccessedAt: p.lastAccessedAt,
+          completedAt: att?.eligible ? (p.completedAt || new Date()) : null,
+        };
+      }
+      return {
+        userId: p.userId,
+        user: usersMap[p.userId] || { id: p.userId },
+        mode: "online",
+        completionPercent: p.completionPercent,
+        completedMaterials: new Set(
+          p.completedMaterials.map((m) => m.materialId.toString())
+        ).size,
+        totalMaterials,
+        lastAccessedAt: p.lastAccessedAt,
+        completedAt: p.completedAt,
+      };
+    })
+  );
+
+  // Summary stats for the top of the admin view (over this page)
+  const avgCompletion = students.length
+    ? Math.round(students.reduce((s, x) => s + x.completionPercent, 0) / students.length)
+    : 0;
+  const fullyCompleted = students.filter((x) =>
+    x.mode === "offline" ? !!x.completedAt : x.completionPercent === 100
   ).length;
 
   return res.json(
@@ -286,50 +317,61 @@ const getStudentProgress = asyncHandler(async (req, res) => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /progress/overview (admin only)
-// Platform-wide attendance overview: all courses, avg progress, completion rate
+// Platform-wide progress per course, measured by the right metric per student:
+//   online enrollment  → material completion %  (100% = completed)
+//   offline enrollment → class-attendance %     (≥ threshold = completed)
 // ─────────────────────────────────────────────────────────────────────────────
 const getPlatformProgressOverview = asyncHandler(async (req, res) => {
-  const stats = await Progress.aggregate([
-    {
-      $group: {
-        _id: "$courseId",
-        totalStudents: { $sum: 1 },
-        avgCompletion: { $avg: "$completionPercent" },
-        completed: {
-          $sum: { $cond: [{ $eq: ["$completionPercent", 100] }, 1, 0] },
-        },
-        neverStarted: {
-          $sum: { $cond: [{ $eq: ["$completionPercent", 0] }, 1, 0] },
-        },
-      },
-    },
-    {
-      $lookup: {
-        from: "courses",
-        localField: "_id",
-        foreignField: "_id",
-        as: "course",
-      },
-    },
-    { $unwind: "$course" },
-    {
-      $project: {
-        courseId: "$_id",
-        courseTitle: "$course.title",
-        totalStudents: 1,
-        avgCompletion: { $round: ["$avgCompletion", 1] },
-        completed: 1,
-        neverStarted: 1,
-        completionRate: {
-          $round: [
-            { $multiply: [{ $divide: ["$completed", "$totalStudents"] }, 100] },
-            1,
-          ],
-        },
-      },
-    },
-    { $sort: { totalStudents: -1 } },
+  const enrollments = await Enrollment.find({ isActive: true }).select("userId courseId enrollmentType");
+  if (enrollments.length === 0) return res.json(new ApiResponse(200, []));
+
+  const courseIds = [...new Set(enrollments.map((e) => e.courseId.toString()))];
+
+  // Course titles + online progress (one query each, then map in memory)
+  const [courses, progressDocs] = await Promise.all([
+    Course.find({ _id: { $in: courseIds } }).select("title"),
+    Progress.find({ courseId: { $in: courseIds } }).select("userId courseId completionPercent"),
   ]);
+  const titleMap = {};
+  courses.forEach((c) => (titleMap[c._id.toString()] = c.title));
+  const progMap = {};
+  progressDocs.forEach((p) => (progMap[`${p.userId}:${p.courseId.toString()}`] = p.completionPercent));
+
+  // Per-course accumulation; each student's % comes from their enrollment mode
+  const byCourse = {};
+  for (const e of enrollments) {
+    const cid = e.courseId.toString();
+    byCourse[cid] ||= { total: 0, sumPct: 0, completed: 0, neverStarted: 0 };
+
+    let pct = 0;
+    let done = false;
+    if (e.enrollmentType === "offline") {
+      const att = await getOfflineAttendance(e.userId, e.courseId);
+      pct = att?.rate || 0;
+      done = !!att?.eligible;
+    } else {
+      pct = progMap[`${e.userId}:${cid}`] || 0;
+      done = pct === 100;
+    }
+
+    const acc = byCourse[cid];
+    acc.total += 1;
+    acc.sumPct += pct;
+    if (done) acc.completed += 1;
+    if (pct === 0) acc.neverStarted += 1;
+  }
+
+  const stats = Object.entries(byCourse)
+    .map(([cid, a]) => ({
+      courseId: cid,
+      courseTitle: titleMap[cid] || "—",
+      totalStudents: a.total,
+      avgCompletion: a.total ? Math.round(a.sumPct / a.total) : 0,
+      completed: a.completed,
+      neverStarted: a.neverStarted,
+      completionRate: a.total ? Math.round((a.completed / a.total) * 100) : 0,
+    }))
+    .sort((x, y) => y.totalStudents - x.totalStudents);
 
   return res.json(new ApiResponse(200, stats));
 });

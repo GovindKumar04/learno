@@ -13,6 +13,9 @@ import { scholarshipRouter } from "./routes/scholarship.routes.js";
 import { affiliateRouter } from "./routes/affiliate.routes.js";
 import { teachingRequestRouter } from "./routes/teachingRequest.routes.js";
 import { batchRouter } from "./routes/batch.routes.js";
+import { attendanceRouter } from "./routes/attendance.routes.js";
+import { certificateRouter } from "./routes/certificate.routes.js";
+import { mailRouter } from "./routes/mail.routes.js";
 
 const app = express();
 
@@ -37,6 +40,9 @@ app.use("/scholarships", scholarshipRouter);
 app.use("/affiliates", affiliateRouter);
 app.use("/teaching-requests", teachingRequestRouter);
 app.use("/batches", batchRouter);
+app.use("/attendance", attendanceRouter);
+app.use("/certificates", certificateRouter);
+app.use("/mail", mailRouter);
 
 // GLOBAL ERROR HANDLER — must be last
 app.use((err, req, res, next) => {

@@ -1,8 +1,10 @@
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 import pool from "../config/db.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { sendAffiliateApprovalMail, sendAffiliateRejectionMail } from "../utils/mail.util.js";
 
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
@@ -10,47 +12,62 @@ const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 const generateCode = () =>
   `FSA-${crypto.randomBytes(3).toString("hex").toUpperCase()}`; // e.g. FSA-9C3A1F
 
-// ─────────────────────────────────────────────────────────────────────────────
-// POST /affiliates/join  (any logged-in user)
-// Opt in as an affiliate — creates an affiliates row with a unique code
-// ─────────────────────────────────────────────────────────────────────────────
-const joinAffiliate = asyncHandler(async (req, res) => {
-  const userId = req.user.id;
+// Generate a readable temporary password for a new affiliate account
+const generatePassword = () =>
+  crypto.randomBytes(9).toString("base64").replace(/[^a-zA-Z0-9]/g, "").slice(0, 10) + "9!";
 
-  // Already an affiliate? return existing
-  const existing = await pool.query("SELECT * FROM affiliates WHERE user_id = $1", [userId]);
-  if (existing.rows.length > 0) {
-    const a = existing.rows[0];
-    return res.json(
-      new ApiResponse(200, {
-        ...a,
-        referralLink: `${CLIENT_URL}/?ref=${a.code}`,
-      }, "You are already an affiliate")
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /affiliates/apply  (public — no auth)
+// A third party applies to join the affiliate program. No account is created
+// here; admin reviews the application and, on approval, an affiliate-role user
+// with login credentials is generated (Phase 3).
+// ─────────────────────────────────────────────────────────────────────────────
+const applyAffiliate = asyncHandler(async (req, res) => {
+  const { full_name, email, phone, bio } = req.body;
+
+  if (!full_name?.trim() || !email?.trim()) {
+    throw new ApiError(400, "Full name and email are required");
+  }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email.trim())) throw new ApiError(400, "Please provide a valid email");
+
+  // Normalise social_links → array of { platform, url } (drop empty rows)
+  const raw = Array.isArray(req.body.social_links) ? req.body.social_links : [];
+  const social_links = raw
+    .map((s) => ({
+      platform: String(s?.platform || "").trim(),
+      url: String(s?.url || "").trim(),
+    }))
+    .filter((s) => s.url);
+
+  // Block re-applying if an active affiliate already exists for this email
+  const existingAff = await pool.query(
+    `SELECT a.id FROM affiliates a
+     JOIN users u ON u.id = a.user_id
+     WHERE lower(u.email) = lower($1)`,
+    [email.trim()]
+  );
+  if (existingAff.rows.length > 0) {
+    throw new ApiError(409, "An affiliate account already exists for this email");
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO affiliate_applications (full_name, email, phone, bio, social_links)
+       VALUES ($1, $2, $3, $4, $5::jsonb)
+       RETURNING id, full_name, email, status, created_at`,
+      [full_name.trim(), email.trim(), phone?.trim() || null, bio?.trim() || null, JSON.stringify(social_links)]
     );
+    return res.status(201).json(
+      new ApiResponse(201, result.rows[0], "Application submitted — we'll review it and email you shortly")
+    );
+  } catch (e) {
+    // Partial unique index on (lower(email)) WHERE status='pending'
+    if (e.code === "23505") {
+      throw new ApiError(409, "You already have a pending application with this email");
+    }
+    throw e;
   }
-
-  // Generate a unique code (retry on the rare collision)
-  let code;
-  for (let i = 0; i < 5; i++) {
-    code = generateCode();
-    const clash = await pool.query("SELECT 1 FROM affiliates WHERE code = $1", [code]);
-    if (clash.rows.length === 0) break;
-    code = null;
-  }
-  if (!code) throw new ApiError(500, "Could not generate a referral code, please retry");
-
-  const result = await pool.query(
-    `INSERT INTO affiliates (user_id, code) VALUES ($1, $2) RETURNING *`,
-    [userId, code]
-  );
-  const affiliate = result.rows[0];
-
-  return res.status(201).json(
-    new ApiResponse(201, {
-      ...affiliate,
-      referralLink: `${CLIENT_URL}/?ref=${affiliate.code}`,
-    }, "Affiliate account created")
-  );
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -128,6 +145,130 @@ const trackClick = asyncHandler(async (req, res) => {
     [req.params.code]
   );
   return res.json(new ApiResponse(200, { tracked: true }));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GET /affiliates/applications  (admin)
+// List affiliate applications (optional ?status=pending|approved|rejected)
+// ─────────────────────────────────────────────────────────────────────────────
+const getApplications = asyncHandler(async (req, res) => {
+  const { status } = req.query;
+  const where = status ? "WHERE status = $1" : "";
+  const params = status ? [status] : [];
+
+  const result = await pool.query(
+    `SELECT id, full_name, email, phone, bio, social_links, status, review_note, user_id, reviewed_at, created_at
+     FROM affiliate_applications
+     ${where}
+     ORDER BY CASE status WHEN 'pending' THEN 0 WHEN 'approved' THEN 1 ELSE 2 END, created_at DESC`,
+    params
+  );
+
+  const countsRes = await pool.query(
+    `SELECT status, COUNT(*) FROM affiliate_applications GROUP BY status`
+  );
+  const counts = { pending: 0, approved: 0, rejected: 0 };
+  countsRes.rows.forEach((r) => { counts[r.status] = Number(r.count); });
+
+  return res.json(new ApiResponse(200, { applications: result.rows, counts }));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PATCH /affiliates/applications/:id  (admin)
+// Approve (→ create affiliate-role user + affiliate record + email creds) or reject
+// ─────────────────────────────────────────────────────────────────────────────
+const reviewApplication = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { action, review_note } = req.body;
+
+  if (!["approve", "reject"].includes(action)) {
+    throw new ApiError(400, "action must be 'approve' or 'reject'");
+  }
+
+  const appRes = await pool.query("SELECT * FROM affiliate_applications WHERE id = $1", [id]);
+  if (appRes.rows.length === 0) throw new ApiError(404, "Application not found");
+  const application = appRes.rows[0];
+  if (application.status !== "pending") {
+    throw new ApiError(409, `Application already ${application.status}`);
+  }
+
+  // ── Reject ──────────────────────────────────────────────────────────────────
+  if (action === "reject") {
+    const upd = await pool.query(
+      `UPDATE affiliate_applications
+       SET status = 'rejected', review_note = $1, reviewed_at = NOW()
+       WHERE id = $2 RETURNING *`,
+      [review_note?.trim() || null, id]
+    );
+    sendAffiliateRejectionMail({
+      name: application.full_name, email: application.email, note: review_note?.trim(),
+    }).catch(() => {});
+    return res.json(new ApiResponse(200, upd.rows[0], "Application rejected"));
+  }
+
+  // ── Approve ───────────────────────────────────────────────────────────────--
+  // Guard: email must not already belong to a user account
+  const existingUser = await pool.query(
+    "SELECT id FROM users WHERE lower(email) = lower($1)",
+    [application.email]
+  );
+  if (existingUser.rows.length > 0) {
+    throw new ApiError(409, "A user with this email already exists — resolve manually before approving");
+  }
+
+  const tempPassword = generatePassword();
+  const hashed = await bcrypt.hash(tempPassword, 10);
+
+  // Transaction: create user + affiliate, mark application approved
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+
+    // users.phone and users.location are NOT NULL → supply safe fallbacks
+    const userIns = await client.query(
+      `INSERT INTO users (full_name, email, password, role, phone, location)
+       VALUES ($1, $2, $3, 'affiliate', $4, $5) RETURNING id`,
+      [application.full_name, application.email, hashed, application.phone || "N/A", "Not specified"]
+    );
+    const userId = userIns.rows[0].id;
+
+    // Unique referral code (retry on rare collision)
+    let code = null;
+    for (let i = 0; i < 5; i++) {
+      const candidate = generateCode();
+      const clash = await client.query("SELECT 1 FROM affiliates WHERE code = $1", [candidate]);
+      if (clash.rows.length === 0) { code = candidate; break; }
+    }
+    if (!code) throw new ApiError(500, "Could not generate a referral code, please retry");
+
+    await client.query(
+      `INSERT INTO affiliates (user_id, code, bio, social_links)
+       VALUES ($1, $2, $3, $4::jsonb)`,
+      [userId, code, application.bio, JSON.stringify(application.social_links || [])]
+    );
+
+    await client.query(
+      `UPDATE affiliate_applications
+       SET status = 'approved', user_id = $1, reviewed_at = NOW()
+       WHERE id = $2`,
+      [userId, id]
+    );
+
+    await client.query("COMMIT");
+
+    sendAffiliateApprovalMail({
+      name: application.full_name, email: application.email, tempPassword, code,
+    }).catch(() => {});
+
+    return res.json(new ApiResponse(200, {
+      userId, code, email: application.email,
+    }, "Affiliate approved — login credentials emailed"));
+  } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+  } finally {
+    client.release();
+  }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -270,12 +411,84 @@ const updateCommissionStatus = asyncHandler(async (req, res) => {
   return res.json(new ApiResponse(200, result.rows[0], `Commission marked ${status}`));
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// GET /affiliates/resources  (admin + affiliate)
+// Affiliates see only active resources; admin sees all (incl. inactive)
+// ─────────────────────────────────────────────────────────────────────────────
+const getResources = asyncHandler(async (req, res) => {
+  const where = req.user.role === "admin" ? "" : "WHERE is_active = true";
+  const result = await pool.query(
+    `SELECT id, title, description, url, is_active, created_at, updated_at
+     FROM affiliate_resources ${where} ORDER BY created_at DESC`
+  );
+  return res.json(new ApiResponse(200, result.rows));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /affiliates/resources  (admin)
+// ─────────────────────────────────────────────────────────────────────────────
+const createResource = asyncHandler(async (req, res) => {
+  const { title, description, url } = req.body;
+  if (!title?.trim() || !url?.trim()) {
+    throw new ApiError(400, "Title and URL are required");
+  }
+  const result = await pool.query(
+    `INSERT INTO affiliate_resources (title, description, url)
+     VALUES ($1, $2, $3) RETURNING *`,
+    [title.trim(), description?.trim() || null, url.trim()]
+  );
+  return res.status(201).json(new ApiResponse(201, result.rows[0], "Resource added"));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PATCH /affiliates/resources/:id  (admin)
+// ─────────────────────────────────────────────────────────────────────────────
+const updateResource = asyncHandler(async (req, res) => {
+  const { title, description, url, is_active } = req.body;
+  const result = await pool.query(
+    `UPDATE affiliate_resources SET
+       title       = COALESCE($1, title),
+       description = COALESCE($2, description),
+       url         = COALESCE($3, url),
+       is_active   = COALESCE($4, is_active),
+       updated_at  = NOW()
+     WHERE id = $5 RETURNING *`,
+    [
+      title?.trim() ?? null,
+      description !== undefined ? (description?.trim() || null) : null,
+      url?.trim() ?? null,
+      typeof is_active === "boolean" ? is_active : null,
+      req.params.id,
+    ]
+  );
+  if (result.rows.length === 0) throw new ApiError(404, "Resource not found");
+  return res.json(new ApiResponse(200, result.rows[0], "Resource updated"));
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DELETE /affiliates/resources/:id  (admin)
+// ─────────────────────────────────────────────────────────────────────────────
+const deleteResource = asyncHandler(async (req, res) => {
+  const result = await pool.query(
+    "DELETE FROM affiliate_resources WHERE id = $1 RETURNING id",
+    [req.params.id]
+  );
+  if (result.rows.length === 0) throw new ApiError(404, "Resource not found");
+  return res.json(new ApiResponse(200, { id: result.rows[0].id }, "Resource deleted"));
+});
+
 export {
-  joinAffiliate,
+  applyAffiliate,
   getMyAffiliate,
   trackClick,
+  getApplications,
+  reviewApplication,
   getAllAffiliates,
   updateAffiliate,
   getCommissions,
   updateCommissionStatus,
+  getResources,
+  createResource,
+  updateResource,
+  deleteResource,
 };

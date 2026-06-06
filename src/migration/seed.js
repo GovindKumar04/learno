@@ -27,6 +27,8 @@ async function createTables() {
 
                 email VARCHAR(255) UNIQUE NOT NULL,
 
+                roll_number VARCHAR(20) UNIQUE,
+
                 password TEXT NOT NULL,
 
                 role user_role DEFAULT 'student',

@@ -20,3 +20,12 @@ export const loginSchema = z.object({
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password is required"),
 });
+
+export const verifyEmailSchema = z.object({
+  email: z.string().email("Invalid email"),
+  code: z.string().regex(/^\d{6}$/, "Code must be 6 digits"),
+});
+
+export const resendVerificationSchema = z.object({
+  email: z.string().email("Invalid email"),
+});

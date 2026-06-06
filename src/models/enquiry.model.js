@@ -76,7 +76,7 @@ const enquirySchema = new mongoose.Schema(
 
     category: {
       type: String,
-      enum: ["course_issue", "payment", "general", "technical"],
+      enum: ["course_issue", "payment", "general", "technical", "internship"],
       default: "general",
     },
 

@@ -36,3 +36,10 @@ export const upload = multer({
   fileFilter,
   limits: { fileSize: 500 * 1024 * 1024 }, // 500MB max
 });
+
+// For admin email attachments — accepts any file type (docs, sheets, zips, …),
+// capped well under typical SMTP limits.
+export const uploadAttachments = multer({
+  storage,
+  limits: { fileSize: 15 * 1024 * 1024 }, // 15MB per file
+});

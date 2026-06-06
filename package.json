@@ -14,6 +14,7 @@
     "mongoose": "^9.6.2",
     "multer": "^2.1.1",
     "nodemailer": "^8.0.9",
+    "pdfkit": "^0.18.0",
     "pg": "^8.21.0",
     "razorpay": "^2.9.6",
     "zod": "^4.4.3"
@@ -21,6 +22,12 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "seed:courses": "node src/migration/seedCourses.js",
+    "seed:modules": "node src/migration/seedModules.js",
+    "migrate:rolls": "node src/migration/addRollNumbers.js",
+    "migrate:verify": "node src/migration/addEmailVerification.js",
+    "migrate:tables": "node src/migration/addPaymentsAndAffiliates.js",
+    "migrate": "node src/migration/addPaymentsAndAffiliates.js && node src/migration/addRollNumbers.js && node src/migration/addEmailVerification.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

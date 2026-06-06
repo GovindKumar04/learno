@@ -1,24 +1,47 @@
 # Fillip Skill Academy — Backend API Documentation
 
-REST API for the Fillip Skill Academy platform. Handles authentication, course
-management (modules, materials, reviews), enrollments, learning progress, and the
+REST API for the Fillip Skill Academy platform. Handles authentication & roll
+numbers, course management (modules, materials, reviews), enrollments, learning
+progress, payments, the affiliate program, scholarships, instructor teaching
+requests, offline batches & attendance, the public site config, and the
 contact/enquiry support portal.
 
 - **Runtime:** Node.js + Express 5 (ES Modules)
-- **Databases:** PostgreSQL (users / auth) + MongoDB via Mongoose (courses, enrollments, progress, enquiries)
+- **Databases:** PostgreSQL (users / auth, payments, affiliates & commissions) + MongoDB via Mongoose (courses, enrollments, progress, enquiries, scholarships, teaching requests, batches, attendance, site config)
 - **Media storage:** Cloudinary (course thumbnails, lesson materials)
-- **Email:** Nodemailer (enquiry confirmations & replies)
+- **Payments:** Razorpay (order creation + signature verification)
+- **Email:** Nodemailer (enquiry replies, payment confirmations, affiliate & batch notifications)
+
+### Roll numbers
+
+Every registered user is assigned a unique **roll number** of the form
+`FSA-<ROLE>-<YY>-<NNNN>` — e.g. `FSA-STU-26-0001`:
+
+| Segment | Meaning |
+|---------|---------|
+| `FSA`   | Brand prefix (Fillip Skill Academy) |
+| `ROLE`  | Role code — `STU` student · `INS` instructor · `ADM` admin · `AFF` affiliate (fallback `USR`) |
+| `YY`    | Signup year, 2 digits (`26` = 2026) |
+| `NNNN`  | Zero-padded sequence, counted **per role per year** |
+
+The sequence is generated in `utils/roll.util.js` and stored in
+`users.roll_number` (UNIQUE). It makes filtering trivial — e.g. all 2026 students
+are `roll_number LIKE 'FSA-STU-26-%'`, anyone from 2026 is `FSA-%-26-%`. The roll
+is returned by `/auth/me`, `/auth/login`, and `/auth/register`, is searchable in
+the admin user/enrollment lists, and is shown on the student dashboard. See
+[Migrations](#migrations) to add the column / backfill existing users.
 
 ---
 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Base URL](#base-url)
-3. [Authentication & Roles](#authentication--roles)
-4. [Standard Response Format](#standard-response-format)
-5. [Error Handling](#error-handling)
-6. [Endpoints](#endpoints)
+2. [Migrations](#migrations)
+3. [Base URL](#base-url)
+4. [Authentication & Roles](#authentication--roles)
+5. [Standard Response Format](#standard-response-format)
+6. [Error Handling](#error-handling)
+7. [Endpoints](#endpoints)
    - [Auth](#1-auth----auth)
    - [Courses](#2-courses----courses)
    - [Modules](#3-modules-nested-under-courses)
@@ -28,8 +51,15 @@ contact/enquiry support portal.
    - [Enquiries](#7-enquiries----enquiries-admin)
    - [Enrollments](#8-enrollments----enrollments)
    - [Progress](#9-progress----progress)
-7. [Data Models](#data-models)
-8. [Environment Variables](#environment-variables)
+   - [Payments](#10-payments----payments)
+   - [Affiliates](#11-affiliates----affiliates)
+   - [Scholarships](#12-scholarships----scholarships)
+   - [Teaching Requests](#13-teaching-requests----teaching-requests)
+   - [Batches](#14-batches----batches)
+   - [Attendance](#15-attendance----attendance)
+   - [Site Config](#16-site-config----site-config)
+8. [Data Models](#data-models)
+9. [Environment Variables](#environment-variables)
 
 ---
 
@@ -49,6 +79,23 @@ Connecting to databases...
 ✅ MongoDB connected
 🚀 Server running on port 3000
 ```
+
+---
+
+## Migrations
+
+PostgreSQL schema/seed scripts live in `src/migration/` (each loads `.env`
+via `import "dotenv/config"`, so run them from the `backend/` folder).
+
+| Script                  | Command                  | What it does                                                                 |
+|-------------------------|--------------------------|-----------------------------------------------------------------------------|
+| `seed.js`               | `node src/migration/seed.js` | Creates the `users` table & `user_role` enum (fresh installs).          |
+| `seedCourses.js`        | `npm run seed:courses`   | Seeds starter courses + modules into MongoDB.                                |
+| `addRollNumbers.js`     | `npm run migrate:rolls`  | Adds `users.roll_number` and (re)assigns every user a roll in the current `FSA-<ROLE>-<YY>-NNNN` scheme. Deterministic by signup order, **idempotent**, safe to re-run after a scheme change. |
+
+> **Run `npm run migrate:rolls` once** before relying on roll numbers — the
+> registration insert and the user/enrollment list queries reference
+> `users.roll_number`, so the column must exist.
 
 ---
 
@@ -82,11 +129,12 @@ specific roles.
 
 ### Roles
 
-| Role         | Notes                                                            |
-|--------------|------------------------------------------------------------------|
-| `student`    | Default for self-registration. Learns, reviews, tracks progress. |
-| `instructor` | Self-registration allowed. Course/student oversight (scoped).    |
-| `admin`      | Full control. **Cannot self-register** — seeded/managed directly.|
+| Role         | Notes                                                                       |
+|--------------|-----------------------------------------------------------------------------|
+| `student`    | Default for self-registration. Learns, reviews, pays, tracks progress.      |
+| `instructor` | Self-registration allowed. Teaching requests, assigned batches, attendance. |
+| `admin`      | Full control. **Cannot self-register** — seeded/managed directly.           |
+| `affiliate`  | **Cannot self-register** — created by admin on approving an affiliate application. Referral dashboard + resources. |
 
 ### Token lifecycle
 
@@ -155,6 +203,9 @@ A global error handler returns (`ApiError`):
 | POST   | `/auth/logout`   | 🔓   | Clear auth cookies                   |
 | POST   | `/auth/refresh`  | 🔓   | Issue a new access token from cookie |
 | GET    | `/auth/me`       | 🔑   | Get the current authenticated user   |
+| PATCH  | `/auth/avatar`   | 🔑   | Upload/replace the caller's avatar   |
+| POST   | `/auth/change-password` | 🔑 | Change the caller's password      |
+| GET    | `/auth/users`    | 🛡️   | List users (filter `role`, `search` incl. roll, paginated) |
 
 #### POST `/auth/register`
 
@@ -172,10 +223,13 @@ Validated with Zod. `role` must be `student` or `instructor` (admin is rejected)
 }
 ```
 
-**201**
+**201** — a unique `roll_number` (`FSA-<ROLE>-<YY>-NNNN`) is assigned on registration.
 ```json
-{ "statusCode": 201, "data": { "id": 12, "full_name": "Jane Doe", "email": "jane@example.com", "role": "student" }, "message": "User registered successfully", "success": true }
+{ "statusCode": 201, "data": { "id": 12, "full_name": "Jane Doe", "email": "jane@example.com", "roll_number": "FSA-STU-26-0001", "role": "student", "avatar": null, "phone": "9876543210", "location": "Patna, Bihar", "created_at": "2026-06-05T..." }, "message": "User registered successfully", "success": true }
 ```
+
+> An optional `referralCode` in the body attributes the signup to an affiliate
+> (sets `referred_by`); invalid codes are ignored.
 
 #### POST `/auth/login`
 
@@ -186,7 +240,7 @@ Validated with Zod. `role` must be `student` or `instructor` (admin is rejected)
 
 **200** — also sets `accessToken` & `refreshToken` cookies.
 ```json
-{ "statusCode": 200, "data": { "user": { "id": 12, "role": "student", "...": "..." }, "accessToken": "<jwt>" }, "message": "Login successful", "success": true }
+{ "statusCode": 200, "data": { "user": { "id": 12, "role": "student", "roll_number": "FSA-STU-26-0001", "...": "..." }, "accessToken": "<jwt>" }, "message": "Login successful", "success": true }
 ```
 
 #### POST `/auth/logout`
@@ -198,8 +252,12 @@ Reads `refreshToken` cookie, validates against the stored token, issues a new `a
 #### GET `/auth/me` 🔑
 **200** — current user from PostgreSQL.
 ```json
-{ "statusCode": 200, "data": { "id": 12, "full_name": "Jane Doe", "email": "jane@example.com", "role": "student", "phone": "9876543210", "avatar": null, "is_verified": false, "is_active": true, "created_at": "2026-06-01T..." }, "message": "Current user fetched successfully", "success": true }
+{ "statusCode": 200, "data": { "id": 12, "full_name": "Jane Doe", "email": "jane@example.com", "roll_number": "FSA-STU-26-0001", "role": "student", "phone": "9876543210", "avatar": null, "is_verified": false, "is_active": true, "created_at": "2026-06-01T..." }, "message": "Current user fetched successfully", "success": true }
 ```
+
+#### PATCH `/auth/avatar` 🔑
+`multipart/form-data`, field name **`avatar`** (image, ≤ 5 MB enforced client-side). Uploads to Cloudinary (folder `avatars`, deterministic `public_id` per user so re-uploads overwrite), saves the URL to `users.avatar`, and returns the updated user.
+**200** → `{ ...user, "avatar": "https://res.cloudinary.com/.../avatars/user_12.jpg" }`.
 
 ---
 
@@ -405,6 +463,14 @@ Saves a ticket to MongoDB and emails a confirmation.
 | DELETE | `/enrollments/:enrollmentId`              | 🛡️          | Unenroll (soft delete)               |
 | GET    | `/enrollments/course/:courseId/students`  | 🛡️ / 🎓     | Students in a course (+ progress)    |
 | GET    | `/enrollments/student/:userId`            | 🛡️          | All courses a student is enrolled in |
+| GET    | `/enrollments/unenrolled-students`        | 🛡️          | Students with **no** active enrollment |
+| POST   | `/enrollments/broadcast`                  | 🛡️          | Bulk-email students                  |
+
+#### GET `/enrollments/unenrolled-students` 🛡️
+**Query:** `search` (name/email/roll). Cross-references PostgreSQL students against active Mongo enrollments. **200** → `{ students: [ { id, full_name, email, roll_number, phone, location, avatar, created_at } ], total }`.
+
+#### POST `/enrollments/broadcast` 🛡️
+**Body** `{ "subject", "message", "userIds"? }`. Emails the given students (each greeted by name; newlines preserved); if `userIds` is omitted it targets **all** students with no active enrollment. Restricted to `role = student`. **200** → `{ sent, failed, total }`.
 
 #### GET `/enrollments/my-courses` 🔑
 **200** → array of `{ enrollmentId, enrolledAt, course, progress: { completionPercent, lastAccessedAt } }`.
@@ -460,25 +526,203 @@ Aggregated per-course stats. **200** → array of `{ courseId, courseTitle, tota
 
 ---
 
+### 10. Payments — `/payments`
+
+> Entire router behind `verifyJWT`. Uses **Razorpay** (orders + signature verify).
+> Amounts are stored in **paise** in PostgreSQL and returned as **rupees** in admin totals.
+
+| Method | Path                      | Auth | Description                                   |
+|--------|---------------------------|------|-----------------------------------------------|
+| POST   | `/payments/create-order`  | 👤   | Create a Razorpay order for a course          |
+| POST   | `/payments/verify`        | 👤   | Verify signature → enroll + email + commission|
+| GET    | `/payments/my`            | 🔑   | Caller's own payment history                   |
+| GET    | `/payments/history`       | 🛡️   | All payments + total revenue                   |
+
+#### POST `/payments/create-order` 👤
+**Body** `{ "courseId": "<ObjectId>", "enrollmentType": "online" }` — `enrollmentType` is `online`|`offline` (picks `priceOnline`/`priceOffline`). Returns a pending order (reuses an existing pending one for the same course+type). Rejects if already enrolled (**409**) or price unset (**400**). Returns **503** if Razorpay keys are missing.
+**200** → `{ orderId, amount, currency, keyId, courseName, enrollmentType }` (amount in paise).
+
+#### POST `/payments/verify` 👤
+**Body** `{ "razorpay_order_id", "razorpay_payment_id", "razorpay_signature" }`. Verifies the HMAC-SHA256 signature; on success marks the payment `paid`, enrolls (or re-activates) the student, creates Progress, bumps the course counter, records an affiliate commission if the buyer was referred, and emails a confirmation. Idempotent. Invalid signature → payment `failed` + **400**.
+**200** → `{ courseId, paymentId, enrollmentType }`.
+
+#### GET `/payments/my` 🔑
+**200** → array of the caller's payments (newest first).
+
+#### GET `/payments/history` 🛡️
+**Query:** `page` (1), `limit` (20), `status`. **200** → `{ payments: [ { ...payment, full_name, email, phone } ], total, page, limit, totalRevenue }` (`totalRevenue` in rupees).
+
+---
+
+### 11. Affiliates — `/affiliates`
+
+Referral program. Applications are public; everything else needs auth. Money is
+stored in **paise**, returned in **rupees**.
+
+| Method | Path                              | Auth          | Description                                      |
+|--------|-----------------------------------|---------------|--------------------------------------------------|
+| GET    | `/affiliates/track/:code`         | 🔓            | Increment a referral link's click counter        |
+| POST   | `/affiliates/apply`               | 🔓            | Apply to join the program (no account created)    |
+| GET    | `/affiliates/me`                  | 🔑            | Caller's affiliate dashboard (stats, commissions) |
+| GET    | `/affiliates/resources`           | 🛡️ / `affiliate` | Marketing resources (affiliate: active only)   |
+| POST   | `/affiliates/resources`           | 🛡️            | Add a resource                                   |
+| PATCH  | `/affiliates/resources/:id`       | 🛡️            | Update a resource                                |
+| DELETE | `/affiliates/resources/:id`       | 🛡️            | Delete a resource                                |
+| GET    | `/affiliates`                     | 🛡️            | All affiliates + platform summary                |
+| GET    | `/affiliates/applications`        | 🛡️            | List applications (`?status=`) + counts          |
+| PATCH  | `/affiliates/applications/:id`    | 🛡️            | Approve (→ create affiliate user) / reject        |
+| GET    | `/affiliates/commissions`         | 🛡️            | All commissions (`?status=`, paginated)          |
+| PATCH  | `/affiliates/commissions/:id`     | 🛡️            | Set commission status (`pending`/`approved`/`paid`)|
+| PATCH  | `/affiliates/:userId`             | 🛡️            | Update an affiliate's rate/type/status           |
+
+#### POST `/affiliates/apply` 🔓
+**Body** `{ "full_name", "email", "phone"?, "bio"?, "social_links"?: [ { "platform", "url" } ] }`. Stores a `pending` application. **409** if an affiliate already exists for the email or a pending application exists. **201** → `{ id, full_name, email, status, created_at }`.
+
+#### GET `/affiliates/me` 🔑
+**200** → `{ isAffiliate: false }` for non-affiliates, otherwise `{ isAffiliate: true, code, referralLink, commissionType, commissionValue, status, clicks, stats: { referredUsers, totalSales, totalEarned, pending, approved, paid }, commissions: [...] }` (amounts in rupees).
+
+#### PATCH `/affiliates/applications/:id` 🛡️
+**Body** `{ "action": "approve" | "reject", "review_note"? }`. **Approve** creates an `affiliate`-role user with a temporary password + unique referral code (`FSA-XXXXXX`) and emails the credentials. **Reject** stores the note and emails the applicant. **409** if already reviewed.
+
+#### PATCH `/affiliates/:userId` 🛡️
+**Body** `{ "commission_type"?: "percent"|"flat", "commission_value"?, "status"?: "active"|"suspended" }` — all optional (COALESCE update).
+
+---
+
+### 12. Scholarships — `/scholarships`
+
+> Entire router behind `verifyJWT`.
+
+| Method | Path                          | Auth | Description                                  |
+|--------|-------------------------------|------|----------------------------------------------|
+| POST   | `/scholarships`               | 👤   | Apply for a scholarship on a course          |
+| GET    | `/scholarships/my`            | 👤   | Caller's own applications                     |
+| GET    | `/scholarships`               | 🛡️   | All applications (filters + pagination)       |
+| GET    | `/scholarships/stats`         | 🛡️   | Counts by status                             |
+| PATCH  | `/scholarships/:id/review`    | 🛡️   | Approve (with discount) / reject / review     |
+
+#### POST `/scholarships` 👤
+**Body** `{ "track", "courseId", "statement", "income"? }` — `track` ∈ `merit|need|women|early`; `statement` required. **409** if an active application already exists for that course. **201** → application.
+
+#### GET `/scholarships` 🛡️
+**Query:** `page` (1), `limit` (20), `status`, `track`, `search` (applicant name/email). **200** → `{ applications: [ { ...application, applicant } ], total, page, limit }`.
+
+#### GET `/scholarships/stats` 🛡️
+**200** → `{ pending, under_review, approved, rejected, total }`.
+
+#### PATCH `/scholarships/:id/review` 🛡️
+**Body** `{ "status": "under_review"|"approved"|"rejected", "discountPercent"?, "adminNote"? }`. Approval **requires** `discountPercent` (1–100). **200** → updated application.
+
+---
+
+### 13. Teaching Requests — `/teaching-requests`
+
+> Entire router behind `verifyJWT`. Instructors ask to teach a course; admins approve.
+
+| Method | Path                       | Auth            | Description                                |
+|--------|----------------------------|-----------------|--------------------------------------------|
+| POST   | `/teaching-requests`       | 🎓              | Request to teach a course                  |
+| GET    | `/teaching-requests/my`    | 🎓              | Caller's own requests                       |
+| GET    | `/teaching-requests`       | 🛡️              | All requests (`?status=`, paginated)       |
+| PATCH  | `/teaching-requests/:id`   | 🛡️              | Approve / reject                           |
+| DELETE | `/teaching-requests/:id`   | 🛡️ / 🎓 (own)   | Cancel/remove a request                    |
+
+#### POST `/teaching-requests` 🎓
+**Body** `{ "courseId", "message"? }`. **409** if already pending/approved for the course; a previously **rejected** request is re-opened to `pending`. **201** (or **200** on re-submit) → request.
+
+#### PATCH `/teaching-requests/:id` 🛡️
+**Body** `{ "status": "approved" | "rejected" }`. Approval is the prerequisite for assigning the instructor to a [batch](#14-batches----batches). **200** → request.
+
+---
+
+### 14. Batches — `/batches`
+
+> Entire router behind `verifyJWT`. Offline cohorts: an approved instructor + offline-enrolled students.
+
+| Method | Path                                | Auth | Description                                          |
+|--------|-------------------------------------|------|-----------------------------------------------------|
+| GET    | `/batches/my`                       | 🎓   | Batches assigned to the caller (instructor)         |
+| GET    | `/batches/course/:courseId/options` | 🛡️   | Assignable instructors + offline students for a course|
+| GET    | `/batches`                          | 🛡️   | All batches (course + instructor + students)        |
+| POST   | `/batches`                          | 🛡️   | Create a batch (emails instructor + students)       |
+| PATCH  | `/batches/:id`                      | 🛡️   | Update a batch (re-notifies on assignment changes)  |
+| DELETE | `/batches/:id`                      | 🛡️   | Delete a batch                                       |
+
+#### GET `/batches/course/:courseId/options` 🛡️
+**200** → `{ course: { id, title }, instructors: [...], students: [...] }` — instructors with an **approved** teaching request, and **offline, active** enrollees.
+
+#### POST `/batches` 🛡️
+**Body** `{ "name", "courseId", "instructorId", "studentIds"?: [], "schedule"?, "location"?, "seats"?, "status"? }`. Validates the instructor is approved and every student is offline-enrolled (**400** otherwise). Emails the schedule/location to all assigned. **201** → batch.
+
+#### PATCH `/batches/:id` 🛡️
+Same fields (course is fixed). Re-validates if instructor/roster changes; re-notifies when assignment, schedule, or location changes. **200** → batch.
+
+---
+
+### 15. Attendance — `/attendance`
+
+> Entire router behind `verifyJWT` + `requireRole("instructor", "admin")`.
+> One session = one batch on one calendar day; instructors are limited to their own batches.
+
+| Method | Path                         | Auth        | Description                               |
+|--------|------------------------------|-------------|-------------------------------------------|
+| POST   | `/attendance`                | 🎓 / 🛡️     | Mark/upsert a session                     |
+| GET    | `/attendance?batchId=&date=` | 🎓 / 🛡️     | One session's records (with names)        |
+| GET    | `/attendance/batch/:batchId` | 🎓 / 🛡️     | Session history + counts for a batch      |
+
+#### POST `/attendance` 🎓 / 🛡️
+**Body** `{ "batchId", "date": "YYYY-MM-DD", "records": [ { "studentId", "status" } ] }` — `status` ∈ `present|absent|leave`. Every `studentId` must be on the batch roster. Upserts the session (re-marking the same day overwrites). **200** → session.
+
+#### GET `/attendance?batchId=&date=` 🎓 / 🛡️
+**200** → `{ batchId, date, markedBy, records: [ { studentId, status, full_name, email } ] }`, or `null` if not yet marked.
+
+#### GET `/attendance/batch/:batchId` 🎓 / 🛡️
+**200** → `{ batch: { id, name, course, studentCount }, sessions: [ { date, total, present, absent, leave, markedBy, updatedAt } ] }`.
+
+---
+
+### 16. Site Config — `/site-config`
+
+Public marketing content (homepage milestones, "why choose us", FAQs).
+
+| Method | Path           | Auth | Description                                     |
+|--------|----------------|------|-------------------------------------------------|
+| GET    | `/site-config` | 🔓   | Current config (built-in defaults if unset)     |
+| PUT    | `/site-config` | 🛡️   | Replace `milestones` / `whyChooseUs` / `faqs`   |
+
+#### PUT `/site-config` 🛡️
+**Body** any of `{ "milestones": [...], "whyChooseUs": [...], "faqs": [...] }` (only provided keys are updated; upserts the single config doc). **200** → updated config.
+
+---
+
 ## Data Models
 
 ### PostgreSQL — `users`
 Authoritative store for identity. Referenced from Mongo documents by `userId`.
 
-| Column        | Notes                                            |
-|---------------|--------------------------------------------------|
-| `id`          | Primary key (referenced as `userId` in Mongo)    |
-| `full_name`   |                                                  |
-| `email`       | Unique                                           |
-| `password`    | bcrypt hash                                       |
-| `role`        | `student` \| `instructor` \| `admin`             |
-| `phone`       |                                                  |
-| `location`    |                                                  |
-| `avatar`      | Nullable                                         |
-| `is_verified` | Boolean                                          |
-| `is_active`   | Boolean                                          |
-| `refresh_token`| Current refresh token (validated on refresh)    |
-| `created_at`  |                                                  |
+| Column        | Notes                                                          |
+|---------------|----------------------------------------------------------------|
+| `id`          | UUID primary key (referenced as `userId` in Mongo)             |
+| `full_name`   |                                                                |
+| `email`       | Unique                                                         |
+| `roll_number` | Unique — `FSA-<ROLE>-<YY>-NNNN` (see [Roll numbers](#roll-numbers)) |
+| `password`    | bcrypt hash                                                    |
+| `role`        | `student` \| `instructor` \| `admin` \| `affiliate`           |
+| `phone`       |                                                                |
+| `location`    |                                                                |
+| `avatar`      | Nullable (Cloudinary URL)                                      |
+| `referred_by` | Nullable — affiliate's user id that referred this signup       |
+| `is_verified` | Boolean                                                        |
+| `is_active`   | Boolean                                                        |
+| `refresh_token`| Current refresh token (validated on refresh)                  |
+| `created_at`  |                                                                |
+
+> Other PostgreSQL tables: `affiliate_applications`, `affiliates`
+> (`code`, `commission_type`, `commission_value`, `status`, `clicks`),
+> `affiliate_resources`, `commissions` (`affiliate_user_id`, `referred_user_id`,
+> `sale_amount`, `commission_amount` in paise, `status`), and `payments`
+> (`razorpay_order_id`/`_payment_id`, `enrollment_type`, `amount` in paise,
+> `status` `pending`/`paid`/`failed`).
 
 ### MongoDB (Mongoose)
 
@@ -526,11 +770,12 @@ timestamps
 
 #### Enrollment
 ```
-userId*       Number  (PG user id)
-courseId*     ObjectId → Course
-enrolledBy*   Number  (admin PG id)
-isActive      Boolean (default true)
-unenrolledAt  Date
+userId*        String  (PG user UUID)
+courseId*      ObjectId → Course
+enrolledBy*    String  (PG UUID — admin, or the student on self-purchase)
+enrollmentType "online" | "offline"  (default "online")
+isActive       Boolean (default true)
+unenrolledAt   Date
 timestamps
 unique index: { userId, courseId }
 ```
@@ -565,6 +810,68 @@ respondedAt Date
 timestamps
 ```
 
+#### Scholarship
+```
+userId*         String  (PG user UUID)
+track*          "merit" | "need" | "women" | "early"
+courseId*       ObjectId → Course
+statement*      String
+income          String
+documents       [{ url, publicId }]
+status          "pending" | "under_review" | "approved" | "rejected"  (default "pending")
+discountPercent Number 0–100 (set by admin on approval)
+used            Boolean (flips true after a discounted payment)
+adminNote       String
+reviewedBy      String (admin PG UUID)   reviewedAt  Date
+timestamps
+```
+
+#### TeachingRequest
+```
+instructorId*  String  (PG user UUID, role instructor)
+courseId*      ObjectId → Course
+message        String
+mode           "offline"  (default)
+status         "pending" | "approved" | "rejected"  (default "pending")
+reviewedBy     String (admin PG UUID)   reviewedAt  Date
+timestamps
+unique index: { instructorId, courseId }
+```
+
+#### Batch
+```
+name*         String
+courseId*     ObjectId → Course
+instructorId* String  (PG UUID — must have an approved teaching request)
+studentIds    [String]  (PG UUIDs — offline-enrolled students)
+schedule      String   location  String
+mode          "offline"  (default)
+seats         Number (default 0)
+status        "upcoming" | "ongoing" | "completed"  (default "upcoming")
+createdBy*    String  (admin PG UUID)
+timestamps
+```
+
+#### Attendance
+```
+batchId*   ObjectId → Batch
+courseId   ObjectId → Course
+date*      String  "YYYY-MM-DD"
+records    [{ studentId (PG UUID), status: "present"|"absent"|"leave" }]
+markedBy*  String  (instructor/admin PG UUID)
+timestamps
+unique index: { batchId, date }   (one session per batch per day)
+```
+
+#### SiteConfig
+```
+milestones  [{ value, label, icon, order }]
+whyChooseUs [{ title, description, icon, order }]
+faqs        [{ question, answer, order }]
+timestamps
+```
+> Single document. `GET /site-config` returns built-in defaults until it's first saved.
+
 > `*` = required.
 
 ---
@@ -594,6 +901,13 @@ MONGODB_URI=mongodb://localhost:27017/fillip
 CLOUDINARY_CLOUD_NAME=...
 CLOUDINARY_API_KEY=...
 CLOUDINARY_API_SECRET=...
+
+# Razorpay (payments)
+RAZORPAY_KEY_ID=...
+RAZORPAY_KEY_SECRET=...
+
+# Client URL (referral links, affiliate emails, CORS in production)
+CLIENT_URL=http://localhost:5173
 
 # Email (Nodemailer)
 SMTP_USER=you@gmail.com
