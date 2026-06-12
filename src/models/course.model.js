@@ -217,6 +217,9 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// Public catalog only ever queries published courses (often newest-first).
+courseSchema.index({ isPublished: 1, createdAt: -1 });
+
 // A course cannot be published without a price assigned (price / priceOnline / priceOffline).
 courseSchema.pre("validate", function () {
   if (this.isPublished) {

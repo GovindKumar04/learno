@@ -33,7 +33,14 @@ const enrollmentSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-// Prevent duplicate enrollments for the same user+course
+// Prevent duplicate enrollments for the same user+course. This compound index
+// also serves the per-user lookups (userId is the prefix).
 enrollmentSchema.index({ userId: 1, courseId: 1 }, { unique: true });
+
+// Course-students listing: find({ courseId, isActive }).
+enrollmentSchema.index({ courseId: 1, isActive: 1 });
+
+// Admin "all enrollments" listing: find({ isActive }).sort({ createdAt: -1 }).
+enrollmentSchema.index({ isActive: 1, createdAt: -1 });
 
 export const Enrollment = mongoose.model("Enrollment", enrollmentSchema);

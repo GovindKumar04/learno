@@ -16,18 +16,19 @@ import { registerSchema, loginSchema, verifyEmailSchema, resendVerificationSchem
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
+import { authLimiter } from "../middlewares/rateLimit.middleware.js";
 
 const authrouter = express.Router();
 
-authrouter.post("/register", validate(registerSchema), registerUser);
-authrouter.post("/verify-email", validate(verifyEmailSchema), verifyEmail);
-authrouter.post("/resend-verification", validate(resendVerificationSchema), resendVerification);
-authrouter.post("/login", validate(loginSchema), loginUser);
+authrouter.post("/register", authLimiter, validate(registerSchema), registerUser);
+authrouter.post("/verify-email", authLimiter, validate(verifyEmailSchema), verifyEmail);
+authrouter.post("/resend-verification", authLimiter, validate(resendVerificationSchema), resendVerification);
+authrouter.post("/login", authLimiter, validate(loginSchema), loginUser);
 authrouter.post("/logout", logoutUser);
 authrouter.post("/refresh", refreshAccessToken);
 authrouter.get("/me", verifyJWT, getCurrentUser);
 authrouter.patch("/avatar", verifyJWT, upload.single("avatar"), updateAvatar);
-authrouter.post("/change-password", verifyJWT, changePassword);
+authrouter.post("/change-password", verifyJWT, authLimiter, changePassword);
 authrouter.get("/users", verifyJWT, requireRole("admin"), getUsers);
 
 export { authrouter };
