@@ -69,6 +69,10 @@ export const getMyCoursesService = async (userId) => {
     progressMap[p.courseId.toString()] = { completionPercent: p.completionPercent, lastAccessedAt: p.lastAccessedAt };
   });
 
+  // Per-course attendance is fetched concurrently (Promise.all). This is an N+1
+  // over getOfflineAttendance, but bounded by ONE student's course count and run
+  // in parallel, so it's left as-is; batch it only if students enroll in many
+  // offline courses.
   return Promise.all(
     enrollments.map(async (e) => {
       const progress = progressMap[e.courseId._id.toString()] || { completionPercent: 0, lastAccessedAt: null };
@@ -156,10 +160,45 @@ export const getStudentEnrollmentsService = async (userId) => {
 
 export const getAllEnrollmentsService = async (query) => {
   const { page = 1, limit = 10, search = "" } = query;
-  const pageNum = Number(page);
-  const limitNum = Number(limit);
+  const pageNum = Math.max(1, Number(page) || 1);
+  const limitNum = Math.min(100, Math.max(1, Number(limit) || 10)); // cap so limit=1e6 can't scan everything
 
   const filter = { isActive: true };
+
+  // Search spans both databases — user name/email/roll live in Postgres, course
+  // title/category in Mongo. Resolve the matching ids in each store first, then
+  // filter enrollments by (userId ∈ matches) OR (courseId ∈ matches). This keeps
+  // pagination and `total` correct at the DB level. (The old code paginated
+  // first and filtered the resulting page in JS, so search only ever looked
+  // inside the current page and `total` was wrong.)
+  // Semantics note: the whole search string is matched as one phrase per field,
+  // not ANDed token-by-token as before.
+  if (search.trim()) {
+    const term = search.trim();
+    const [pgUsers, courses] = await Promise.all([
+      pool.query(
+        `SELECT id FROM users WHERE full_name ILIKE $1 OR email ILIKE $1 OR roll_number ILIKE $1`,
+        [`%${term}%`]
+      ),
+      Course.find({
+        $or: [
+          { title: { $regex: term, $options: "i" } },
+          { category: { $regex: term, $options: "i" } },
+        ],
+      }).select("_id"),
+    ]);
+
+    const matchedUserIds = pgUsers.rows.map((r) => String(r.id));
+    const matchedCourseIds = courses.map((c) => c._id);
+    if (matchedUserIds.length === 0 && matchedCourseIds.length === 0) {
+      return { enrollments: [], total: 0, page: pageNum, limit: limitNum, totalPages: 0 };
+    }
+
+    filter.$or = [];
+    if (matchedUserIds.length) filter.$or.push({ userId: { $in: matchedUserIds } });
+    if (matchedCourseIds.length) filter.$or.push({ courseId: { $in: matchedCourseIds } });
+  }
+
   const [enrollments, total] = await Promise.all([
     Enrollment.find(filter)
       .populate("courseId", "title category level thumbnail")
@@ -169,8 +208,9 @@ export const getAllEnrollmentsService = async (query) => {
     Enrollment.countDocuments(filter),
   ]);
 
+  const totalPages = Math.ceil(total / limitNum);
   if (enrollments.length === 0) {
-    return { enrollments: [], total: 0, page: pageNum, limit: limitNum, totalPages: 0 };
+    return { enrollments: [], total, page: pageNum, limit: limitNum, totalPages };
   }
 
   const userIds = enrollments.map((e) => e.userId);
@@ -182,7 +222,7 @@ export const getAllEnrollmentsService = async (query) => {
   const usersMap = {};
   usersResult.rows.forEach((u) => (usersMap[u.id] = u));
 
-  let data = enrollments.map((e) => ({
+  const data = enrollments.map((e) => ({
     id: e._id,
     enrolledAt: e.createdAt,
     enrollmentType: e.enrollmentType,
@@ -190,28 +230,22 @@ export const getAllEnrollmentsService = async (query) => {
     course: e.courseId,
   }));
 
-  if (search) {
-    const terms = search.toLowerCase().split(/\s+/).filter(Boolean);
-    data = data.filter((d) => {
-      const haystack = [d.user?.full_name, d.user?.email, d.user?.roll_number, d.course?.title, d.course?.category]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-      return terms.every((t) => haystack.includes(t));
-    });
-  }
-
-  return { enrollments: data, total, page: pageNum, limit: limitNum, totalPages: Math.ceil(total / limitNum) };
+  return { enrollments: data, total, page: pageNum, limit: limitNum, totalPages };
 };
 
 export const getUnenrolledStudentsService = async ({ search = "" }) => {
+  // ids with an active enrollment (from Mongo) — userId is a string copy of the
+  // BIGINT users.id.
   const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
-  const enrolledSet = new Set(enrolledIds.map(String));
 
+  // Do the anti-join in Postgres so we never pull the whole users table into
+  // Node (the old code SELECTed every student then filtered in a JS Set).
   const conditions = ["role = 'student'"];
-  const params = [];
-  if (search) {
-    params.push(`%${search}%`);
+  const params = [enrolledIds.map(String)];
+  conditions.push(`NOT (id = ANY($1::bigint[]))`); // empty array → excludes nobody
+
+  if (search.trim()) {
+    params.push(`%${search.trim()}%`);
     conditions.push(`(full_name ILIKE $${params.length} OR email ILIKE $${params.length} OR roll_number ILIKE $${params.length})`);
   }
 
@@ -221,8 +255,7 @@ export const getUnenrolledStudentsService = async ({ search = "" }) => {
     params
   );
 
-  const students = result.rows.filter((u) => !enrolledSet.has(String(u.id)));
-  return { students, total: students.length };
+  return { students: result.rows, total: result.rowCount };
 };
 
 // Bulk-email students. userIds given → those; absent → all unenrolled students.
@@ -233,10 +266,14 @@ export const broadcastEmailService = async ({ subject, message, userIds }) => {
   if (Array.isArray(userIds) && userIds.length > 0) {
     targetIds = userIds;
   } else {
+    // All unenrolled students — anti-join in Postgres rather than fetching every
+    // student and filtering in a JS Set.
     const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
-    const enrolledSet = new Set(enrolledIds.map(String));
-    const all = await pool.query("SELECT id FROM users WHERE role = 'student'");
-    targetIds = all.rows.map((r) => r.id).filter((id) => !enrolledSet.has(String(id)));
+    const all = await pool.query(
+      `SELECT id FROM users WHERE role = 'student' AND NOT (id = ANY($1::bigint[]))`,
+      [enrolledIds.map(String)]
+    );
+    targetIds = all.rows.map((r) => r.id);
   }
 
   if (targetIds.length === 0) throw new ApiError(400, "No recipients to email");
