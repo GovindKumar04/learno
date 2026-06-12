@@ -32,9 +32,17 @@ const buildSystemMessage = (user) => {
     role: "system",
     content:
       `${knowledgeBase}\n\n# Current session\n${who}\n\n` +
+      `# Scope (strict)\n` +
+      `You ONLY help with Fillip Skill Academy and using this platform — courses, enrolling, ` +
+      `payments, accounts/login, email verification, progress, attendance, certificates, ` +
+      `instructor and admin tasks, and related support issues. ` +
+      `If the user asks anything unrelated (general knowledge, coding/homework help, math, ` +
+      `current events, other companies or products, personal advice, etc.), do NOT answer it ` +
+      `even if you know the answer. Instead, in one short sentence, politely decline and steer ` +
+      `them back to how you can help with Fillip. Base every answer only on the knowledge base ` +
+      `above or on tool results — never on outside information.\n\n` +
       `# Style\nReply in a few short sentences or a tight bulleted list of steps. ` +
-      `Include the relevant in-app path (e.g. /courses, /dashboard, /admin/courses) when guiding the user. ` +
-      `Only state facts from the knowledge base above or from tool results.`,
+      `Include the relevant in-app path (e.g. /courses, /dashboard, /admin/courses) when guiding the user.`,
   };
 };
 
@@ -46,6 +54,15 @@ const buildSystemMessage = (user) => {
  * @returns {Promise<{ reply: string }>}
  */
 export const chatService = async ({ messages, user }) => {
+  // No key configured yet → degrade gracefully instead of erroring. The scripted
+  // quick-reply answers still work on the client; only free-text reaches here.
+  if (!process.env.OPENAI_API_KEY) {
+    return {
+      reply:
+        "I can help with the common questions using the buttons above. For anything else, our team is happy to help — reach us via /contact.",
+    };
+  }
+
   const openai = getOpenAI();
   const tools = getToolSchemas(user);
 

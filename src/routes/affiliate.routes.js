@@ -16,6 +16,7 @@ import {
 } from "../controllers/affiliate.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
+import { audit } from "../middlewares/audit.middleware.js";
 
 const affiliateRouter = express.Router();
 
@@ -39,9 +40,9 @@ affiliateRouter.delete("/resources/:id", requireRole("admin"), deleteResource);
 // (specific routes declared before /:userId to avoid capture)
 affiliateRouter.get("/", requireRole("admin"), getAllAffiliates);
 affiliateRouter.get("/applications", requireRole("admin"), getApplications);
-affiliateRouter.patch("/applications/:id", requireRole("admin"), reviewApplication);
+affiliateRouter.patch("/applications/:id", requireRole("admin"), audit("affiliate.application.review"), reviewApplication);
 affiliateRouter.get("/commissions", requireRole("admin"), getCommissions);
-affiliateRouter.patch("/commissions/:id", requireRole("admin"), updateCommissionStatus);
-affiliateRouter.patch("/:userId", requireRole("admin"), updateAffiliate);
+affiliateRouter.patch("/commissions/:id", requireRole("admin"), audit("affiliate.commission.update"), updateCommissionStatus);
+affiliateRouter.patch("/:userId", requireRole("admin"), audit("affiliate.update"), updateAffiliate);
 
 export { affiliateRouter };

@@ -18,3 +18,23 @@ export const verifyJWT = (req, res, next) => {
     next(new ApiError(401, "Invalid token"));
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

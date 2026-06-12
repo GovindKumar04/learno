@@ -22,7 +22,7 @@ export const chatLimiter = (req, _res, next) => {
 
   const key = req.user?.id ? `u:${req.user.id}` : `ip:${req.ip}`;
   const entry = hits.get(key);
-
+  
   if (!entry || now > entry.resetAt) {
     hits.set(key, { count: 1, resetAt: now + WINDOW_MS });
     return next();

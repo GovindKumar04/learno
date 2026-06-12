@@ -8,7 +8,6 @@ export const validate = (schema) => {
       return next();
     }
 
-    // Zod v4 uses .issues; v3 also exposed .errors as an alias — handle both
     const issues = result.error?.issues ?? result.error?.errors ?? [];
 
     const formattedErrors = issues.map((issue) => ({

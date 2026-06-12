@@ -2,7 +2,6 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-// Ensure temp folder exists
 const tempDir = "./uploads/temp";
 if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 

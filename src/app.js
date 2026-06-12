@@ -20,6 +20,7 @@ import { attendanceRouter } from "./routes/attendance.routes.js";
 import { certificateRouter } from "./routes/certificate.routes.js";
 import { mailRouter } from "./routes/mail.routes.js";
 import { chatRouter } from "./routes/chat.routes.js";
+import { auditRouter } from "./routes/audit.routes.js";
 import { getSitemap } from "./controllers/sitemap.controller.js";
 
 const app = express();
@@ -70,6 +71,7 @@ app.use("/attendance", attendanceRouter);
 app.use("/certificates", certificateRouter);
 app.use("/mail", mailRouter);
 app.use("/chat", chatRouter);
+app.use("/audit-logs", auditRouter);
 
 // GLOBAL ERROR HANDLER — must be last
 app.use((err, req, res, next) => {
