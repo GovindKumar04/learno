@@ -1,4 +1,7 @@
 import { SiteConfig } from "../models/siteConfig.model.js";
+import { getOrSet, cacheDel } from "../utils/cache.js";
+
+const SITE_CONFIG_KEY = "site-config";
 
 export const DEFAULT_CONFIG = {
   milestones: [
@@ -30,8 +33,11 @@ export const DEFAULT_CONFIG = {
 };
 
 export const getSiteConfigService = async () => {
-  const config = await SiteConfig.findOne();
-  return config || DEFAULT_CONFIG;
+  // Public, hit on every homepage load, changes rarely → cache 1h.
+  return getOrSet(SITE_CONFIG_KEY, 3600, async () => {
+    const config = await SiteConfig.findOne();
+    return config || DEFAULT_CONFIG;
+  });
 };
 
 export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs }) => {
@@ -40,5 +46,7 @@ export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs })
   if (whyChooseUs) update.whyChooseUs = whyChooseUs;
   if (faqs)        update.faqs        = faqs;
 
-  return SiteConfig.findOneAndUpdate({}, update, { new: true, upsert: true, runValidators: true });
+  const saved = await SiteConfig.findOneAndUpdate({}, update, { new: true, upsert: true, runValidators: true });
+  await cacheDel(SITE_CONFIG_KEY);
+  return saved;
 };

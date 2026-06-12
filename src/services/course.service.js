@@ -6,6 +6,11 @@ import { Progress } from "../models/progress.model.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
 import { ApiError } from "../utils/ApiError.js";
 import { hasOnlineCourseAccess, stripMaterialUrls } from "../utils/courseAccess.js";
+import { getOrSet, nsKey, bumpNs } from "../utils/cache.js";
+
+// Cache namespace for public catalog reads (list + categories). Any course
+// create/update/delete bumps it, invalidating every cached variant at once.
+const COURSES_NS = "courses";
 
 export const createCourseService = async ({ body, file, userId }) => {
   const { title, description, category, level, price, priceOnline, priceOffline, modes, isPublished, totalClasses } = body;
@@ -33,7 +38,7 @@ export const createCourseService = async ({ body, file, userId }) => {
     thumbnailPublicId = uploaded.publicId;
   }
 
-  return Course.create({
+  const created = await Course.create({
     title, description, category, level,
     price: price || 0,
     priceOnline: priceOnline || 0,
@@ -44,35 +49,53 @@ export const createCourseService = async ({ body, file, userId }) => {
     thumbnail, thumbnailPublicId,
     createdBy: userId,
   });
+  await bumpNs(COURSES_NS);
+  return created;
 };
 
 export const getAllCoursesService = async ({ query, user }) => {
   const pageNum = Number(query.page) || 1;
   const limitNum = Number(query.limit) || 10;
   const { search, category, level } = query;
+  const isAdmin = user && user.role === "admin";
 
-  const filter = {};
-  if (!user || user.role !== "admin") filter.isPublished = true;
-  if (category && category.trim()) filter.category = { $regex: category.trim(), $options: "i" };
-  if (level && level.trim()) filter.level = level.trim();
-  if (search && search.trim()) {
-    const regex = { $regex: search.trim(), $options: "i" };
-    filter.$or = [{ title: regex }, { category: regex }, { description: regex }];
-  }
+  const runQuery = async () => {
+    const filter = {};
+    if (!isAdmin) filter.isPublished = true;
+    if (category && category.trim()) filter.category = { $regex: category.trim(), $options: "i" };
+    if (level && level.trim()) filter.level = level.trim();
+    if (search && search.trim()) {
+      const regex = { $regex: search.trim(), $options: "i" };
+      filter.$or = [{ title: regex }, { category: regex }, { description: regex }];
+    }
 
-  const [courses, total] = await Promise.all([
-    Course.find(filter).skip((pageNum - 1) * limitNum).limit(limitNum).select("-modules").sort({ createdAt: -1 }),
-    Course.countDocuments(filter),
-  ]);
+    const [courses, total] = await Promise.all([
+      Course.find(filter).skip((pageNum - 1) * limitNum).limit(limitNum).select("-modules").sort({ createdAt: -1 }),
+      Course.countDocuments(filter),
+    ]);
 
-  return { courses, total, page: pageNum, limit: limitNum };
+    return { courses, total, page: pageNum, limit: limitNum };
+  };
+
+  // Admins see drafts and edit constantly → never cache. Public catalog is
+  // identical for everyone, so cache it (5 min) keyed by the query variant.
+  if (isAdmin) return runQuery();
+  const key = await nsKey(COURSES_NS, `list:${pageNum}:${limitNum}:${category || ""}:${level || ""}:${search || ""}`);
+  return getOrSet(key, 300, runQuery);
 };
 
 export const getCourseCategoriesService = async (user) => {
-  const filter = {};
-  if (!user || user.role !== "admin") filter.isPublished = true;
-  const categories = await Course.distinct("category", filter);
-  return categories.filter(Boolean).sort();
+  const isAdmin = user && user.role === "admin";
+  const runQuery = async () => {
+    const filter = {};
+    if (!isAdmin) filter.isPublished = true;
+    const categories = await Course.distinct("category", filter);
+    return categories.filter(Boolean).sort();
+  };
+
+  if (isAdmin) return runQuery();
+  const key = await nsKey(COURSES_NS, "categories");
+  return getOrSet(key, 1800, runQuery);
 };
 
 const loadCourseForViewer = async (course, user) => {
@@ -142,6 +165,7 @@ export const updateCourseService = async ({ courseId, body, file }) => {
   }
 
   await course.save();
+  await bumpNs(COURSES_NS);
   return course;
 };
 
@@ -170,4 +194,5 @@ export const deleteCourseService = async (courseId) => {
   ]);
 
   await Course.findByIdAndDelete(course._id);
+  await bumpNs(COURSES_NS);
 };
