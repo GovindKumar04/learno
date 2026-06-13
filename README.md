@@ -42,6 +42,7 @@ the admin user/enrollment lists, and is shown on the student dashboard. See
 5. [Standard Response Format](#standard-response-format)
 6. [Error Handling](#error-handling)
 7. [Endpoints](#endpoints)
+   - [**Complete Route Reference**](#complete-route-reference) — every route at a glance
    - [Auth](#1-auth----auth)
    - [Courses](#2-courses----courses)
    - [Modules](#3-modules-nested-under-courses)
@@ -58,6 +59,12 @@ the admin user/enrollment lists, and is shown on the student dashboard. See
    - [Batches](#14-batches----batches)
    - [Attendance](#15-attendance----attendance)
    - [Site Config](#16-site-config----site-config)
+   - [Certificates](#17-certificates----certificates-admin)
+   - [Mail](#18-mail----mail-admin)
+   - [Chat](#19-chat----chat)
+   - [Audit Logs](#20-audit-logs----audit-logs-admin)
+   - [Blogs](#21-blogs----blogs)
+   - [Testimonials](#22-testimonials----testimonials)
 8. [Data Models](#data-models)
 9. [Environment Variables](#environment-variables)
 
@@ -194,18 +201,223 @@ A global error handler returns (`ApiError`):
 
 ---
 
+### Complete Route Reference
+
+Every backend route, grouped by router (paths are backend paths — the client adds `/api`).
+
+#### `/auth`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/auth/register` | 🔓 | Register a student/instructor (rate-limited; sends email OTP) |
+| POST | `/auth/verify-email` | 🔓 | Verify email with the 6-digit OTP |
+| POST | `/auth/resend-verification` | 🔓 | Re-send the email verification OTP |
+| POST | `/auth/login` | 🔓 | Log in, sets auth cookies |
+| POST | `/auth/google` | 🔓 | Sign in / sign up with a Google ID token |
+| POST | `/auth/forgot-password` | 🔓 | Email a password-reset code (generic response) |
+| POST | `/auth/verify-reset-code` | 🔓 | Validate a reset code (without consuming it) |
+| POST | `/auth/reset-password` | 🔓 | Set a new password using a valid code |
+| POST | `/auth/logout` | 🔓 | Clear auth cookies |
+| POST | `/auth/refresh` | 🔓 | Issue a new access token from the refresh cookie |
+| GET | `/auth/me` | 🔑 | Current authenticated user |
+| PATCH | `/auth/complete-profile` | 🔑 | Fill phone/location (after Google sign-up) |
+| PATCH | `/auth/avatar` | 🔑 | Upload/replace avatar (`multipart`, field `avatar`) |
+| POST | `/auth/change-password` | 🔑 | Change own password |
+| GET | `/auth/users` | 🛡️ | List users (filter `role`/`search`, paginated) |
+
+#### `/courses` (+ nested modules, materials, reviews)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/courses` | 🔓➕ | List courses (published only for non-admin) |
+| GET | `/courses/categories` | 🔓➕ | Distinct course categories |
+| GET | `/courses/slug/:slug` | 🔓➕ | Course by URL slug |
+| GET | `/courses/:courseId` | 🔓➕ | Course with modules + materials |
+| POST | `/courses` | 🛡️ | Create a course (`multipart`, optional `thumbnail`) |
+| PATCH | `/courses/:courseId` | 🛡️ | Update a course |
+| DELETE | `/courses/:courseId` | 🛡️ | Delete course + cascade |
+| POST | `/courses/:courseId/modules` | 🛡️ | Add a module |
+| GET | `/courses/:courseId/modules` | 🔓➕ | List modules + materials |
+| PATCH | `/courses/:courseId/modules/:moduleId` | 🛡️ | Update a module |
+| DELETE | `/courses/:courseId/modules/:moduleId` | 🛡️ | Delete module + materials |
+| POST | `/courses/:courseId/modules/:moduleId/materials` | 🛡️ | Upload materials (`multipart`, field `files`, ≤10) |
+| DELETE | `/courses/:courseId/modules/:moduleId/materials/:materialId` | 🛡️ | Delete a material |
+| GET | `/courses/:courseId/materials/:materialId/file` | 🔓➕ | Stream/download a material file (access-gated) |
+| GET | `/courses/:courseId/reviews` | 🔓➕ | Paginated reviews + average rating |
+| GET | `/courses/:courseId/reviews/testimonials` | 🔓➕ | Featured reviews only |
+| POST | `/courses/:courseId/reviews` | 👤 | Add/update own review (must be enrolled) |
+| DELETE | `/courses/:courseId/reviews` | 🔑 | Delete own review (admin: any via `?userId`) |
+| PATCH | `/courses/:courseId/reviews/featured` | 🛡️ | Toggle a review's testimonial flag |
+
+#### `/contact`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/contact/info` | 🔓➕ | Phone/email/WhatsApp details |
+| POST | `/contact/enquiry` | 🔓➕ | Submit an enquiry (creates a ticket) |
+
+#### `/enquiries` (admin)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/enquiries` | 🛡️ | List enquiries (filters + pagination) |
+| GET | `/enquiries/stats` | 🛡️ | Counts by status/role/category + avg response |
+| GET | `/enquiries/:id` | 🛡️ | One enquiry + replies + contact links |
+| POST | `/enquiries/:id/reply` | 🛡️ | Reply (emails user, marks contacted) |
+| PATCH | `/enquiries/:id/status` | 🛡️ | Update status/priority/note |
+
+#### `/enrollments`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/enrollments` | 🛡️ | All enrollments (search + pagination) |
+| GET | `/enrollments/unenrolled-students` | 🛡️ | Students with no active enrollment |
+| POST | `/enrollments/broadcast` | 🛡️ | Bulk-email students |
+| GET | `/enrollments/my-courses` | 🔑 | Caller's enrolled courses + progress |
+| GET | `/enrollments/check/:courseId` | 🔑 | Is caller enrolled in a course |
+| POST | `/enrollments` | 🛡️ | Enroll a student |
+| DELETE | `/enrollments/:enrollmentId` | 🛡️ | Unenroll (soft delete) |
+| GET | `/enrollments/course/:courseId/students` | 🛡️ / 🎓 | Students in a course |
+| GET | `/enrollments/student/:userId` | 🛡️ | A student's enrollments |
+
+#### `/progress`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/progress/mark-watched` | 🔑 | Mark a material watched (must be enrolled) |
+| GET | `/progress/my-progress/:courseId` | 🔑 | Caller's detailed course progress |
+| GET | `/progress/course/:courseId` | 🛡️ / 🎓 | All students' progress in a course |
+| GET | `/progress/student/:userId` | 🛡️ | A student's progress across courses |
+| GET | `/progress/overview` | 🛡️ | Platform-wide progress overview |
+
+#### `/payments`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/payments/create-order` | 👤 | Create a Razorpay order (rate-limited) |
+| POST | `/payments/verify` | 👤 | Verify signature → enroll (rate-limited) |
+| GET | `/payments/my` | 🔑 | Caller's payment history |
+| GET | `/payments/history` | 🛡️ | All payments + total revenue |
+
+#### `/site-config`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/site-config` | 🔓 | Current config (defaults if unset) |
+| PUT | `/site-config` | 🛡️ | Update milestones/whyChooseUs/faqs |
+
+#### `/scholarships`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/scholarships` | 👤 | Apply for a scholarship |
+| GET | `/scholarships/my` | 👤 | Caller's applications |
+| GET | `/scholarships` | 🛡️ | All applications (filters + pagination) |
+| GET | `/scholarships/stats` | 🛡️ | Counts by status |
+| PATCH | `/scholarships/:id/review` | 🛡️ | Approve (discount) / reject |
+
+#### `/affiliates`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/affiliates/track/:code` | 🔓 | Increment a referral link's clicks |
+| POST | `/affiliates/apply` | 🔓 | Apply to join the program |
+| GET | `/affiliates/me` | 🔑 | Caller's affiliate dashboard |
+| GET | `/affiliates/resources` | 🛡️ / affiliate | Marketing resources |
+| POST | `/affiliates/resources` | 🛡️ | Add a resource |
+| PATCH | `/affiliates/resources/:id` | 🛡️ | Update a resource |
+| DELETE | `/affiliates/resources/:id` | 🛡️ | Delete a resource |
+| GET | `/affiliates` | 🛡️ | All affiliates + summary |
+| GET | `/affiliates/applications` | 🛡️ | List applications |
+| PATCH | `/affiliates/applications/:id` | 🛡️ | Approve / reject (audited) |
+| GET | `/affiliates/commissions` | 🛡️ | All commissions |
+| PATCH | `/affiliates/commissions/:id` | 🛡️ | Set commission status (audited) |
+| PATCH | `/affiliates/:userId` | 🛡️ | Update an affiliate's rate/status (audited) |
+
+#### `/teaching-requests`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/teaching-requests` | 🎓 | Request to teach a course |
+| GET | `/teaching-requests/my` | 🎓 | Caller's requests |
+| GET | `/teaching-requests` | 🛡️ | All requests |
+| PATCH | `/teaching-requests/:id` | 🛡️ | Approve / reject |
+| DELETE | `/teaching-requests/:id` | 🛡️ / 🎓 | Cancel/remove a request |
+
+#### `/batches`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/batches/my` | 🎓 | Batches assigned to caller |
+| GET | `/batches/course/:courseId/options` | 🛡️ | Assignable instructors + offline students |
+| GET | `/batches` | 🛡️ | All batches |
+| POST | `/batches` | 🛡️ | Create a batch (notifies assignees) |
+| PATCH | `/batches/:id` | 🛡️ | Update a batch |
+| DELETE | `/batches/:id` | 🛡️ | Delete a batch |
+
+#### `/attendance`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/attendance/my/:courseId` | 👤 | Caller's own attendance in a course |
+| POST | `/attendance` | 🎓 / 🛡️ | Mark/upsert a session |
+| GET | `/attendance?batchId=&date=` | 🎓 / 🛡️ | One session's records |
+| GET | `/attendance/batch/:batchId` | 🎓 / 🛡️ | Session history + counts |
+
+#### `/certificates` (admin)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/certificates/eligible` | 🛡️ | Students eligible for a certificate |
+| POST | `/certificates/issue` | 🛡️ | Generate + email certificates (single/bulk, audited) |
+| GET | `/certificates` | 🛡️ | List issued certificates |
+
+#### `/mail` (admin)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/mail/send` | 🛡️ | Send a free-form email with attachments (rate-limited, audited) |
+
+#### `/chat`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/chat` | 🔓➕ | AI support assistant (OpenAI, rate-limited; personalised if logged in) |
+
+#### `/audit-logs` (admin)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/audit-logs` | 🛡️ | Paginated audit trail (filter `action`/`actorId`) |
+
+#### `/blogs`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/blogs` | 🔓➕ | List posts (published; admin `?all=1` incl. drafts) |
+| GET | `/blogs/:idOrSlug` | 🔓➕ | One post by slug or id |
+| POST | `/blogs` | 🛡️ | Create (`multipart`, field `image`; audited) |
+| PATCH | `/blogs/:id` | 🛡️ | Update (audited) |
+| DELETE | `/blogs/:id` | 🛡️ | Delete (audited) |
+
+#### `/testimonials`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/testimonials` | 🔓➕ | List (scoped by `?courseId`; omit = global/homepage; admin `?all=1`) |
+| POST | `/testimonials` | 🛡️ | Create (`multipart`, field `image`; audited) |
+| PATCH | `/testimonials/:id` | 🛡️ | Update (audited) |
+| DELETE | `/testimonials/:id` | 🛡️ | Delete (audited) |
+
+> **Cross-cutting middleware:** public auth endpoints are rate-limited (`authLimiter`); `/mail`, `/payments`, and comment-like writes use `sensitiveLimiter`; all routes have a general flood limiter + `helmet` + `compression`. Privileged admin mutations are written to an append-only **audit log** (`/audit-logs`). Public read lists (courses, blogs, testimonials, site-config) are cached in Redis when `REDIS_URL` is set.
+
+---
+
 ### 1. Auth — `/auth`
 
 | Method | Path             | Auth | Description                          |
 |--------|------------------|------|--------------------------------------|
-| POST   | `/auth/register` | 🔓   | Register a student or instructor     |
+| POST   | `/auth/register` | 🔓   | Register a student or instructor (sends email OTP) |
+| POST   | `/auth/verify-email` | 🔓 | Verify email with a 6-digit OTP    |
+| POST   | `/auth/resend-verification` | 🔓 | Re-send the email OTP        |
 | POST   | `/auth/login`    | 🔓   | Log in, sets auth cookies            |
+| POST   | `/auth/google`   | 🔓   | Sign in / sign up with a Google ID token |
+| POST   | `/auth/forgot-password` | 🔓 | Email a password-reset code      |
+| POST   | `/auth/verify-reset-code` | 🔓 | Validate a reset code          |
+| POST   | `/auth/reset-password` | 🔓 | Set a new password with a code     |
 | POST   | `/auth/logout`   | 🔓   | Clear auth cookies                   |
 | POST   | `/auth/refresh`  | 🔓   | Issue a new access token from cookie |
 | GET    | `/auth/me`       | 🔑   | Get the current authenticated user   |
+| PATCH  | `/auth/complete-profile` | 🔑 | Fill phone/location after Google sign-up |
 | PATCH  | `/auth/avatar`   | 🔑   | Upload/replace the caller's avatar   |
 | POST   | `/auth/change-password` | 🔑 | Change the caller's password      |
 | GET    | `/auth/users`    | 🛡️   | List users (filter `role`, `search` incl. roll, paginated) |
+
+**Newer auth flows:**
+- **Google sign-in** (`POST /auth/google`) verifies a Google ID token (`google-auth-library`, audience = `GOOGLE_CLIENT_ID`), finds-or-creates the user by email (linking `google_id`, marking verified), and issues the same cookies as login. New Google users have no phone/location → the client sends them through `PATCH /auth/complete-profile`.
+- **Email verification** (`/auth/verify-email`, `/auth/resend-verification`) — a bcrypt-hashed 6-digit OTP with a 15-min expiry.
+- **Password reset** (`/auth/forgot-password` → `/auth/verify-reset-code` → `/auth/reset-password`) — same OTP pattern; `forgot-password` always returns a generic message (no account enumeration), and a successful reset clears the refresh token (logs out other sessions).
 
 #### POST `/auth/register`
 
@@ -695,6 +907,77 @@ Public marketing content (homepage milestones, "why choose us", FAQs).
 
 ---
 
+### 17. Certificates — `/certificates` (admin)
+
+> Entire router behind `verifyJWT` + `requireRole("admin")`.
+
+| Method | Path                     | Auth | Description                                  |
+|--------|--------------------------|------|----------------------------------------------|
+| GET    | `/certificates/eligible` | 🛡️   | Students who qualify for a certificate        |
+| POST   | `/certificates/issue`    | 🛡️   | Generate + email PDF certificate(s)           |
+| GET    | `/certificates`          | 🛡️   | List issued certificates                      |
+
+Eligibility: **online** courses require 100% progress; **offline** require attending ≥75% of `course.totalClasses`. `POST /certificates/issue` accepts `{ "items": [ { "userId", "courseId" } ] }` (single or bulk), generates a PDF per student, emails it, and records the certificate (idempotent — re-issuing re-sends). Audited as `certificate.issue`.
+
+---
+
+### 18. Mail — `/mail` (admin)
+
+| Method | Path         | Auth | Description                                       |
+|--------|--------------|------|---------------------------------------------------|
+| POST   | `/mail/send` | 🛡️   | Send a free-form email with optional attachments  |
+
+`multipart/form-data` — `{ to, subject, message }` + up to 5 files (field `attachments`). Rate-limited (`sensitiveLimiter`) and audited as `mail.send`.
+
+---
+
+### 19. Chat — `/chat`
+
+| Method | Path    | Auth  | Description                                  |
+|--------|---------|-------|----------------------------------------------|
+| POST   | `/chat` | 🔓➕  | "Fillip Support" AI assistant (OpenAI)        |
+
+**Body** `{ "messages": [ { "role", "content" } ] }`. Uses tool-calling scoped to Fillip topics; personalises answers when the caller is logged in (`optionalAuth`). Rate-limited per user/IP (`chatLimiter`). Degrades to a canned reply if `OPENAI_API_KEY` is unset.
+
+---
+
+### 20. Audit Logs — `/audit-logs` (admin)
+
+| Method | Path          | Auth | Description                                |
+|--------|---------------|------|--------------------------------------------|
+| GET    | `/audit-logs` | 🛡️   | Paginated audit trail                       |
+
+**Query:** `page`, `limit` (≤200), `action`, `actorId`. Returns append-only records of privileged actions (`enrollment.*`, `mail.send`, `certificate.issue`, `affiliate.*`, `blog.*`, `testimonial.*`) with actor, target, sanitized metadata, IP, and timestamp (joined to the actor's name/email). Written fire-and-forget by the `audit()` middleware on successful mutations.
+
+---
+
+### 21. Blogs — `/blogs`
+
+| Method | Path               | Auth  | Description                                  |
+|--------|--------------------|-------|----------------------------------------------|
+| GET    | `/blogs`           | 🔓➕  | List posts (published; admin `?all=1`)        |
+| GET    | `/blogs/:idOrSlug` | 🔓➕  | One post by slug or Mongo id                  |
+| POST   | `/blogs`           | 🛡️   | Create a post                                 |
+| PATCH  | `/blogs/:id`       | 🛡️   | Update a post                                 |
+| DELETE | `/blogs/:id`       | 🛡️   | Delete a post (+ Cloudinary cover)            |
+
+**Query (list):** `page`, `limit`, `search`, `category`. Writes are `multipart/form-data` with an optional cover image (field **`image`**); slug, excerpt, and read-time auto-derive from title/content if not supplied; `isPublished` toggles draft vs live. Public reads are Redis-cached; writes are audited (`blog.*`).
+
+---
+
+### 22. Testimonials — `/testimonials`
+
+| Method | Path                 | Auth  | Description                                            |
+|--------|----------------------|-------|--------------------------------------------------------|
+| GET    | `/testimonials`      | 🔓➕  | List testimonials — scoped by `?courseId` (omit = global/homepage); admin `?all=1` for every course incl. drafts |
+| POST   | `/testimonials`      | 🛡️   | Create a testimonial                                   |
+| PATCH  | `/testimonials/:id`  | 🛡️   | Update a testimonial                                   |
+| DELETE | `/testimonials/:id`  | 🛡️   | Delete a testimonial (+ Cloudinary avatar)             |
+
+Fields: `name`, `role`, `quote`, optional `rating` (1–5), `order`, `isPublished`, optional avatar (`multipart`, field **`image`**), and optional **`courseId`** (`null` = homepage/global; set = shown on that course page). Course pages combine these admin-authored testimonials with **featured student reviews** (`GET /courses/:id/reviews/testimonials`). Public reads are Redis-cached per scope; writes are audited (`testimonial.*`).
+
+---
+
 ## Data Models
 
 ### PostgreSQL — `users`
@@ -905,6 +1188,17 @@ CLOUDINARY_API_SECRET=...
 # Razorpay (payments)
 RAZORPAY_KEY_ID=...
 RAZORPAY_KEY_SECRET=...
+
+# Google Sign-In (POST /auth/google) — OAuth 2.0 Web client ID (token audience).
+# Must match the client's VITE_GOOGLE_CLIENT_ID.
+GOOGLE_CLIENT_ID=...
+
+# OpenAI (POST /chat) — without it, the chat assistant returns a canned reply.
+OPENAI_API_KEY=...
+
+# Redis cache (OPTIONAL) — caches public reads (courses/blogs/testimonials/site-config).
+# Unset = caching disabled (app runs normally). In prod, point at VPS-local Redis.
+REDIS_URL=redis://127.0.0.1:6379
 
 # Client URL (referral links, affiliate emails, CORS in production)
 CLIENT_URL=http://localhost:5173
