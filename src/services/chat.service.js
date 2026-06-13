@@ -1,11 +1,10 @@
-import { getOpenAI, CHAT_MODEL } from "../config/openai.js";
 import { knowledgeBase } from "../config/knowledgeBase.js";
-import { getToolSchemas, executeTool } from "./chatTools.js";
 import { ApiError } from "../utils/ApiError.js";
+import { runOpenAIChat } from "./providers/openaiChat.js";
+import { runGeminiChat } from "./providers/geminiChat.js";
 
 const MAX_HISTORY = 20;        // most recent turns kept from the client
 const MAX_CHARS = 4000;        // per-message cap
-const MAX_TOOL_ROUNDS = 5;     // safety cap on the tool-calling loop
 
 // Keep only well-formed user/assistant turns from the (untrusted) client payload.
 const sanitizeHistory = (messages) => {
@@ -23,7 +22,9 @@ const sanitizeHistory = (messages) => {
   return clean;
 };
 
-const buildSystemMessage = (user) => {
+// The single source of truth for the assistant's scope + style. Both providers
+// receive this identical instruction, so neither will answer off-topic questions.
+export const buildSystemMessage = (user) => {
   const who = user
     ? `The current user is signed in with role "${user.role}". Personalise where helpful and call tools to read their real data instead of guessing.`
     : `The current user is a GUEST (not signed in). You cannot read personal data; when relevant, encourage them to sign up / log in at /auth.`;
@@ -46,75 +47,61 @@ const buildSystemMessage = (user) => {
   };
 };
 
+// Provider runners keyed by name. Each takes { system, history, user } and
+// throws on failure so we can fall through to the next one.
+const PROVIDER_RUNNERS = { openai: runOpenAIChat, gemini: runGeminiChat };
+
+// Resolve the try-order from configured keys. CHAT_PROVIDER picks the primary
+// ("openai" default); the other becomes the automatic fallback.
+const resolveProviderOrder = () => {
+  const have = {
+    openai: !!process.env.OPENAI_API_KEY,
+    gemini: !!process.env.GEMINI_API_KEY,
+  };
+  const primary = (process.env.CHAT_PROVIDER || "openai").toLowerCase();
+  const order = primary === "gemini" ? ["gemini", "openai"] : ["openai", "gemini"];
+  return order.filter((name) => have[name]);
+};
+
 /**
- * Run one assistant turn: an OpenAI chat-completion loop that resolves any tool
- * calls against live app data, scoped to `user`. Stateless — the full history is
- * supplied each call (nothing is persisted).
+ * Run one assistant turn. Tries the primary provider, then falls back to the
+ * other if it errors (quota, rate limit, outage…). Stateless — the full history
+ * is supplied each call. Both providers share the same Fillip-only system prompt.
  *
  * @returns {Promise<{ reply: string }>}
  */
 export const chatService = async ({ messages, user }) => {
-  // No key configured yet → degrade gracefully instead of erroring. The scripted
-  // quick-reply answers still work on the client; only free-text reaches here.
-  if (!process.env.OPENAI_API_KEY) {
+  const providers = resolveProviderOrder();
+
+  // No provider configured → degrade gracefully. The scripted quick-reply
+  // answers still work on the client; only free-text reaches here.
+  if (providers.length === 0) {
     return {
       reply:
         "I can help with the common questions using the buttons above. For anything else, our team is happy to help — reach us via /contact.",
     };
   }
 
-  const openai = getOpenAI();
-  const tools = getToolSchemas(user);
+  // Validate input up front (throws 400) — a bad request must not be masked as a
+  // provider outage, and we build the prompt once for whichever provider runs.
+  const history = sanitizeHistory(messages);
+  const system = buildSystemMessage(user);
 
-  const convo = [buildSystemMessage(user), ...sanitizeHistory(messages)];
-
-  try {
-    for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
-      const completion = await openai.chat.completions.create({
-        model: CHAT_MODEL,
-        messages: convo,
-        tools,
-        temperature: 0.3,
-      });
-
-      const msg = completion.choices?.[0]?.message;
-      if (!msg) throw new ApiError(502, "No response from the language model");
-
-      // No tool calls → this is the final answer.
-      if (!msg.tool_calls || msg.tool_calls.length === 0) {
-        return { reply: (msg.content || "").trim() || "Sorry, I didn't catch that — could you rephrase?" };
-      }
-
-      // Otherwise execute each requested tool and feed the results back.
-      convo.push(msg);
-      for (const call of msg.tool_calls) {
-        let args = {};
-        try {
-          args = call.function.arguments ? JSON.parse(call.function.arguments) : {};
-        } catch {
-          args = {};
-        }
-        const result = await executeTool(call.function.name, args, user);
-        convo.push({
-          role: "tool",
-          tool_call_id: call.id,
-          content: JSON.stringify(result),
-        });
-      }
+  let lastErr;
+  for (const name of providers) {
+    try {
+      return await PROVIDER_RUNNERS[name]({ system, history, user });
+    } catch (err) {
+      lastErr = err;
+      console.error(`[chat] provider "${name}" failed:`, err?.status ?? err?.statusCode ?? "", err?.message ?? err);
+      // fall through to the next provider
     }
-  } catch (err) {
-    // OpenAI/network failure (quota exceeded, rate limit, outage…) — never let the
-    // chat UI hit a raw 500; respond gracefully and point to human support.
-    console.error("[chat] model call failed:", err?.status ?? "", err?.message ?? err);
-    return {
-      reply:
-        "Sorry — I can't reach the assistant right now. Please try again in a moment, or reach our team via /contact.",
-    };
   }
 
-  // Tool loop didn't converge — give a graceful fallback.
+  // Every provider failed — never surface a raw 500 to the chat UI.
+  console.error("[chat] all providers failed; last error:", lastErr?.message ?? lastErr);
   return {
     reply:
-      "I'm having trouble pulling that together right now. Please try rephrasing, or reach our team via /contact.",
+      "Sorry — I can't reach the assistant right now. Please try again in a moment, or reach our team via /contact.",
   };
 };

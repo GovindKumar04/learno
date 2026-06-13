@@ -120,12 +120,27 @@ const EXECUTORS = {
   get_my_batches: getMyBatches,
 };
 
-// Expose only the tools that make sense for this user, to cut noise/tokens.
-export const getToolSchemas = (user) => {
+// Tool names available to a given user (instructor/admin get batch access too).
+const toolNamesFor = (user) => {
   const names = ["list_courses", "get_onboarding_steps"];
   if (user) names.push("get_my_courses");
   if (user && (user.role === "instructor" || user.role === "admin")) names.push("get_my_batches");
-  return names.map((n) => SCHEMAS[n]);
+  return names;
+};
+
+// Expose only the tools that make sense for this user, to cut noise/tokens.
+// OpenAI format: [{ type: "function", function: {...} }].
+export const getToolSchemas = (user) => toolNamesFor(user).map((n) => SCHEMAS[n]);
+
+// Same tools in Gemini's format: [{ functionDeclarations: [{ name, description, parameters? }] }].
+// Parameters are omitted when a tool takes no arguments (Gemini rejects empty objects).
+export const getGeminiTools = (user) => {
+  const functionDeclarations = toolNamesFor(user).map((n) => {
+    const { name, description, parameters } = SCHEMAS[n].function;
+    const hasParams = parameters && Object.keys(parameters.properties || {}).length > 0;
+    return hasParams ? { name, description, parameters } : { name, description };
+  });
+  return [{ functionDeclarations }];
 };
 
 export const executeTool = async (name, args, user) => {
