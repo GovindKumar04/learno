@@ -44,3 +44,12 @@ export const resetPasswordSchema = z.object({
   code: z.string().regex(/^\d{6}$/, "Code must be 6 digits"),
   newPassword: z.string().min(6, "Password must be at least 6 characters"),
 });
+
+export const googleAuthSchema = z.object({
+  idToken: z.string().min(1, "Google credential is required"),
+});
+
+export const completeProfileSchema = z.object({
+  phone: z.string().regex(/^[6-9]\d{9}$/, "Invalid phone number"),
+  location: z.string().min(2, "Location must be at least 2 characters").max(255),
+});

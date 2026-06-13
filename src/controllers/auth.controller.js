@@ -15,6 +15,8 @@ import {
   requestPasswordResetService,
   verifyResetCodeService,
   resetPasswordService,
+  googleAuthService,
+  completeProfileService,
 } from "../services/auth.service.js";
 import { sendVerificationMail, sendPasswordResetMail } from "../utils/mail.util.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -120,6 +122,25 @@ export const loginUser = asyncHandler(async (req, res) => {
     .cookie("accessToken", accessToken, cookieOptions)
     .cookie("refreshToken", refreshToken, cookieOptions)
     .json(new ApiResponse(200, { user, accessToken }, "Login successful"));
+});
+
+// POST /auth/google  (public) — sign in / sign up with a Google ID token
+export const googleAuth = asyncHandler(async (req, res) => {
+  const { idToken } = req.body;
+  const { user, accessToken, refreshToken, profileComplete } = await googleAuthService({ idToken });
+
+  return res
+    .status(200)
+    .cookie("accessToken", accessToken, cookieOptions)
+    .cookie("refreshToken", refreshToken, cookieOptions)
+    .json(new ApiResponse(200, { user, accessToken, profileComplete }, "Google sign-in successful"));
+});
+
+// PATCH /auth/complete-profile  (logged-in) — fill phone/location after Google sign-up
+export const completeProfile = asyncHandler(async (req, res) => {
+  const { phone, location } = req.body;
+  const user = await completeProfileService({ userId: req.user.id, phone, location });
+  return res.status(200).json(new ApiResponse(200, user, "Profile completed"));
 });
 
 export const logoutUser = asyncHandler(async (req, res) => {

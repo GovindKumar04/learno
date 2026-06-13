@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import crypto from "node:crypto";
 import pool from "../config/db.js";
 import cloudinary from "../config/cloudinary.js";
+import { googleClient } from "../config/google.js";
 
 import { ApiError } from "../utils/ApiError.js";
 import { generateRollNumber } from "../utils/roll.util.js";
@@ -245,6 +247,109 @@ export const resetPasswordService = async ({ email, code, newPassword }) => {
   );
 };
 
+// ─── Google sign-in ───────────────────────────────────────
+// Verifies a Google ID token, finds-or-creates the user, and issues our own
+// access/refresh tokens (same as password login). Returns profileComplete so
+// the client knows whether to ask a new user for phone/location.
+export const googleAuthService = async ({ idToken }) => {
+  if (!idToken) throw new ApiError(400, "Google credential is required");
+  if (!process.env.GOOGLE_CLIENT_ID) throw new ApiError(500, "Google sign-in is not configured");
+
+  let payload;
+  try {
+    const ticket = await googleClient.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    payload = ticket.getPayload();
+  } catch {
+    throw new ApiError(401, "Invalid Google credential");
+  }
+
+  if (!payload?.email || !payload.email_verified) {
+    throw new ApiError(401, "Google account email is not verified");
+  }
+
+  const email = payload.email.toLowerCase();
+  const googleId = payload.sub;
+  const fullName = payload.name || email.split("@")[0];
+  const avatar = payload.picture || null;
+
+  const existing = await pool.query(`SELECT * FROM users WHERE email = $1`, [email]);
+  let user;
+
+  if (existing.rows.length > 0) {
+    // Existing account — log in, linking the Google id on first Google use.
+    user = existing.rows[0];
+    if (!user.google_id) {
+      await pool.query(
+        `UPDATE users
+           SET google_id = $1, is_verified = true,
+               avatar = COALESCE(avatar, $2), updated_at = NOW()
+         WHERE id = $3`,
+        [googleId, avatar, user.id]
+      );
+      user.google_id = googleId;
+      user.is_verified = true;
+      user.avatar = user.avatar || avatar;
+    }
+  } else {
+    // New account — random unusable password (they can set a real one later via
+    // forgot-password). Roll number via the same retry-on-collision loop as
+    // registerUserService. phone/location stay NULL until the profile step.
+    const hashedPassword = await bcrypt.hash(crypto.randomBytes(32).toString("hex"), 10);
+
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const rollNumber = await generateRollNumber(pool, "student");
+      try {
+        const inserted = await pool.query(
+          `INSERT INTO users (full_name, email, roll_number, password, role, google_id, avatar, is_verified)
+           VALUES ($1, $2, $3, $4, 'student', $5, $6, true)
+           RETURNING *`,
+          [fullName, email, rollNumber, hashedPassword, googleId, avatar]
+        );
+        user = inserted.rows[0];
+        break;
+      } catch (err) {
+        if (err.code === "23505" && err.constraint === "users_roll_number_key") continue;
+        throw err;
+      }
+    }
+    if (!user) throw new ApiError(500, "Could not generate a unique roll number, please retry");
+  }
+
+  const accessToken = generateAccessToken(user);
+  const refreshToken = generateRefreshToken(user);
+  await pool.query(`UPDATE users SET refresh_token = $1 WHERE id = $2`, [refreshToken, user.id]);
+
+  // Strip everything sensitive before returning.
+  for (const k of ["password", "refresh_token", "verification_code", "verification_code_expires", "reset_code", "reset_code_expires"]) {
+    delete user[k];
+  }
+
+  const profileComplete = !!(user.phone && user.location);
+  return { user, accessToken, refreshToken, profileComplete };
+};
+
+// Fills in phone/location after a Google sign-up (the "complete profile" step).
+export const completeProfileService = async ({ userId, phone, location }) => {
+  if (!/^[6-9]\d{9}$/.test(String(phone || ""))) {
+    throw new ApiError(400, "Enter a valid 10-digit Indian mobile number");
+  }
+  if (!location || location.trim().length < 2) {
+    throw new ApiError(400, "Enter your city / location");
+  }
+
+  const result = await pool.query(
+    `UPDATE users SET phone = $1, location = $2, updated_at = NOW()
+       WHERE id = $3
+       RETURNING id, full_name, email, roll_number, role, phone, location, avatar, is_verified, created_at`,
+    [phone, location.trim(), userId]
+  );
+  if (result.rows.length === 0) throw new ApiError(404, "User not found");
+  return result.rows[0];
+};
+
 export const loginUserService = async ({ email, password }) => {
   const userResult = await pool.query(
     `
@@ -292,7 +397,7 @@ export const loginUserService = async ({ email, password }) => {
 // Current logged-in user's public profile
 export const getCurrentUserService = async (userId) => {
   const result = await pool.query(
-    `SELECT id, full_name, email, roll_number, role, phone, avatar, is_verified, is_active, created_at
+    `SELECT id, full_name, email, roll_number, role, phone, location, avatar, is_verified, is_active, created_at
      FROM users WHERE id = $1`,
     [userId]
   );
