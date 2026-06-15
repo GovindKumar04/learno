@@ -3,11 +3,28 @@ import { Course } from "../models/course.model.js";
 import { Enrollment } from "../models/enrollment.model.js";
 import { TeachingRequest } from "../models/teachingRequest.model.js";
 import { Attendance } from "../models/attendance.model.js";
+import { Batch } from "../models/batch.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendOnlineClassMail } from "../utils/mail.util.js";
 import pool from "../config/db.js";
 
 const VALID_STATUS = ["present", "absent", "leave"];
+
+// The student user-ids a live class is for: its batch's students when batch-scoped,
+// otherwise every live-enrolled student of the course.
+async function liveAudienceUserIds(onlineClass) {
+  if (onlineClass.batchId) {
+    const batch = await Batch.findById(onlineClass.batchId).select("studentIds");
+    return (batch?.studentIds || []).map(String);
+  }
+  const courseId = onlineClass.courseId?._id || onlineClass.courseId;
+  const enrollments = await Enrollment.find({
+    courseId,
+    enrollmentType: "live",
+    isActive: true,
+  }).select("userId");
+  return enrollments.map((e) => String(e.userId));
+}
 
 // "YYYY-MM-DD" for a Date (local), used as the attendance session date.
 function ymd(date) {
@@ -44,23 +61,13 @@ function formatWhen(startTime, durationMins) {
   }
 }
 
-// Email the instructor + all live-enrolled students for the class's course.
+// Email the instructor + the class's student audience (batch or course-wide).
 async function notifyOnlineClass(onlineClass) {
   const course = await Course.findById(onlineClass.courseId).select("title");
-  const liveEnrollments = await Enrollment.find({
-    courseId: onlineClass.courseId,
-    enrollmentType: "live",
-    isActive: true,
-  }).select("userId");
+  const audienceIds = await liveAudienceUserIds(onlineClass);
 
-  const usersMap = await fetchUsersMap([
-    onlineClass.instructorId,
-    ...liveEnrollments.map((e) => e.userId),
-  ]);
-  const recipients = [
-    usersMap[onlineClass.instructorId],
-    ...liveEnrollments.map((e) => usersMap[e.userId]),
-  ];
+  const usersMap = await fetchUsersMap([onlineClass.instructorId, ...audienceIds]);
+  const recipients = [usersMap[onlineClass.instructorId], ...audienceIds.map((id) => usersMap[id])];
 
   const when = formatWhen(onlineClass.startTime, onlineClass.durationMins);
 
@@ -92,12 +99,19 @@ async function validateInstructor(courseId, instructorId) {
   if (!approved) throw new ApiError(400, "Instructor must have an approved teaching request for this course");
 }
 
-// Map a stored doc + a users map into the API shape.
+// Map a stored doc + a users map into the API shape. `batch` is the populated
+// batch doc when available (admin list), else just the stored batchId.
 function shapeClass(c, usersMap) {
+  const batch = c.batchId && typeof c.batchId === "object" && c.batchId.name
+    ? { id: c.batchId._id, name: c.batchId.name }
+    : c.batchId
+      ? { id: c.batchId }
+      : null;
   return {
     id: c._id,
     title: c.title,
     course: c.courseId,
+    batch,
     instructor: usersMap[c.instructorId] || { id: c.instructorId },
     joinUrl: c.joinUrl,
     meetingId: c.meetingId,
@@ -109,12 +123,24 @@ function shapeClass(c, usersMap) {
   };
 }
 
-// GET /online-classes/course/:courseId/options  (admin) — approved instructors
+// Validate an optional live batch belongs to the course and is a live batch.
+async function validateLiveBatch(batchId, courseId) {
+  if (!batchId) return;
+  const batch = await Batch.findById(batchId).select("courseId mode");
+  if (!batch) throw new ApiError(404, "Batch not found");
+  if (String(batch.courseId) !== String(courseId)) throw new ApiError(400, "Batch does not belong to this course");
+  if (batch.mode !== "live") throw new ApiError(400, "Only LIVE batches can be assigned to a live class");
+}
+
+// GET /online-classes/course/:courseId/options  (admin) — approved instructors + live batches
 export const getOnlineClassOptionsService = async (courseId) => {
   const course = await Course.findById(courseId).select("title");
   if (!course) throw new ApiError(404, "Course not found");
 
-  const approvedReqs = await TeachingRequest.find({ courseId, status: "approved" }).select("instructorId");
+  const [approvedReqs, liveBatches] = await Promise.all([
+    TeachingRequest.find({ courseId, status: "approved" }).select("instructorId"),
+    Batch.find({ courseId, mode: "live" }).select("name instructorId studentIds"),
+  ]);
   const usersMap = await fetchUsersMap(approvedReqs.map((r) => r.instructorId));
 
   const instructors = approvedReqs
@@ -122,12 +148,19 @@ export const getOnlineClassOptionsService = async (courseId) => {
     .filter(Boolean)
     .map((u) => ({ id: u.id, full_name: u.full_name, email: u.email }));
 
-  return { course: { id: course._id, title: course.title }, instructors };
+  const batches = liveBatches.map((b) => ({
+    id: b._id,
+    name: b.name,
+    instructorId: b.instructorId,
+    studentCount: (b.studentIds || []).length,
+  }));
+
+  return { course: { id: course._id, title: course.title }, instructors, batches };
 };
 
 export const createOnlineClassService = async ({ body, createdBy }) => {
   const {
-    title, courseId, instructorId, joinUrl,
+    title, courseId, instructorId, joinUrl, batchId = null,
     meetingId = "", passcode = "", startTime, durationMins = 60, status = "scheduled",
   } = body;
 
@@ -136,9 +169,11 @@ export const createOnlineClassService = async ({ body, createdBy }) => {
   }
 
   await validateInstructor(courseId, instructorId);
+  await validateLiveBatch(batchId, courseId);
 
   const onlineClass = await OnlineClass.create({
-    title, courseId, instructorId, joinUrl, meetingId, passcode, startTime, durationMins, status, createdBy,
+    title, courseId, instructorId, joinUrl, batchId: batchId || null,
+    meetingId, passcode, startTime, durationMins, status, createdBy,
   });
   await notifyOnlineClass(onlineClass);
   return onlineClass;
@@ -148,6 +183,7 @@ export const createOnlineClassService = async ({ body, createdBy }) => {
 export const getAllOnlineClassesService = async () => {
   const classes = await OnlineClass.find({})
     .populate("courseId", "title category")
+    .populate("batchId", "name")
     .sort({ startTime: -1 });
   const usersMap = await fetchUsersMap(classes.map((c) => c.instructorId));
   return classes.map((c) => shapeClass(c, usersMap));
@@ -162,6 +198,7 @@ const shapeCourse = (c) => ({ id: c._id, title: c.title, thumbnail: c.thumbnail,
 export const getInstructorOnlineClassesService = async (instructorId) => {
   const classes = await OnlineClass.find({ instructorId })
     .populate("courseId", "title category thumbnail slug")
+    .populate("batchId", "name")
     .sort({ startTime: 1 });
   const usersMap = await fetchUsersMap([instructorId]);
 
@@ -196,12 +233,19 @@ export const getStudentOnlineClassesService = async (userId) => {
   const courseIds = courses.map((c) => c.id);
   if (courseIds.length === 0) return { courses: [], classes: [] };
 
-  const classes = await OnlineClass.find({
+  const allClasses = await OnlineClass.find({
     courseId: { $in: courseIds },
     status: { $ne: "cancelled" },
   })
     .populate("courseId", "title category thumbnail slug")
+    .populate("batchId", "name")
     .sort({ startTime: 1 });
+
+  // Batch-scoped classes are only visible to that batch's students; course-wide
+  // classes (no batch) are visible to every live enrollee of the course.
+  const myBatches = await Batch.find({ mode: "live", studentIds: userId }).select("_id");
+  const myBatchIds = new Set(myBatches.map((b) => String(b._id)));
+  const classes = allClasses.filter((c) => !c.batchId || myBatchIds.has(String(c.batchId?._id || c.batchId)));
 
   const usersMap = await fetchUsersMap(classes.map((c) => c.instructorId));
   return { courses, classes: classes.map((c) => shapeClass(c, usersMap)) };
@@ -211,19 +255,23 @@ export const updateOnlineClassService = async ({ id, body }) => {
   const onlineClass = await OnlineClass.findById(id);
   if (!onlineClass) throw new ApiError(404, "Online class not found");
 
-  const { title, instructorId, joinUrl, meetingId, passcode, startTime, durationMins, status } = body;
+  const { title, instructorId, joinUrl, meetingId, passcode, startTime, durationMins, status, batchId } = body;
   const courseId = onlineClass.courseId; // course is fixed once created
 
   if (instructorId !== undefined && instructorId !== onlineClass.instructorId) {
     await validateInstructor(courseId, instructorId);
   }
+  if (batchId !== undefined && batchId) {
+    await validateLiveBatch(batchId, courseId);
+  }
 
-  // Re-notify when the time, link, or instructor changes (not on a status-only flip).
+  // Re-notify when the time, link, instructor, or batch changes (not on a status-only flip).
   const shouldNotify =
-    instructorId !== undefined || joinUrl !== undefined ||
+    instructorId !== undefined || joinUrl !== undefined || batchId !== undefined ||
     startTime !== undefined || meetingId !== undefined || passcode !== undefined;
 
   if (title !== undefined) onlineClass.title = title;
+  if (batchId !== undefined) onlineClass.batchId = batchId || null;
   if (instructorId !== undefined) onlineClass.instructorId = instructorId;
   if (joinUrl !== undefined) onlineClass.joinUrl = joinUrl;
   if (meetingId !== undefined) onlineClass.meetingId = meetingId;
@@ -258,25 +306,19 @@ async function loadOnlineClassAuthorized(id, user) {
 // GET /online-classes/:id/attendance (instructor/admin) — roster + any saved marks
 export const getLiveClassAttendanceService = async ({ id, user }) => {
   const onlineClass = await loadOnlineClassAuthorized(id, user);
-  const courseId = onlineClass.courseId?._id || onlineClass.courseId;
 
-  const enrollments = await Enrollment.find({
-    courseId,
-    enrollmentType: "live",
-    isActive: true,
-  }).select("userId");
-
-  const usersMap = await fetchUsersMap(enrollments.map((e) => e.userId));
+  const audienceIds = await liveAudienceUserIds(onlineClass);
+  const usersMap = await fetchUsersMap(audienceIds);
 
   const session = await Attendance.findOne({ onlineClassId: id }).select("records");
   const statusMap = {};
   (session?.records || []).forEach((r) => (statusMap[String(r.studentId)] = r.status));
 
-  const roster = enrollments.map((e) => ({
-    studentId: e.userId,
-    full_name: usersMap[e.userId]?.full_name || null,
-    email: usersMap[e.userId]?.email || null,
-    status: statusMap[String(e.userId)] || "present",
+  const roster = audienceIds.map((uid) => ({
+    studentId: uid,
+    full_name: usersMap[uid]?.full_name || null,
+    email: usersMap[uid]?.email || null,
+    status: statusMap[String(uid)] || "present",
   }));
 
   return {
@@ -300,17 +342,12 @@ export const markLiveClassAttendanceService = async ({ id, records, user }) => {
   const onlineClass = await loadOnlineClassAuthorized(id, user);
   const courseId = onlineClass.courseId?._id || onlineClass.courseId;
 
-  const enrollments = await Enrollment.find({
-    courseId,
-    enrollmentType: "live",
-    isActive: true,
-  }).select("userId");
-  const roster = new Set(enrollments.map((e) => String(e.userId)));
+  const roster = new Set(await liveAudienceUserIds(onlineClass));
 
   const clean = records.map((r) => {
     const studentId = String(r.studentId || "");
     const status = String(r.status || "").toLowerCase();
-    if (!roster.has(studentId)) throw new ApiError(400, `Student ${studentId} is not enrolled live in this course`);
+    if (!roster.has(studentId)) throw new ApiError(400, `Student ${studentId} is not in this class's audience`);
     if (!VALID_STATUS.includes(status)) {
       throw new ApiError(400, `Invalid status "${r.status}" (use present, absent or leave)`);
     }
