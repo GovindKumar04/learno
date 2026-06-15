@@ -13,7 +13,7 @@ import { getOrSet, nsKey, bumpNs } from "../utils/cache.js";
 const COURSES_NS = "courses";
 
 export const createCourseService = async ({ body, file, userId }) => {
-  const { title, description, category, level, price, priceOnline, priceOffline, modes, isPublished, totalClasses } = body;
+  const { title, description, category, level, price, priceOnline, priceOffline, priceLive, modes, isPublished, totalClasses, totalLiveClasses } = body;
   if (!title || !description || !category) {
     throw new ApiError(400, "title, description, and category are required");
   }
@@ -27,7 +27,7 @@ export const createCourseService = async ({ body, file, userId }) => {
 
   const willPublish = isPublished === true || isPublished === "true";
   if (willPublish) {
-    const hasPrice = Number(price) > 0 || Number(priceOnline) > 0 || Number(priceOffline) > 0;
+    const hasPrice = Number(price) > 0 || Number(priceOnline) > 0 || Number(priceOffline) > 0 || Number(priceLive) > 0;
     if (!hasPrice) throw new ApiError(400, "Assign a price before publishing this course");
   }
 
@@ -43,7 +43,9 @@ export const createCourseService = async ({ body, file, userId }) => {
     price: price || 0,
     priceOnline: priceOnline || 0,
     priceOffline: priceOffline || 0,
+    priceLive: priceLive || 0,
     totalClasses: Number(totalClasses) || 0,
+    totalLiveClasses: Number(totalLiveClasses) || 0,
     ...(parsedModes && { modes: parsedModes }),
     isPublished: willPublish,
     thumbnail, thumbnailPublicId,
@@ -128,8 +130,8 @@ export const updateCourseService = async ({ courseId, body, file }) => {
 
   const scalarFields = [
     "title", "description", "category", "level", "price",
-    "isPublished", "language", "duration", "priceOnline", "priceOffline",
-    "totalClasses", "slug", "tag", "subtitle", "tagline", "heroImg",
+    "isPublished", "language", "duration", "priceOnline", "priceOffline", "priceLive",
+    "totalClasses", "totalLiveClasses", "slug", "tag", "subtitle", "tagline", "heroImg",
   ];
   scalarFields.forEach((field) => {
     if (body[field] !== undefined) course[field] = body[field];

@@ -4,7 +4,7 @@ import { Course } from "../models/course.model.js";
 import { Module } from "../models/module.model.js";
 import { TeachingRequest } from "../models/teachingRequest.model.js";
 import { ApiError } from "../utils/ApiError.js";
-import { getOfflineAttendance } from "../utils/attendance.util.js";
+import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import pool from "../config/db.js";
 
 // Recalculate completionPercent for a progress document
@@ -31,8 +31,8 @@ export const markMaterialWatchedService = async ({ userId, courseId, materialId,
 
   const enrollment = await Enrollment.findOne({ userId, courseId, isActive: true });
   if (!enrollment) throw new ApiError(403, "You are not enrolled in this course");
-  if (enrollment.enrollmentType !== "online") {
-    throw new ApiError(403, "Offline courses are tracked by attendance, not online progress");
+  if (enrollment.enrollmentType !== "self-paced") {
+    throw new ApiError(403, "Classroom and live courses are tracked by attendance, not material progress");
   }
 
   let progress = await Progress.findOne({ userId, courseId });
@@ -144,12 +144,17 @@ export const getCourseProgressService = async ({ courseId, query, user }) => {
 
   const students = await Promise.all(
     progressDocs.map(async (p) => {
-      if (typeMap[p.userId] === "offline") {
-        const att = await getOfflineAttendance(p.userId, courseId);
+      const type = typeMap[p.userId];
+      // Classroom and Live are attendance-based; show attendance rate as the
+      // "completion" figure for those students.
+      if (type === "classroom" || type === "live") {
+        const att = type === "live"
+          ? await getLiveAttendance(p.userId, courseId)
+          : await getOfflineAttendance(p.userId, courseId);
         return {
           userId: p.userId,
           user: usersMap[p.userId] || { id: p.userId },
-          mode: "offline",
+          mode: type,
           completionPercent: att?.rate || 0,
           completedMaterials: att?.present || 0,
           totalMaterials: att?.totalClasses || 0,
@@ -160,7 +165,7 @@ export const getCourseProgressService = async ({ courseId, query, user }) => {
       return {
         userId: p.userId,
         user: usersMap[p.userId] || { id: p.userId },
-        mode: "online",
+        mode: "self-paced",
         completionPercent: p.completionPercent,
         completedMaterials: new Set(p.completedMaterials.map((m) => m.materialId.toString())).size,
         totalMaterials,
@@ -174,7 +179,7 @@ export const getCourseProgressService = async ({ courseId, query, user }) => {
     ? Math.round(students.reduce((s, x) => s + x.completionPercent, 0) / students.length)
     : 0;
   const fullyCompleted = students.filter((x) =>
-    x.mode === "offline" ? !!x.completedAt : x.completionPercent === 100
+    (x.mode === "classroom" || x.mode === "live") ? !!x.completedAt : x.completionPercent === 100
   ).length;
 
   return {
@@ -229,8 +234,10 @@ export const getPlatformProgressOverviewService = async () => {
 
     let pct = 0;
     let done = false;
-    if (e.enrollmentType === "offline") {
-      const att = await getOfflineAttendance(e.userId, e.courseId);
+    if (e.enrollmentType === "classroom" || e.enrollmentType === "live") {
+      const att = e.enrollmentType === "live"
+        ? await getLiveAttendance(e.userId, e.courseId)
+        : await getOfflineAttendance(e.userId, e.courseId);
       pct = att?.rate || 0;
       done = !!att?.eligible;
     } else {

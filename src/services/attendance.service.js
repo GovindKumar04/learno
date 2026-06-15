@@ -2,7 +2,7 @@ import { Attendance } from "../models/attendance.model.js";
 import { Batch } from "../models/batch.model.js";
 import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
-import { getOfflineAttendance } from "../utils/attendance.util.js";
+import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
 import pool from "../config/db.js";
 
@@ -159,19 +159,25 @@ export const getBatchAttendanceService = async ({ batchId, user }) => {
   };
 };
 
-// The logged-in student's own attendance for their offline batch in a course
+// The logged-in student's own attendance for their classroom batch OR live
+// classes in a course. Classroom returns batch details; live has no batch.
 export const getMyAttendanceService = async ({ courseId, userId }) => {
-  const att = await getOfflineAttendance(userId, courseId);
-  if (!att) return null;
+  const off = await getOfflineAttendance(userId, courseId);
+  if (off) {
+    const { batch, ...summary } = off;
+    const usersMap = await fetchUsersMap([batch.instructorId]);
+    return {
+      mode: "classroom",
+      batchName: batch.name,
+      schedule: batch.schedule,
+      location: batch.location,
+      instructorName: usersMap[batch.instructorId]?.full_name || null,
+      ...summary,
+    };
+  }
 
-  const { batch, ...summary } = att;
-  const usersMap = await fetchUsersMap([batch.instructorId]);
+  const live = await getLiveAttendance(userId, courseId);
+  if (live) return { mode: "live", ...live };
 
-  return {
-    batchName: batch.name,
-    schedule: batch.schedule,
-    location: batch.location,
-    instructorName: usersMap[batch.instructorId]?.full_name || null,
-    ...summary,
-  };
+  return null;
 };

@@ -31,11 +31,12 @@ const batchSchema = new mongoose.Schema(
       type: String, // offline venue / address
       default: "",
     },
-    // Batches are for offline students only
+    // A batch groups either classroom (in-person) students or live (Zoom/Meet)
+    // students under one instructor and schedule.
     mode: {
       type: String,
-      enum: ["offline"],
-      default: "offline",
+      enum: ["classroom", "live"],
+      default: "classroom",
     },
     seats: {
       type: Number,

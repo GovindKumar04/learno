@@ -3,9 +3,10 @@ import { Enrollment } from "../models/enrollment.model.js";
 // ─────────────────────────────────────────────────────────────────────────────
 // Who may view a course's actual material files (video/pdf/image URLs)?
 //   - admins (manage content)
-//   - students with an ACTIVE ONLINE enrollment in that course
-// Offline-enrolled students learn in person and do NOT get the online materials;
-// guests / non-enrolled / offline get the curriculum outline only.
+//   - students with an ACTIVE SELF-PACED enrollment in that course
+// Classroom learners attend in person and Live learners attend Zoom/Meet sessions;
+// neither gets the recorded materials. Guests / non-enrolled / classroom / live
+// get the curriculum outline only.
 // ─────────────────────────────────────────────────────────────────────────────
 export async function hasOnlineCourseAccess(user, courseId) {
   if (!user) return false;
@@ -17,7 +18,7 @@ export async function hasOnlineCourseAccess(user, courseId) {
     isActive: true,
   }).select("enrollmentType");
 
-  return !!enrollment && enrollment.enrollmentType === "online";
+  return !!enrollment && enrollment.enrollmentType === "self-paced";
 }
 
 // Remove the streamable/downloadable fields (url, publicId) from populated

@@ -196,6 +196,65 @@ export const sendBatchAssignmentMail = async ({ name, email, role, courseName, b
   }
 };
 
+// ─── Online (Zoom) class scheduled / updated ─────────────────
+export const sendOnlineClassMail = async ({ name, email, role, courseName, title, joinUrl, meetingId, passcode, when }) => {
+  try {
+    const roleLine =
+      role === "instructor"
+        ? "You're scheduled to take the following live online class:"
+        : "A live online class has been scheduled for your course:";
+
+    await transporter.sendMail({
+      from: `"Fillip Skill Academy" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: `Live Class — ${title} (${courseName})`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9fafb; padding: 24px; border-radius: 12px;">
+          <div style="background: #4f46e5; color: white; padding: 24px; border-radius: 8px; text-align: center; margin-bottom: 24px;">
+            <h1 style="margin: 0; font-size: 22px;">Live Online Class 🎥</h1>
+            <p style="margin: 8px 0 0; opacity: 0.85;">Fillip Skill Academy</p>
+          </div>
+          <div style="background: white; padding: 24px; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <p style="color: #374151; font-size: 16px;">Hi <strong>${name}</strong>,</p>
+            <p style="color: #374151;">${roleLine}</p>
+            <div style="background: #eef2ff; border-left: 4px solid #4f46e5; padding: 16px; border-radius: 4px; margin: 16px 0;">
+              <p style="margin: 0; font-size: 18px; font-weight: bold; color: #3730a3;">${title}</p>
+              <p style="margin: 4px 0 0; color: #6b7280; font-size: 14px;">${courseName}</p>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 8px;">
+              <tr style="border-bottom: 1px solid #f3f4f6;">
+                <td style="padding: 10px 0; color: #6b7280; font-size: 14px;">🕒 When</td>
+                <td style="padding: 10px 0; text-align: right; font-weight: 600; color: #111827;">${when || "To be announced"}</td>
+              </tr>
+              ${meetingId ? `<tr style="border-bottom: 1px solid #f3f4f6;">
+                <td style="padding: 10px 0; color: #6b7280; font-size: 14px;">🆔 Meeting ID</td>
+                <td style="padding: 10px 0; text-align: right; font-weight: 600; color: #111827;">${meetingId}</td>
+              </tr>` : ""}
+              ${passcode ? `<tr style="border-bottom: 1px solid #f3f4f6;">
+                <td style="padding: 10px 0; color: #6b7280; font-size: 14px;">🔑 Passcode</td>
+                <td style="padding: 10px 0; text-align: right; font-weight: 600; color: #111827;">${passcode}</td>
+              </tr>` : ""}
+              <tr>
+                <td style="padding: 10px 0; color: #6b7280; font-size: 14px;">🏫 Mode</td>
+                <td style="padding: 10px 0; text-align: right; font-weight: 600; color: #2563eb;">Live (Zoom / Google Meet)</td>
+              </tr>
+            </table>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="${joinUrl}" style="display: inline-block; background: #2563eb; color: white; text-decoration: none; font-weight: 600; padding: 12px 28px; border-radius: 8px;">Join the live class</a>
+            </div>
+          </div>
+          <p style="color: #9ca3af; font-size: 12px; text-align: center; margin-top: 16px;">
+            Questions? Contact us at <a href="mailto:${process.env.ADMIN_EMAIL}" style="color: #4f46e5;">${process.env.ADMIN_EMAIL}</a>
+          </p>
+        </div>
+      `,
+    });
+  } catch (error) {
+    // Non-critical — don't block class scheduling if mail fails
+    console.error(`Online class email failed for ${email}:`, error.message);
+  }
+};
+
 // ─── Affiliate application approved — send login credentials ─
 export const sendAffiliateApprovalMail = async ({ name, email, tempPassword, code }) => {
   const loginUrl = `${process.env.CLIENT_URL || "http://localhost:5173"}/auth`;

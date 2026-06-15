@@ -127,6 +127,16 @@ const courseSchema = new mongoose.Schema(
       min: 0,
     },
 
+    // Planned number of LIVE (Zoom/Meet) sessions for this course. Declared
+    // before the module starts and editable later. Used as the denominator for
+    // live-class attendance and certificate eligibility (mirror of totalClasses
+    // for classroom). Attendance summaries recompute automatically when changed.
+    totalLiveClasses: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
 
     totalStudentsEnrolled: {
       type: Number,
@@ -150,20 +160,29 @@ const courseSchema = new mongoose.Schema(
       default: "",
     },
 
+    // priceOnline = price for the SELF-PACED mode (field name kept for back-compat).
     priceOnline: {
       type: Number,
       default: 0,
     },
 
+    // priceOffline = price for the CLASSROOM mode (field name kept for back-compat).
     priceOffline: {
       type: Number,
       default: 0,
     },
 
-    // Delivery modes this course is offered in. A course can be online, offline, or both.
+    // Price for the LIVE (Zoom / Google Meet) mode.
+    priceLive: {
+      type: Number,
+      default: 0,
+    },
+
+    // Delivery modes this course is offered in. A course can be offered in any
+    // combination of: self-paced (recorded), classroom (in-person), live (Zoom/Meet).
     modes: {
-      type: [{ type: String, enum: ["online", "offline"] }],
-      default: ["online", "offline"],
+      type: [{ type: String, enum: ["self-paced", "classroom", "live"] }],
+      default: ["self-paced", "classroom"],
     },
 
     demandReasons: [
@@ -220,10 +239,10 @@ const courseSchema = new mongoose.Schema(
 // Public catalog only ever queries published courses (often newest-first).
 courseSchema.index({ isPublished: 1, createdAt: -1 });
 
-// A course cannot be published without a price assigned (price / priceOnline / priceOffline).
+// A course cannot be published without a price assigned on at least one mode.
 courseSchema.pre("validate", function () {
   if (this.isPublished) {
-    const hasPrice = this.price > 0 || this.priceOnline > 0 || this.priceOffline > 0;
+    const hasPrice = this.price > 0 || this.priceOnline > 0 || this.priceOffline > 0 || this.priceLive > 0;
     if (!hasPrice) {
       this.invalidate("price", "A course must have a price before it can be published");
     }

@@ -99,7 +99,7 @@ const SCHEMAS = {
     type: "function",
     function: {
       name: "get_my_courses",
-      description: "Get the signed-in student's enrolled courses with their online progress and offline attendance. Use for questions like 'what am I enrolled in', 'how's my progress', 'how's my attendance', 'am I eligible for a certificate'.",
+      description: "Get the signed-in student's enrolled courses with their self-paced progress and classroom/live attendance. Use for questions like 'what am I enrolled in', 'how's my progress', 'how's my attendance', 'am I eligible for a certificate'.",
       parameters: { type: "object", properties: {} },
     },
   },

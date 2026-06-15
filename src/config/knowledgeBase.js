@@ -20,16 +20,20 @@ change that needs a human — acknowledge it and point them to the team via the 
 
 # Students — enrolling & learning
 - Browse courses at /courses, open a course page, then click Enrol.
-- A course runs in "online" and/or "offline" mode (only the modes the course offers are
-  selectable):
-  - ONLINE: self-paced. You get course materials (videos, PDFs, images). Your progress is
-    tracked automatically; a completion certificate is issued at 100% progress.
-  - OFFLINE: classroom batch. When enrolling offline you pick a BATCH. Attendance is marked
-    by your instructor; a certificate is issued once your attendance reaches 75% of the
-    course's total classes.
+- A course can be offered in any of three modes — SELF-PACED, CLASSROOM and/or LIVE
+  (only the modes the course offers are selectable):
+  - SELF-PACED: recorded learning. You get course materials (videos, PDFs, images). Your
+    progress is tracked automatically; a completion certificate is issued at 100% progress.
+  - CLASSROOM: in-person batch. When enrolling you pick a BATCH. Attendance is marked by your
+    instructor; a certificate is issued once your attendance reaches 75% of the course's
+    total classes.
+  - LIVE: online sessions over Zoom / Google Meet. You get the join links on your dashboard
+    (/dashboard → Live Classes). Attendance is marked per live session and a certificate is
+    issued once your attendance reaches 75% of the course's planned number of live classes.
 - Payment is collected securely via Razorpay during enrolment.
 - After enrolling, find your courses in the Student portal at /dashboard → "My Courses".
-  Open a course to watch materials and track progress; offline learners see attendance there.
+  Self-paced learners watch materials and track progress; classroom and live learners see
+  their attendance there. Live join links are under /dashboard → Live Classes.
 - You can leave a course review once enrolled.
 
 # Instructors
@@ -41,15 +45,17 @@ change that needs a human — acknowledge it and point them to the team via the 
 
 # Admins — how to get things done (admin console at /admin, login /admin/login)
 - POST / CREATE A COURSE: go to /admin/courses → create a new course. Fill in title,
-  description, category, level, price, the modes it offers (online/offline), a thumbnail,
-  and (for offline) the total number of classes. Save. Then add content with "Manage
-  Modules" on that course: create modules and upload materials (video / PDF / image).
-  Finally make sure the course is published so it appears publicly on /courses.
+  description, category, level, the modes it offers (self-paced / classroom / live) with a
+  price per mode, a thumbnail, the total number of classes (for classroom) and the planned
+  number of live classes (for live). Save. Then add content with "Manage Modules" on that
+  course: create modules and upload materials (video / PDF / image). Finally make sure the
+  course is published so it appears publicly on /courses.
 - BATCHES: /admin/Batches → create a batch (choose course, assign an instructor, set
   schedule, location, and seats).
 - ATTENDANCE: /admin/attendance → review attendance by batch.
 - CERTIFICATES: /admin/certificates → generate and email PDF certificates (single or bulk).
-  Eligibility: online = 100% progress; offline = ≥75% attendance of the course's total classes.
+  Eligibility: self-paced = 100% progress; classroom = ≥75% attendance of the course's total
+  classes; live = ≥75% attendance of the course's planned live classes.
 - STUDENTS: /admin/students (and /admin/students/unenrolled for people who registered but
   haven't enrolled — you can broadcast an email to them).
 - ENQUIRIES: /admin/enquiry. DIRECT MAIL (free-form email + attachments): /admin/mail.
@@ -73,23 +79,23 @@ at /contact.
 // by the client scripted menus.
 export const onboardingSteps = {
   guest: [
-    "Browse courses at /courses and open any course to see details and modes (online/offline).",
+    "Browse courses at /courses and open any course to see details and modes (self-paced / classroom / live).",
     "Create an account at /auth (Sign up) and verify your email with the 6-digit OTP.",
-    "Open a course and click Enrol — choose online or offline, then pay via Razorpay.",
+    "Open a course and click Enrol — choose self-paced, classroom or live, then pay via Razorpay.",
   ],
   student: [
     "Verify your email (6-digit OTP) if you haven't yet.",
     "Find your courses at /dashboard → My Courses.",
-    "Online: open materials and track progress (certificate at 100%). Offline: attend your batch (certificate at 75% attendance).",
+    "Self-paced: open materials and track progress (certificate at 100%). Classroom: attend your batch (certificate at 75% attendance). Live: join Zoom/Meet sessions from /dashboard → Live Classes (certificate at 75% attendance).",
   ],
   instructor: [
     "Open the instructor portal at /instructor.",
     "Submit a Request to Teach if you haven't been assigned a course yet (admin approves it).",
-    "For each course, open your batches and mark attendance (pick batch + date, mark present/absent).",
+    "For each course, mark attendance for your batches and your live classes (pick the session, mark present/absent).",
   ],
   admin: [
-    "Post a course: /admin/courses → create → fill details + modes + thumbnail (and total classes for offline) → save.",
+    "Post a course: /admin/courses → create → fill details + modes (self-paced / classroom / live) with a price each + thumbnail (total classes for classroom, planned live classes for live) → save.",
     "Add content via Manage Modules (modules + upload materials), then publish the course.",
-    "Set up batches (/admin/Batches), then manage attendance (/admin/attendance) and certificates (/admin/certificates).",
+    "Set up batches (/admin/Batches) and live classes (/admin/online-classes), then manage attendance (/admin/attendance) and certificates (/admin/certificates).",
   ],
 };

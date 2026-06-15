@@ -16,11 +16,11 @@ const teachingRequestSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
-    // Instructors are assigned to teach offline students only
+    // Approval to teach a course (covers classroom batches and live classes).
     mode: {
       type: String,
-      enum: ["offline"],
-      default: "offline",
+      enum: ["classroom"],
+      default: "classroom",
     },
     status: {
       type: String,

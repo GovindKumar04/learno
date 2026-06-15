@@ -1,6 +1,8 @@
 import { Batch } from "../models/batch.model.js";
 import { Attendance } from "../models/attendance.model.js";
 import { Course } from "../models/course.model.js";
+import { OnlineClass } from "../models/onlineClass.model.js";
+import { Enrollment } from "../models/enrollment.model.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -50,5 +52,51 @@ export async function getOfflineAttendance(userId, courseId) {
     classesNeeded,
     threshold: OFFLINE_ATTENDANCE_THRESHOLD,
     batch: batches[0],
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Single source of truth for one student's LIVE (Zoom/Meet) attendance in one
+// course. Mirrors getOfflineAttendance but counts presence across the course's
+// live sessions, measured against course.totalLiveClasses.
+// Returns null if the student has no active LIVE enrollment in the course.
+// ─────────────────────────────────────────────────────────────────────────────
+export async function getLiveAttendance(userId, courseId) {
+  const enrollment = await Enrollment.findOne({
+    userId,
+    courseId,
+    enrollmentType: "live",
+    isActive: true,
+  }).select("_id");
+  if (!enrollment) return null;
+
+  const course = await Course.findById(courseId).select("totalLiveClasses");
+  const totalClasses = course?.totalLiveClasses || 0;
+
+  const liveSessions = await OnlineClass.find({ courseId }).select("_id");
+  const sessions = liveSessions.length
+    ? await Attendance.find({ onlineClassId: { $in: liveSessions.map((c) => c._id) } }).select("records")
+    : [];
+
+  const sessionsHeld = sessions.length;
+  let present = 0;
+  for (const s of sessions) {
+    if (s.records.some((r) => String(r.studentId) === String(userId) && r.status === "present")) present++;
+  }
+
+  const rate = totalClasses > 0 ? Math.min(100, Math.round((present / totalClasses) * 100)) : 0;
+  const eligible = totalClasses > 0 && rate >= OFFLINE_ATTENDANCE_THRESHOLD;
+  const classesNeeded = totalClasses > 0
+    ? Math.max(0, Math.ceil((OFFLINE_ATTENDANCE_THRESHOLD / 100) * totalClasses) - present)
+    : null;
+
+  return {
+    present,
+    totalClasses,
+    sessionsHeld,
+    rate,
+    eligible,
+    classesNeeded,
+    threshold: OFFLINE_ATTENDANCE_THRESHOLD,
   };
 }

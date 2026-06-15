@@ -9,9 +9,9 @@ import {
   deleteBatchService,
 } from "../services/batch.service.js";
 
-// GET /batches/course/:courseId/options  (admin)
+// GET /batches/course/:courseId/options?mode=classroom|live  (admin)
 const getBatchOptions = asyncHandler(async (req, res) => {
-  const data = await getBatchOptionsService(req.params.courseId);
+  const data = await getBatchOptionsService(req.params.courseId, req.query.mode);
   return res.json(new ApiResponse(200, data));
 });
 

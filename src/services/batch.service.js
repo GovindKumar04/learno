@@ -43,8 +43,8 @@ async function notifyBatchAssignment(batch) {
   );
 }
 
-// Shared validation: instructor approved + students offline-enrolled
-async function validateAssignment(courseId, instructorId, studentIds = []) {
+// Shared validation: instructor approved + students enrolled in the batch's mode
+async function validateAssignment(courseId, instructorId, studentIds = [], mode = "classroom") {
   const course = await Course.findById(courseId).select("_id");
   if (!course) throw new ApiError(404, "Course not found");
 
@@ -55,27 +55,28 @@ async function validateAssignment(courseId, instructorId, studentIds = []) {
     const validCount = await Enrollment.countDocuments({
       courseId,
       userId: { $in: studentIds },
-      enrollmentType: "offline",
+      enrollmentType: mode,
       isActive: true,
     });
     if (validCount !== studentIds.length) {
-      throw new ApiError(400, "All students must be offline-enrolled in this course");
+      throw new ApiError(400, `All students must be ${mode}-enrolled in this course`);
     }
   }
 }
 
-export const getBatchOptionsService = async (courseId) => {
+export const getBatchOptionsService = async (courseId, mode = "classroom") => {
   const course = await Course.findById(courseId).select("title");
   if (!course) throw new ApiError(404, "Course not found");
 
-  const [approvedReqs, offlineEnrollments] = await Promise.all([
+  const enrollmentType = mode === "live" ? "live" : "classroom";
+  const [approvedReqs, enrollments] = await Promise.all([
     TeachingRequest.find({ courseId, status: "approved" }).select("instructorId"),
-    Enrollment.find({ courseId, enrollmentType: "offline", isActive: true }).select("userId"),
+    Enrollment.find({ courseId, enrollmentType, isActive: true }).select("userId"),
   ]);
 
   const usersMap = await fetchUsersMap([
     ...approvedReqs.map((r) => r.instructorId),
-    ...offlineEnrollments.map((e) => e.userId),
+    ...enrollments.map((e) => e.userId),
   ]);
 
   const instructors = approvedReqs
@@ -83,7 +84,7 @@ export const getBatchOptionsService = async (courseId) => {
     .filter(Boolean)
     .map((u) => ({ id: u.id, full_name: u.full_name, email: u.email }));
 
-  const students = offlineEnrollments
+  const students = enrollments
     .map((e) => usersMap[e.userId])
     .filter(Boolean)
     .map((u) => ({ id: u.id, full_name: u.full_name, email: u.email }));
@@ -92,12 +93,13 @@ export const getBatchOptionsService = async (courseId) => {
 };
 
 export const createBatchService = async ({ body, createdBy }) => {
-  const { name, courseId, instructorId, studentIds = [], schedule = "", location = "", seats = 0, status = "upcoming" } = body;
+  const { name, courseId, instructorId, studentIds = [], schedule = "", location = "", seats = 0, status = "upcoming", mode = "classroom" } = body;
   if (!name || !courseId || !instructorId) throw new ApiError(400, "name, courseId, and instructorId are required");
+  const batchMode = mode === "live" ? "live" : "classroom";
 
-  await validateAssignment(courseId, instructorId, studentIds);
+  await validateAssignment(courseId, instructorId, studentIds, batchMode);
 
-  const batch = await Batch.create({ name, courseId, instructorId, studentIds, schedule, location, seats, status, createdBy });
+  const batch = await Batch.create({ name, courseId, instructorId, studentIds, schedule, location, seats, status, mode: batchMode, createdBy });
   await notifyBatchAssignment(batch);
   return batch;
 };
@@ -150,7 +152,7 @@ export const updateBatchService = async ({ id, body }) => {
   const courseId = batch.courseId; // course is fixed once created
 
   if (instructorId !== undefined || studentIds !== undefined) {
-    await validateAssignment(courseId, instructorId ?? batch.instructorId, studentIds ?? batch.studentIds);
+    await validateAssignment(courseId, instructorId ?? batch.instructorId, studentIds ?? batch.studentIds, batch.mode);
   }
 
   const shouldNotify =

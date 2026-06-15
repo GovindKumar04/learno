@@ -17,8 +17,8 @@ const enrollmentSchema = new mongoose.Schema(
     },
     enrollmentType: {
       type: String,
-      enum: ["online", "offline"],
-      default: "online",
+      enum: ["self-paced", "classroom", "live"],
+      default: "self-paced",
     },
 
     isActive: {

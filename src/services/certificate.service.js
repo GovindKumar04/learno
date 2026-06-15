@@ -3,10 +3,12 @@ import { Progress } from "../models/progress.model.js";
 import { Course } from "../models/course.model.js";
 import { Batch } from "../models/batch.model.js";
 import { Attendance } from "../models/attendance.model.js";
+import { OnlineClass } from "../models/onlineClass.model.js";
+import { Enrollment } from "../models/enrollment.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendCertificateMail } from "../utils/mail.util.js";
 import { generateCertificatePDF, buildCertificateNo } from "../utils/certificate.util.js";
-import { getOfflineAttendance } from "../utils/attendance.util.js";
+import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
 import pool from "../config/db.js";
 
@@ -51,12 +53,57 @@ async function offlineCompletions() {
   return out;
 }
 
-// Completed online (100% progress) OR offline (attendance bar met)
+// Bulk: every (userId, courseId) LIVE pair that currently meets the attendance
+// bar, measured against the course's totalLiveClasses. Mirrors offlineCompletions.
+async function liveCompletions() {
+  const liveEnrolls = await Enrollment.find({ enrollmentType: "live", isActive: true }).select("userId courseId");
+  if (liveEnrolls.length === 0) return [];
+
+  const courseIds = [...new Set(liveEnrolls.map((e) => e.courseId.toString()))];
+  const courses = await Course.find({ _id: { $in: courseIds } }).select("totalLiveClasses");
+  const totalMap = {};
+  courses.forEach((c) => (totalMap[c._id.toString()] = c.totalLiveClasses || 0));
+
+  const sessions = await OnlineClass.find({ courseId: { $in: courseIds } }).select("_id courseId");
+  if (sessions.length === 0) return [];
+  const courseBySession = {};
+  sessions.forEach((s) => (courseBySession[s._id.toString()] = s.courseId.toString()));
+
+  const attendance = await Attendance.find({
+    onlineClassId: { $in: sessions.map((s) => s._id) },
+  }).select("onlineClassId records");
+
+  const acc = new Map();
+  for (const a of attendance) {
+    const courseId = courseBySession[a.onlineClassId?.toString()];
+    if (!courseId) continue;
+    for (const r of a.records) {
+      if (r.status !== "present") continue;
+      const key = `${r.studentId}:${courseId}`;
+      const prev = acc.get(key) || { present: 0, userId: String(r.studentId), courseId };
+      prev.present += 1;
+      acc.set(key, prev);
+    }
+  }
+
+  const out = [];
+  for (const { present, userId, courseId } of acc.values()) {
+    const totalClasses = totalMap[courseId] || 0;
+    if (totalClasses <= 0) continue;
+    const rate = Math.min(100, Math.round((present / totalClasses) * 100));
+    if (rate >= OFFLINE_ATTENDANCE_THRESHOLD) out.push({ userId, courseId, present, totalClasses, rate });
+  }
+  return out;
+}
+
+// Completed self-paced (100% progress) OR classroom/live (attendance bar met)
 async function hasCompleted(userId, courseId) {
   const progress = await Progress.findOne({ userId, courseId }).select("completionPercent");
   if (progress && progress.completionPercent >= 100) return true;
   const off = await getOfflineAttendance(userId, courseId);
-  return !!(off && off.eligible);
+  if (off && off.eligible) return true;
+  const live = await getLiveAttendance(userId, courseId);
+  return !!(live && live.eligible);
 }
 
 // Reserve the next certificate number for the current year.
@@ -71,9 +118,10 @@ const nextCertSeq = async (year) => {
 };
 
 export const getEligibleStudentsService = async () => {
-  const [completed, offline] = await Promise.all([
+  const [completed, offline, live] = await Promise.all([
     Progress.find({ completionPercent: 100 }).select("userId courseId completedAt").sort({ completedAt: -1 }),
     offlineCompletions(),
+    liveCompletions(),
   ]);
 
   const rows = new Map();
@@ -81,7 +129,7 @@ export const getEligibleStudentsService = async () => {
     rows.set(`${p.userId}:${p.courseId.toString()}`, {
       userId: p.userId,
       courseId: p.courseId.toString(),
-      source: "online",
+      source: "self-paced",
       completedAt: p.completedAt,
       attendance: null,
     });
@@ -92,9 +140,20 @@ export const getEligibleStudentsService = async () => {
     rows.set(key, {
       userId: o.userId,
       courseId: o.courseId,
-      source: "offline",
+      source: "classroom",
       completedAt: null,
       attendance: { present: o.present, totalClasses: o.totalClasses, rate: o.rate },
+    });
+  }
+  for (const l of live) {
+    const key = `${l.userId}:${l.courseId}`;
+    if (rows.has(key)) continue;
+    rows.set(key, {
+      userId: l.userId,
+      courseId: l.courseId,
+      source: "live",
+      completedAt: null,
+      attendance: { present: l.present, totalClasses: l.totalClasses, rate: l.rate },
     });
   }
 
@@ -168,7 +227,7 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
     try {
       if (!userId || !courseId) throw new Error("userId and courseId are required");
       if (!(await hasCompleted(userId, courseId))) {
-        throw new Error("Student has not completed this course (online progress or offline attendance)");
+        throw new Error("Student has not completed this course (self-paced progress, or classroom/live attendance)");
       }
 
       const [userResult, course] = await Promise.all([

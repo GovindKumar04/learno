@@ -21,7 +21,7 @@ async function migrate() {
         user_id UUID NOT NULL,
         course_id VARCHAR(24) NOT NULL,
         course_title TEXT NOT NULL,
-        enrollment_type VARCHAR(10) NOT NULL DEFAULT 'online',
+        enrollment_type VARCHAR(20) NOT NULL DEFAULT 'self-paced',
         amount INTEGER NOT NULL,
         currency VARCHAR(5) NOT NULL DEFAULT 'INR',
         razorpay_order_id VARCHAR(100) UNIQUE NOT NULL,

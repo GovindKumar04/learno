@@ -22,23 +22,26 @@ const getRazorpay = () => {
   return _razorpay;
 };
 
-export const createOrderService = async ({ userId, courseId, enrollmentType = "online" }) => {
+export const createOrderService = async ({ userId, courseId, enrollmentType = "self-paced" }) => {
   if (!courseId) throw new ApiError(400, "courseId is required");
-  if (!["online", "offline"].includes(enrollmentType)) {
-    throw new ApiError(400, "enrollmentType must be 'online' or 'offline'");
+  if (!["self-paced", "classroom", "live"].includes(enrollmentType)) {
+    throw new ApiError(400, "enrollmentType must be 'self-paced', 'classroom' or 'live'");
   }
 
-  const course = await Course.findById(courseId).select("title priceOnline priceOffline price isPublished modes");
+  const course = await Course.findById(courseId).select("title priceOnline priceOffline priceLive price isPublished modes");
   if (!course) throw new ApiError(404, "Course not found");
   if (!course.isPublished) throw new ApiError(403, "Course is not available");
 
   if (Array.isArray(course.modes) && course.modes.length && !course.modes.includes(enrollmentType)) {
-    throw new ApiError(400, `This course is not available ${enrollmentType}.`);
+    throw new ApiError(400, `This course is not available as ${enrollmentType}.`);
   }
 
-  const priceINR = enrollmentType === "offline"
+  // Price fields: priceOnline = self-paced, priceOffline = classroom, priceLive = live.
+  const priceINR = enrollmentType === "classroom"
     ? (course.priceOffline || 0)
-    : (course.priceOnline || course.price || 0);
+    : enrollmentType === "live"
+      ? (course.priceLive || 0)
+      : (course.priceOnline || course.price || 0);
   if (priceINR <= 0) throw new ApiError(400, "Course price is not set for this enrollment type");
 
   const existing = await Enrollment.findOne({ userId, courseId, isActive: true });

@@ -3,7 +3,7 @@ import { Progress } from "../models/progress.model.js";
 import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendBroadcastMail } from "../utils/mail.util.js";
-import { getOfflineAttendance } from "../utils/attendance.util.js";
+import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import pool from "../config/db.js";
 
 export const checkMyEnrollmentService = async ({ userId, courseId }) => {
@@ -13,7 +13,7 @@ export const checkMyEnrollmentService = async ({ userId, courseId }) => {
 };
 
 // Admin enrolls a student. Returns { enrollment, reEnrolled } for the status code.
-export const enrollStudentService = async ({ userId, courseId, enrollmentType = "online", enrolledBy }) => {
+export const enrollStudentService = async ({ userId, courseId, enrollmentType = "self-paced", enrolledBy }) => {
   if (!userId || !courseId) throw new ApiError(400, "userId and courseId are required");
 
   const userResult = await pool.query("SELECT id, full_name, email, role FROM users WHERE id = $1", [userId]);
@@ -84,13 +84,20 @@ export const getMyCoursesService = async (userId) => {
         progress,
       };
 
-      if (e.enrollmentType === "offline") {
-        const att = await getOfflineAttendance(e.userId, e.courseId._id);
+      // Classroom and Live are attendance-based (certificate by attendance %);
+      // self-paced is progress-based (certificate at 100% material completion).
+      if (e.enrollmentType === "classroom" || e.enrollmentType === "live") {
+        const att = e.enrollmentType === "live"
+          ? await getLiveAttendance(e.userId, e.courseId._id)
+          : await getOfflineAttendance(e.userId, e.courseId._id);
         return {
           ...base,
           attendance: att
             ? { present: att.present, totalClasses: att.totalClasses, rate: att.rate, eligible: att.eligible, classesNeeded: att.classesNeeded }
             : null,
+          // Classroom batch schedule/venue, so the Classes page can show its timing.
+          schedule: att?.batch?.schedule || null,
+          location: att?.batch?.location || null,
           completed: !!(att && att.eligible),
         };
       }
