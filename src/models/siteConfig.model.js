@@ -20,10 +20,20 @@ const faqSchema = new mongoose.Schema({
   order:    { type: Number, default: 0 },
 }, { _id: false });
 
+// Promotional offers shown in the site-wide announcement bar above the header.
+// `active` lets admins toggle an offer on/off without deleting it.
+const offerSchema = new mongoose.Schema({
+  text:   { type: String, required: true },
+  link:   { type: String, default: "" },
+  active: { type: Boolean, default: true },
+  order:  { type: Number, default: 0 },
+}, { _id: false });
+
 const siteConfigSchema = new mongoose.Schema({
   milestones:  [milestoneSchema],
   whyChooseUs: [whyChooseSchema],
   faqs:        [faqSchema],
+  offers:      [offerSchema],
 }, { timestamps: true });
 
 export const SiteConfig = mongoose.model("SiteConfig", siteConfigSchema);

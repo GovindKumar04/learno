@@ -2,13 +2,17 @@ import { Batch } from "../models/batch.model.js";
 import { Course } from "../models/course.model.js";
 import { Enrollment } from "../models/enrollment.model.js";
 import { TeachingRequest } from "../models/teachingRequest.model.js";
+import { Attendance } from "../models/attendance.model.js";
+import { OnlineClass } from "../models/onlineClass.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendBatchAssignmentMail } from "../utils/mail.util.js";
+import { isUuid } from "../utils/id.util.js";
+import { verifyAdminPassword, assertNoDependents } from "../utils/deleteGuard.util.js";
 import pool from "../config/db.js";
 
 // Fetch { id → user } map from PostgreSQL for a list of UUIDs
 async function fetchUsersMap(ids) {
-  const unique = [...new Set(ids.filter(Boolean))];
+  const unique = [...new Set(ids.filter(isUuid))];
   if (unique.length === 0) return {};
   const placeholders = unique.map((_, i) => `$${i + 1}`).join(", ");
   const result = await pool.query(
@@ -48,8 +52,8 @@ async function validateAssignment(courseId, instructorId, studentIds = [], mode 
   const course = await Course.findById(courseId).select("_id");
   if (!course) throw new ApiError(404, "Course not found");
 
-  const approved = await TeachingRequest.findOne({ courseId, instructorId, status: "approved" });
-  if (!approved) throw new ApiError(400, "Instructor must have an approved teaching request for this course");
+  const approved = await TeachingRequest.findOne({ courseId, instructorId, mode, status: "approved" });
+  if (!approved) throw new ApiError(400, `Instructor must have an approved ${mode} teaching request for this course`);
 
   if (studentIds.length > 0) {
     const validCount = await Enrollment.countDocuments({
@@ -70,7 +74,7 @@ export const getBatchOptionsService = async (courseId, mode = "classroom") => {
 
   const enrollmentType = mode === "live" ? "live" : "classroom";
   const [approvedReqs, enrollments] = await Promise.all([
-    TeachingRequest.find({ courseId, status: "approved" }).select("instructorId"),
+    TeachingRequest.find({ courseId, mode: enrollmentType, status: "approved" }).select("instructorId"),
     Enrollment.find({ courseId, enrollmentType, isActive: true }).select("userId"),
   ]);
 
@@ -171,7 +175,21 @@ export const updateBatchService = async ({ id, body }) => {
   return batch;
 };
 
-export const deleteBatchService = async (id) => {
-  const batch = await Batch.findByIdAndDelete(id);
+export const deleteBatchService = async ({ id, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
+  const batch = await Batch.findById(id);
   if (!batch) throw new ApiError(404, "Batch not found");
+
+  // Block while attendance has been recorded or a live class points at this batch.
+  const [attendance, onlineClasses] = await Promise.all([
+    Attendance.countDocuments({ batchId: id }),
+    OnlineClass.countDocuments({ batchId: id }),
+  ]);
+  assertNoDependents("batch", [
+    { label: "attendance session(s)", count: attendance },
+    { label: "live class(es) linked to it", count: onlineClasses },
+  ]);
+
+  await Batch.findByIdAndDelete(id);
 };

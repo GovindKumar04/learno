@@ -17,7 +17,7 @@ async function migrate() {
     // ── Payments ──────────────────────────────────────────────────────────────
     await pool.query(`
       CREATE TABLE IF NOT EXISTS payments (
-        id SERIAL PRIMARY KEY,
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         user_id UUID NOT NULL,
         course_id VARCHAR(24) NOT NULL,
         course_title TEXT NOT NULL,
@@ -37,13 +37,13 @@ async function migrate() {
 
     // ── Affiliate program ───────────────────────────────────────────────────────
     // Affiliate referral link captured at signup.
-    // NOTE: users.id is BIGINT in this database, so all user references use BIGINT.
-    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS referred_by BIGINT`);
+    // All user references are UUID (users.id is UUID).
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS referred_by UUID`);
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS affiliates (
-        id SERIAL PRIMARY KEY,
-        user_id BIGINT UNIQUE NOT NULL,
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        user_id UUID UNIQUE NOT NULL,
         code VARCHAR(20) UNIQUE NOT NULL,
         commission_type VARCHAR(10) NOT NULL DEFAULT 'percent',
         commission_value NUMERIC(10,2) NOT NULL DEFAULT 10,
@@ -56,10 +56,10 @@ async function migrate() {
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS commissions (
-        id SERIAL PRIMARY KEY,
-        affiliate_user_id BIGINT NOT NULL,
-        referred_user_id BIGINT NOT NULL,
-        payment_id INTEGER NOT NULL,
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        affiliate_user_id UUID NOT NULL,
+        referred_user_id UUID NOT NULL,
+        payment_id UUID NOT NULL,
         course_title TEXT NOT NULL,
         sale_amount INTEGER NOT NULL,
         commission_amount INTEGER NOT NULL,
@@ -79,7 +79,7 @@ async function migrate() {
     // via user_id. status: pending | approved | rejected.
     await pool.query(`
       CREATE TABLE IF NOT EXISTS affiliate_applications (
-        id SERIAL PRIMARY KEY,
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         full_name VARCHAR(100) NOT NULL,
         email VARCHAR(255) NOT NULL,
         phone VARCHAR(20),
@@ -87,7 +87,7 @@ async function migrate() {
         social_links JSONB NOT NULL DEFAULT '[]',
         status VARCHAR(20) NOT NULL DEFAULT 'pending',
         review_note TEXT,
-        user_id BIGINT,
+        user_id UUID,
         reviewed_at TIMESTAMP,
         created_at TIMESTAMP DEFAULT NOW()
       )
@@ -101,7 +101,7 @@ async function migrate() {
     // Resources (e.g. Google Drive links) the admin shares with all affiliates
     await pool.query(`
       CREATE TABLE IF NOT EXISTS affiliate_resources (
-        id SERIAL PRIMARY KEY,
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         title VARCHAR(200) NOT NULL,
         description TEXT,
         url TEXT NOT NULL,

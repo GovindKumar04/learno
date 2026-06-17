@@ -6,6 +6,7 @@ import { Enrollment } from "../models/enrollment.model.js";
 import { Progress } from "../models/progress.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendPaymentConfirmation } from "../utils/mail.util.js";
+import { newId } from "../utils/id.util.js";
 
 // Lazy — created on first use so missing keys don't crash the server at startup
 let _razorpay = null;
@@ -21,6 +22,28 @@ const getRazorpay = () => {
   }
   return _razorpay;
 };
+
+// Idempotently ensure an active enrollment (+ progress) exists for a paid user.
+// Safe to call repeatedly — only bumps the course counter when a seat is newly
+// taken, so retries of /verify never double-count or double-enroll.
+async function ensureEnrolled(userId, courseId, enrollmentType) {
+  const existing = await Enrollment.findOne({ userId, courseId });
+  if (!existing) {
+    await Enrollment.create({ userId, courseId, enrolledBy: userId, enrollmentType });
+    await Progress.create({ userId, courseId }).catch(() => {}); // progress is non-critical
+    await Course.findByIdAndUpdate(courseId, { $inc: { totalStudentsEnrolled: 1 } });
+    return true;
+  }
+  if (!existing.isActive) {
+    existing.isActive = true;
+    existing.unenrolledAt = null;
+    existing.enrollmentType = enrollmentType;
+    await existing.save();
+    await Course.findByIdAndUpdate(courseId, { $inc: { totalStudentsEnrolled: 1 } });
+    return true;
+  }
+  return false;
+}
 
 export const createOrderService = async ({ userId, courseId, enrollmentType = "self-paced" }) => {
   if (!courseId) throw new ApiError(400, "courseId is required");
@@ -66,17 +89,27 @@ export const createOrderService = async ({ userId, courseId, enrollmentType = "s
     };
   }
 
-  const rzpOrder = await getRazorpay().orders.create({
-    amount: priceINR * 100,
-    currency: "INR",
-    receipt: `rcpt_${userId}_${Date.now()}`,
-    notes: { courseId, enrollmentType, userId },
-  });
+  let rzpOrder;
+  try {
+    rzpOrder = await getRazorpay().orders.create({
+      amount: priceINR * 100,
+      currency: "INR",
+      // Razorpay caps receipt at 40 chars. A UUID userId would overflow it, so use
+      // a short timestamp + random token; userId/course are kept in notes below.
+      receipt: `rcpt_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
+      notes: { courseId, enrollmentType, userId },
+    });
+  } catch (e) {
+    // Razorpay SDK errors carry the reason in e.error.description (not e.message),
+    // so surface it instead of a blank 400.
+    const desc = e?.error?.description || e?.message || "Payment gateway error";
+    throw new ApiError(e?.statusCode || 502, `Payment gateway: ${desc}`);
+  }
 
   await pool.query(
-    `INSERT INTO payments (user_id, course_id, course_title, enrollment_type, amount, currency, razorpay_order_id, status)
-     VALUES ($1, $2, $3, $4, $5, 'INR', $6, 'pending')`,
-    [userId, courseId, course.title, enrollmentType, rzpOrder.amount, rzpOrder.id]
+    `INSERT INTO payments (id, user_id, course_id, course_title, enrollment_type, amount, currency, razorpay_order_id, status)
+     VALUES ($1, $2, $3, $4, $5, $6, 'INR', $7, 'pending')`,
+    [newId(), userId, courseId, course.title, enrollmentType, rzpOrder.amount, rzpOrder.id]
   );
 
   return {
@@ -116,40 +149,37 @@ export const verifyPaymentService = async ({ userId, razorpay_order_id, razorpay
   if (result.rows.length === 0) throw new ApiError(404, "Payment record not found");
   const payment = result.rows[0];
 
+  // Idempotent: if this order was already marked paid, make sure the enrollment
+  // actually exists (self-heal a prior half-completed verify) and return.
   if (payment.status === "paid") {
+    await ensureEnrolled(userId, payment.course_id, payment.enrollment_type);
     return { alreadyEnrolled: true, courseId: payment.course_id };
   }
 
-  await pool.query(
-    `UPDATE payments
-     SET status = 'paid', razorpay_payment_id = $1, razorpay_signature = $2, paid_at = NOW(), updated_at = NOW()
-     WHERE razorpay_order_id = $3`,
-    [razorpay_payment_id, razorpay_signature, razorpay_order_id]
-  );
+  // Mark paid + record commission atomically in Postgres. If anything here
+  // fails, nothing is committed and the client can safely retry /verify.
+  const client = await pool.connect();
+  let user;
+  try {
+    await client.query("BEGIN");
 
-  const existing = await Enrollment.findOne({ userId, courseId: payment.course_id });
-  if (!existing) {
-    await Enrollment.create({ userId, courseId: payment.course_id, enrolledBy: userId, enrollmentType: payment.enrollment_type });
-    await Progress.create({ userId, courseId: payment.course_id });
-  } else if (!existing.isActive) {
-    existing.isActive = true;
-    existing.unenrolledAt = null;
-    existing.enrollmentType = payment.enrollment_type;
-    await existing.save();
-  }
+    await client.query(
+      `UPDATE payments
+       SET status = 'paid', razorpay_payment_id = $1, razorpay_signature = $2, paid_at = NOW(), updated_at = NOW()
+       WHERE razorpay_order_id = $3`,
+      [razorpay_payment_id, razorpay_signature, razorpay_order_id]
+    );
 
-  await Course.findByIdAndUpdate(payment.course_id, { $inc: { totalStudentsEnrolled: 1 } });
+    const userResult = await client.query(
+      "SELECT full_name, email, referred_by FROM users WHERE id = $1",
+      [userId]
+    );
+    user = userResult.rows[0];
 
-  const userResult = await pool.query(
-    "SELECT full_name, email, referred_by FROM users WHERE id = $1",
-    [userId]
-  );
-  const user = userResult.rows[0];
-
-  // Affiliate commission for referred users
-  if (user?.referred_by) {
-    try {
-      const affRes = await pool.query(
+    // Affiliate commission for referred users — once per payment (guarded by the
+    // unique-ish payment_id; a retry can't reach here since status is now paid).
+    if (user?.referred_by) {
+      const affRes = await client.query(
         "SELECT user_id, commission_type, commission_value FROM affiliates WHERE user_id = $1 AND status = 'active'",
         [user.referred_by]
       );
@@ -160,20 +190,27 @@ export const verifyPaymentService = async ({ userId, razorpay_order_id, razorpay
           aff.commission_type === "flat"
             ? Math.round(Number(aff.commission_value) * 100)
             : Math.round((saleAmount * Number(aff.commission_value)) / 100);
-
         if (commissionAmount > 0) {
-          await pool.query(
+          await client.query(
             `INSERT INTO commissions
-               (affiliate_user_id, referred_user_id, payment_id, course_title, sale_amount, commission_amount, status)
-             VALUES ($1, $2, $3, $4, $5, $6, 'pending')`,
-            [aff.user_id, userId, payment.id, payment.course_title, saleAmount, commissionAmount]
+               (id, affiliate_user_id, referred_user_id, payment_id, course_title, sale_amount, commission_amount, status)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, 'pending')`,
+            [newId(), aff.user_id, userId, payment.id, payment.course_title, saleAmount, commissionAmount]
           );
         }
       }
-    } catch (e) {
-      console.error("Commission recording failed:", e.message);
     }
+
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+  } finally {
+    client.release();
   }
+
+  // Enrollment lives in Mongo (separate store) — idempotent so a retry reconciles.
+  await ensureEnrolled(userId, payment.course_id, payment.enrollment_type);
 
   sendPaymentConfirmation({
     name: user.full_name,

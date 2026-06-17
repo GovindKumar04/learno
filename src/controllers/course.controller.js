@@ -8,7 +8,17 @@ import {
   getCourseBySlugService,
   updateCourseService,
   deleteCourseService,
+  getTrendingCoursesService,
+  getTopRatedCoursesService,
+  getRecommendedCoursesService,
+  getBecauseYouViewedService,
+  recordCourseViewService,
+  logSearchService,
 } from "../services/course.service.js";
+
+// Comma-separated query param → trimmed string array (e.g. ?categories=a,b).
+const csv = (v) => (typeof v === "string" ? v.split(",").map((s) => s.trim()).filter(Boolean) : []);
+const parseLimit = (v) => Math.min(Math.max(Number(v) || 12, 1), 24);
 
 const createCourse = asyncHandler(async (req, res) => {
   const course = await createCourseService({ body: req.body, file: req.file, userId: req.user.id });
@@ -42,8 +52,54 @@ const updateCourse = asyncHandler(async (req, res) => {
 });
 
 const deleteCourse = asyncHandler(async (req, res) => {
-  await deleteCourseService(req.params.courseId);
+  await deleteCourseService({ courseId: req.params.courseId, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, null, "Course deleted successfully"));
 });
 
-export { createCourse, getAllCourses, getCourseCategories, getCourseById, getCourseBySlug, updateCourse, deleteCourse };
+// ─── Home-page discovery ────────────────────────────────────────────────────
+// All return the same shape as the catalog list: { data: { courses } }.
+
+const getTrending = asyncHandler(async (req, res) => {
+  const courses = await getTrendingCoursesService({ limit: parseLimit(req.query.limit) });
+  return res.json(new ApiResponse(200, { courses }));
+});
+
+const getTopRated = asyncHandler(async (req, res) => {
+  const courses = await getTopRatedCoursesService({ limit: parseLimit(req.query.limit) });
+  return res.json(new ApiResponse(200, { courses }));
+});
+
+const getRecommended = asyncHandler(async (req, res) => {
+  const courses = await getRecommendedCoursesService({
+    user: req.user,
+    categories: csv(req.query.categories),
+    excludeIds: csv(req.query.exclude),
+    limit: parseLimit(req.query.limit),
+  });
+  return res.json(new ApiResponse(200, { courses }));
+});
+
+const getBecauseYouViewed = asyncHandler(async (req, res) => {
+  const courses = await getBecauseYouViewedService({
+    user: req.user,
+    categories: csv(req.query.categories),
+    excludeIds: csv(req.query.exclude),
+    limit: parseLimit(req.query.limit),
+  });
+  return res.json(new ApiResponse(200, { courses }));
+});
+
+const recordCourseView = asyncHandler(async (req, res) => {
+  await recordCourseViewService({ courseId: req.params.courseId, user: req.user });
+  return res.json(new ApiResponse(200, null, "View recorded"));
+});
+
+const logSearch = asyncHandler(async (req, res) => {
+  await logSearchService({ q: req.body?.q, user: req.user });
+  return res.json(new ApiResponse(200, null, "Search logged"));
+});
+
+export {
+  createCourse, getAllCourses, getCourseCategories, getCourseById, getCourseBySlug, updateCourse, deleteCourse,
+  getTrending, getTopRated, getRecommended, getBecauseYouViewed, recordCourseView, logSearch,
+};

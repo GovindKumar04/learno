@@ -4,6 +4,7 @@ import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.ut
 import { ApiError } from "../utils/ApiError.js";
 import cloudinary from "../config/cloudinary.js";
 import { hasOnlineCourseAccess } from "../utils/courseAccess.js";
+import { verifyAdminPassword } from "../utils/deleteGuard.util.js";
 
 // Resolve an authenticated, short-lived Cloudinary download URL for a material the
 // signed-in user is allowed to view. Used by the streaming proxy so PDFs work even
@@ -81,7 +82,9 @@ export const uploadMaterialsService = async ({ courseId, moduleId, files, titles
   return savedMaterials;
 };
 
-export const deleteMaterialService = async ({ moduleId, materialId }) => {
+export const deleteMaterialService = async ({ moduleId, materialId, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
   const material = await Material.findById(materialId);
   if (!material) throw new ApiError(404, "Material not found");
 

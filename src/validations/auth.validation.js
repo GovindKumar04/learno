@@ -47,6 +47,7 @@ export const resetPasswordSchema = z.object({
 
 export const googleAuthSchema = z.object({
   idToken: z.string().min(1, "Google credential is required"),
+  role: z.enum(["student", "instructor"]).optional(),
 });
 
 export const completeProfileSchema = z.object({

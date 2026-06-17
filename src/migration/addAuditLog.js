@@ -16,8 +16,8 @@ async function migrate() {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS audit_log (
-        id          BIGSERIAL PRIMARY KEY,
-        actor_id    BIGINT,                 -- users.id (null for unauthenticated)
+        id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        actor_id    UUID,                   -- users.id (null for unauthenticated)
         actor_role  VARCHAR(20),
         action      VARCHAR(60) NOT NULL,   -- e.g. enrollment.create, mail.send
         target_id   TEXT,                   -- PG id or Mongo ObjectId, as a string

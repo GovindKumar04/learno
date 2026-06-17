@@ -153,6 +153,13 @@ const courseSchema = new mongoose.Schema(
       default: 0,
     },
 
+    // Lifetime number of times this course's detail page has been opened. Used
+    // (together with enrollments) to surface "Trending" courses on the home page.
+    viewCount: {
+      type: Number,
+      default: 0,
+    },
+
     reviews: [reviewSchema],
 
     duration: {
@@ -238,6 +245,9 @@ const courseSchema = new mongoose.Schema(
 
 // Public catalog only ever queries published courses (often newest-first).
 courseSchema.index({ isPublished: 1, createdAt: -1 });
+// Discovery sorts on the home page (highest-rated / most-popular / trending).
+courseSchema.index({ isPublished: 1, averageRating: -1 });
+courseSchema.index({ isPublished: 1, totalStudentsEnrolled: -1 });
 
 // A course cannot be published without a price assigned on at least one mode.
 courseSchema.pre("validate", function () {

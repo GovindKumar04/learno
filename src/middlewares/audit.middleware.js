@@ -1,4 +1,5 @@
 import pool from "../config/db.js";
+import { newId } from "../utils/id.util.js";
 
 // Records a successful privileged action to audit_log.
 //
@@ -49,9 +50,10 @@ export const audit = (action) => (req, res, next) => {
 
     pool
       .query(
-        `INSERT INTO audit_log (actor_id, actor_role, action, target_id, metadata, ip)
-         VALUES ($1, $2, $3, $4, $5::jsonb, $6)`,
+        `INSERT INTO audit_log (id, actor_id, actor_role, action, target_id, metadata, ip)
+         VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7)`,
         [
+          newId(),
           req.user?.id ?? null,
           req.user?.role ?? null,
           action,

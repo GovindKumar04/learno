@@ -18,7 +18,11 @@ import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
 //   batch         — the student's primary Batch doc (schedule/location/instructor)
 // ─────────────────────────────────────────────────────────────────────────────
 export async function getOfflineAttendance(userId, courseId) {
-  const batches = await Batch.find({ courseId, studentIds: userId });
+  // Classroom batches only — a live-enrolled student may also sit in a "live"
+  // batch, but their attendance lives under onlineClassId (see getLiveAttendance).
+  // Without this filter, getMyAttendanceService would match the live batch here
+  // and report a 0% classroom summary instead of the real live attendance.
+  const batches = await Batch.find({ courseId, studentIds: userId, mode: { $ne: "live" } });
   if (batches.length === 0) return null;
 
   const course = await Course.findById(courseId).select("totalClasses");

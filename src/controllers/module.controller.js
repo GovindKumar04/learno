@@ -31,7 +31,12 @@ const updateModule = asyncHandler(async (req, res) => {
 
 // DELETE /api/courses/:courseId/modules/:moduleId
 const deleteModule = asyncHandler(async (req, res) => {
-  await deleteModuleService({ courseId: req.params.courseId, moduleId: req.params.moduleId });
+  await deleteModuleService({
+    courseId: req.params.courseId,
+    moduleId: req.params.moduleId,
+    password: req.body?.password,
+    adminId: req.user.id,
+  });
   return res.json(new ApiResponse(200, null, "Module deleted successfully"));
 });
 

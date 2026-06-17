@@ -38,3 +38,15 @@ export const uploadAttachments = multer({
   storage,
   limits: { fileSize: 15 * 1024 * 1024 }, // 15MB per file
 });
+
+// Avatars / thumbnails — images only, small cap. Prevents any authenticated user
+// from uploading a huge (or non-image) file to a profile field (storage DoS).
+const imageOnly = (req, file, cb) => {
+  const ok = (file.mimetype || "").startsWith("image/");
+  cb(ok ? null : new Error("Only image files are allowed here"), ok);
+};
+export const uploadImage = multer({
+  storage,
+  fileFilter: imageOnly,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+});

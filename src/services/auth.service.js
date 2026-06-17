@@ -7,6 +7,7 @@ import { googleClient } from "../config/google.js";
 
 import { ApiError } from "../utils/ApiError.js";
 import { generateRollNumber } from "../utils/roll.util.js";
+import { newId } from "../utils/id.util.js";
 
 import {
   generateAccessToken,
@@ -56,6 +57,7 @@ export const registerUserService = async ({
         `
         INSERT INTO users
         (
+          id,
           full_name,
           email,
           roll_number,
@@ -66,7 +68,7 @@ export const registerUserService = async ({
           referred_by
         )
         VALUES
-        ($1, $2, $3, $4, $5, $6, $7, $8)
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 
         RETURNING
         id,
@@ -79,7 +81,7 @@ export const registerUserService = async ({
         location,
         created_at
         `,
-        [full_name, email, rollNumber, hashedPassword, role || "student", phone, location, referredBy],
+        [newId(), full_name, email, rollNumber, hashedPassword, role || "student", phone, location, referredBy],
       );
 
       return result.rows[0];
@@ -251,8 +253,10 @@ export const resetPasswordService = async ({ email, code, newPassword }) => {
 // Verifies a Google ID token, finds-or-creates the user, and issues our own
 // access/refresh tokens (same as password login). Returns profileComplete so
 // the client knows whether to ask a new user for phone/location.
-export const googleAuthService = async ({ idToken }) => {
+export const googleAuthService = async ({ idToken, role }) => {
   if (!idToken) throw new ApiError(400, "Google credential is required");
+  // Only student/instructor may self-register; anything else falls back to student.
+  const signupRole = role === "instructor" ? "instructor" : "student";
   if (!process.env.GOOGLE_CLIENT_ID) throw new ApiError(500, "Google sign-in is not configured");
 
   let payload;
@@ -300,13 +304,13 @@ export const googleAuthService = async ({ idToken }) => {
     const hashedPassword = await bcrypt.hash(crypto.randomBytes(32).toString("hex"), 10);
 
     for (let attempt = 0; attempt < 5; attempt++) {
-      const rollNumber = await generateRollNumber(pool, "student");
+      const rollNumber = await generateRollNumber(pool, signupRole);
       try {
         const inserted = await pool.query(
-          `INSERT INTO users (full_name, email, roll_number, password, role, google_id, avatar, is_verified)
-           VALUES ($1, $2, $3, $4, 'student', $5, $6, true)
+          `INSERT INTO users (id, full_name, email, roll_number, password, role, google_id, avatar, is_verified)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, true)
            RETURNING *`,
-          [fullName, email, rollNumber, hashedPassword, googleId, avatar]
+          [newId(), fullName, email, rollNumber, hashedPassword, signupRole, googleId, avatar]
         );
         user = inserted.rows[0];
         break;

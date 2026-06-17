@@ -18,7 +18,12 @@ const uploadMaterials = asyncHandler(async (req, res) => {
 
 // DELETE /api/courses/:courseId/modules/:moduleId/materials/:materialId
 const deleteMaterial = asyncHandler(async (req, res) => {
-  await deleteMaterialService({ moduleId: req.params.moduleId, materialId: req.params.materialId });
+  await deleteMaterialService({
+    moduleId: req.params.moduleId,
+    materialId: req.params.materialId,
+    password: req.body?.password,
+    adminId: req.user.id,
+  });
   return res.json(new ApiResponse(200, null, "Material deleted successfully"));
 });
 

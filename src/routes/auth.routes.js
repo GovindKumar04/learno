@@ -30,7 +30,7 @@ import {
 } from "../validations/auth.validation.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
-import { upload } from "../middlewares/multer.middleware.js";
+import { uploadImage } from "../middlewares/multer.middleware.js";
 import { authLimiter } from "../middlewares/rateLimit.middleware.js";
 
 const authrouter = express.Router();
@@ -47,7 +47,7 @@ authrouter.post("/logout", logoutUser);
 authrouter.post("/refresh", refreshAccessToken);
 authrouter.get("/me", verifyJWT, getCurrentUser);
 authrouter.patch("/complete-profile", verifyJWT, validate(completeProfileSchema), completeProfile);
-authrouter.patch("/avatar", verifyJWT, upload.single("avatar"), updateAvatar);
+authrouter.patch("/avatar", verifyJWT, uploadImage.single("avatar"), updateAvatar);
 authrouter.post("/change-password", verifyJWT, authLimiter, changePassword);
 authrouter.get("/users", verifyJWT, requireRole("admin"), getUsers);
 

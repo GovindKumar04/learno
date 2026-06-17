@@ -41,7 +41,7 @@ const updateBatch = asyncHandler(async (req, res) => {
 
 // DELETE /batches/:id  (admin)
 const deleteBatch = asyncHandler(async (req, res) => {
-  await deleteBatchService(req.params.id);
+  await deleteBatchService({ id: req.params.id, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, null, "Batch deleted successfully"));
 });
 

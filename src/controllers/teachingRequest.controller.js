@@ -13,6 +13,7 @@ const createTeachingRequest = asyncHandler(async (req, res) => {
   const { request, reSubmitted } = await createTeachingRequestService({
     instructorId: req.user.id,
     courseId: req.body.courseId,
+    mode: req.body.mode,
     message: req.body.message,
   });
   return res
@@ -44,7 +45,7 @@ const updateTeachingRequestStatus = asyncHandler(async (req, res) => {
 
 // DELETE /teaching-requests/:id  (admin removes; instructor withdraws their own)
 const deleteTeachingRequest = asyncHandler(async (req, res) => {
-  const result = await deleteTeachingRequestService({ id: req.params.id, user: req.user });
+  const result = await deleteTeachingRequestService({ id: req.params.id, user: req.user, password: req.body?.password });
   const message = result.deleted ? "Teaching request removed" : "Teaching request withdrawn";
   return res.json(new ApiResponse(200, result, message));
 });

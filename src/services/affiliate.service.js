@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import pool from "../config/db.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendAffiliateApprovalMail, sendAffiliateRejectionMail } from "../utils/mail.util.js";
+import { verifyAdminPassword } from "../utils/deleteGuard.util.js";
+import { newId } from "../utils/id.util.js";
 
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
@@ -20,7 +22,7 @@ export const applyAffiliateService = async ({ full_name, email, phone, bio, soci
   const social_links = raw
     .map((s) => ({ platform: String(s?.platform || "").trim(), url: String(s?.url || "").trim() }))
     .filter((s) => s.url);
-
+  
   const existingAff = await pool.query(
     `SELECT a.id FROM affiliates a JOIN users u ON u.id = a.user_id WHERE lower(u.email) = lower($1)`,
     [email.trim()]
@@ -29,10 +31,10 @@ export const applyAffiliateService = async ({ full_name, email, phone, bio, soci
 
   try {
     const result = await pool.query(
-      `INSERT INTO affiliate_applications (full_name, email, phone, bio, social_links)
-       VALUES ($1, $2, $3, $4, $5::jsonb)
+      `INSERT INTO affiliate_applications (id, full_name, email, phone, bio, social_links)
+       VALUES ($1, $2, $3, $4, $5, $6::jsonb)
        RETURNING id, full_name, email, status, created_at`,
-      [full_name.trim(), email.trim(), phone?.trim() || null, bio?.trim() || null, JSON.stringify(social_links)]
+      [newId(), full_name.trim(), email.trim(), phone?.trim() || null, bio?.trim() || null, JSON.stringify(social_links)]
     );
     return result.rows[0];
   } catch (e) {
@@ -147,9 +149,9 @@ export const reviewApplicationService = async ({ id, action, review_note }) => {
     await client.query("BEGIN");
 
     const userIns = await client.query(
-      `INSERT INTO users (full_name, email, password, role, phone, location)
-       VALUES ($1, $2, $3, 'affiliate', $4, $5) RETURNING id`,
-      [application.full_name, application.email, hashed, application.phone || "N/A", "Not specified"]
+      `INSERT INTO users (id, full_name, email, password, role, phone, location)
+       VALUES ($1, $2, $3, $4, 'affiliate', $5, $6) RETURNING id`,
+      [newId(), application.full_name, application.email, hashed, application.phone || "N/A", "Not specified"]
     );
     const userId = userIns.rows[0].id;
 
@@ -160,10 +162,10 @@ export const reviewApplicationService = async ({ id, action, review_note }) => {
       if (clash.rows.length === 0) { code = candidate; break; }
     }
     if (!code) throw new ApiError(500, "Could not generate a referral code, please retry");
-
+    
     await client.query(
-      `INSERT INTO affiliates (user_id, code, bio, social_links) VALUES ($1, $2, $3, $4::jsonb)`,
-      [userId, code, application.bio, JSON.stringify(application.social_links || [])]
+      `INSERT INTO affiliates (id, user_id, code, bio, social_links) VALUES ($1, $2, $3, $4, $5::jsonb)`,
+      [newId(), userId, code, application.bio, JSON.stringify(application.social_links || [])]
     );
 
     await client.query(
@@ -312,8 +314,8 @@ export const getResourcesService = async (user) => {
 export const createResourceService = async ({ title, description, url }) => {
   if (!title?.trim() || !url?.trim()) throw new ApiError(400, "Title and URL are required");
   const result = await pool.query(
-    `INSERT INTO affiliate_resources (title, description, url) VALUES ($1, $2, $3) RETURNING *`,
-    [title.trim(), description?.trim() || null, url.trim()]
+    `INSERT INTO affiliate_resources (id, title, description, url) VALUES ($1, $2, $3, $4) RETURNING *`,
+    [newId(), title.trim(), description?.trim() || null, url.trim()]
   );
   return result.rows[0];
 };
@@ -339,7 +341,8 @@ export const updateResourceService = async ({ id, title, description, url, is_ac
   return result.rows[0];
 };
 
-export const deleteResourceService = async (id) => {
+export const deleteResourceService = async ({ id, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
   const result = await pool.query("DELETE FROM affiliate_resources WHERE id = $1 RETURNING id", [id]);
   if (result.rows.length === 0) throw new ApiError(404, "Resource not found");
   return { id: result.rows[0].id };

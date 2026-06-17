@@ -126,8 +126,8 @@ export const loginUser = asyncHandler(async (req, res) => {
 
 // POST /auth/google  (public) — sign in / sign up with a Google ID token
 export const googleAuth = asyncHandler(async (req, res) => {
-  const { idToken } = req.body;
-  const { user, accessToken, refreshToken, profileComplete } = await googleAuthService({ idToken });
+  const { idToken, role } = req.body;
+  const { user, accessToken, refreshToken, profileComplete } = await googleAuthService({ idToken, role });
 
   return res
     .status(200)

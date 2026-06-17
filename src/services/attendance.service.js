@@ -2,6 +2,7 @@ import { Attendance } from "../models/attendance.model.js";
 import { Batch } from "../models/batch.model.js";
 import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
+import { isUuid } from "../utils/id.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
 import pool from "../config/db.js";
@@ -10,7 +11,7 @@ const VALID_STATUS = ["present", "absent", "leave"];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 async function fetchUsersMap(ids) {
-  const unique = [...new Set(ids.filter(Boolean))];
+  const unique = [...new Set(ids.filter(isUuid))];
   if (unique.length === 0) return {};
   const placeholders = unique.map((_, i) => `$${i + 1}`).join(", ");
   const result = await pool.query(
@@ -46,6 +47,11 @@ export const markAttendanceService = async ({
     throw new ApiError(400, "records must be a non-empty array");
 
   const batch = await loadBatchAuthorized(batchId, user);
+  // Live batches record attendance per live session (onlineClassId), not by date.
+  // Marking one here would write batchId docs the student's live view never reads.
+  if (batch.mode === "live") {
+    throw new ApiError(400, "This is a live batch — mark attendance from its live class, not by date.");
+  }
   const roster = new Set((batch.studentIds || []).map(String));
 
   // Don't let a batch exceed its course's planned number of classes. Editing an

@@ -46,6 +46,6 @@ export const updateBlog = asyncHandler(async (req, res) => {
 
 // DELETE /blogs/:id  (admin)
 export const deleteBlog = asyncHandler(async (req, res) => {
-  await deleteBlogService(req.params.id);
+  await deleteBlogService({ id: req.params.id, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, {}, "Blog deleted"));
 });

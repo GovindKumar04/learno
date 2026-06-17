@@ -4,6 +4,8 @@ import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendBroadcastMail } from "../utils/mail.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
+import { escapeRegex } from "../utils/deleteGuard.util.js";
+import { isUuid } from "../utils/id.util.js";
 import pool from "../config/db.js";
 
 export const checkMyEnrollmentService = async ({ userId, courseId }) => {
@@ -124,8 +126,8 @@ export const getCourseStudentsService = async ({ courseId, query, user }) => {
 
   if (enrollments.length === 0) return { students: [], total: 0, page: pageNum, limit: limitNum };
 
-  const userIds = enrollments.map((e) => e.userId);
-  const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
+  const userIds = [...new Set(enrollments.map((e) => e.userId).filter(isUuid))];
+  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
   const usersResult = await pool.query(
     `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
     userIds
@@ -189,8 +191,8 @@ export const getAllEnrollmentsService = async (query) => {
       ),
       Course.find({
         $or: [
-          { title: { $regex: term, $options: "i" } },
-          { category: { $regex: term, $options: "i" } },
+          { title: { $regex: escapeRegex(term), $options: "i" } },
+          { category: { $regex: escapeRegex(term), $options: "i" } },
         ],
       }).select("_id"),
     ]);
@@ -220,14 +222,17 @@ export const getAllEnrollmentsService = async (query) => {
     return { enrollments: [], total, page: pageNum, limit: limitNum, totalPages };
   }
 
-  const userIds = enrollments.map((e) => e.userId);
-  const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
-    userIds
-  );
+  // Only look up valid-UUID ids (legacy bigint refs can't exist in the new users table).
+  const userIds = [...new Set(enrollments.map((e) => e.userId).filter(isUuid))];
   const usersMap = {};
-  usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+  if (userIds.length) {
+    const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
+    const usersResult = await pool.query(
+      `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
+      userIds
+    );
+    usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+  }
 
   const data = enrollments.map((e) => ({
     id: e._id,
@@ -242,14 +247,14 @@ export const getAllEnrollmentsService = async (query) => {
 
 export const getUnenrolledStudentsService = async ({ search = "" }) => {
   // ids with an active enrollment (from Mongo) — userId is a string copy of the
-  // BIGINT users.id.
-  const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
+  // UUID users.id. Drop any legacy non-UUID refs so the ::uuid[] cast can't fail.
+  const enrolledIds = (await Enrollment.find({ isActive: true }).distinct("userId")).filter(isUuid);
 
   // Do the anti-join in Postgres so we never pull the whole users table into
   // Node (the old code SELECTed every student then filtered in a JS Set).
   const conditions = ["role = 'student'"];
-  const params = [enrolledIds.map(String)];
-  conditions.push(`NOT (id = ANY($1::bigint[]))`); // empty array → excludes nobody
+  const params = [enrolledIds];
+  conditions.push(`NOT (id = ANY($1::uuid[]))`); // empty array → excludes nobody
 
   if (search.trim()) {
     params.push(`%${search.trim()}%`);
@@ -275,10 +280,10 @@ export const broadcastEmailService = async ({ subject, message, userIds }) => {
   } else {
     // All unenrolled students — anti-join in Postgres rather than fetching every
     // student and filtering in a JS Set.
-    const enrolledIds = await Enrollment.find({ isActive: true }).distinct("userId");
+    const enrolledIds = (await Enrollment.find({ isActive: true }).distinct("userId")).filter(isUuid);
     const all = await pool.query(
-      `SELECT id FROM users WHERE role = 'student' AND NOT (id = ANY($1::bigint[]))`,
-      [enrolledIds.map(String)]
+      `SELECT id FROM users WHERE role = 'student' AND NOT (id = ANY($1::uuid[]))`,
+      [enrolledIds]
     );
     targetIds = all.rows.map((r) => r.id);
   }

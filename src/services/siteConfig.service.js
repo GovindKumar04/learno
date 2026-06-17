@@ -30,6 +30,7 @@ export const DEFAULT_CONFIG = {
     { question: "Are there flexible payment options?",     answer: "Yes. We offer EMI and installment options. Contact our team for details.", order: 6 },
     { question: "Do you provide placement support?",       answer: "Yes. We assist with resume building, mock interviews, and connecting students with our hiring partners.", order: 7 },
   ],
+  offers: [],
 };
 
 export const getSiteConfigService = async () => {
@@ -40,11 +41,12 @@ export const getSiteConfigService = async () => {
   });
 };
 
-export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs }) => {
+export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, offers }) => {
   const update = {};
   if (milestones)  update.milestones  = milestones;
   if (whyChooseUs) update.whyChooseUs = whyChooseUs;
   if (faqs)        update.faqs        = faqs;
+  if (offers)      update.offers      = offers;
 
   const saved = await SiteConfig.findOneAndUpdate({}, update, { new: true, upsert: true, runValidators: true });
   await cacheDel(SITE_CONFIG_KEY);

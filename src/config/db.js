@@ -8,11 +8,6 @@ const pool = new Pool({
   idleTimeoutMillis: 30000,
   max: 10,
 });
-// const pool = new Pool({
-//   host:'db.bikbtqnpcixsdhrqlqei.supabase.co',
-//   port:'5432',
-//   database:'postgres',
-//   user:'postgres'
-// });
+
 
 export default pool;

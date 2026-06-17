@@ -6,6 +6,8 @@ import { Attendance } from "../models/attendance.model.js";
 import { Batch } from "../models/batch.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendOnlineClassMail } from "../utils/mail.util.js";
+import { isUuid } from "../utils/id.util.js";
+import { verifyAdminPassword, assertNoDependents } from "../utils/deleteGuard.util.js";
 import pool from "../config/db.js";
 
 const VALID_STATUS = ["present", "absent", "leave"];
@@ -35,7 +37,7 @@ function ymd(date) {
 
 // Fetch { id → user } map from PostgreSQL for a list of UUIDs
 async function fetchUsersMap(ids) {
-  const unique = [...new Set(ids.filter(Boolean))];
+  const unique = [...new Set(ids.filter(isUuid))];
   if (unique.length === 0) return {};
   const placeholders = unique.map((_, i) => `$${i + 1}`).join(", ");
   const result = await pool.query(
@@ -95,8 +97,8 @@ async function validateInstructor(courseId, instructorId) {
   const course = await Course.findById(courseId).select("_id");
   if (!course) throw new ApiError(404, "Course not found");
 
-  const approved = await TeachingRequest.findOne({ courseId, instructorId, status: "approved" });
-  if (!approved) throw new ApiError(400, "Instructor must have an approved teaching request for this course");
+  const approved = await TeachingRequest.findOne({ courseId, instructorId, mode: "live", status: "approved" });
+  if (!approved) throw new ApiError(400, "Instructor must have an approved live teaching request for this course");
 }
 
 // Map a stored doc + a users map into the API shape. `batch` is the populated
@@ -138,7 +140,7 @@ export const getOnlineClassOptionsService = async (courseId) => {
   if (!course) throw new ApiError(404, "Course not found");
 
   const [approvedReqs, liveBatches] = await Promise.all([
-    TeachingRequest.find({ courseId, status: "approved" }).select("instructorId"),
+    TeachingRequest.find({ courseId, mode: "live", status: "approved" }).select("instructorId"),
     Batch.find({ courseId, mode: "live" }).select("name instructorId studentIds"),
   ]);
   const usersMap = await fetchUsersMap(approvedReqs.map((r) => r.instructorId));
@@ -202,7 +204,7 @@ export const getInstructorOnlineClassesService = async (instructorId) => {
     .sort({ startTime: 1 });
   const usersMap = await fetchUsersMap([instructorId]);
 
-  const approved = await TeachingRequest.find({ instructorId, status: "approved" })
+  const approved = await TeachingRequest.find({ instructorId, mode: "live", status: "approved" })
     .populate("courseId", "title thumbnail slug modes");
 
   const courseMap = new Map();
@@ -285,11 +287,17 @@ export const updateOnlineClassService = async ({ id, body }) => {
   return onlineClass;
 };
 
-export const deleteOnlineClassService = async (id) => {
-  const onlineClass = await OnlineClass.findByIdAndDelete(id);
+export const deleteOnlineClassService = async ({ id, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
+  const onlineClass = await OnlineClass.findById(id);
   if (!onlineClass) throw new ApiError(404, "Online class not found");
-  // Remove the attendance record tied to this live session, if any.
-  await Attendance.deleteOne({ onlineClassId: id });
+
+  // Block while attendance has been recorded for this live session.
+  const attendance = await Attendance.countDocuments({ onlineClassId: id });
+  assertNoDependents("live class", [{ label: "attendance record(s)", count: attendance }]);
+
+  await OnlineClass.findByIdAndDelete(id);
 };
 
 // ─── Live-class attendance ───────────────────────────────────
@@ -301,6 +309,37 @@ async function loadOnlineClassAuthorized(id, user) {
     throw new ApiError(403, "You are not assigned to this live class");
   }
   return onlineClass;
+}
+
+// When may attendance be marked/edited, and by whom?
+//   • before the class starts → nobody.
+//   • during the class [start, start+duration] → INSTRUCTOR only (marks it live).
+//   • after the class ends → ADMIN only. The admin can set or change attendance
+//     freely after the class, whether or not it was already marked. Instructors
+//     are locked out once the class is over.
+// Returns { canMark, phase, status, reason }.
+function liveMarkPermission(onlineClass, user) {
+  const start = new Date(onlineClass.startTime).getTime();
+  const end = start + (onlineClass.durationMins || 60) * 60 * 1000;
+  const now = Date.now();
+  const phase = now < start ? "before" : now <= end ? "during" : "after";
+
+  if (phase === "before") {
+    return { canMark: false, phase, status: 400, reason: "Attendance can't be marked before the class starts." };
+  }
+
+  if (phase === "during") {
+    if (user.role === "admin") {
+      return { canMark: false, phase, status: 403, reason: "Admins edit attendance after the class ends — the instructor marks it live during the class." };
+    }
+    return { canMark: true, phase, status: 200, reason: "" }; // instructor
+  }
+
+  // After the class has ended → admin only (can create or correct).
+  if (user.role === "admin") {
+    return { canMark: true, phase, status: 200, reason: "" };
+  }
+  return { canMark: false, phase, status: 403, reason: "The class has ended — only an admin can edit attendance now." };
 }
 
 // GET /online-classes/:id/attendance (instructor/admin) — roster + any saved marks
@@ -321,15 +360,21 @@ export const getLiveClassAttendanceService = async ({ id, user }) => {
     status: statusMap[String(uid)] || "present",
   }));
 
+  const perm = liveMarkPermission(onlineClass, user);
+
   return {
     onlineClass: {
       id: onlineClass._id,
       title: onlineClass.title,
       startTime: onlineClass.startTime,
+      durationMins: onlineClass.durationMins,
       course: onlineClass.courseId,
     },
     roster,
     marked: !!session,
+    canMark: perm.canMark,
+    markPhase: perm.phase,      // before | during | after
+    markReason: perm.reason,    // why marking is blocked (if it is)
   };
 };
 
@@ -341,6 +386,10 @@ export const markLiveClassAttendanceService = async ({ id, records, user }) => {
 
   const onlineClass = await loadOnlineClassAuthorized(id, user);
   const courseId = onlineClass.courseId?._id || onlineClass.courseId;
+
+  // Time/role window: blocked before start; instructor or admin during; admin only after end.
+  const perm = liveMarkPermission(onlineClass, user);
+  if (!perm.canMark) throw new ApiError(perm.status, perm.reason);
 
   const roster = new Set(await liveAudienceUserIds(onlineClass));
 

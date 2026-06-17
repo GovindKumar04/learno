@@ -7,6 +7,12 @@ import {
   getCourseBySlug,
   updateCourse,
   deleteCourse,
+  getTrending,
+  getTopRated,
+  getRecommended,
+  getBecauseYouViewed,
+  recordCourseView,
+  logSearch,
 } from "../controllers/course.controller.js";
 import {
   createModule,
@@ -42,8 +48,19 @@ courseRouter.post(
 );
 courseRouter.get("/", optionalAuth, getAllCourses);
 courseRouter.get("/categories", optionalAuth, getCourseCategories);  // distinct categories
+
+// ─── Home-page discovery ──────────────────────────────────────
+// Declared BEFORE the "/:courseId" catch-all so these literal paths aren't
+// swallowed as a course id.
+courseRouter.get("/trending", optionalAuth, getTrending);
+courseRouter.get("/top-rated", optionalAuth, getTopRated);
+courseRouter.get("/recommended", optionalAuth, getRecommended);
+courseRouter.get("/because-you-viewed", optionalAuth, getBecauseYouViewed);
+courseRouter.post("/search-log", optionalAuth, logSearch);
+
 courseRouter.get("/slug/:slug", optionalAuth, getCourseBySlug);  // by URL slug
 courseRouter.get("/:courseId", optionalAuth, getCourseById);
+courseRouter.post("/:courseId/view", optionalAuth, recordCourseView);
 
 courseRouter.patch(
   "/:courseId",

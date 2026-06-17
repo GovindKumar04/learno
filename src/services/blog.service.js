@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { Blog } from "../models/blog.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
+import { verifyAdminPassword } from "../utils/deleteGuard.util.js";
 import { getOrSet, nsKey, bumpNs } from "../utils/cache.js";
 
 const BLOGS_NS = "blogs";
@@ -36,11 +37,12 @@ export const createBlogService = async ({ body, file, author }) => {
     throw new ApiError(400, "Title and content are required");
   }
 
-  let coverImage = "", coverImagePublicId = "";
+  let coverImage = "", coverImagePublicId = "", coverImageType = "image";
   if (file) {
     const uploaded = await uploadToCloudinary(file.path, file.mimetype, "blog-covers");
     coverImage = uploaded.url;
     coverImagePublicId = uploaded.publicId;
+    coverImageType = uploaded.resourceType === "video" ? "video" : "image";
   }
 
   const blog = await Blog.create({
@@ -52,12 +54,31 @@ export const createBlogService = async ({ body, file, author }) => {
     category: category.trim(),
     coverImage,
     coverImagePublicId,
+    coverImageType,
     author: author || "Fillip Skill Academy",
     isPublished: isPublished === undefined ? true : toBool(isPublished),
   });
 
   await bumpNs(BLOGS_NS);
+  // Keep the collection capped — drop the oldest posts beyond MAX_BLOGS.
+  await pruneOldBlogs();
   return blog;
+};
+
+// Only the most recent MAX_BLOGS posts are retained; adding a new post past the
+// cap auto-deletes the oldest (and its cover image).
+const MAX_BLOGS = 5;
+const pruneOldBlogs = async () => {
+  const count = await Blog.countDocuments();
+  if (count <= MAX_BLOGS) return;
+  const oldest = await Blog.find().sort({ createdAt: 1 }).limit(count - MAX_BLOGS);
+  for (const b of oldest) {
+    if (b.coverImagePublicId) {
+      await deleteFromCloudinary(b.coverImagePublicId, b.coverImageType || "image").catch(() => {});
+    }
+    await Blog.findByIdAndDelete(b._id);
+  }
+  await bumpNs(BLOGS_NS);
 };
 
 export const getAllBlogsService = async ({ query, isAdmin }) => {
@@ -103,7 +124,7 @@ export const updateBlogService = async ({ id, body, file }) => {
   const blog = await Blog.findById(id);
   if (!blog) throw new ApiError(404, "Blog post not found");
 
-  const { title, content, category, excerpt, readTime, isPublished } = body;
+  const { title, content, category, excerpt, readTime, isPublished, removeCover } = body;
   if (title !== undefined) blog.title = title.trim();
   if (category !== undefined) blog.category = category.trim();
   if (content !== undefined) blog.content = content;
@@ -118,10 +139,18 @@ export const updateBlogService = async ({ id, body, file }) => {
   }
 
   if (file) {
-    if (blog.coverImagePublicId) await deleteFromCloudinary(blog.coverImagePublicId, "image");
+    // Replace the cover (image or video).
+    if (blog.coverImagePublicId) await deleteFromCloudinary(blog.coverImagePublicId, blog.coverImageType || "image");
     const uploaded = await uploadToCloudinary(file.path, file.mimetype, "blog-covers");
     blog.coverImage = uploaded.url;
     blog.coverImagePublicId = uploaded.publicId;
+    blog.coverImageType = uploaded.resourceType === "video" ? "video" : "image";
+  } else if (toBool(removeCover)) {
+    // Remove the cover entirely.
+    if (blog.coverImagePublicId) await deleteFromCloudinary(blog.coverImagePublicId, blog.coverImageType || "image");
+    blog.coverImage = "";
+    blog.coverImagePublicId = "";
+    blog.coverImageType = "image";
   }
 
   await blog.save();
@@ -129,11 +158,13 @@ export const updateBlogService = async ({ id, body, file }) => {
   return blog;
 };
 
-export const deleteBlogService = async (id) => {
+export const deleteBlogService = async ({ id, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
   const blog = await Blog.findById(id);
   if (!blog) throw new ApiError(404, "Blog post not found");
 
-  if (blog.coverImagePublicId) await deleteFromCloudinary(blog.coverImagePublicId, "image");
+  if (blog.coverImagePublicId) await deleteFromCloudinary(blog.coverImagePublicId, blog.coverImageType || "image");
   await Blog.findByIdAndDelete(id);
   await bumpNs(BLOGS_NS);
 };

@@ -16,11 +16,16 @@ const teachingRequestSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
-    // Approval to teach a course (covers classroom batches and live classes).
+    // The delivery mode this request is for. An instructor applies once per mode,
+    // so they can teach the same course in several modes via separate requests.
+    //   self-paced → recorded course content
+    //   classroom  → in-person batches
+    //   live       → Zoom / Google Meet classes
     mode: {
       type: String,
-      enum: ["classroom"],
+      enum: ["self-paced", "classroom", "live"],
       default: "classroom",
+      required: true,
     },
     status: {
       type: String,
@@ -45,7 +50,8 @@ const teachingRequestSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-// One request per instructor+course (re-request handled by re-opening the row)
-teachingRequestSchema.index({ instructorId: 1, courseId: 1 }, { unique: true });
+// One request per instructor+course+mode (re-request handled by re-opening the row).
+// An instructor can hold separate requests for different modes of the same course.
+teachingRequestSchema.index({ instructorId: 1, courseId: 1, mode: 1 }, { unique: true });
 
 export const TeachingRequest = mongoose.model("TeachingRequest", teachingRequestSchema);

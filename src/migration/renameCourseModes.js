@@ -44,7 +44,7 @@ const run = async () => {
         },
       },
     },
-  ]);
+  ], { updatePipeline: true }); // Mongoose 9 requires this flag for aggregation-pipeline updates
   console.log(`Courses scanned: ${courseRes.matchedCount}, modified: ${courseRes.modifiedCount}`);
 
   // Enrollment.enrollmentType: scalar swaps.

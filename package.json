@@ -40,8 +40,12 @@
     "migrate:indexes": "node src/migration/addPerformanceIndexes.js",
     "migrate:audit": "node src/migration/addAuditLog.js",
     "migrate:google": "node src/migration/addGoogleAuth.js",
+    "db:init": "node src/migration/createSchema.js",
+    "seed:admin": "node src/migration/seedAdmin.js",
+    "clean:legacy": "node src/migration/cleanLegacyUserRefs.js",
     "migrate:tables": "node src/migration/addPaymentsAndAffiliates.js",
     "migrate:modes": "node src/migration/renameCourseModes.js",
+    "migrate:teaching-modes": "node src/migration/addTeachingModeIndex.js",
     "migrate": "node src/migration/addPaymentsAndAffiliates.js && node src/migration/addRollNumbers.js && node src/migration/addEmailVerification.js && node src/migration/addPasswordReset.js && node src/migration/addPerformanceIndexes.js && node src/migration/addAuditLog.js && node src/migration/addGoogleAuth.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

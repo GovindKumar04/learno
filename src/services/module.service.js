@@ -4,6 +4,7 @@ import { Material } from "../models/material.model.js";
 import { deleteFromCloudinary } from "../utils/cloudinary.util.js";
 import { ApiError } from "../utils/ApiError.js";
 import { hasOnlineCourseAccess, stripMaterialUrls } from "../utils/courseAccess.js";
+import { verifyAdminPassword, assertNoDependents } from "../utils/deleteGuard.util.js";
 
 export const createModuleService = async ({ courseId, title, description, order, topics, skills, project }) => {
   const course = await Course.findById(courseId);
@@ -57,15 +58,15 @@ export const updateModuleService = async ({ courseId, moduleId, updates }) => {
   return mod;
 };
 
-export const deleteModuleService = async ({ courseId, moduleId }) => {
-  const mod = await Module.findById(moduleId).populate("materials");
+export const deleteModuleService = async ({ courseId, moduleId, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
+  const mod = await Module.findById(moduleId);
   if (!mod) throw new ApiError(404, "Module not found");
 
-  for (const mat of mod.materials) {
-    const resType = mat.type === "video" ? "video" : mat.type === "pdf" ? "raw" : "image";
-    await deleteFromCloudinary(mat.publicId, resType);
-    await Material.findByIdAndDelete(mat._id);
-  }
+  // Block while it still has materials — delete those first.
+  const materials = await Material.countDocuments({ module: moduleId });
+  assertNoDependents("module", [{ label: "material(s)", count: materials }]);
 
   await Course.findByIdAndUpdate(courseId, { $pull: { modules: mod._id } });
   await Module.findByIdAndDelete(mod._id);

@@ -37,8 +37,10 @@ change that needs a human — acknowledge it and point them to the team via the 
 - You can leave a course review once enrolled.
 
 # Instructors
-- To teach, submit a "Request to Teach" (from the site / instructor entry points). An admin
-  reviews and approves it; once approved you get instructor access.
+- To teach, submit a "Request to Teach" (from the site / instructor entry points). You apply
+  per delivery mode the course offers — self-paced, classroom, and/or live — and can request
+  more modes later. An admin reviews and approves each request; once approved you get
+  instructor access for that mode (classroom → batches, live → online classes).
 - Instructor portal is at /instructor: see "My Courses" and, per course, your batches.
 - You mark attendance for your own batches (pick the batch and date, mark each student
   present/absent). This feeds students' offline certificates.

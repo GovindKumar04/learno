@@ -1,25 +1,26 @@
+import "dotenv/config";
 import pool from "../config/db.js";
 
 async function createTables() {
     try {
 
-        // Enable UUID extension
+        // Enable UUID extension (gen_random_uuid as a fallback id generator)
         await pool.query(`
             CREATE EXTENSION IF NOT EXISTS "pgcrypto";
         `);
 
-        // Create ENUM
+        // Create ENUM (idempotent — Postgres has no CREATE TYPE IF NOT EXISTS)
         await pool.query(`
-            CREATE TYPE user_role AS ENUM (
-                'student',
-                'instructor',
-                'admin'
-            );
+            DO $$ BEGIN
+                CREATE TYPE user_role AS ENUM ('student', 'instructor', 'admin');
+            EXCEPTION WHEN duplicate_object THEN NULL;
+            END $$;
         `);
 
-        // Create users table
+        // Create users table — UUID primary key (app supplies a UUIDv7; the
+        // gen_random_uuid() default is only a safety net).
         await pool.query(`
-            CREATE TABLE users (
+            CREATE TABLE IF NOT EXISTS users (
 
                 id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 

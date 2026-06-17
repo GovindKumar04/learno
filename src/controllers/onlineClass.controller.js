@@ -50,7 +50,7 @@ const updateOnlineClass = asyncHandler(async (req, res) => {
 
 // DELETE /online-classes/:id  (admin)
 const deleteOnlineClass = asyncHandler(async (req, res) => {
-  await deleteOnlineClassService(req.params.id);
+  await deleteOnlineClassService({ id: req.params.id, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, null, "Online class deleted successfully"));
 });
 

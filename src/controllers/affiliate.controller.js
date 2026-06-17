@@ -93,7 +93,7 @@ const updateResource = asyncHandler(async (req, res) => {
 
 // DELETE /affiliates/resources/:id  (admin)
 const deleteResource = asyncHandler(async (req, res) => {
-  const data = await deleteResourceService(req.params.id);
+  const data = await deleteResourceService({ id: req.params.id, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, data, "Resource deleted"));
 });
 

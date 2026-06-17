@@ -1,6 +1,7 @@
 import { Testimonial } from "../models/testimonial.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
+import { verifyAdminPassword } from "../utils/deleteGuard.util.js";
 import { getOrSet, nsKey, bumpNs } from "../utils/cache.js";
 
 const TESTIMONIALS_NS = "testimonials";
@@ -86,7 +87,9 @@ export const updateTestimonialService = async ({ id, body, file }) => {
   return t;
 };
 
-export const deleteTestimonialService = async (id) => {
+export const deleteTestimonialService = async ({ id, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+
   const t = await Testimonial.findById(id);
   if (!t) throw new ApiError(404, "Testimonial not found");
 

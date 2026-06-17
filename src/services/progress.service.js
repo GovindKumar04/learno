@@ -5,6 +5,7 @@ import { Module } from "../models/module.model.js";
 import { TeachingRequest } from "../models/teachingRequest.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
+import { isUuid } from "../utils/id.util.js";
 import pool from "../config/db.js";
 
 // Recalculate completionPercent for a progress document
@@ -127,8 +128,8 @@ export const getCourseProgressService = async ({ courseId, query, user }) => {
     return { students: [], total: 0, courseTitle: course.title };
   }
 
-  const userIds = progressDocs.map((p) => p.userId);
-  const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
+  const userIds = [...new Set(progressDocs.map((p) => p.userId).filter(isUuid))];
+  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
   const usersResult = await pool.query(
     `SELECT id, full_name, email, avatar FROM users WHERE id IN (${placeholders})`,
     userIds

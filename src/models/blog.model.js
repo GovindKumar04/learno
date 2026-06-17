@@ -15,6 +15,9 @@ const blogSchema = new mongoose.Schema(
 
     coverImage: { type: String, default: "" },
     coverImagePublicId: { type: String, default: "" },
+    // "image" or "video" — drives how the cover is rendered (img vs video) and
+    // how it's deleted from Cloudinary.
+    coverImageType: { type: String, enum: ["image", "video"], default: "image" },
 
     category: { type: String, default: "", trim: true },
     readTime: { type: String, default: "" }, // e.g. "5 min read"

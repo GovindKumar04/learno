@@ -6,6 +6,7 @@ import { Attendance } from "../models/attendance.model.js";
 import { OnlineClass } from "../models/onlineClass.model.js";
 import { Enrollment } from "../models/enrollment.model.js";
 import { ApiError } from "../utils/ApiError.js";
+import { isUuid } from "../utils/id.util.js";
 import { sendCertificateMail } from "../utils/mail.util.js";
 import { generateCertificatePDF, buildCertificateNo } from "../utils/certificate.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
@@ -14,7 +15,9 @@ import pool from "../config/db.js";
 
 // Bulk: every (userId, courseId) offline pair that currently meets the bar.
 async function offlineCompletions() {
-  const batches = await Batch.find({}).select("courseId studentIds");
+  // Classroom batches only — live batches record attendance under onlineClassId
+  // and are handled by liveCompletions(), measured against totalLiveClasses.
+  const batches = await Batch.find({ mode: { $ne: "live" } }).select("courseId studentIds");
   if (batches.length === 0) return [];
 
   const courseIds = [...new Set(batches.map((b) => b.courseId.toString()))];
@@ -168,8 +171,8 @@ export const getEligibleStudentsService = async () => {
   const courseMap = {};
   courses.forEach((c) => (courseMap[c._id.toString()] = c.title));
 
-  const userIds = [...new Set(allRows.map((r) => r.userId))];
-  const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
+  const userIds = [...new Set(allRows.map((r) => r.userId).filter(isUuid))];
+  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
   const usersResult = await pool.query(
     `SELECT id, full_name, email, roll_number, avatar FROM users
        WHERE role = 'student' AND id IN (${placeholders})`,

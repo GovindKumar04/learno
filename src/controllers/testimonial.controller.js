@@ -40,6 +40,6 @@ export const updateTestimonial = asyncHandler(async (req, res) => {
 
 // DELETE /testimonials/:id (admin)
 export const deleteTestimonial = asyncHandler(async (req, res) => {
-  await deleteTestimonialService(req.params.id);
+  await deleteTestimonialService({ id: req.params.id, password: req.body?.password, adminId: req.user.id });
   return res.json(new ApiResponse(200, {}, "Testimonial deleted"));
 });
