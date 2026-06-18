@@ -3,6 +3,8 @@
 // client can never request another user's data.
 
 import { getAllCoursesService } from "./course.service.js";
+import { getAllBlogsService } from "./blog.service.js";
+import { getSiteConfigService } from "./siteConfig.service.js";
 import { getMyCoursesService } from "./enrollment.service.js";
 import { getMyBatchesService } from "./batch.service.js";
 import { onboardingSteps } from "../config/knowledgeBase.js";
@@ -28,6 +30,32 @@ const listCourses = async (args = {}) => {
       modes: c.modes,
       slug: c.slug,
     })),
+  };
+};
+
+const listBlogs = async (args = {}) => {
+  const { search, category } = args;
+  const { blogs, total } = await getAllBlogsService({
+    query: { search, category, limit: 6 },
+    isAdmin: false, // published posts only
+  });
+  return {
+    total,
+    blogs: blogs.map((b) => ({
+      title: b.title,
+      category: b.category,
+      excerpt: b.excerpt,
+      slug: b.slug,
+    })),
+  };
+};
+
+const getOffers = async () => {
+  const cfg = await getSiteConfigService();
+  const offers = (cfg.offers || []).filter((o) => o && o.active !== false && o.text);
+  return {
+    count: offers.length,
+    offers: offers.map((o) => ({ text: o.text, link: o.link || null })),
   };
 };
 
@@ -95,6 +123,28 @@ const SCHEMAS = {
       parameters: { type: "object", properties: {} },
     },
   },
+  list_blogs: {
+    type: "function",
+    function: {
+      name: "list_blogs",
+      description: "List the latest published blog posts (title, category, excerpt, slug). Use when the user asks about the blog, articles, guides, or news. Link a post as /blog/{slug}.",
+      parameters: {
+        type: "object",
+        properties: {
+          search: { type: "string", description: "Free-text search over title/excerpt/category" },
+          category: { type: "string", description: "Filter by blog category" },
+        },
+      },
+    },
+  },
+  get_offers: {
+    type: "function",
+    function: {
+      name: "get_offers",
+      description: "Get the current active promotional offers shown in the site's announcement bar. Use when the user asks about offers, discounts, deals or promotions.",
+      parameters: { type: "object", properties: {} },
+    },
+  },
   get_my_courses: {
     type: "function",
     function: {
@@ -115,6 +165,8 @@ const SCHEMAS = {
 
 const EXECUTORS = {
   list_courses: listCourses,
+  list_blogs: listBlogs,
+  get_offers: getOffers,
   get_onboarding_steps: getOnboardingSteps,
   get_my_courses: getMyCourses,
   get_my_batches: getMyBatches,
@@ -122,7 +174,7 @@ const EXECUTORS = {
 
 // Tool names available to a given user (instructor/admin get batch access too).
 const toolNamesFor = (user) => {
-  const names = ["list_courses", "get_onboarding_steps"];
+  const names = ["list_courses", "list_blogs", "get_offers", "get_onboarding_steps"];
   if (user) names.push("get_my_courses");
   if (user && (user.role === "instructor" || user.role === "admin")) names.push("get_my_batches");
   return names;
