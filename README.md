@@ -3,8 +3,24 @@
 REST API for the Fillip Skill Academy platform. Handles authentication & roll
 numbers, course management (modules, materials, reviews), enrollments, learning
 progress, payments, the affiliate program, scholarships, instructor teaching
-requests, offline batches & attendance, the public site config, and the
-contact/enquiry support portal.
+requests, classroom batches & attendance, scheduled **live (Zoom/Meet) classes**
+& their attendance, the public site config, blogs/testimonials CMS, an AI support
+assistant, and the contact/enquiry support portal.
+
+### Delivery modes
+
+A course can be sold and taught in any combination of three **delivery modes**.
+The same vocabulary is used across courses (`modes`), enrollments
+(`enrollmentType`), teaching requests, and batches:
+
+| Mode | Meaning | Price field |
+|------|---------|-------------|
+| `self-paced` | Recorded content the student watches on their own (was "online") | `priceOnline` |
+| `classroom`  | In-person batches at a venue (was "offline") | `priceOffline` |
+| `live`       | Scheduled Zoom / Google Meet sessions | `priceLive` |
+
+> The `priceOnline` / `priceOffline` field names are kept for backward
+> compatibility; they map to `self-paced` / `classroom` respectively.
 
 - **Runtime:** Node.js + Express 5 (ES Modules)
 - **Databases:** PostgreSQL (users / auth, payments, affiliates & commissions) + MongoDB via Mongoose (courses, enrollments, progress, enquiries, scholarships, teaching requests, batches, attendance, site config)
@@ -58,6 +74,7 @@ the admin user/enrollment lists, and is shown on the student dashboard. See
    - [Teaching Requests](#13-teaching-requests----teaching-requests)
    - [Batches](#14-batches----batches)
    - [Attendance](#15-attendance----attendance)
+   - [Online Classes](#23-online-classes----online-classes)
    - [Site Config](#16-site-config----site-config)
    - [Certificates](#17-certificates----certificates-admin)
    - [Mail](#18-mail----mail-admin)
@@ -351,6 +368,24 @@ Every backend route, grouped by router (paths are backend paths — the client a
 | GET | `/attendance?batchId=&date=` | 🎓 / 🛡️ | One session's records |
 | GET | `/attendance/batch/:batchId` | 🎓 / 🛡️ | Session history + counts |
 
+#### `/online-classes` (live Zoom/Meet classes)
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/online-classes/student` | 👤 | Caller's upcoming live classes (+ their live courses) |
+| GET | `/online-classes/instructor` | 🎓 | Live classes the caller teaches (+ approved-live courses) |
+| GET | `/online-classes/:id/attendance` | 🎓 / 🛡️ | Roster + saved marks for a live session |
+| POST | `/online-classes/:id/attendance` | 🎓 / 🛡️ | Upsert live-class attendance (time-windowed) |
+| GET | `/online-classes/course/:courseId/options` | 🛡️ | Approved-live instructors + live batches for a course |
+| GET | `/online-classes` | 🛡️ | All scheduled live classes |
+| POST | `/online-classes` | 🛡️ | Schedule a live class (notifies instructor + audience) |
+| PATCH | `/online-classes/:id` | 🛡️ | Update a live class (re-notifies on time/link/instructor change) |
+| DELETE | `/online-classes/:id` | 🛡️ | Delete a live class (admin-password confirmed) |
+
+#### `/sitemap.xml`
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET | `/sitemap.xml` | 🔓 | Dynamic sitemap built from published courses + static routes |
+
 #### `/certificates` (admin)
 | Method | Path | Auth | Description |
 |--------|------|------|-------------|
@@ -391,6 +426,8 @@ Every backend route, grouped by router (paths are backend paths — the client a
 | DELETE | `/testimonials/:id` | 🛡️ | Delete (audited) |
 
 > **Cross-cutting middleware:** public auth endpoints are rate-limited (`authLimiter`); `/mail`, `/payments`, and comment-like writes use `sensitiveLimiter`; all routes have a general flood limiter + `helmet` + `compression`. Privileged admin mutations are written to an append-only **audit log** (`/audit-logs`). Public read lists (courses, blogs, testimonials, site-config) are cached in Redis when `REDIS_URL` is set.
+
+> **Destructive deletes are guarded** (`utils/deleteGuard.util.js`): deleting a batch or live class re-verifies the admin's password (sent in the request body as `password`) and refuses while dependents exist (e.g. recorded attendance, or live classes linked to a batch).
 
 ---
 
@@ -751,7 +788,7 @@ Aggregated per-course stats. **200** → array of `{ courseId, courseTitle, tota
 | GET    | `/payments/history`       | 🛡️   | All payments + total revenue                   |
 
 #### POST `/payments/create-order` 👤
-**Body** `{ "courseId": "<ObjectId>", "enrollmentType": "online" }` — `enrollmentType` is `online`|`offline` (picks `priceOnline`/`priceOffline`). Returns a pending order (reuses an existing pending one for the same course+type). Rejects if already enrolled (**409**) or price unset (**400**). Returns **503** if Razorpay keys are missing.
+**Body** `{ "courseId": "<ObjectId>", "enrollmentType": "self-paced" }` — `enrollmentType` is `self-paced`|`classroom`|`live` (picks `priceOnline`/`priceOffline`/`priceLive`; defaults to `self-paced`). The chosen mode must be in the course's `modes` (**400** otherwise). Returns a pending order (reuses an existing pending one for the same course+type). Rejects if already enrolled (**409**) or price unset (**400**). Returns **503** if Razorpay keys are missing.
 **200** → `{ orderId, amount, currency, keyId, courseName, enrollmentType }` (amount in paise).
 
 #### POST `/payments/verify` 👤
@@ -849,7 +886,7 @@ stored in **paise**, returned in **rupees**.
 
 ### 14. Batches — `/batches`
 
-> Entire router behind `verifyJWT`. Offline cohorts: an approved instructor + offline-enrolled students.
+> Entire router behind `verifyJWT`. A batch groups students under one instructor + schedule for a single delivery mode — `classroom` (in-person) or `live` (Zoom/Meet). The instructor must hold an **approved teaching request for that mode**, and every student must be enrolled in that same mode.
 
 | Method | Path                                | Auth | Description                                          |
 |--------|-------------------------------------|------|-----------------------------------------------------|
@@ -861,20 +898,23 @@ stored in **paise**, returned in **rupees**.
 | DELETE | `/batches/:id`                      | 🛡️   | Delete a batch                                       |
 
 #### GET `/batches/course/:courseId/options` 🛡️
-**200** → `{ course: { id, title }, instructors: [...], students: [...] }` — instructors with an **approved** teaching request, and **offline, active** enrollees.
+**Query:** `mode` (`classroom` default | `live`). **200** → `{ course: { id, title }, instructors: [...], students: [...] }` — instructors with an **approved** teaching request **for that mode**, and **active enrollees in that mode**.
 
 #### POST `/batches` 🛡️
-**Body** `{ "name", "courseId", "instructorId", "studentIds"?: [], "schedule"?, "location"?, "seats"?, "status"? }`. Validates the instructor is approved and every student is offline-enrolled (**400** otherwise). Emails the schedule/location to all assigned. **201** → batch.
+**Body** `{ "name", "courseId", "instructorId", "studentIds"?: [], "mode"?, "schedule"?, "location"?, "seats"?, "status"? }` — `mode` is `classroom` (default) or `live`. Validates the instructor is approved for that mode and every student is enrolled in it (**400** otherwise). Emails the schedule/location to all assigned. **201** → batch.
 
 #### PATCH `/batches/:id` 🛡️
-Same fields (course is fixed). Re-validates if instructor/roster changes; re-notifies when assignment, schedule, or location changes. **200** → batch.
+Same fields (course **and** mode are fixed once created). Re-validates against the batch's mode if instructor/roster changes; re-notifies when assignment, schedule, or location changes. **200** → batch.
+
+#### DELETE `/batches/:id` 🛡️
+Admin-password confirmed (`{ "password" }` in the body). Refuses while the batch has recorded attendance or any live class linked to it. **200**.
 
 ---
 
 ### 15. Attendance — `/attendance`
 
 > Entire router behind `verifyJWT` + `requireRole("instructor", "admin")`.
-> One session = one batch on one calendar day; instructors are limited to their own batches.
+> This router covers **classroom** attendance — one session = one batch on one calendar day; instructors are limited to their own batches. **Live-class** attendance is taken separately under [`/online-classes/:id/attendance`](#23-online-classes----online-classes).
 
 | Method | Path                         | Auth        | Description                               |
 |--------|------------------------------|-------------|-------------------------------------------|
@@ -917,7 +957,7 @@ Public marketing content (homepage milestones, "why choose us", FAQs).
 | POST   | `/certificates/issue`    | 🛡️   | Generate + email PDF certificate(s)           |
 | GET    | `/certificates`          | 🛡️   | List issued certificates                      |
 
-Eligibility: **online** courses require 100% progress; **offline** require attending ≥75% of `course.totalClasses`. `POST /certificates/issue` accepts `{ "items": [ { "userId", "courseId" } ] }` (single or bulk), generates a PDF per student, emails it, and records the certificate (idempotent — re-issuing re-sends). Audited as `certificate.issue`.
+Eligibility by mode: **self-paced** requires 100% progress; **classroom** requires attending ≥75% of `course.totalClasses`; **live** requires attending ≥75% of `course.totalLiveClasses`. `POST /certificates/issue` accepts `{ "items": [ { "userId", "courseId" } ] }` (single or bulk), generates a PDF per student, emails it, and records the certificate (idempotent — re-issuing re-sends). Audited as `certificate.issue`.
 
 ---
 
@@ -978,6 +1018,36 @@ Fields: `name`, `role`, `quote`, optional `rating` (1–5), `order`, `isPublishe
 
 ---
 
+### 23. Online Classes — `/online-classes`
+
+> Entire router behind `verifyJWT`. Scheduled **live** sessions delivered over Zoom / Google Meet, attached to a course and (optionally) a `live` batch. When a `batchId` is set the class is visible — and attendance taken — only for that batch's students; otherwise it is course-wide (every student with an active **live** enrollment).
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| GET    | `/online-classes/student` | 👤 | Caller's live classes + their live courses |
+| GET    | `/online-classes/instructor` | 🎓 | Live classes the caller teaches + approved-live courses |
+| GET    | `/online-classes/:id/attendance` | 🎓 / 🛡️ | Roster + saved marks for a live session |
+| POST   | `/online-classes/:id/attendance` | 🎓 / 🛡️ | Upsert live-class attendance (time-windowed) |
+| GET    | `/online-classes/course/:courseId/options` | 🛡️ | Approved-live instructors + live batches for a course |
+| GET    | `/online-classes` | 🛡️ | All scheduled live classes (newest first) |
+| POST   | `/online-classes` | 🛡️ | Schedule a live class |
+| PATCH  | `/online-classes/:id` | 🛡️ | Update a live class |
+| DELETE | `/online-classes/:id` | 🛡️ | Delete a live class (admin-password confirmed) |
+
+#### POST `/online-classes` 🛡️
+**Body** `{ "title", "courseId", "instructorId", "joinUrl", "startTime", "batchId"?, "meetingId"?, "passcode"?, "durationMins"?, "status"? }`. `title`, `courseId`, `instructorId`, `joinUrl`, `startTime` are required. The instructor must hold an **approved `live` teaching request** for the course; an optional `batchId` must be a `live` batch of that course (**400** otherwise). Emails the join link/schedule to the instructor + audience. **201** → class.
+
+#### GET `/online-classes/student` 👤 & `/online-classes/instructor` 🎓
+Each returns `{ courses, classes }` — `courses` lets a course appear in the client's filter sub-nav even before any session is scheduled. Students see non-cancelled classes for their live-enrolled courses (batch-scoped classes only if they're on that batch). Instructors see classes they teach + their approved-live courses.
+
+#### GET / POST `/online-classes/:id/attendance` 🎓 / 🛡️
+Caller must be the assigned instructor or an admin. Attendance is **time-windowed**: it can't be marked **before** the class starts; the **instructor** marks it **during** `[start, start + durationMins]`; **after** it ends only an **admin** can set or correct it. `GET` returns `{ onlineClass, roster, marked, canMark, markPhase, markReason }`; `POST` body is `{ "records": [ { "studentId", "status" } ] }` (`status` ∈ `present|absent|leave`) and upserts the single session record (stored in the shared Attendance collection, keyed by `onlineClassId`).
+
+#### DELETE `/online-classes/:id` 🛡️
+Admin-password confirmed (`{ "password" }`). Refuses once attendance has been recorded for the session. **200**.
+
+---
+
 ## Data Models
 
 ### PostgreSQL — `users`
@@ -1015,16 +1085,26 @@ title*        String
 description*  String
 category*     String
 level         "beginner" | "intermediate" | "advanced"  (default "beginner")
+modes         ["self-paced" | "classroom" | "live"]  (default ["self-paced","classroom"])
 price         Number (default 0)
+priceOnline   Number  (self-paced price)
+priceOffline  Number  (classroom price)
+priceLive     Number  (live price)
 thumbnail / thumbnailPublicId   String  (Cloudinary)
-isPublished   Boolean (default false)
+slug          String  (unique, sparse — used for /course/:slug URLs)
+isPublished   Boolean (default false)   (requires a price on ≥1 mode)
 createdBy     String   (PG user id)
 modules       [ObjectId → Module]
 prerequisites / benefits / targetAudience   [String]
 language      String (default "English")
 totalDuration / totalStudentsEnrolled       Number
+totalClasses    Number  (planned classroom sessions — certificate denominator)
+totalLiveClasses Number (planned live sessions — certificate denominator)
+viewCount     Number  (detail-page opens — powers "Trending")
 averageRating / totalReviews                Number
 reviews       [{ userId, rating 1–5, comment, isFeatured, createdAt }]
+course-page display: tag, subtitle, tagline, heroImg, highlights[],
+                     learnPoints[], industry{}, faqs[], demandReasons[], whyChooseUs[]
 timestamps
 ```
 
@@ -1056,7 +1136,7 @@ timestamps
 userId*        String  (PG user UUID)
 courseId*      ObjectId → Course
 enrolledBy*    String  (PG UUID — admin, or the student on self-purchase)
-enrollmentType "online" | "offline"  (default "online")
+enrollmentType "self-paced" | "classroom" | "live"  (default "self-paced")
 isActive       Boolean (default true)
 unenrolledAt   Date
 timestamps
@@ -1114,21 +1194,22 @@ timestamps
 instructorId*  String  (PG user UUID, role instructor)
 courseId*      ObjectId → Course
 message        String
-mode           "offline"  (default)
-status         "pending" | "approved" | "rejected"  (default "pending")
+mode*          "self-paced" | "classroom" | "live"  (default "classroom")
+status         "pending" | "approved" | "rejected" | "withdrawn"  (default "pending")
 reviewedBy     String (admin PG UUID)   reviewedAt  Date
+withdrawnAt    Date  (drives a re-apply hold after self-withdrawal)
 timestamps
-unique index: { instructorId, courseId }
+unique index: { instructorId, courseId, mode }  (one request per instructor+course+mode)
 ```
 
 #### Batch
 ```
 name*         String
 courseId*     ObjectId → Course
-instructorId* String  (PG UUID — must have an approved teaching request)
-studentIds    [String]  (PG UUIDs — offline-enrolled students)
+instructorId* String  (PG UUID — must have an approved teaching request for this mode)
+studentIds    [String]  (PG UUIDs — students enrolled in this batch's mode)
 schedule      String   location  String
-mode          "offline"  (default)
+mode          "classroom" | "live"  (default "classroom")
 seats         Number (default 0)
 status        "upcoming" | "ongoing" | "completed"  (default "upcoming")
 createdBy*    String  (admin PG UUID)
@@ -1137,13 +1218,31 @@ timestamps
 
 #### Attendance
 ```
-batchId*   ObjectId → Batch
-courseId   ObjectId → Course
-date*      String  "YYYY-MM-DD"
-records    [{ studentId (PG UUID), status: "present"|"absent"|"leave" }]
-markedBy*  String  (instructor/admin PG UUID)
+batchId        ObjectId → Batch        (set for CLASSROOM sessions)
+onlineClassId  ObjectId → OnlineClass  (set for LIVE sessions)
+courseId       ObjectId → Course
+date*          String  "YYYY-MM-DD"
+records        [{ studentId (PG UUID), status: "present"|"absent"|"leave" }]
+markedBy*      String  (instructor/admin PG UUID)
 timestamps
-unique index: { batchId, date }   (one session per batch per day)
+```
+> Exactly one of `batchId` / `onlineClassId` is set per document.
+> Partial-unique indexes: `{ batchId, date }` (one classroom session per batch per
+> day) and `{ onlineClassId }` (one record per live class).
+
+#### OnlineClass
+```
+title*        String
+courseId*     ObjectId → Course
+batchId       ObjectId → Batch   (null = course-wide; set = scoped to a live batch)
+instructorId* String  (PG UUID — must have an approved "live" teaching request)
+joinUrl*      String  (Zoom/Meet join link)
+meetingId     String   passcode  String
+startTime*    Date
+durationMins  Number (default 60)
+status        "scheduled" | "live" | "completed" | "cancelled"  (default "scheduled")
+createdBy*    String  (admin PG UUID)
+timestamps
 ```
 
 #### SiteConfig
