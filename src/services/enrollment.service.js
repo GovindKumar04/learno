@@ -6,7 +6,8 @@ import { sendBroadcastMail } from "../utils/mail.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { escapeRegex } from "../utils/deleteGuard.util.js";
 import { isUuid } from "../utils/id.util.js";
-import pool from "../config/db.js";
+import { User } from "../models/user.model.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 export const checkMyEnrollmentService = async ({ userId, courseId }) => {
   const enrollment = await Enrollment.findOne({ userId, courseId, isActive: true }).select("enrollmentType");
@@ -18,9 +19,9 @@ export const checkMyEnrollmentService = async ({ userId, courseId }) => {
 export const enrollStudentService = async ({ userId, courseId, enrollmentType = "self-paced", enrolledBy }) => {
   if (!userId || !courseId) throw new ApiError(400, "userId and courseId are required");
 
-  const userResult = await pool.query("SELECT id, full_name, email, role FROM users WHERE id = $1", [userId]);
-  if (userResult.rows.length === 0) throw new ApiError(404, "User not found");
-  if (userResult.rows[0].role !== "student") throw new ApiError(400, "Only students can be enrolled in courses");
+  const userDoc = await User.findById(userId).select("role").lean();
+  if (!userDoc) throw new ApiError(404, "User not found");
+  if (userDoc.role !== "student") throw new ApiError(400, "Only students can be enrolled in courses");
 
   const course = await Course.findById(courseId);
   if (!course) throw new ApiError(404, "Course not found");
@@ -127,13 +128,7 @@ export const getCourseStudentsService = async ({ courseId, query, user }) => {
   if (enrollments.length === 0) return { students: [], total: 0, page: pageNum, limit: limitNum };
 
   const userIds = [...new Set(enrollments.map((e) => e.userId).filter(isUuid))];
-  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
-    userIds
-  );
-  const usersMap = {};
-  usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+  const usersMap = await buildUserMap(userIds, "full_name email roll_number phone avatar");
 
   const progressDocs = await Progress.find({ userId: { $in: userIds }, courseId })
     .select("userId completionPercent lastAccessedAt completedAt");
@@ -184,11 +179,9 @@ export const getAllEnrollmentsService = async (query) => {
   // not ANDed token-by-token as before.
   if (search.trim()) {
     const term = search.trim();
-    const [pgUsers, courses] = await Promise.all([
-      pool.query(
-        `SELECT id FROM users WHERE full_name ILIKE $1 OR email ILIKE $1 OR roll_number ILIKE $1`,
-        [`%${term}%`]
-      ),
+    const rx = new RegExp(escapeRegex(term), "i");
+    const [matchedUsers, courses] = await Promise.all([
+      User.find({ $or: [{ full_name: rx }, { email: rx }, { roll_number: rx }] }).select("_id").lean(),
       Course.find({
         $or: [
           { title: { $regex: escapeRegex(term), $options: "i" } },
@@ -197,7 +190,7 @@ export const getAllEnrollmentsService = async (query) => {
       }).select("_id"),
     ]);
 
-    const matchedUserIds = pgUsers.rows.map((r) => String(r.id));
+    const matchedUserIds = matchedUsers.map((u) => String(u._id));
     const matchedCourseIds = courses.map((c) => c._id);
     if (matchedUserIds.length === 0 && matchedCourseIds.length === 0) {
       return { enrollments: [], total: 0, page: pageNum, limit: limitNum, totalPages: 0 };
@@ -224,15 +217,7 @@ export const getAllEnrollmentsService = async (query) => {
 
   // Only look up valid-UUID ids (legacy bigint refs can't exist in the new users table).
   const userIds = [...new Set(enrollments.map((e) => e.userId).filter(isUuid))];
-  const usersMap = {};
-  if (userIds.length) {
-    const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
-    const usersResult = await pool.query(
-      `SELECT id, full_name, email, roll_number, phone, avatar FROM users WHERE id IN (${placeholders})`,
-      userIds
-    );
-    usersResult.rows.forEach((u) => (usersMap[u.id] = u));
-  }
+  const usersMap = await buildUserMap(userIds, "full_name email roll_number phone avatar");
 
   const data = enrollments.map((e) => ({
     id: e._id,
@@ -246,56 +231,41 @@ export const getAllEnrollmentsService = async (query) => {
 };
 
 export const getUnenrolledStudentsService = async ({ search = "" }) => {
-  // ids with an active enrollment (from Mongo) — userId is a string copy of the
-  // UUID users.id. Drop any legacy non-UUID refs so the ::uuid[] cast can't fail.
+  // ids with an active enrollment — userId is a string copy of the user _id.
+  // Drop any legacy non-UUID refs.
   const enrolledIds = (await Enrollment.find({ isActive: true }).distinct("userId")).filter(isUuid);
 
-  // Do the anti-join in Postgres so we never pull the whole users table into
-  // Node (the old code SELECTed every student then filtered in a JS Set).
-  const conditions = ["role = 'student'"];
-  const params = [enrolledIds];
-  conditions.push(`NOT (id = ANY($1::uuid[]))`); // empty array → excludes nobody
-
+  // Anti-join in the DB so we never pull the whole users collection into Node.
+  const filter = { role: "student", _id: { $nin: enrolledIds } };
   if (search.trim()) {
-    params.push(`%${search.trim()}%`);
-    conditions.push(`(full_name ILIKE $${params.length} OR email ILIKE $${params.length} OR roll_number ILIKE $${params.length})`);
+    const rx = new RegExp(escapeRegex(search.trim()), "i");
+    filter.$or = [{ full_name: rx }, { email: rx }, { roll_number: rx }];
   }
 
-  const result = await pool.query(
-    `SELECT id, full_name, email, roll_number, phone, location, avatar, created_at
-       FROM users WHERE ${conditions.join(" AND ")} ORDER BY created_at DESC`,
-    params
-  );
+  const rows = await User.find(filter)
+    .select("full_name email roll_number phone location avatar created_at")
+    .sort({ created_at: -1 })
+    .lean();
 
-  return { students: result.rows, total: result.rowCount };
+  const students = rows.map((u) => ({ ...u, id: u._id }));
+  return { students, total: students.length };
 };
 
 // Bulk-email students. userIds given → those; absent → all unenrolled students.
 export const broadcastEmailService = async ({ subject, message, userIds }) => {
   if (!subject?.trim() || !message?.trim()) throw new ApiError(400, "subject and message are required");
 
-  let targetIds;
+  let targetFilter;
   if (Array.isArray(userIds) && userIds.length > 0) {
-    targetIds = userIds;
+    targetFilter = { role: "student", _id: { $in: userIds } };
   } else {
-    // All unenrolled students — anti-join in Postgres rather than fetching every
-    // student and filtering in a JS Set.
+    // All unenrolled students — anti-join rather than fetching every student.
     const enrolledIds = (await Enrollment.find({ isActive: true }).distinct("userId")).filter(isUuid);
-    const all = await pool.query(
-      `SELECT id FROM users WHERE role = 'student' AND NOT (id = ANY($1::uuid[]))`,
-      [enrolledIds]
-    );
-    targetIds = all.rows.map((r) => r.id);
+    targetFilter = { role: "student", _id: { $nin: enrolledIds } };
   }
 
-  if (targetIds.length === 0) throw new ApiError(400, "No recipients to email");
-
-  const placeholders = targetIds.map((_, i) => `$${i + 1}`).join(", ");
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email FROM users WHERE role = 'student' AND id IN (${placeholders})`,
-    targetIds
-  );
-  if (usersResult.rows.length === 0) throw new ApiError(404, "No matching students found");
+  const recipients = await User.find(targetFilter).select("full_name email").lean();
+  if (recipients.length === 0) throw new ApiError(404, "No matching students found");
 
   const subjectClean = subject.trim();
   const messageClean = message.trim();
@@ -305,7 +275,6 @@ export const broadcastEmailService = async ({ subject, message, userIds }) => {
   const BATCH_DELAY_MS = 1000;
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const recipients = usersResult.rows;
   let sent = 0;
   let failed = 0;
 

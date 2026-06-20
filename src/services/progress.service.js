@@ -6,7 +6,7 @@ import { TeachingRequest } from "../models/teachingRequest.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { isUuid } from "../utils/id.util.js";
-import pool from "../config/db.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 // Recalculate completionPercent for a progress document
 const recalcProgress = async (progressDoc, totalMaterials) => {
@@ -129,13 +129,7 @@ export const getCourseProgressService = async ({ courseId, query, user }) => {
   }
 
   const userIds = [...new Set(progressDocs.map((p) => p.userId).filter(isUuid))];
-  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email, avatar FROM users WHERE id IN (${placeholders})`,
-    userIds
-  );
-  const usersMap = {};
-  usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+  const usersMap = await buildUserMap(userIds, "full_name email avatar");
 
   const totalMaterials = await getTotalMaterials(courseId);
 

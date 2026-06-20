@@ -11,7 +11,7 @@ import { sendCertificateMail } from "../utils/mail.util.js";
 import { generateCertificatePDF, buildCertificateNo } from "../utils/certificate.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
-import pool from "../config/db.js";
+import { User } from "../models/user.model.js";
 
 // Bulk: every (userId, courseId) offline pair that currently meets the bar.
 async function offlineCompletions() {
@@ -172,14 +172,10 @@ export const getEligibleStudentsService = async () => {
   courses.forEach((c) => (courseMap[c._id.toString()] = c.title));
 
   const userIds = [...new Set(allRows.map((r) => r.userId).filter(isUuid))];
-  const placeholders = userIds.length ? userIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email, roll_number, avatar FROM users
-       WHERE role = 'student' AND id IN (${placeholders})`,
-    userIds
-  );
+  const studentDocs = await User.find({ _id: { $in: userIds }, role: "student" })
+    .select("full_name email roll_number avatar").lean();
   const userMap = {};
-  usersResult.rows.forEach((u) => (userMap[u.id] = u));
+  studentDocs.forEach((u) => (userMap[u._id] = { ...u, id: u._id }));
 
   const issued = await Certificate.find({}).select("userId courseId certificateNo issuedAt");
   const issuedMap = {};
@@ -233,11 +229,10 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
         throw new Error("Student has not completed this course (self-paced progress, or classroom/live attendance)");
       }
 
-      const [userResult, course] = await Promise.all([
-        pool.query("SELECT full_name, email, role FROM users WHERE id = $1", [userId]),
+      const [user, course] = await Promise.all([
+        User.findById(userId).select("full_name email role").lean(),
         Course.findById(courseId).select("title"),
       ]);
-      const user = userResult.rows[0];
       if (!user || user.role !== "student") throw new Error("Student not found");
       if (!course) throw new Error("Course not found");
 
@@ -289,4 +284,58 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
 export const getIssuedCertificatesService = async () => {
   const certs = await Certificate.find({}).sort({ issuedAt: -1 });
   return { certificates: certs, total: certs.length };
+};
+
+// Re-render the PDF for an already-issued certificate. We never store the file —
+// the record (name/course/number/date) is the source of truth, so the download
+// is regenerated identically on demand. Returns the buffer + a filename.
+const renderStoredCertificate = (cert) =>
+  generateCertificatePDF({
+    studentName: cert.studentName,
+    courseName: cert.courseName,
+    certificateNo: cert.certificateNo,
+    issuedAt: cert.issuedAt,
+  }).then((pdfBuffer) => ({ pdfBuffer, fileName: `${cert.certificateNo}.pdf` }));
+
+// Admin: download by (userId, courseId) — the keys the eligible-students list
+// already carries for each row.
+export const getCertificatePdfService = async ({ userId, courseId }) => {
+  if (!userId || !courseId) throw new ApiError(400, "userId and courseId are required");
+  const cert = await Certificate.findOne({ userId, courseId });
+  if (!cert) throw new ApiError(404, "No certificate has been issued for this student yet");
+  return renderStoredCertificate(cert);
+};
+
+// Student: list the certificates issued to me, enriched with course slug/thumbnail
+// so the portal can show a card and link back to the course.
+export const getMyCertificatesService = async ({ userId }) => {
+  const certs = await Certificate.find({ userId }).sort({ issuedAt: -1 }).lean();
+  if (certs.length === 0) return { certificates: [], total: 0 };
+
+  const courseIds = [...new Set(certs.map((c) => c.courseId?.toString()).filter(Boolean))];
+  const courses = await Course.find({ _id: { $in: courseIds } }).select("slug title thumbnail").lean();
+  const courseMap = {};
+  courses.forEach((c) => (courseMap[c._id.toString()] = c));
+
+  const certificates = certs.map((c) => {
+    const course = courseMap[c.courseId?.toString()];
+    return {
+      id: c._id,
+      certificateNo: c.certificateNo,
+      courseId: c.courseId,
+      courseName: c.courseName,
+      studentName: c.studentName,
+      issuedAt: c.issuedAt,
+      courseSlug: course?.slug || null,
+      courseThumbnail: course?.thumbnail || null,
+    };
+  });
+  return { certificates, total: certificates.length };
+};
+
+// Student: download one of MY certificates (ownership enforced via userId).
+export const getMyCertificatePdfService = async ({ userId, certId }) => {
+  const cert = await Certificate.findOne({ _id: certId, userId });
+  if (!cert) throw new ApiError(404, "Certificate not found");
+  return renderStoredCertificate(cert);
 };

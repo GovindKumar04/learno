@@ -1,11 +1,13 @@
 import express from "express";
-import { getSiteConfig, updateSiteConfig } from "../controllers/siteConfig.controller.js";
+import { getSiteConfig, updateSiteConfig, updateLogo } from "../controllers/siteConfig.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { requireRole } from "../middlewares/role.middleware.js";
+import { uploadImage } from "../middlewares/multer.middleware.js";
 
 const siteConfigRouter = express.Router();
 
 siteConfigRouter.get("/", getSiteConfig);
 siteConfigRouter.put("/", verifyJWT, requireRole("admin"), updateSiteConfig);
+siteConfigRouter.post("/logo", verifyJWT, requireRole("admin"), uploadImage.single("logo"), updateLogo);
 
 export { siteConfigRouter };

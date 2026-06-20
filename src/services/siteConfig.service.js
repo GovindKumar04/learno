@@ -1,5 +1,8 @@
+import fs from "fs";
 import { SiteConfig } from "../models/siteConfig.model.js";
 import { getOrSet, cacheDel } from "../utils/cache.js";
+import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
+import { ApiError } from "../utils/ApiError.js";
 
 const SITE_CONFIG_KEY = "site-config";
 
@@ -41,14 +44,48 @@ export const getSiteConfigService = async () => {
   });
 };
 
-export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, offers }) => {
+export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, offers, logos }) => {
   const update = {};
   if (milestones)  update.milestones  = milestones;
   if (whyChooseUs) update.whyChooseUs = whyChooseUs;
   if (faqs)        update.faqs        = faqs;
   if (offers)      update.offers      = offers;
+  // Logos are uploaded via updateLogoService; here we only persist editable
+  // fields (the zoom level) — never the url/publicId, so a stale client payload
+  // can't wipe an uploaded logo.
+  if (logos?.navbar?.zoom != null)     update["logos.navbar.zoom"]     = logos.navbar.zoom;
+  if (logos?.footer?.zoom != null)     update["logos.footer.zoom"]     = logos.footer.zoom;
+  if (logos?.navbar?.removeBg != null) update["logos.navbar.removeBg"] = logos.navbar.removeBg;
+  if (logos?.footer?.removeBg != null) update["logos.footer.removeBg"] = logos.footer.removeBg;
 
   const saved = await SiteConfig.findOneAndUpdate({}, update, { new: true, upsert: true, runValidators: true });
   await cacheDel(SITE_CONFIG_KEY);
   return saved;
+};
+
+// Upload (or replace) the nav-bar / footer logo. `target` selects which slot.
+// Replaces the previous Cloudinary asset and preserves the existing zoom level.
+export const updateLogoService = async ({ target, filePath, mimetype }) => {
+  if (!["navbar", "footer"].includes(target)) {
+    // Clean up the temp file the controller would otherwise discard via Cloudinary.
+    if (filePath && fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    throw new ApiError(400, "Invalid logo target (expected 'navbar' or 'footer')");
+  }
+
+  const uploaded = await uploadToCloudinary(filePath, mimetype, "site-logos");
+
+  const config = (await SiteConfig.findOne()) || new SiteConfig();
+  const previousPublicId = config.logos?.[target]?.publicId;
+
+  config.logos[target].url = uploaded.url;
+  config.logos[target].publicId = uploaded.publicId;
+  await config.save();
+
+  // Best-effort cleanup of the replaced asset — don't fail the request if it errors.
+  if (previousPublicId && previousPublicId !== uploaded.publicId) {
+    try { await deleteFromCloudinary(previousPublicId); } catch { /* ignore */ }
+  }
+
+  await cacheDel(SITE_CONFIG_KEY);
+  return config;
 };

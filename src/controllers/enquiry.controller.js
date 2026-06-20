@@ -1,9 +1,12 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import cloudinary from "../config/cloudinary.js";
+import { ApiError } from "../utils/ApiError.js";
 import {
   getAllEnquiriesService,
   getEnquiryStatsService,
   getEnquiryByIdService,
+  getEnquiryAttachmentService,
   replyToEnquiryService,
   updateEnquiryStatusService,
 } from "../services/enquiry.service.js";
@@ -26,6 +29,59 @@ const getEnquiryById = asyncHandler(async (req, res) => {
   return res.json(new ApiResponse(200, data));
 });
 
+// GET /enquiries/:id/attachment/:index  — stream an attachment (e.g. a resume)
+// with correct headers. ?download=1 forces a save dialog; otherwise it opens
+// inline. Proxied through the API so PDFs stored as Cloudinary `raw` files are
+// served as real application/pdf instead of an unviewable octet-stream.
+const streamEnquiryAttachment = asyncHandler(async (req, res) => {
+  const { url, type, publicId, ticketId } = await getEnquiryAttachmentService({
+    id: req.params.id,
+    index: Number(req.params.index),
+  });
+
+  const isPdf = type === "pdf";
+
+  // Candidate source URLs, tried in order. Cloudinary's CDN blocks PDF/ZIP
+  // delivery by default (returns 401 even for signed delivery URLs). The reliable
+  // bypass is the signed Admin API download endpoint (api.cloudinary.com), which
+  // serves the bytes regardless of the CDN media-type restriction. For images the
+  // plain CDN URL is fine, so we keep it first.
+  const adminDownload = (resourceType) =>
+    cloudinary.utils.private_download_url(publicId, "", { resource_type: resourceType, type: "upload" });
+
+  const candidates = [];
+  if (publicId && isPdf) candidates.push(adminDownload("raw"));
+  candidates.push(url);
+  if (publicId && !isPdf) candidates.push(adminDownload("image"));
+
+  let upstream = null;
+  const tried = [];
+  for (const candidate of candidates) {
+    try {
+      const r = await fetch(candidate);
+      tried.push(`${r.status} ${candidate}`);
+      if (r.ok) { upstream = r; break; }
+    } catch (e) {
+      tried.push(`ERR ${e.message} ${candidate}`);
+    }
+  }
+
+  if (!upstream) {
+    console.error("Attachment delivery failed:\n  " + tried.join("\n  "));
+    throw new ApiError(502, "Could not retrieve the attachment from storage");
+  }
+
+  const buffer = Buffer.from(await upstream.arrayBuffer());
+  const contentType = isPdf ? "application/pdf" : upstream.headers.get("content-type") || "application/octet-stream";
+  const ext = isPdf ? "pdf" : (contentType.split("/")[1] || "bin");
+  const disposition = req.query.download ? "attachment" : "inline";
+
+  res.setHeader("Content-Type", contentType);
+  res.setHeader("Content-Disposition", `${disposition}; filename="${ticketId || "attachment"}.${ext}"`);
+  res.setHeader("Content-Length", buffer.length);
+  return res.send(buffer);
+});
+
 // POST /enquiries/:id/reply  — admin replies, mail sent to user
 const replyToEnquiry = asyncHandler(async (req, res) => {
   const enquiry = await replyToEnquiryService({ id: req.params.id, message: req.body.message });
@@ -42,6 +98,7 @@ export {
   getAllEnquiries,
   getEnquiryStats,
   getEnquiryById,
+  streamEnquiryAttachment,
   replyToEnquiry,
   updateEnquiryStatus,
 };

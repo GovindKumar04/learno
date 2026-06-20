@@ -5,7 +5,7 @@ import { OnlineClass } from "../models/onlineClass.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { verifyAdminPassword, assertNoDependents } from "../utils/deleteGuard.util.js";
 import { isUuid } from "../utils/id.util.js";
-import pool from "../config/db.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 // After withdrawing their own request, an instructor must wait this long before
 // they can apply to teach the same course again.
@@ -80,13 +80,7 @@ export const getAllTeachingRequestsService = async ({ page = 1, limit = 20, stat
   if (requests.length === 0) return { requests: [], total: 0, page: pageNum, limit: limitNum };
 
   const instructorIds = [...new Set(requests.map((r) => r.instructorId).filter(isUuid))];
-  const placeholders = instructorIds.length ? instructorIds.map((_, i) => `$${i + 1}`).join(", ") : "NULL";
-  const usersResult = await pool.query(
-    `SELECT id, full_name, email, phone FROM users WHERE id IN (${placeholders})`,
-    instructorIds
-  );
-  const usersMap = {};
-  usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+  const usersMap = await buildUserMap(instructorIds, "full_name email phone");
 
   const data = requests.map((r) => ({
     id: r._id,

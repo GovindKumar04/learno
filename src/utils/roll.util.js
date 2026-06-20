@@ -8,6 +8,8 @@
 //   all 2026 students → roll_number LIKE 'FSA-STU-26-%'
 //   anyone from 2026  → roll_number LIKE 'FSA-%-26-%'
 
+import { User } from "../models/user.model.js";
+
 export const ROLL_PREFIX = "FSA";
 
 // role → 3-letter code used in the roll
@@ -33,21 +35,18 @@ export function formatRoll(role, date, seq) {
 }
 
 // Generate the next roll for a role + date by reading the highest roll already
-// issued for that role/year. Pair with a UNIQUE constraint + retry to stay safe
-// under races. Sequence segment is fixed-width, so lexical DESC = numeric max.
-export async function generateRollNumber(pool, role, date = new Date()) {
+// issued for that role/year. Pair with a UNIQUE index + retry to stay safe under
+// races. Sequence segment is fixed-width, so lexical DESC = numeric max.
+export async function generateRollNumber(role, date = new Date()) {
   const prefix = `${ROLL_PREFIX}-${roleCode(role)}-${rollYear(date)}-`;
-  const { rows } = await pool.query(
-    `SELECT roll_number FROM users
-      WHERE roll_number LIKE $1
-      ORDER BY roll_number DESC
-      LIMIT 1`,
-    [`${prefix}%`]
-  );
+  const latest = await User.findOne({ roll_number: { $regex: `^${prefix}` } })
+    .sort({ roll_number: -1 })
+    .select("roll_number")
+    .lean();
 
   let next = 1;
-  if (rows.length > 0 && rows[0].roll_number) {
-    const tail = parseInt(rows[0].roll_number.slice(prefix.length), 10);
+  if (latest?.roll_number) {
+    const tail = parseInt(latest.roll_number.slice(prefix.length), 10);
     if (!Number.isNaN(tail)) next = tail + 1;
   }
   return formatRoll(role, date, next);

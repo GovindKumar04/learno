@@ -6,6 +6,8 @@ import {
   getReviewsService,
   getTestimonialsService,
   toggleFeaturedService,
+  moderateReviewService,
+  getPendingReviewsService,
 } from "../services/review.service.js";
 
 // POST /courses/:courseId/reviews
@@ -36,7 +38,12 @@ const deleteReview = asyncHandler(async (req, res) => {
 
 // GET /courses/:courseId/reviews
 const getReviews = asyncHandler(async (req, res) => {
-  const data = await getReviewsService({ courseId: req.params.courseId, ...req.query });
+  const data = await getReviewsService({
+    courseId: req.params.courseId,
+    ...req.query,
+    requesterId: req.user ? String(req.user.id) : null,
+    isAdmin: req.user?.role === "admin",
+  });
   return res.json(new ApiResponse(200, data));
 });
 
@@ -58,4 +65,23 @@ const toggleFeatured = asyncHandler(async (req, res) => {
   );
 });
 
-export { addOrUpdateReview, deleteReview, getReviews, getTestimonials, toggleFeatured };
+// PATCH /courses/:courseId/reviews/moderate — admin approves / rejects a review
+const moderateReview = asyncHandler(async (req, res) => {
+  const review = await moderateReviewService({
+    courseId: req.params.courseId,
+    targetUserId: req.body.userId,
+    status: req.body.status,
+  });
+  return res.json(new ApiResponse(200, review, `Review ${review.status}`));
+});
+
+// GET /courses/reviews/pending — admin moderation queue (all courses)
+const getPendingReviews = asyncHandler(async (req, res) => {
+  const reviews = await getPendingReviewsService({ status: req.query.status || "pending" });
+  return res.json(new ApiResponse(200, reviews));
+});
+
+export {
+  addOrUpdateReview, deleteReview, getReviews, getTestimonials, toggleFeatured,
+  moderateReview, getPendingReviews,
+};

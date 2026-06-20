@@ -1,37 +1,41 @@
-import pool from "../config/db.js";
+import { AuditLog } from "../models/auditLog.model.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 // Admin-only: paginated, newest-first view of the audit trail, optionally
-// filtered by action or actor. Joins users so the UI can show who acted.
+// filtered by action or actor. Enriches with the actor's name/email for the UI.
 export const getAuditLogsService = async ({ page = 1, limit = 50, action, actorId } = {}) => {
   const pageNum = Math.max(1, Number(page) || 1);
   const limitNum = Math.min(200, Math.max(1, Number(limit) || 50));
 
-  const conditions = [];
-  const params = [];
-  if (action) {
-    params.push(action);
-    conditions.push(`a.action = $${params.length}`);
-  }
-  if (actorId) {
-    params.push(actorId);
-    conditions.push(`a.actor_id = $${params.length}`);
-  }
-  const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+  const filter = {};
+  if (action) filter.action = action;
+  if (actorId) filter.actor_id = actorId;
 
-  const totalResult = await pool.query(`SELECT COUNT(*)::int AS total FROM audit_log a ${where}`, params);
-  const total = totalResult.rows[0].total;
+  const [total, docs] = await Promise.all([
+    AuditLog.countDocuments(filter),
+    AuditLog.find(filter).sort({ created_at: -1 }).skip((pageNum - 1) * limitNum).limit(limitNum).lean(),
+  ]);
 
-  params.push(limitNum, (pageNum - 1) * limitNum);
-  const rows = await pool.query(
-    `SELECT a.id, a.actor_id, a.actor_role, a.action, a.target_id, a.metadata, a.ip, a.created_at,
-            u.full_name AS actor_name, u.email AS actor_email
-       FROM audit_log a
-       LEFT JOIN users u ON u.id = a.actor_id
-       ${where}
-       ORDER BY a.created_at DESC
-       LIMIT $${params.length - 1} OFFSET $${params.length}`,
-    params
+  const userMap = await buildUserMap(
+    [...new Set(docs.map((d) => d.actor_id).filter(Boolean))],
+    "full_name email"
   );
 
-  return { logs: rows.rows, total, page: pageNum, limit: limitNum, totalPages: Math.ceil(total / limitNum) };
+  const logs = docs.map((d) => {
+    const u = userMap[d.actor_id] || {};
+    return {
+      id: d._id,
+      actor_id: d.actor_id,
+      actor_role: d.actor_role,
+      action: d.action,
+      target_id: d.target_id,
+      metadata: d.metadata,
+      ip: d.ip,
+      created_at: d.created_at,
+      actor_name: u.full_name || null,
+      actor_email: u.email || null,
+    };
+  });
+
+  return { logs, total, page: pageNum, limit: limitNum, totalPages: Math.ceil(total / limitNum) };
 };

@@ -866,21 +866,34 @@ stored in **paise**, returned in **rupees**.
 
 ### 13. Teaching Requests — `/teaching-requests`
 
-> Entire router behind `verifyJWT`. Instructors ask to teach a course; admins approve.
+> Entire router behind `verifyJWT`. Instructors ask to teach a course in a specific
+> **delivery mode**; admins approve. A request is **per `(instructor, course, mode)`** —
+> an instructor applies separately for each mode they want to teach. Approval is the
+> prerequisite for being assigned to a [classroom/live batch](#14-batches----batches)
+> or a [live class](#23-online-classes----online-classes) in that mode.
 
 | Method | Path                       | Auth            | Description                                |
 |--------|----------------------------|-----------------|--------------------------------------------|
-| POST   | `/teaching-requests`       | 🎓              | Request to teach a course                  |
+| POST   | `/teaching-requests`       | 🎓              | Request to teach a course in a mode         |
 | GET    | `/teaching-requests/my`    | 🎓              | Caller's own requests                       |
 | GET    | `/teaching-requests`       | 🛡️              | All requests (`?status=`, paginated)       |
 | PATCH  | `/teaching-requests/:id`   | 🛡️              | Approve / reject                           |
-| DELETE | `/teaching-requests/:id`   | 🛡️ / 🎓 (own)   | Cancel/remove a request                    |
+| DELETE | `/teaching-requests/:id`   | 🛡️ / 🎓 (own)   | Admin removes · instructor withdraws        |
 
 #### POST `/teaching-requests` 🎓
-**Body** `{ "courseId", "message"? }`. **409** if already pending/approved for the course; a previously **rejected** request is re-opened to `pending`. **201** (or **200** on re-submit) → request.
+**Body** `{ "courseId", "mode"?, "message"? }` — `mode` ∈ `self-paced|classroom|live` (default `classroom`) and must be one of the course's offered `modes` (**400** otherwise). For the same `(instructor, course, mode)`:
+- **pending** or **approved** already exists → **409**.
+- **rejected**, or **withdrawn** with the hold elapsed → the row is re-opened to `pending` (**200**, `reSubmitted: true`).
+- **withdrawn** within the last **30 days** (`WITHDRAW_HOLD_DAYS`) → **403** with the date they may re-apply.
+
+Otherwise a new request is created (**201**).
 
 #### PATCH `/teaching-requests/:id` 🛡️
-**Body** `{ "status": "approved" | "rejected" }`. Approval is the prerequisite for assigning the instructor to a [batch](#14-batches----batches). **200** → request.
+**Body** `{ "status": "approved" | "rejected" }` (stamps `reviewedBy`/`reviewedAt`). **200** → request.
+
+#### DELETE `/teaching-requests/:id` 🛡️ / 🎓
+- **Instructor (own):** soft **withdraw** — status → `withdrawn`, stamps `withdrawnAt`, and starts the 30-day re-apply hold. **200** → `{ withdrawn: true, holdUntil }`.
+- **Admin:** hard **delete** (admin-password confirmed via `{ "password" }`). If the request is `approved`, the delete is refused while the instructor still has dependents for that mode — `classroom` → batches, `live` → live classes (`self-paced` has none) — which must be reassigned/removed first. **200** → `{ deleted: true }`.
 
 ---
 

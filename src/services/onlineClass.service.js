@@ -8,7 +8,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { sendOnlineClassMail } from "../utils/mail.util.js";
 import { isUuid } from "../utils/id.util.js";
 import { verifyAdminPassword, assertNoDependents } from "../utils/deleteGuard.util.js";
-import pool from "../config/db.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 const VALID_STATUS = ["present", "absent", "leave"];
 
@@ -35,18 +35,10 @@ function ymd(date) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-// Fetch { id → user } map from PostgreSQL for a list of UUIDs
+// Fetch { id → user } map for a list of UUIDs.
 async function fetchUsersMap(ids) {
   const unique = [...new Set(ids.filter(isUuid))];
-  if (unique.length === 0) return {};
-  const placeholders = unique.map((_, i) => `$${i + 1}`).join(", ");
-  const result = await pool.query(
-    `SELECT id, full_name, email, phone, role FROM users WHERE id IN (${placeholders})`,
-    unique,
-  );
-  const map = {};
-  result.rows.forEach((u) => (map[u.id] = u));
-  return map;
+  return buildUserMap(unique, "full_name email phone role");
 }
 
 // Human-readable schedule string for the email.

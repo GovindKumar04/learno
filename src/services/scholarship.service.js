@@ -1,7 +1,7 @@
 import { Scholarship } from "../models/scholarship.model.js";
 import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
-import pool from "../config/db.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 const VALID_TRACKS = ["merit", "need", "women", "early"];
 
@@ -57,13 +57,7 @@ export const getAllApplicationsService = async ({ page = 1, limit = 20, status, 
   let result = applications;
   if (applications.length) {
     const userIds = [...new Set(applications.map((a) => a.userId))];
-    const placeholders = userIds.map((_, i) => `$${i + 1}`).join(", ");
-    const usersResult = await pool.query(
-      `SELECT id, full_name, email, phone FROM users WHERE id IN (${placeholders})`,
-      userIds
-    );
-    const usersMap = {};
-    usersResult.rows.forEach((u) => (usersMap[u.id] = u));
+    const usersMap = await buildUserMap(userIds, "full_name email phone");
 
     result = applications.map((a) => ({ ...a.toObject(), applicant: usersMap[a.userId] || { id: a.userId } }));
 

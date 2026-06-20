@@ -24,6 +24,17 @@ const reviewSchema = new mongoose.Schema(
       default: false,
     },
 
+    // Moderation: a new review is "pending" (visible only to its author) until
+    // an admin approves it, at which point it counts toward the public rating
+    // and is shown to everyone. Default is "approved" so any legacy reviews
+    // saved before moderation existed remain visible; new reviews are pushed
+    // with status "pending" explicitly in the service layer.
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "approved",
+    },
+
     createdAt: {
       type: Date,
       default: Date.now,

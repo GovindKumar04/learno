@@ -1,5 +1,4 @@
-import pool from "../config/db.js";
-import { newId } from "../utils/id.util.js";
+import { AuditLog } from "../models/auditLog.model.js";
 
 // Records a successful privileged action to audit_log.
 //
@@ -38,31 +37,26 @@ export const audit = (action) => (req, res, next) => {
   res.on("finish", () => {
     if (res.statusCode >= 400) return;
 
-    let metadata = JSON.stringify({
+    let metadata = {
       params: req.params && Object.keys(req.params).length ? req.params : undefined,
       body: sanitizeBody(req.body),
-    });
-    if (metadata.length > MAX_META_BYTES) {
-      metadata = JSON.stringify({ truncated: true, bytes: metadata.length });
+    };
+    // Cap stored metadata size (keep big mail bodies etc. out of the collection).
+    const metaBytes = JSON.stringify(metadata).length;
+    if (metaBytes > MAX_META_BYTES) {
+      metadata = { truncated: true, bytes: metaBytes };
     }
 
     const targetId = pickTargetId(req);
 
-    pool
-      .query(
-        `INSERT INTO audit_log (id, actor_id, actor_role, action, target_id, metadata, ip)
-         VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7)`,
-        [
-          newId(),
-          req.user?.id ?? null,
-          req.user?.role ?? null,
-          action,
-          targetId ? String(targetId) : null,
-          metadata,
-          req.ip ?? null,
-        ]
-      )
-      .catch((err) => console.error(`audit_log insert failed (${action}):`, err.message));
+    AuditLog.create({
+      actor_id: req.user?.id ?? null,
+      actor_role: req.user?.role ?? null,
+      action,
+      target_id: targetId ? String(targetId) : null,
+      metadata,
+      ip: req.ip ?? null,
+    }).catch((err) => console.error(`audit_log insert failed (${action}):`, err.message));
   });
 
   next();

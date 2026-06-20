@@ -3,6 +3,7 @@ import {
   getAllEnquiries,
   getEnquiryStats,
   getEnquiryById,
+  streamEnquiryAttachment,
   replyToEnquiry,
   updateEnquiryStatus,
 } from "../controllers/enquiry.controller.js";
@@ -18,6 +19,7 @@ enquiryRouter.use(requireRole("admin"));
 enquiryRouter.get("/",            getAllEnquiries);
 enquiryRouter.get("/stats",       getEnquiryStats);
 enquiryRouter.get("/:id",         getEnquiryById);
+enquiryRouter.get("/:id/attachment/:index", streamEnquiryAttachment);
 enquiryRouter.post("/:id/reply",  replyToEnquiry);
 enquiryRouter.patch("/:id/status", updateEnquiryStatus);
 

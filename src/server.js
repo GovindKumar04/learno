@@ -1,25 +1,15 @@
 import "dotenv/config";
 
 import { app } from "./app.js";
-import pool from "./config/db.js";
 import connectMongoDB from "./config/mongodb.js";
 
 const PORT = process.env.PORT || 3000;
 
-
+// The app now runs entirely on MongoDB. Postgres is no longer required at
+// runtime — `config/db.js` and the `pg` dependency remain only for the one-time
+// data migration script (src/migration/pgToMongo.js) and historical reference.
 
 async function startServer() {
-  // ── PostgreSQL ──────────────────────────────────────────────────────────────
-  console.log("⏳ Connecting to PostgreSQL...");
-  try {
-    await pool.query("SELECT 1");
-    console.log("✅ PostgreSQL connected");
-  } catch (err) {
-    console.error("❌ PostgreSQL connection failed:", err.message);
-    console.error("   Check DATABASE_URL in .env — make sure the Neon DB is active (not suspended).");
-    process.exit(1);
-  }
-
   // ── MongoDB ─────────────────────────────────────────────────────────────────
   console.log("⏳ Connecting to MongoDB...");
   try {

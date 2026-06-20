@@ -5,22 +5,14 @@ import { ApiError } from "../utils/ApiError.js";
 import { isUuid } from "../utils/id.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { OFFLINE_ATTENDANCE_THRESHOLD } from "../config/constants.js";
-import pool from "../config/db.js";
+import { buildUserMap } from "../utils/userQuery.util.js";
 
 const VALID_STATUS = ["present", "absent", "leave"];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 async function fetchUsersMap(ids) {
   const unique = [...new Set(ids.filter(isUuid))];
-  if (unique.length === 0) return {};
-  const placeholders = unique.map((_, i) => `$${i + 1}`).join(", ");
-  const result = await pool.query(
-    `SELECT id, full_name, email, phone FROM users WHERE id IN (${placeholders})`,
-    unique,
-  );
-  const map = {};
-  result.rows.forEach((u) => (map[u.id] = u));
-  return map;
+  return buildUserMap(unique, "full_name email phone");
 }
 
 // Load a batch and ensure the caller may manage it (assigned instructor or admin)

@@ -9,7 +9,10 @@ export const getAllEnquiriesService = async (query) => {
   if (status) filter.status = status;
   if (role) filter.role = role;
   if (priority) filter.priority = priority;
+  // Internship applications have their own admin view (category "internship"),
+  // so keep them out of the general enquiries list unless explicitly requested.
   if (category) filter.category = category;
+  else filter.category = { $ne: "internship" };
   if (search) {
     filter.$or = [
       { name: { $regex: search, $options: "i" } },
@@ -30,15 +33,19 @@ export const getAllEnquiriesService = async (query) => {
 };
 
 export const getEnquiryStatsService = async () => {
+  // Stats power the general enquiries dashboard / topbar badge, which links to the
+  // main enquiries list — so exclude internship applications here too.
+  const base = { category: { $ne: "internship" } };
+
   const [statusStats, roleStats, categoryStats] = await Promise.all([
-    Enquiry.aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }]),
-    Enquiry.aggregate([{ $group: { _id: "$role", count: { $sum: 1 } } }]),
-    Enquiry.aggregate([{ $group: { _id: "$category", count: { $sum: 1 } } }]),
+    Enquiry.aggregate([{ $match: base }, { $group: { _id: "$status", count: { $sum: 1 } } }]),
+    Enquiry.aggregate([{ $match: base }, { $group: { _id: "$role", count: { $sum: 1 } } }]),
+    Enquiry.aggregate([{ $match: base }, { $group: { _id: "$category", count: { $sum: 1 } } }]),
   ]);
 
-  const total = await Enquiry.countDocuments();
+  const total = await Enquiry.countDocuments(base);
 
-  const resolved = await Enquiry.find({ status: "resolved", respondedAt: { $exists: true } })
+  const resolved = await Enquiry.find({ ...base, status: "resolved", respondedAt: { $exists: true } })
     .select("createdAt respondedAt");
 
   let avgResponseTime = null;
@@ -68,6 +75,18 @@ export const getEnquiryByIdService = async (id) => {
   const mailLink = `mailto:${enquiry.email}?subject=Re: [${enquiry.ticketId}] ${enquiry.subject}`;
 
   return { enquiry, contactLinks: { callLink, whatsappLink, mailLink } };
+};
+
+// Fetch a single attachment's stored location so the controller can stream it
+// back with correct PDF headers. PDFs live on Cloudinary as `raw` resources whose
+// delivery URLs don't carry a usable content-type / can't take an fl_attachment
+// transform, so we proxy them through our API instead of linking directly.
+export const getEnquiryAttachmentService = async ({ id, index }) => {
+  const enquiry = await Enquiry.findById(id).select("attachments ticketId");
+  if (!enquiry) throw new ApiError(404, "Enquiry not found");
+  const att = enquiry.attachments?.[index];
+  if (!att) throw new ApiError(404, "Attachment not found");
+  return { url: att.url, type: att.type, publicId: att.publicId, ticketId: enquiry.ticketId };
 };
 
 export const replyToEnquiryService = async ({ id, message }) => {

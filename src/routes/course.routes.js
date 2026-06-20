@@ -31,6 +31,8 @@ import {
   getReviews,
   getTestimonials,
   toggleFeatured,
+  moderateReview,
+  getPendingReviews,
 } from "../controllers/review.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { optionalAuth } from "../middlewares/optionalAuth.middleware.js";
@@ -57,6 +59,9 @@ courseRouter.get("/top-rated", optionalAuth, getTopRated);
 courseRouter.get("/recommended", optionalAuth, getRecommended);
 courseRouter.get("/because-you-viewed", optionalAuth, getBecauseYouViewed);
 courseRouter.post("/search-log", optionalAuth, logSearch);
+
+// Admin review-moderation queue — literal path, must precede "/:courseId".
+courseRouter.get("/reviews/pending", verifyJWT, requireRole("admin"), getPendingReviews);
 
 courseRouter.get("/slug/:slug", optionalAuth, getCourseBySlug);  // by URL slug
 courseRouter.get("/:courseId", optionalAuth, getCourseById);
@@ -98,5 +103,6 @@ courseRouter.get("/:courseId/reviews/testimonials", optionalAuth, getTestimonial
 courseRouter.post("/:courseId/reviews", verifyJWT, requireRole("student"), addOrUpdateReview);
 courseRouter.delete("/:courseId/reviews", verifyJWT, deleteReview);
 courseRouter.patch("/:courseId/reviews/featured", verifyJWT, requireRole("admin"), toggleFeatured);
+courseRouter.patch("/:courseId/reviews/moderate", verifyJWT, requireRole("admin"), moderateReview);
 
 export { courseRouter };
