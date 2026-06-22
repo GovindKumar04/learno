@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Migrated from the Postgres `affiliate_resources` table.
+// Affiliate marketing resources.
 const affiliateResourceSchema = new mongoose.Schema(
   {
     _id:         { type: String, default: newId },

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Per-user browsing signal used to personalise the home page (Recommended /
-// "Because you viewed"). One document per user, keyed by the Postgres UUID.
+// "Because you viewed"). One document per user, keyed by the user id.
 // recentViews / recentSearches are kept short — only the most recent entries
 // matter, so writes trim each list to MAX_RECENT newest-first.
 const MAX_RECENT = 20;

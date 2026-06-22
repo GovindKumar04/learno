@@ -6,9 +6,8 @@ const socialLinkSchema = new mongoose.Schema(
   { _id: false }
 );
 
-// Migrated from the Postgres `affiliate_applications` table. SQL enforced a
-// partial unique index on lower(email) WHERE status='pending'; reproduced below
-// so a person can't have two pending applications with the same email.
+// Applications to become an affiliate. A partial unique index on lower(email)
+// WHERE status='pending' prevents two pending applications with the same email.
 const affiliateApplicationSchema = new mongoose.Schema(
   {
     _id:          { type: String, default: newId },

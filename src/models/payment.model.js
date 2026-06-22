@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Migrated from the Postgres `payments` table. `amount` is stored in paise
-// (integer), matching the prior schema. course_id is a Mongo Course _id string.
+// Razorpay payments. `amount` is stored in paise (integer). course_id is a
+// Course _id string.
 const paymentSchema = new mongoose.Schema(
   {
     _id:                 { type: String, default: newId },

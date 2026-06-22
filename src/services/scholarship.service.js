@@ -36,7 +36,7 @@ export const getMyApplicationsService = async (userId) =>
     .populate("courseId", "title thumbnail category slug")
     .sort({ createdAt: -1 });
 
-// All applications with filters + pagination + applicant info from PostgreSQL
+// All applications with filters + pagination + applicant info from the users collection
 export const getAllApplicationsService = async ({ page = 1, limit = 20, status, track, search }) => {
   const pageNum = Number(page);
   const limitNum = Number(limit);

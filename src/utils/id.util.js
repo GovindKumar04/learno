@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 // RFC 9562 UUIDv7 — a time-ordered UUID: 48-bit Unix-ms timestamp + 74 random
 // bits, with the version (7) and variant bits set. Non-enumerable like v4, but
 // monotonic so it keeps B-tree index locality (good insert/scan performance).
-// Dependency-free; generated app-side so it works on any Postgres version.
+// Dependency-free; generated app-side.
 export function uuidv7() {
   const ts = Date.now();
   const b = crypto.randomBytes(16);
@@ -23,11 +23,11 @@ export function uuidv7() {
   return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
 }
 
-// Convenience alias used by services creating new Postgres rows.
+// Convenience alias used when creating new documents.
 export const newId = uuidv7;
 
 // True if a value is a valid UUID string. Used to skip legacy (pre-migration
-// bigint) references when querying the UUID users table, so a stray old id can't
-// crash a Postgres uuid query.
+// non-UUID) references when querying the users collection, so a stray old id
+// can't break a user lookup.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export const isUuid = (v) => typeof v === "string" && UUID_RE.test(v);

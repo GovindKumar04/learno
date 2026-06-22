@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Migrated from the Postgres `audit_log` table. `metadata` was JSONB → Mixed.
+// Audit log of admin actions. `metadata` is a free-form object (Mixed).
 const auditLogSchema = new mongoose.Schema(
   {
     _id:        { type: String, default: newId },

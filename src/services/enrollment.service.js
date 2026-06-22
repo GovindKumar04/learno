@@ -169,8 +169,8 @@ export const getAllEnrollmentsService = async (query) => {
 
   const filter = { isActive: true };
 
-  // Search spans both databases — user name/email/roll live in Postgres, course
-  // title/category in Mongo. Resolve the matching ids in each store first, then
+  // Search spans two collections — user name/email/roll live in `users`, course
+  // title/category in `courses`. Resolve the matching ids in each first, then
   // filter enrollments by (userId ∈ matches) OR (courseId ∈ matches). This keeps
   // pagination and `total` correct at the DB level. (The old code paginated
   // first and filtered the resulting page in JS, so search only ever looked
@@ -215,7 +215,7 @@ export const getAllEnrollmentsService = async (query) => {
     return { enrollments: [], total, page: pageNum, limit: limitNum, totalPages };
   }
 
-  // Only look up valid-UUID ids (legacy bigint refs can't exist in the new users table).
+  // Only look up valid-UUID ids (legacy non-UUID refs can't exist in the users collection).
   const userIds = [...new Set(enrollments.map((e) => e.userId).filter(isUuid))];
   const usersMap = await buildUserMap(userIds, "full_name email roll_number phone avatar");
 

@@ -5,9 +5,7 @@ import connectMongoDB from "./config/mongodb.js";
 
 const PORT = process.env.PORT || 3000;
 
-// The app now runs entirely on MongoDB. Postgres is no longer required at
-// runtime — `config/db.js` and the `pg` dependency remain only for the one-time
-// data migration script (src/migration/pgToMongo.js) and historical reference.
+// The app runs entirely on MongoDB.
 
 async function startServer() {
   // ── MongoDB ─────────────────────────────────────────────────────────────────

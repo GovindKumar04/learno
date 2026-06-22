@@ -1,7 +1,7 @@
 import { User } from "../models/user.model.js";
 
-// Helpers for the common "enrich Mongo data with user fields" pattern that used
-// to be raw `SELECT ... FROM users WHERE id IN (...)` joins against Postgres.
+// Helpers for the common "enrich Mongo data with user fields" pattern — a lookup
+// of users by id returning selected fields.
 // `fields` is a Mongoose select string of snake_case columns, e.g.
 // "full_name email roll_number avatar". Returned objects keep their snake_case
 // fields and expose `id` (a copy of `_id`) so existing `usersMap[u.id]` code and

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Migrated from the Postgres `commissions` table. sale_amount / commission_amount
-// are stored in paise (integer), matching the prior schema.
+// Affiliate commissions. sale_amount / commission_amount are stored in paise
+// (integer).
 const commissionSchema = new mongoose.Schema(
   {
     _id:               { type: String, default: newId },
