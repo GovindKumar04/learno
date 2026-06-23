@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Migrated from the Postgres `users` table. Field names are kept snake_case and
-// the UUIDv7 lives in `_id` (String) so every existing cross-store reference
-// (referred_by, payments.user_id, enrollments.userId, …) stays valid and the
-// frontend/JWT contract is unchanged. Mongoose's built-in `id` virtual returns
-// `_id` as a string, so `user.id` keeps working.
+// User documents use snake_case field names and a string UUIDv7 `_id`, so every
+// cross-collection reference (referred_by, payments.user_id, enrollments.userId,
+// …) stays valid and the frontend/JWT contract is unchanged. Mongoose's built-in
+// `id` virtual returns `_id` as a string, so `user.id` keeps working.
 const userSchema = new mongoose.Schema(
   {
     _id:                        { type: String, default: newId },

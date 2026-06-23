@@ -69,6 +69,10 @@ app.use(apiLimiter);
 app.get("/sitemap.xml", getSitemap);
 
 app.use("/auth", authrouter);
+
+
+
+
 app.use("/courses", courseRouter);
 app.use("/contact", contactRouter);
 app.use("/enquiries", enquiryRouter);

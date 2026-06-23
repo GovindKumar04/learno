@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const scholarshipSchema = new mongoose.Schema(
   {
     userId: {
-      type: String, // PostgreSQL user UUID
+      type: String, // user id
       required: true,
     },
 
@@ -61,7 +61,7 @@ const scholarshipSchema = new mongoose.Schema(
     },
 
     reviewedBy: {
-      type: String, // admin PG UUID
+      type: String, // admin user id
       default: null,
     },
 

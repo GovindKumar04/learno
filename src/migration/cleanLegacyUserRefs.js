@@ -1,5 +1,5 @@
 // Remove MongoDB records that still reference the OLD (pre-UUID-migration) bigint
-// user ids. After the Postgres rebuild those users no longer exist, so these are
+// user ids. After the rebuild those users no longer exist, so these are
 // orphans. Courses / modules / materials are NOT touched (only stray reviews are
 // pruned). Run:  cd backend && npm run clean:legacy
 //

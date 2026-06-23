@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const reviewSchema = new mongoose.Schema(
   {
     userId: {
-      type: String, // PG UUID
+      type: String, // user id
       required: true,
     },
 
@@ -86,7 +86,7 @@ const courseSchema = new mongoose.Schema(
     },
 
     createdBy: {
-      type: String, // PG UUID
+      type: String, // user id
       required: true,
     },
 

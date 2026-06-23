@@ -32,7 +32,9 @@
     "seed:blogs": "node src/migration/seedBlogs.js",
     "seed:testimonials": "node src/migration/seedTestimonials.js",
     "seed:course-testimonials": "node src/migration/seedCourseTestimonials.js",
+    "seed:admin": "node src/migration/seedAdmin.js",
     "clean:legacy": "node src/migration/cleanLegacyUserRefs.js",
+    "migrate:copy": "node src/migration/copyCollections.js",
     "migrate:teaching-modes": "node src/migration/addTeachingModeIndex.js",
     "migrate:courses": "node src/migration/copyCoursesToNewDb.js",
     "test": "echo \"Error: no test specified\" && exit 1"

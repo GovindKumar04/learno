@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // One status entry per student within a session
 const recordSchema = new mongoose.Schema(
   {
-    studentId: { type: String, required: true }, // PG UUID
+    studentId: { type: String, required: true }, // user id
     status: {
       type: String,
       enum: ["present", "absent", "leave"],
@@ -39,7 +39,7 @@ const attendanceSchema = new mongoose.Schema(
     },
     records: [recordSchema],
     markedBy: {
-      type: String, // instructor / admin PG UUID
+      type: String, // instructor / admin user id
       required: true,
     },
   },

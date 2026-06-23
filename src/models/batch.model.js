@@ -14,13 +14,13 @@ const batchSchema = new mongoose.Schema(
     },
     // Assigned instructor — must have an APPROVED teaching request for this course
     instructorId: {
-      type: String, // PG UUID
+      type: String, // user id
       required: true,
     },
     // Offline students hand-picked by admin (offline-enrolled in the course)
     studentIds: [
       {
-        type: String, // PG UUID
+        type: String, // user id
       },
     ],
     schedule: {
@@ -48,7 +48,7 @@ const batchSchema = new mongoose.Schema(
       default: "upcoming",
     },
     createdBy: {
-      type: String, // admin PG UUID
+      type: String, // admin user id
       required: true,
     },
   },

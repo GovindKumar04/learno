@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const progressSchema = new mongoose.Schema(
   {
     userId: {
-      type: String,       // PostgreSQL user UUID
+      type: String,       // user id
       required: true,
     },
     courseId: {

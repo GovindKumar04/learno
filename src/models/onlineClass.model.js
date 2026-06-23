@@ -25,7 +25,7 @@ const onlineClassSchema = new mongoose.Schema(
     },
     // Assigned instructor — must have an APPROVED teaching request for this course.
     instructorId: {
-      type: String, // PG UUID
+      type: String, // user id
       required: true,
     },
     // Zoom meeting details
@@ -58,7 +58,7 @@ const onlineClassSchema = new mongoose.Schema(
       default: "scheduled",
     },
     createdBy: {
-      type: String, // admin PG UUID
+      type: String, // admin user id
       required: true,
     },
   },

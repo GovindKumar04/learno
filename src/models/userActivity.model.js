@@ -25,7 +25,7 @@ const recentSearchSchema = new mongoose.Schema(
 
 const userActivitySchema = new mongoose.Schema(
   {
-    userId: { type: String, required: true, unique: true }, // PG UUID
+    userId: { type: String, required: true, unique: true }, // user id
     recentViews: { type: [recentViewSchema], default: [] },
     recentSearches: { type: [recentSearchSchema], default: [] },
   },

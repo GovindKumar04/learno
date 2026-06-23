@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 const certificateSchema = new mongoose.Schema(
   {
     userId: {
-      type: String, // PostgreSQL user UUID (role = student)
+      type: String, // user id (role = student)
       required: true,
     },
     courseId: {
@@ -26,7 +26,7 @@ const certificateSchema = new mongoose.Schema(
     courseName: { type: String, required: true },
     email: { type: String, required: true },
     issuedBy: {
-      type: String, // admin's PG UUID who issued it
+      type: String, // admin user id who issued it
       required: true,
     },
     issuedAt: {

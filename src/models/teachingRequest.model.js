@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const teachingRequestSchema = new mongoose.Schema(
   {
     instructorId: {
-      type: String, // PostgreSQL user UUID (role = instructor)
+      type: String, // user id (role = instructor)
       required: true,
     },
     courseId: {
@@ -33,7 +33,7 @@ const teachingRequestSchema = new mongoose.Schema(
       default: "pending",
     },
     reviewedBy: {
-      type: String, // admin's PG UUID who approved/rejected
+      type: String, // admin user id who approved/rejected
       default: null,
     },
     reviewedAt: {
