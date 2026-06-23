@@ -1,6 +1,5 @@
 import crypto from "crypto";
 import bcrypt from "bcrypt";
-import mongoose from "mongoose";
 import { User } from "../models/user.model.js";
 import { Affiliate } from "../models/affiliate.model.js";
 import { Commission } from "../models/commission.model.js";
@@ -10,6 +9,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { sendAffiliateApprovalMail, sendAffiliateRejectionMail } from "../utils/mail.util.js";
 import { verifyAdminPassword, escapeRegex } from "../utils/deleteGuard.util.js";
 import { buildUserMap } from "../utils/userQuery.util.js";
+import { runInTransaction } from "../utils/transaction.util.js";
 
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
@@ -166,46 +166,43 @@ export const reviewApplicationService = async ({ id, action, review_note }) => {
   const tempPassword = generatePassword();
   const hashed = await bcrypt.hash(tempPassword, 10);
 
-  const session = await mongoose.startSession();
-  let payload;
-  try {
-    await session.withTransaction(async () => {
-      const [user] = await User.create([{
-        full_name: application.full_name,
-        email: application.email,
-        password: hashed,
-        role: "affiliate",
-        phone: application.phone || "N/A",
-        location: "Not specified",
-      }], { session });
-      const userId = user._id;
+  // Create the affiliate user + record + mark the application approved. Atomic in
+  // a transaction on a replica set / mongos; falls back to sequential writes on a
+  // standalone mongod (no transaction support).
+  const payload = await runInTransaction(async (session) => {
+    const [user] = await User.create([{
+      full_name: application.full_name,
+      email: application.email,
+      password: hashed,
+      role: "affiliate",
+      phone: application.phone || "N/A",
+      location: "Not specified",
+    }], { session });
+    const userId = user._id;
 
-      let code = null;
-      for (let i = 0; i < 5; i++) {
-        const candidate = generateCode();
-        const clash = await Affiliate.findOne({ code: candidate }).select("_id").session(session).lean();
-        if (!clash) { code = candidate; break; }
-      }
-      if (!code) throw new ApiError(500, "Could not generate a referral code, please retry");
+    let code = null;
+    for (let i = 0; i < 5; i++) {
+      const candidate = generateCode();
+      const clash = await Affiliate.findOne({ code: candidate }).select("_id").session(session).lean();
+      if (!clash) { code = candidate; break; }
+    }
+    if (!code) throw new ApiError(500, "Could not generate a referral code, please retry");
 
-      await Affiliate.create([{
-        user_id: userId,
-        code,
-        bio: application.bio,
-        social_links: application.social_links || [],
-      }], { session });
+    await Affiliate.create([{
+      user_id: userId,
+      code,
+      bio: application.bio,
+      social_links: application.social_links || [],
+    }], { session });
 
-      await AffiliateApplication.updateOne(
-        { _id: id },
-        { status: "approved", user_id: userId, reviewed_at: new Date() },
-        { session }
-      );
+    await AffiliateApplication.updateOne(
+      { _id: id },
+      { status: "approved", user_id: userId, reviewed_at: new Date() },
+      { session }
+    );
 
-      payload = { userId, code, email: application.email };
-    });
-  } finally {
-    await session.endSession();
-  }
+    return { userId, code, email: application.email };
+  });
 
   sendAffiliateApprovalMail({ name: application.full_name, email: application.email, tempPassword, code: payload.code }).catch(() => {});
   return { action: "approve", payload };

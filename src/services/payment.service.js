@@ -1,5 +1,4 @@
 import crypto from "crypto";
-import mongoose from "mongoose";
 import Razorpay from "razorpay";
 import { Course } from "../models/course.model.js";
 import { Enrollment } from "../models/enrollment.model.js";
@@ -10,6 +9,8 @@ import { Affiliate } from "../models/affiliate.model.js";
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendPaymentConfirmation } from "../utils/mail.util.js";
+import { sendCourseWelcomeWhatsApp } from "../utils/whatsapp.util.js";
+import { runInTransaction } from "../utils/transaction.util.js";
 import { buildUserMap } from "../utils/userQuery.util.js";
 
 // Lazy — created on first use so missing keys don't crash the server at startup
@@ -154,47 +155,44 @@ export const verifyPaymentService = async ({ userId, razorpay_order_id, razorpay
     return { alreadyEnrolled: true, courseId: payment.course_id };
   }
 
-  // Mark paid + record commission atomically (Atlas replica set → multi-doc
-  // transaction). If anything here fails, nothing commits and /verify is safe to retry.
-  const session = await mongoose.startSession();
-  let user;
-  try {
-    await session.withTransaction(async () => {
-      await Payment.updateOne(
-        { razorpay_order_id },
-        { status: "paid", razorpay_payment_id, razorpay_signature, paid_at: new Date() },
-        { session }
-      );
+  // Mark paid + record commission. On a replica set / mongos this commits
+  // atomically in a transaction; on a standalone mongod (no transactions) it
+  // falls back to sequential writes. Either way /verify is idempotent, so a
+  // retry reconciles a partially-applied state.
+  const user = await runInTransaction(async (session) => {
+    await Payment.updateOne(
+      { razorpay_order_id },
+      { status: "paid", razorpay_payment_id, razorpay_signature, paid_at: new Date() },
+      { session }
+    );
 
-      user = await User.findById(userId).select("full_name email referred_by").session(session).lean();
+    const u = await User.findById(userId).select("full_name email phone referred_by").session(session).lean();
 
-      // Affiliate commission for referred users — once per payment.
-      if (user?.referred_by) {
-        const aff = await Affiliate.findOne({ user_id: user.referred_by, status: "active" })
-          .select("user_id commission_type commission_value").session(session).lean();
-        if (aff) {
-          const saleAmount = payment.amount;
-          const commissionAmount =
-            aff.commission_type === "flat"
-              ? Math.round(Number(aff.commission_value) * 100)
-              : Math.round((saleAmount * Number(aff.commission_value)) / 100);
-          if (commissionAmount > 0) {
-            await Commission.create([{
-              affiliate_user_id: aff.user_id,
-              referred_user_id: userId,
-              payment_id: payment._id,
-              course_title: payment.course_title,
-              sale_amount: saleAmount,
-              commission_amount: commissionAmount,
-              status: "pending",
-            }], { session });
-          }
+    // Affiliate commission for referred users — once per payment.
+    if (u?.referred_by) {
+      const aff = await Affiliate.findOne({ user_id: u.referred_by, status: "active" })
+        .select("user_id commission_type commission_value").session(session).lean();
+      if (aff) {
+        const saleAmount = payment.amount;
+        const commissionAmount =
+          aff.commission_type === "flat"
+            ? Math.round(Number(aff.commission_value) * 100)
+            : Math.round((saleAmount * Number(aff.commission_value)) / 100);
+        if (commissionAmount > 0) {
+          await Commission.create([{
+            affiliate_user_id: aff.user_id,
+            referred_user_id: userId,
+            payment_id: payment._id,
+            course_title: payment.course_title,
+            sale_amount: saleAmount,
+            commission_amount: commissionAmount,
+            status: "pending",
+          }], { session });
         }
       }
-    });
-  } finally {
-    await session.endSession();
-  }
+    }
+    return u;
+  });
 
   // Enrollment is idempotent so a retry reconciles.
   await ensureEnrolled(userId, payment.course_id, payment.enrollment_type);
@@ -207,6 +205,14 @@ export const verifyPaymentService = async ({ userId, razorpay_order_id, razorpay
     amountINR: payment.amount / 100,
     paymentId: razorpay_payment_id,
   }).catch(() => {});
+
+  // Welcome + thanks-for-enrolling WhatsApp greeting. Fire-and-forget (it's
+  // already non-blocking internally) so a WhatsApp outage never fails /verify.
+  sendCourseWelcomeWhatsApp({
+    name: user.full_name,
+    phone: user.phone,
+    courseName: payment.course_title,
+  });
 
   return {
     alreadyEnrolled: false,

@@ -3,6 +3,7 @@ import { Progress } from "../models/progress.model.js";
 import { Course } from "../models/course.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { sendBroadcastMail } from "../utils/mail.util.js";
+import { sendCourseWelcomeWhatsApp } from "../utils/whatsapp.util.js";
 import { getOfflineAttendance, getLiveAttendance } from "../utils/attendance.util.js";
 import { escapeRegex } from "../utils/deleteGuard.util.js";
 import { isUuid } from "../utils/id.util.js";
@@ -19,7 +20,7 @@ export const checkMyEnrollmentService = async ({ userId, courseId }) => {
 export const enrollStudentService = async ({ userId, courseId, enrollmentType = "self-paced", enrolledBy }) => {
   if (!userId || !courseId) throw new ApiError(400, "userId and courseId are required");
 
-  const userDoc = await User.findById(userId).select("role").lean();
+  const userDoc = await User.findById(userId).select("role full_name phone").lean();
   if (!userDoc) throw new ApiError(404, "User not found");
   if (userDoc.role !== "student") throw new ApiError(400, "Only students can be enrolled in courses");
 
@@ -37,11 +38,14 @@ export const enrollStudentService = async ({ userId, courseId, enrollmentType = 
     existing.enrolledBy = enrolledBy;
     existing.enrollmentType = enrollmentType;
     await existing.save();
+    sendCourseWelcomeWhatsApp({ name: userDoc.full_name, phone: userDoc.phone, courseName: course.title });
     return { enrollment: existing, reEnrolled: true };
   }
 
   const enrollment = await Enrollment.create({ userId, courseId, enrolledBy, enrollmentType });
   await Progress.create({ userId, courseId });
+  // Welcome + thanks-for-enrolling WhatsApp greeting (non-blocking).
+  sendCourseWelcomeWhatsApp({ name: userDoc.full_name, phone: userDoc.phone, courseName: course.title });
   return { enrollment, reEnrolled: false };
 };
 
