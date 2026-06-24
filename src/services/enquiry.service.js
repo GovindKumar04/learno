@@ -96,10 +96,18 @@ export const replyToEnquiryService = async ({ id, message }) => {
   if (!enquiry) throw new ApiError(404, "Enquiry not found");
   if (enquiry.status === "resolved") throw new ApiError(400, "Cannot reply to a resolved enquiry");
 
-  enquiry.replies.push({ message, sentBy: "admin", sentAt: new Date() });
-  enquiry.status = "contacted";
-  enquiry.respondedAt = enquiry.respondedAt || new Date();
-  await enquiry.save();
+  // Atomic update instead of enquiry.save(): legacy enquiries are missing
+  // now-required fields (subject/message), so a full-document save would throw a
+  // ValidationError and 500 — same issue fixed in updateEnquiryStatusService.
+  const reply = { message, sentBy: "admin", sentAt: new Date() };
+  const updated = await Enquiry.findByIdAndUpdate(
+    id,
+    {
+      $push: { replies: reply },
+      $set: { status: "contacted", respondedAt: enquiry.respondedAt || new Date() },
+    },
+    { new: true, runValidators: true }
+  );
 
   await sendReplyMail({
     name: enquiry.name,
@@ -109,18 +117,29 @@ export const replyToEnquiryService = async ({ id, message }) => {
     replyMessage: message,
   });
 
-  return enquiry;
+  return updated;
 };
 
 export const updateEnquiryStatusService = async ({ id, status, adminNote, priority }) => {
   const enquiry = await Enquiry.findById(id);
   if (!enquiry) throw new ApiError(404, "Enquiry not found");
 
-  if (status) enquiry.status = status;
-  if (adminNote) enquiry.adminNote = adminNote;
-  if (priority) enquiry.priority = priority;
-  if (status === "resolved") enquiry.respondedAt = enquiry.respondedAt || new Date();
+  const update = {};
+  if (status) update.status = status;
+  if (adminNote) update.adminNote = adminNote;
+  if (priority) update.priority = priority;
+  if (status === "resolved" && !enquiry.respondedAt) update.respondedAt = new Date();
 
-  await enquiry.save();
-  return enquiry;
+  // Persist via an atomic $set rather than enquiry.save(). Many legacy enquiries
+  // predate the current schema and are missing now-required fields (subject,
+  // message) — doc.save() runs full-document validation and would throw a
+  // ValidationError (surfacing to the client as a 500) even though we're only
+  // touching the status. With findByIdAndUpdate + runValidators, only the changed
+  // paths are validated (e.g. the status enum), so the update succeeds.
+  const updated = await Enquiry.findByIdAndUpdate(
+    id,
+    { $set: update },
+    { new: true, runValidators: true }
+  );
+  return updated;
 };

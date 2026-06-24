@@ -1,6 +1,7 @@
 // models/enquiry.model.js
 
 import mongoose from "mongoose";
+import { Counter } from "./counter.model.js";
 
 const replySchema = new mongoose.Schema(
   {
@@ -107,9 +108,12 @@ const enquirySchema = new mongoose.Schema(
 // Auto generate ticket ID before saving
 enquirySchema.pre("save", async function () {
   if (!this.ticketId) {
-    const count = await mongoose.model("Enquiry").countDocuments();
-
-    this.ticketId = `TKT-${String(count + 1).padStart(4, "0")}`;
+    const counter = await Counter.findByIdAndUpdate(
+      "enquiryTicket",
+      { $inc: { seq: 1 } },
+      { new: true, upsert: true }
+    );
+    this.ticketId = `TKT-${String(counter.seq).padStart(4, "0")}`;
   }
 });
 

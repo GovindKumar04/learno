@@ -29,10 +29,7 @@ const getEnquiryById = asyncHandler(async (req, res) => {
   return res.json(new ApiResponse(200, data));
 });
 
-// GET /enquiries/:id/attachment/:index  — stream an attachment (e.g. a resume)
-// with correct headers. ?download=1 forces a save dialog; otherwise it opens
-// inline. Proxied through the API so PDFs stored as Cloudinary `raw` files are
-// served as real application/pdf instead of an unviewable octet-stream.
+
 const streamEnquiryAttachment = asyncHandler(async (req, res) => {
   const { url, type, publicId, ticketId } = await getEnquiryAttachmentService({
     id: req.params.id,
@@ -41,11 +38,7 @@ const streamEnquiryAttachment = asyncHandler(async (req, res) => {
 
   const isPdf = type === "pdf";
 
-  // Candidate source URLs, tried in order. Cloudinary's CDN blocks PDF/ZIP
-  // delivery by default (returns 401 even for signed delivery URLs). The reliable
-  // bypass is the signed Admin API download endpoint (api.cloudinary.com), which
-  // serves the bytes regardless of the CDN media-type restriction. For images the
-  // plain CDN URL is fine, so we keep it first.
+
   const adminDownload = (resourceType) =>
     cloudinary.utils.private_download_url(publicId, "", { resource_type: resourceType, type: "upload" });
 

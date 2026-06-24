@@ -34,6 +34,7 @@
     "seed:course-testimonials": "node src/migration/seedCourseTestimonials.js",
     "seed:admin": "node src/migration/seedAdmin.js",
     "clean:legacy": "node src/migration/cleanLegacyUserRefs.js",
+    "migrate:enquiries": "node src/migration/normalizeLegacyEnquiries.js",
     "migrate:copy": "node src/migration/copyCollections.js",
     "migrate:teaching-modes": "node src/migration/addTeachingModeIndex.js",
     "migrate:courses": "node src/migration/copyCoursesToNewDb.js",
