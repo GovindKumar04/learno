@@ -3,6 +3,9 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import {
   getEligibleStudentsService,
   issueCertificatesService,
+  issueManualCertificateService,
+  getManualCertificatesService,
+  getCertificatePdfByIdService,
   getIssuedCertificatesService,
   getCertificatePdfService,
   getMyCertificatesService,
@@ -35,6 +38,51 @@ const issueCertificates = asyncHandler(async (req, res) => {
   );
 });
 
+// POST /certificates/manual  (admin only) — generate for any name + any course,
+// bypassing eligibility. Body: { studentName, email?, courseId?, courseName? }
+const issueManualCertificate = asyncHandler(async (req, res) => {
+  const {
+    studentName, email, courseId, courseName, type, fromDate, toDate, department,
+    signatoryName, signatoryDesignation, trainerName, trainerDesignation,
+  } = req.body;
+  const result = await issueManualCertificateService({
+    studentName,
+    email,
+    courseId,
+    courseName,
+    type,
+    fromDate,
+    toDate,
+    department,
+    signatoryName,
+    signatoryDesignation,
+    trainerName,
+    trainerDesignation,
+    issuedBy: req.user.id,
+  });
+  const label = result.type === "internship" ? "Internship certificate" : "Certificate";
+  return res.json(
+    new ApiResponse(
+      200,
+      result,
+      `${label} ${result.certificateNo} generated${result.emailed ? ` and emailed to ${result.email}` : ""}`
+    )
+  );
+});
+
+// GET /certificates/manual  (admin only) — log of manually issued certificates.
+// Optional ?type=internship|completion filter.
+const getManualCertificates = asyncHandler(async (req, res) => {
+  const data = await getManualCertificatesService({ type: req.query.type });
+  return res.json(new ApiResponse(200, data));
+});
+
+// GET /certificates/:id/download  (admin only) — re-download any certificate PDF
+const downloadCertificateById = asyncHandler(async (req, res) => {
+  const file = await getCertificatePdfByIdService({ id: req.params.id });
+  return sendPdf(res, file);
+});
+
 // GET /certificates  (admin only)
 const getIssuedCertificates = asyncHandler(async (req, res) => {
   const data = await getIssuedCertificatesService();
@@ -65,6 +113,9 @@ const downloadMyCertificate = asyncHandler(async (req, res) => {
 export {
   getEligibleStudents,
   issueCertificates,
+  issueManualCertificate,
+  getManualCertificates,
+  downloadCertificateById,
   getIssuedCertificates,
   downloadCertificate,
   getMyCertificates,

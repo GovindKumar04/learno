@@ -2,6 +2,9 @@ import express from "express";
 import {
   getEligibleStudents,
   issueCertificates,
+  issueManualCertificate,
+  getManualCertificates,
+  downloadCertificateById,
   getIssuedCertificates,
   downloadCertificate,
   getMyCertificates,
@@ -25,10 +28,19 @@ certificateRouter.get("/eligible", requireRole("admin"), getEligibleStudents);
 // Admin: issue + email certificates (single or bulk)
 certificateRouter.post("/issue", requireRole("admin"), audit("certificate.issue"), issueCertificates);
 
-// Admin: download an issued certificate PDF
+// Admin: generate for any name/course, bypassing eligibility (manual override)
+certificateRouter.post("/manual", requireRole("admin"), audit("certificate.manual"), issueManualCertificate);
+
+// Admin: log of manually issued certificates
+certificateRouter.get("/manual", requireRole("admin"), getManualCertificates);
+
+// Admin: download an issued certificate PDF by (userId, courseId)
 certificateRouter.get("/download", requireRole("admin"), downloadCertificate);
 
 // Admin: list issued certificates
 certificateRouter.get("/", requireRole("admin"), getIssuedCertificates);
+
+// Admin: re-download any certificate PDF by id (kept last — param route)
+certificateRouter.get("/:id/download", requireRole("admin"), downloadCertificateById);
 
 export { certificateRouter };
