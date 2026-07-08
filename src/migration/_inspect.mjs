@@ -1,0 +1,12 @@
+import "dotenv/config";
+import mongoose from "mongoose";
+import connectMongoDB from "../config/mongodb.js";
+await connectMongoDB();
+const db = mongoose.connection;
+const admins = await db.collection("users").find({ role: "admin" }).project({ _id:1, email:1, full_name:1 }).toArray();
+console.log("ADMINS:", JSON.stringify(admins, null, 2));
+const courses = await db.collection("courses").find({}).project({ title:1, slug:1, isPublished:1, category:1 }).toArray();
+console.log("EXISTING COURSES (", courses.length, "):");
+courses.forEach(c => console.log(" -", c.title, "| slug:", c.slug, "| pub:", c.isPublished, "| cat:", c.category));
+await db.close();
+process.exit(0);

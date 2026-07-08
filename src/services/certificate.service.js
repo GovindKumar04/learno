@@ -1,4 +1,6 @@
+import { randomUUID } from "crypto";
 import { Certificate } from "../models/certificate.model.js";
+import { Counter } from "../models/counter.model.js";
 import { Progress } from "../models/progress.model.js";
 import { Course } from "../models/course.model.js";
 import { Batch } from "../models/batch.model.js";
@@ -109,15 +111,18 @@ async function hasCompleted(userId, courseId) {
   return !!(live && live.eligible);
 }
 
-// Reserve the next certificate number for the current year.
-const nextCertSeq = async (year) => {
-  const prefix = `FSA-CERT-${String(year).slice(-2)}-`;
-  const last = await Certificate.findOne({ certificateNo: new RegExp(`^${prefix}`) })
-    .sort({ certificateNo: -1 })
-    .select("certificateNo");
-  if (!last) return 1;
-  const tail = parseInt(last.certificateNo.slice(prefix.length), 10);
-  return Number.isNaN(tail) ? 1 : tail + 1;
+// Reserve the next certificate sequence value via one global, atomic, monotonic
+// counter. Because the counter only ever increments and is never derived from
+// the certificate rows, sequence values are NEVER reused when certificates are
+// deleted, and concurrent issuance can't collide. buildCertificateNo() turns the
+// value into the printed FTCTF-… number.
+const nextCertSeq = async () => {
+  const counter = await Counter.findByIdAndUpdate(
+    "cert-seq",
+    { $inc: { seq: 1 } },
+    { new: true, upsert: true }
+  );
+  return counter.seq;
 };
 
 export const getEligibleStudentsService = async () => {
@@ -214,9 +219,6 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
     throw new ApiError(400, "items must be a non-empty array of { userId, courseId }");
   }
 
-  const year = new Date().getFullYear();
-  let nextSeq = await nextCertSeq(year);
-
   let sent = 0;
   let failed = 0;
   const errors = [];
@@ -237,7 +239,9 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
       if (!course) throw new Error("Course not found");
 
       const existing = await Certificate.findOne({ userId, courseId }).select("certificateNo");
-      const certificateNo = existing ? existing.certificateNo : buildCertificateNo(year, nextSeq);
+      // Reserve a fresh number only for a genuinely new certificate; re-issuing
+      // keeps the original number so a student's certificate id never changes.
+      const certificateNo = existing ? existing.certificateNo : buildCertificateNo(await nextCertSeq());
 
       const issuedAt = new Date();
       const pdfBuffer = await generateCertificatePDF({
@@ -270,7 +274,6 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
         { upsert: true, new: true, setDefaultsOnInsert: true }
       );
 
-      if (!existing) nextSeq += 1;
       sent += 1;
     } catch (err) {
       failed += 1;
@@ -281,6 +284,140 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
   return { sent, failed, total: items.length, errors };
 };
 
+// Admin override: generate a certificate on demand for ANY name and ANY course,
+// with no completion/eligibility check. Handles two cases:
+//   • Portal course selected  → courseId set, courseName snapshotted from it.
+//   • Custom course typed      → courseId null, courseName is the typed title.
+// The certificate is always recorded and the PDF returned for download; if an
+// email is supplied it is also emailed. Each call mints a fresh certificate
+// (unique synthetic userId), so re-generating never clobbers a prior record.
+export const issueManualCertificateService = async ({
+  studentName, email, courseId, courseName, type, fromDate, toDate, department,
+  signatoryName, signatoryDesignation, trainerName, trainerDesignation, issuedBy,
+}) => {
+  const name = (studentName || "").trim();
+  if (!name) throw new ApiError(400, "studentName is required");
+
+  const certType = type === "internship" ? "internship" : "completion";
+
+  // Signatories: both blocks have an entered name + a selectable designation.
+  // Fall back to defaults when a field is left blank.
+  const leftName = (signatoryName || "").trim() || "Khushi Bharti";
+  const leftRole = (signatoryDesignation || "").trim() || "IT Team Lead";
+  const rightName = (trainerName || "").trim() || "Shruti Sinha";
+  const rightRole = (trainerDesignation || "").trim() || "Trainer";
+  const signatories = {
+    left: { name: leftName, role: leftRole },
+    right: { name: rightName, role: rightRole },
+  };
+
+  // Optional internship duration — parse valid dates, ignore blanks/garbage.
+  const parseDate = (v) => {
+    if (!v) return undefined;
+    const d = new Date(v);
+    return Number.isNaN(d.getTime()) ? undefined : d;
+  };
+  const from = certType === "internship" ? parseDate(fromDate) : undefined;
+  const to = certType === "internship" ? parseDate(toDate) : undefined;
+  if (from && to && from > to) throw new ApiError(400, "‘From’ date must be on or before the ‘To’ date");
+
+  let resolvedCourseName = (courseName || "").trim();
+  let resolvedCourseId = null;
+
+  if (courseId) {
+    const course = await Course.findById(courseId).select("title");
+    if (!course) throw new ApiError(404, "Selected course not found");
+    resolvedCourseId = course._id;
+    resolvedCourseName = course.title; // snapshot the authoritative title
+  }
+  if (!resolvedCourseName) {
+    throw new ApiError(400, certType === "internship" ? "Select or enter an internship domain" : "Select a course or enter a course name");
+  }
+
+  const cleanEmail = (email || "").trim();
+
+  const issuedAt = new Date();
+  const certificateNo = buildCertificateNo(await nextCertSeq(), issuedAt);
+
+  const pdfBuffer = await generateCertificatePDF({
+    studentName: name,
+    courseName: resolvedCourseName,
+    certificateNo,
+    issuedAt,
+    type: certType,
+    fromDate: from,
+    toDate: to,
+    department: certType === "internship" ? (department || "").trim() || undefined : undefined,
+    signatories,
+  });
+
+  // Email is best-effort — a delivery failure must not block the download the
+  // admin is waiting on. Report back whether it actually went out.
+  let emailed = false;
+  if (cleanEmail) {
+    try {
+      await sendCertificateMail({
+        name,
+        email: cleanEmail,
+        courseName: resolvedCourseName,
+        certificateNo,
+        pdfBuffer,
+      });
+      emailed = true;
+    } catch {
+      emailed = false;
+    }
+  }
+
+  await Certificate.create({
+    userId: `manual:${randomUUID()}`,
+    courseId: resolvedCourseId,
+    certificateNo,
+    studentName: name,
+    courseName: resolvedCourseName,
+    email: cleanEmail || undefined,
+    isManual: true,
+    type: certType,
+    fromDate: from,
+    toDate: to,
+    department: certType === "internship" ? (department || "").trim() || undefined : undefined,
+    signatoryName: leftName,
+    signatoryDesignation: leftRole,
+    trainerName: rightName,
+    trainerDesignation: rightRole,
+    issuedBy,
+    issuedAt,
+  });
+
+  return {
+    certificateNo,
+    studentName: name,
+    courseName: resolvedCourseName,
+    email: cleanEmail || null,
+    emailed,
+    type: certType,
+    issuedAt,
+    pdfBase64: pdfBuffer.toString("base64"),
+  };
+};
+
+// Admin: the log of manually generated certificates, newest first. Optionally
+// filter by type ("completion" | "internship").
+export const getManualCertificatesService = async ({ type } = {}) => {
+  const query = { isManual: true };
+  if (type === "internship" || type === "completion") query.type = type;
+  const certificates = await Certificate.find(query).sort({ issuedAt: -1 }).lean();
+  return { certificates, total: certificates.length };
+};
+
+// Admin: re-render any stored certificate's PDF by its id (used to re-download
+// manual certificates, which have no {userId, courseId} pair to look up by).
+export const getCertificatePdfByIdService = async ({ id }) => {
+  const cert = await Certificate.findById(id);
+  if (!cert) throw new ApiError(404, "Certificate not found");
+  return renderStoredCertificate(cert);
+};
+
 export const getIssuedCertificatesService = async () => {
   const certs = await Certificate.find({}).sort({ issuedAt: -1 });
   return { certificates: certs, total: certs.length };
@@ -289,12 +426,26 @@ export const getIssuedCertificatesService = async () => {
 // Re-render the PDF for an already-issued certificate. We never store the file —
 // the record (name/course/number/date) is the source of truth, so the download
 // is regenerated identically on demand. Returns the buffer + a filename.
+// Rebuild the signatories object from the stored fields, if any were saved.
+const storedSignatories = (cert) => {
+  if (!cert.signatoryName && !cert.trainerName && !cert.signatoryDesignation && !cert.trainerDesignation) return undefined;
+  return {
+    left: { name: cert.signatoryName || "Khushi Bharti", role: cert.signatoryDesignation || "IT Team Lead" },
+    right: { name: cert.trainerName || "Shruti Sinha", role: cert.trainerDesignation || "Trainer" },
+  };
+};
+
 const renderStoredCertificate = (cert) =>
   generateCertificatePDF({
     studentName: cert.studentName,
     courseName: cert.courseName,
     certificateNo: cert.certificateNo,
     issuedAt: cert.issuedAt,
+    type: cert.type, // keep the same template (completion / internship) on re-download
+    fromDate: cert.fromDate,
+    toDate: cert.toDate,
+    department: cert.department,
+    signatories: storedSignatories(cert),
   }).then((pdfBuffer) => ({ pdfBuffer, fileName: `${cert.certificateNo}.pdf` }));
 
 // Admin: download by (userId, courseId) — the keys the eligible-students list
