@@ -1,13 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
-<<<<<<< HEAD
-// NOTE: puppeteer is imported lazily (see getBrowser) — never at module load —
-// so a missing/broken puppeteer install can only affect certificate generation,
-// never the whole API server's startup.
-=======
-import puppeteer from "puppeteer";
->>>>>>> c18c869ef9d670db8639f46b86708bcceebfcf87
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.join(__dirname, "../assets");
@@ -79,7 +73,6 @@ const getBrowser = async () => {
       /* fall through and relaunch */
     }
   }
-<<<<<<< HEAD
   browserPromise = (async () => {
     let puppeteer;
     try {
@@ -104,22 +97,6 @@ const getBrowser = async () => {
       ],
     });
   })();
-=======
-  browserPromise = puppeteer.launch({
-    headless: true,
-    // The extra flags disable Chrome's crash-reporter / GPU helper processes,
-    // which are what briefly flash a black console window on Windows.
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-gpu",
-      "--disable-crash-reporter",
-      "--disable-breakpad",
-      "--no-first-run",
-      "--disable-dev-shm-usage",
-    ],
-  });
->>>>>>> c18c869ef9d670db8639f46b86708bcceebfcf87
   return browserPromise;
 };
 
