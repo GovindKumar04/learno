@@ -45,7 +45,7 @@ const fetchPublishedCourses = async ({ sort = "newest", limit = DISCOVERY_LIMIT,
 };
 
 export const createCourseService = async ({ body, file, userId }) => {
-  const { title, description, category, level, price, priceOnline, priceOffline, priceLive, modes, isPublished, totalClasses, totalLiveClasses } = body;
+  const { title, description, category, level, price, priceOnline, priceOffline, priceLive, discountPercent, modes, isPublished, totalClasses, totalLiveClasses } = body;
   if (!title || !description || !category) {
     throw new ApiError(400, "title, description, and category are required");
   }
@@ -76,6 +76,7 @@ export const createCourseService = async ({ body, file, userId }) => {
     priceOnline: priceOnline || 0,
     priceOffline: priceOffline || 0,
     priceLive: priceLive || 0,
+    discountPercent: Math.min(Math.max(Number(discountPercent) || 0, 0), 90),
     totalClasses: Number(totalClasses) || 0,
     totalLiveClasses: Number(totalLiveClasses) || 0,
     ...(parsedModes && { modes: parsedModes }),
@@ -162,7 +163,7 @@ export const updateCourseService = async ({ courseId, body, file }) => {
 
   const scalarFields = [
     "title", "description", "category", "level", "price",
-    "isPublished", "language", "duration", "priceOnline", "priceOffline", "priceLive",
+    "isPublished", "language", "duration", "priceOnline", "priceOffline", "priceLive", "discountPercent",
     "totalClasses", "totalLiveClasses", "slug", "tag", "subtitle", "tagline", "heroImg",
   ];
   scalarFields.forEach((field) => {

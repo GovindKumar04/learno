@@ -196,6 +196,18 @@ const courseSchema = new mongoose.Schema(
       default: 0,
     },
 
+    // Percentage discount (0–90) applied uniformly to ALL price modes. 0 = none.
+    // The stored priceOnline/priceOffline/priceLive remain the ORIGINAL (strike-
+    // through) prices; the amount actually charged is computed at payment time as
+    // price * (1 - discountPercent/100). Capped at 90 so a course can never be
+    // accidentally reduced to free/negative.
+    discountPercent: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 90,
+    },
+
     // Delivery modes this course is offered in. A course can be offered in any
     // combination of: self-paced (recorded), classroom (in-person), live (Zoom/Meet).
     modes: {

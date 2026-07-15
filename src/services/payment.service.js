@@ -56,7 +56,7 @@ export const createOrderService = async ({ userId, courseId, enrollmentType = "s
     throw new ApiError(400, "enrollmentType must be 'self-paced', 'classroom' or 'live'");
   }
 
-  const course = await Course.findById(courseId).select("title priceOnline priceOffline priceLive price isPublished modes");
+  const course = await Course.findById(courseId).select("title priceOnline priceOffline priceLive price discountPercent isPublished modes");
   if (!course) throw new ApiError(404, "Course not found");
   if (!course.isPublished) throw new ApiError(403, "Course is not available");
 
@@ -71,6 +71,12 @@ export const createOrderService = async ({ userId, courseId, enrollmentType = "s
       ? (course.priceLive || 0)
       : (course.priceOnline || course.price || 0);
   if (priceINR <= 0) throw new ApiError(400, "Course price is not set for this enrollment type");
+
+  // Apply the course-level discount to get the amount actually charged. Computed
+  // server-side so a tampered client can't alter it. Capped 0–90; rounded to
+  // whole rupees. The original priceINR stays the strike-through reference.
+  const discount = Math.min(Math.max(Number(course.discountPercent) || 0, 0), 90);
+  const payableINR = discount > 0 ? Math.round(priceINR * (1 - discount / 100)) : priceINR;
 
   const existing = await Enrollment.findOne({ userId, courseId, isActive: true });
   if (existing) throw new ApiError(409, "You are already enrolled in this course");
@@ -95,7 +101,7 @@ export const createOrderService = async ({ userId, courseId, enrollmentType = "s
   let rzpOrder;
   try {
     rzpOrder = await getRazorpay().orders.create({
-      amount: priceINR * 100,
+      amount: payableINR * 100,
       currency: "INR",
       // Razorpay caps receipt at 40 chars. A UUID userId would overflow it, so use
       // a short timestamp + random token; userId/course are kept in notes below.
