@@ -262,6 +262,16 @@ const courseSchema = new mongoose.Schema(
         a: { type: String },
       },
     ],
+
+    // ── Recycle bin (soft delete) ─────────────────────────────────────────────
+    // Deleting a course soft-deletes it: this timestamp is set and the course is
+    // hidden everywhere (the query-scope hook below excludes it) but KEPT — with
+    // its modules/materials intact — so an admin can restore it. A daily sweep
+    // permanently purges courses binned for more than 60 days. null = live.
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true },
 );
@@ -271,6 +281,24 @@ courseSchema.index({ isPublished: 1, createdAt: -1 });
 // Discovery sorts on the home page (highest-rated / most-popular / trending).
 courseSchema.index({ isPublished: 1, averageRating: -1 });
 courseSchema.index({ isPublished: 1, totalStudentsEnrolled: -1 });
+// Recycle-bin listing + the retention sweep both query on deletedAt.
+courseSchema.index({ deletedAt: 1 });
+
+// ── Soft-delete scope ────────────────────────────────────────────────────────
+// Every course query transparently excludes soft-deleted (binned) courses, so no
+// listing / detail / stats / populate path can ever surface one. Bin, restore and
+// purge opt back in with .setOptions({ withDeleted: true }) or by filtering on
+// deletedAt explicitly.
+// Synchronous (no `next`) so it works with Mongoose's promise-based query
+// middleware. Runs with `this` bound to the query.
+function scopeOutDeleted() {
+  if (this.getOptions().withDeleted) return;
+  const filter = this.getFilter();
+  if (!("deletedAt" in filter)) this.where({ deletedAt: null });
+}
+courseSchema.pre(/^find/, scopeOutDeleted);
+courseSchema.pre("countDocuments", scopeOutDeleted);
+courseSchema.pre("distinct", scopeOutDeleted);
 
 // A course cannot be published without a price assigned on at least one mode.
 courseSchema.pre("validate", function () {

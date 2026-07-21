@@ -1,0 +1,1564 @@
+﻿1-Month Professional Certification Programs
+Detailed Module-Wise Weekly Curriculum
+
+
+Standard 4-Week Learning Framework
+
+Week
+Learning Focus
+Week 1
+Fundamentals, Software Installation & Basic Concepts
+Week 2
+Core Concepts, Practical Exercises & Assignments
+Week 3
+Advanced Topics, Real-World Case Studies & Live Demonstrations
+Week 4
+Capstone Project, Assessment, Presentation & Career Guidance
+
+
+
+
+1. Professional Office Executive (POE)
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹7,999
+Eligibility
+Anyone
+Career Opportunities
+Office Executive, Computer Operator, MIS Executive
+
+Weekly Module Breakdown
+
+Week 1 — Fundamentals & Setup
+  ✦  Windows OS Basics & File Management
+› Understanding the Windows desktop, taskbar & Start menu
+› Creating, copying, moving & deleting files and folders
+› Keyboard shortcuts for productivity (Ctrl+C, Alt+Tab, Win+D, etc.)
+› Managing drives, USB devices & basic system settings
+  ✦  MS Word – Advanced Formatting & Mail Merge
+› Page setup, margins, headers/footers & page numbering
+› Styles, table of contents & multi-level lists
+› Mail Merge for bulk letters, labels & envelopes
+› Track Changes, Comments & document review features
+  ✦  MS Excel – Spreadsheets & Formulas
+› Cell referencing (absolute, relative, mixed), ranges & named ranges
+› Core functions: SUM, AVERAGE, COUNT, IF, VLOOKUP, HLOOKUP
+› Sorting, filtering & conditional formatting
+› Creating charts: bar, pie, line & combo charts
+  ✦  Software Installation & Setup
+› Installing and updating Microsoft Office 365
+› Setting up Google Chrome, PDF readers & utility tools
+› Managing Windows updates & user accounts
+› Introduction to cloud storage – OneDrive & Google Drive setup
+
+Week 2 — Core Productivity Tools
+  ✦  Advanced MS Excel – Data Analysis & Pivot Tables
+› Pivot Tables & Pivot Charts for dynamic reporting
+› Data validation, drop-down lists & form controls
+› Power Query basics – importing & transforming data
+› SUMIF, COUNTIF, INDEX-MATCH & array formulas
+  ✦  MS PowerPoint – Presentations & Templates
+› Designing slide layouts using Slide Master
+› Adding animations, transitions & multimedia (audio/video)
+› Using SmartArt, charts & infographics
+› Presenter view, slide timing & exporting to PDF/video
+  ✦  Google Workspace – Docs, Sheets, Slides, Drive
+› Google Docs – collaborative editing, comments & version history
+› Google Sheets – formulas, sharing & real-time collaboration
+› Google Slides – building presentations online
+› Google Drive – folder structure, sharing permissions & offline access
+  ✦  Internet & Professional Email Communication
+› Effective email writing – subject lines, tone & etiquette
+› Gmail & Outlook – labels, filters, calendar & meeting invites
+› Video conferencing with Google Meet & Microsoft Teams
+› Safe internet browsing & avoiding phishing/scam emails
+
+Week 3 — Advanced & AI Tools
+  ✦  AI Office Tools – ChatGPT, Copilot, Gemini for Productivity
+› Using ChatGPT to draft emails, reports & summaries
+› Microsoft Copilot inside Word, Excel & PowerPoint
+› Google Gemini for research, writing & Workspace integration
+› Prompt engineering basics for professional tasks
+  ✦  PDF Management – Creation, Editing, Merging
+› Converting Word/Excel files to PDF and back
+› Editing text and images in PDFs using Adobe Acrobat / Foxit
+› Merging, splitting & compressing PDF files
+› Adding digital signatures, watermarks & password protection
+  ✦  MIS Reporting – Data Dashboards & Reports
+› Understanding MIS (Management Information System) concepts
+› Building automated reports in Excel with formulas & Pivot Tables
+› Creating interactive dashboards with slicers & charts
+› Formatting & presenting MIS reports professionally
+  ✦  Live Demonstrations & Case Studies
+› End-to-end office workflow simulation (invoice → report → presentation)
+› Real-world case study: preparing a monthly business MIS report
+› Group exercise: collaborative document on Google Workspace
+› Q&A and doubt-clearing session
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Full Office Workflow Simulation
+› Create a complete business report using MS Word with ToC, headers & charts
+› Build a data dashboard in Excel with Pivot Tables, charts & conditional formatting
+› Prepare a 10-slide PowerPoint presentation of the report
+› Share all files on Google Drive with proper folder structure
+  ✦  Assessment & Practical Exam
+› Timed practical test on MS Office & Google Workspace
+› MIS report generation from raw data
+› Email drafting & PDF management tasks
+› Evaluator feedback and scoring
+  ✦  Resume Building & LinkedIn Optimization
+› Crafting a professional resume tailored to office roles
+› Writing a strong LinkedIn 'About' section & headline
+› Adding certifications, skills & project experience on LinkedIn
+› Cover letter writing tips for job applications
+  ✦  Mock Interviews & Career Guidance
+› HR interview simulation – common questions & model answers
+› Soft skills: communication, time management & professionalism
+› Job portals – Naukri, LinkedIn, Indeed profile tips
+› Certificate distribution & next steps
+
+
+
+2. Professional Accountant with GST & Tally Prime
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹8,999
+Eligibility
+Commerce Students & Professionals
+Career Opportunities
+Accountant, Accounts Executive, GST Executive
+
+Weekly Module Breakdown
+
+Week 1 — Fundamentals & Tally Prime
+  ✦  Accounting Basics & Principles
+› Accounting equation: Assets = Liabilities + Capital
+› Double-entry bookkeeping & golden rules of accounting
+› Types of accounts: personal, real & nominal
+› Trial balance, journal & ledger overview
+  ✦  Tally Prime Setup & Company Creation
+› Installing Tally Prime & license activation
+› Creating a company – financial year, base currency & GST details
+› Tally data backup, restore & data security
+› Navigation shortcuts and Tally interface walkthrough
+  ✦  Ledger Management & Journal Entries
+› Creating ledger groups and sub-groups
+› Single & multiple ledger creation
+› Journal vouchers – purchase, sales, payment, receipt, contra
+› Editing and deleting vouchers; day book review
+  ✦  Basic Vouchers & Day-to-Day Transactions
+› Recording daily cash and bank transactions
+› Purchase & sales vouchers with and without GST
+› Debit notes (purchase returns) & credit notes (sales returns)
+› Generating and reviewing day book & ledger reports
+
+Week 2 — GST, TDS & Payroll
+  ✦  GST – Registration, Invoicing & Returns
+› GST fundamentals: CGST, SGST, IGST, HSN/SAC codes
+› GST-compliant invoice creation in Tally Prime
+› GSTR-1 preparation & filing overview
+› GSTR-3B summary report & reconciliation with books
+  ✦  TDS Deduction & Compliance
+› TDS sections: 194C, 194J, 194H & others
+› Setting up TDS in Tally Prime – nature of payment & rates
+› Passing TDS journal entries & generating challan reports
+› Form 26Q overview and annual TDS return basics
+  ✦  Payroll Processing in Tally Prime
+› Creating employee masters – departments, designations & pay heads
+› Defining salary structures: Basic, HRA, PF, ESI & professional tax
+› Processing monthly payroll and generating payslips
+› PF & ESI computation reports and statutory compliance
+  ✦  Banking – Reconciliation & Cheque Management
+› Bank reconciliation statement (BRS) in Tally Prime
+› Cheque printing configuration & register management
+› Recording post-dated cheques & ECS/NEFT transactions
+› Bank summary & cash flow reports
+
+Week 3 — Inventory, Financials & Advanced Excel
+  ✦  Inventory Management in Tally Prime
+› Creating stock groups, categories & units of measure
+› Stock item creation & godown (warehouse) management
+› Purchase orders, delivery notes & stock transfers
+› Stock summary, movement analysis & reorder level reports
+  ✦  Financial Statements – P&L, Balance Sheet & Trial Balance
+› Profit & Loss statement – reading and interpreting figures
+› Balance sheet – understanding assets, liabilities & equity
+› Trial balance verification & error correction techniques
+› Ratio analysis basics: liquidity, profitability & solvency ratios
+  ✦  Advanced Excel for Accounting
+› VLOOKUP & HLOOKUP for account data matching
+› Pivot Tables for transaction summaries & monthly reports
+› MIS report templates in Excel – sales, purchase & expense trackers
+› Data validation & drop-down lists for clean data entry
+  ✦  Live Business Case Studies
+› End-to-end accounting for a retail business in Tally Prime
+› GST return preparation from real transaction data
+› Payroll processing for a 10-employee company
+› Error detection & rectification in books of accounts
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – End-to-End Business Accounting
+› Set up a new company in Tally Prime with full chart of accounts
+› Record 3 months of transactions: sales, purchases, expenses & bank
+› Process payroll for one month and reconcile bank statement
+› Generate P&L, Balance Sheet, GST report & MIS in Excel
+  ✦  Assessment & Practical Tax Filing Simulation
+› Tally Prime practical test – voucher entry, reports & inventory
+› GST invoice creation and GSTR-1 filing simulation
+› Excel MIS report generation from provided raw data
+› Evaluator review and performance feedback
+  ✦  Resume Building & LinkedIn Optimization
+› Tailoring resume for accounting & finance roles
+› Highlighting Tally, GST & Excel skills effectively
+› LinkedIn profile optimization for finance professionals
+› Connecting with recruiters and finance communities
+  ✦  Mock Interviews & Placement Guidance
+› Common accounting interview questions and model answers
+› HR round simulation + technical Q&A on GST & Tally
+› Job search strategy – Naukri, LinkedIn & local firms
+› Certificate distribution & internship referral for eligible students
+
+
+
+3. Web Design Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹9,999
+Eligibility
+Anyone
+Career Opportunities
+Web Designer, Freelancer
+
+Weekly Module Breakdown
+
+Week 1 — HTML5 & CSS3 Fundamentals
+  ✦  HTML5 – Structure, Tags & Semantic Elements
+› Document structure: DOCTYPE, html, head, body
+› Semantic tags: header, nav, main, section, article, footer
+› Forms – input types, labels, validation attributes
+› Tables, lists, media embedding (img, video, audio, iframe)
+  ✦  CSS3 – Selectors, Box Model, Flexbox & Grid
+› CSS selectors: element, class, ID, pseudo-class, pseudo-element
+› Box model: margin, border, padding & content sizing
+› Flexbox – aligning items, wrapping & justify-content
+› CSS Grid – defining rows, columns, grid-area & responsive layouts
+  ✦  Typography, Colors & Visual Styling
+› Google Fonts integration & font-family stacks
+› Color systems: HEX, RGB, RGBA & HSL
+› CSS variables (custom properties) for theming
+› Shadows, gradients, border-radius & transitions
+  ✦  Building First Static Web Pages
+› Personal portfolio page – hero, about & contact sections
+› Restaurant / business one-page website
+› Linking pages & creating a site navigation bar
+› VS Code setup, Live Server extension & file organization
+
+Week 2 — Bootstrap & JavaScript Basics
+  ✦  Bootstrap 5 – Grid, Components & Utilities
+› Bootstrap CDN setup & utility-first classes
+› Responsive 12-column grid system with breakpoints (sm, md, lg, xl)
+› Components: navbar, cards, buttons, modals, accordions & carousels
+› Bootstrap forms, badges, alerts & toasts
+  ✦  Responsive Design Principles
+› Mobile-first design philosophy & viewport meta tag
+› Fluid images, flexible units (%, vw, rem, em)
+› Media queries – writing custom breakpoints
+› Testing responsiveness with Chrome DevTools device toolbar
+  ✦  JavaScript Basics – Variables, DOM & Events
+› Variables (var, let, const), data types & operators
+› Functions, conditionals & loops
+› DOM manipulation – getElementById, querySelector, innerHTML
+› Event listeners – click, submit, mouseover & keypress
+  ✦  Interactive Page Elements
+› Image gallery / lightbox with JS toggle
+› Form validation with JavaScript (required fields, email format)
+› Dynamic content – show/hide sections on button click
+› Building a simple interactive FAQ accordion from scratch
+
+Week 3 — UI Design & Deployment
+  ✦  UI Design Principles & UX Best Practices
+› Visual hierarchy, whitespace & alignment rules
+› Color theory for web – primary, secondary & call-to-action colors
+› Designing for accessibility (WCAG contrast, alt text, focus states)
+› Common UI patterns: hero sections, cards, CTAs & footers
+  ✦  Figma Basics for Web Mockups
+› Figma interface – frames, layers, components & styles
+› Creating wireframes and high-fidelity desktop/mobile mockups
+› Exporting assets (SVG, PNG) from Figma for use in code
+› Sharing prototypes with clients for feedback
+  ✦  Responsive Design – Mobile-First Approach
+› Converting a desktop layout to mobile-first with Bootstrap Grid
+› Sticky navigation & hamburger menu implementation
+› Responsive images with srcset & picture elements
+› Fluid typography with clamp() and viewport units
+  ✦  GitHub Pages – Version Control & Deployment
+› Git fundamentals: init, add, commit, push
+› Creating a GitHub repository and pushing project files
+› Deploying a static site live using GitHub Pages
+› Custom domain connection & basic README documentation
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Full Responsive Business Website
+› Design mockup in Figma then code with HTML5, CSS3 & Bootstrap
+› Multi-page site: Home, About, Services, Portfolio & Contact
+› Contact form with JS validation & responsive navigation
+› Deploy live on GitHub Pages with custom domain setup
+  ✦  Code Review & Presentation
+› Peer code review – HTML structure, CSS quality & JS logic
+› Presentation of final website to trainer and batch
+› Performance check – image optimization, fast loading
+› Accessibility audit – screen reader friendly & keyboard navigable
+  ✦  GitHub Portfolio & LinkedIn Optimization
+› Pinning best projects on GitHub profile with READMEs
+› LinkedIn headline & skills section for web designers
+› Writing project descriptions for portfolio/LinkedIn
+› Behance or personal portfolio site for showcasing work
+  ✦  Freelancing Guidance & Career Paths
+› Setting up Fiverr, Upwork & Freelancer profiles
+› Pricing web design services as a freelancer
+› Client communication, proposals & contract basics
+› Certificate distribution & placement assistance
+
+
+
+4. WordPress Website Development Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹9,999
+Eligibility
+Anyone
+Career Opportunities
+WordPress Developer, Freelancer
+
+Weekly Module Breakdown
+
+Week 1 — WordPress Setup & Design
+  ✦  Domain, Hosting & WordPress Installation
+› Choosing a domain name & registrar (GoDaddy, Namecheap)
+› Shared hosting setup – cPanel walkthrough & file manager
+› One-click WordPress installation & SSL certificate activation
+› WordPress dashboard overview – settings, users & permalinks
+  ✦  Theme Selection, Customization & Elementor
+› Free vs. premium themes – OceanWP, Astra, Hello Elementor
+› WordPress Customizer – logo, colors, fonts & menus
+› Installing Elementor & Elementor Hello theme
+› Drag-and-drop page building – sections, columns & widgets
+  ✦  Pages, Posts & Navigation Menus
+› Difference between pages and posts (static vs. dynamic content)
+› Creating Home, About, Services & Contact pages
+› Blog posts – categories, tags & featured images
+› Building primary & footer navigation menus with dropdowns
+  ✦  Mobile-Responsive Website Structure
+› Enabling responsive mode in Elementor
+› Setting tablet and mobile-specific layouts
+› Hiding/showing elements per device in Elementor
+› Testing responsiveness across Chrome, Firefox & mobile preview
+
+Week 2 — Plugins & E-Commerce (WooCommerce)
+  ✦  Essential Plugins – SEO, Forms & Performance
+› Yoast SEO / RankMath – meta titles, descriptions & sitemap
+› Contact Form 7 / WPForms – building enquiry & contact forms
+› WP Rocket / LiteSpeed Cache – page caching & speed optimization
+› Smush – image compression & WebP conversion
+  ✦  WooCommerce – Products, Payments & Shipping
+› Installing WooCommerce & initial setup wizard
+› Adding simple, variable & grouped products with attributes
+› Payment gateways – Razorpay, PayPal & Cash on Delivery setup
+› Shipping zones, rates, tax classes & order management
+  ✦  Elementor Pro – Advanced Page Building
+› WooCommerce builder – custom shop, product & cart pages
+› Popup builder for lead generation & announcements
+› Theme Builder – custom header, footer & archive templates
+› Dynamic content widgets – post title, featured image, custom fields
+  ✦  Membership & Subscription Plugins
+› MemberPress / Paid Memberships Pro overview
+› Restricting content to logged-in or paid members
+› Setting up subscription plans & payment integration
+› Managing members, subscriptions & access rules
+
+Week 3 — SEO, Security & Backup
+  ✦  On-Page SEO with Yoast / RankMath
+› Keyword research using Google Search Console & Ubersuggest
+› Optimizing title tags, meta descriptions & heading structure
+› Image alt text, internal linking & schema markup
+› XML sitemap submission to Google Search Console
+  ✦  Website Security – SSL, Firewall & Anti-Malware
+› SSL certificate setup & enforcing HTTPS sitewide
+› Wordfence Security – firewall rules, malware scan & login protection
+› Two-factor authentication & limiting login attempts
+› Hiding WordPress version & disabling file editing in wp-config.php
+  ✦  Backup & Restore Strategy
+› UpdraftPlus – automated daily/weekly backups to Google Drive
+› Manual backup via cPanel File Manager & phpMyAdmin
+› Restoring WordPress from a backup (files + database)
+› Staging environment setup for safe testing before going live
+  ✦  Performance Optimization & Speed
+› Google PageSpeed Insights & GTmetrix audit walkthrough
+› Enabling GZIP compression & browser caching
+› Lazy loading images & deferring JavaScript
+› CDN setup with Cloudflare for faster global loading
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Full Business / E-Commerce Website
+› Build a 6+ page business website with Elementor Pro
+› WooCommerce store with 5+ products, payment & shipping
+› SEO-optimized pages with Yoast, sitemap & Google Search Console
+› Security hardening, backup configured & speed score > 80
+  ✦  Client Presentation & Live Demo
+› Presenting the site to trainer as a simulated client demo
+› Explaining design choices, features & SEO setup
+› Handling client revision requests & change management
+› Preparing a project handoff document for clients
+  ✦  Portfolio & LinkedIn Profile Setup
+› Documenting the capstone project as a portfolio case study
+› LinkedIn profile update – WordPress & web skills highlighted
+› Listing live website URL as project on LinkedIn & resume
+› Creating service packages on Fiverr / Upwork
+  ✦  Freelancing Tips & Placement Guidance
+› Freelance pricing models – fixed price vs. retainer
+› Client contracts, NDAs & milestone-based payment structures
+› Finding first clients – local businesses, referrals & platforms
+› Certificate distribution & placement assistance for eligible students
+
+
+
+5. Python Programming Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹10,999
+Eligibility
+Students & Graduates
+Career Opportunities
+Python Developer, Automation Executive
+
+Weekly Module Breakdown
+
+Week 1 — Python Fundamentals
+  ✦  Python Setup, IDEs & Syntax
+› Installing Python 3 & setting up VS Code / PyCharm
+› Python interpreter, REPL & running .py scripts
+› Comments, indentation rules & PEP-8 style guide
+› print(), input() & basic I/O operations
+  ✦  Variables, Data Types, Operators & Control Flow
+› Data types: int, float, str, bool, list, tuple, dict, set
+› Arithmetic, comparison, logical & assignment operators
+› if / elif / else conditionals with nested logic
+› for loops, while loops, break, continue & pass
+  ✦  Functions, Modules & Libraries
+› Defining functions with parameters, return values & default args
+› Lambda functions & built-in functions (len, range, map, filter)
+› Importing standard library modules: math, random, datetime, os
+› Creating and importing custom modules
+  ✦  String Manipulation & List Comprehensions
+› String methods: split, join, strip, replace, upper, lower, find
+› f-strings & format() for string formatting
+› List methods: append, extend, remove, sort, reverse
+› List comprehensions & dictionary comprehensions
+
+Week 2 — OOP & File Handling
+  ✦  Object-Oriented Programming – Classes & Inheritance
+› Defining classes, __init__ constructor & instance attributes
+› Instance methods, class methods & static methods
+› Inheritance – parent, child classes & method overriding
+› Encapsulation, abstraction & polymorphism concepts
+  ✦  Exception Handling & Debugging
+› try / except / else / finally blocks
+› Catching specific exceptions: ValueError, TypeError, FileNotFoundError
+› Raising custom exceptions with raise
+› Debugging with print(), breakpoints & VS Code debugger
+  ✦  File Handling – Text, CSV & JSON
+› Reading & writing text files with open(), read(), write()
+› Working with CSV files using the csv module
+› Parsing & creating JSON data with the json module
+› Context managers (with statement) for safe file handling
+  ✦  Regular Expressions & Practical Exercises
+› re module – search, match, findall & sub
+› Patterns: character classes, quantifiers & groups
+› Practical task: extracting emails/phone numbers from text
+› Assignments: student grade system, contact book CLI app
+
+Week 3 — SQLite, APIs & GUI
+  ✦  SQLite – Database CRUD with Python
+› Connecting to SQLite using the sqlite3 module
+› Creating tables, inserting, reading, updating & deleting records
+› Using parameterized queries to prevent SQL injection
+› Building a command-line CRUD application (e.g., task manager)
+  ✦  REST APIs – Requests Library & JSON Data
+› Installing & using the requests library for HTTP calls
+› GET, POST requests with headers & authentication
+› Parsing JSON API responses into Python dictionaries
+› Mini project: Weather app or currency converter using a public API
+  ✦  GUI Basics with Tkinter
+› Tkinter window, labels, buttons, entry fields & frames
+› Event handling & button commands
+› Building a simple calculator or to-do list GUI
+› Grid & pack layout managers
+  ✦  Mini Projects – Automation Scripts
+› File organizer script – auto-sorts files by extension
+› PDF to text extractor using PyPDF2
+› Web scraper with requests & BeautifulSoup (basic)
+› Automation: sending emails with smtplib & email module
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Python Application
+› Full-featured CLI or GUI application with SQLite database
+› Includes user authentication, CRUD operations & file export
+› API integration for live data (weather, currency, news)
+› Documented codebase with README on GitHub
+  ✦  Code Review & Presentation
+› Code walkthrough – structure, readability & best practices
+› Unit testing concepts: writing test cases with unittest
+› Peer review and refactoring session
+› Live demo to trainer with Q&A
+  ✦  GitHub Portfolio & LinkedIn Optimization
+› Pushing capstone & mini projects to GitHub with good READMEs
+› Writing a developer LinkedIn 'About' section
+› Highlighting Python, OOP, API & SQL skills
+› Contributing to open-source or showcasing on Replit / GitHub Pages
+  ✦  Mock Technical Interviews & Career Guidance
+› Python technical interview Q&A: data structures, OOP & logic
+› Coding challenges: FizzBuzz, palindrome, Fibonacci, sorting
+› Explaining project architecture to an interviewer
+› Job portals for Python roles, certificate & placement support
+
+
+
+6. Graphic Design & Branding Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹11,999
+Eligibility
+Anyone
+Career Opportunities
+Graphic Designer, Creative Executive
+
+Weekly Module Breakdown
+
+Week 1 — Photoshop Fundamentals
+  ✦  Photoshop Interface, Tools & Workspace
+› Panels, toolbox, options bar & workspace customization
+› Understanding resolution: PPI, DPI & canvas size for print vs. web
+› Selection tools: Marquee, Lasso, Magic Wand & Quick Select
+› Crop, transform, rotate & perspective correction
+  ✦  Layers, Masks & Blending
+› Layer types: raster, adjustment, shape & text layers
+› Layer masks for non-destructive background removal
+› Blending modes: Multiply, Screen, Overlay & Soft Light
+› Smart Objects – embedded vs. linked for non-destructive editing
+  ✦  Photo Retouching & Color Correction
+› Healing Brush, Clone Stamp & Patch tool for blemish removal
+› Curves, Levels & Hue/Saturation for color grading
+› Camera Raw filter for professional photo enhancement
+› Frequency separation technique for skin retouching
+  ✦  Social Media Creatives & Banners
+› Instagram post (1080×1080), story (1080×1920) & YouTube thumbnail
+› Facebook cover photo & LinkedIn banner design
+› Typography hierarchy – title, subtitle & body in a layout
+› Exporting optimized files: Save for Web (JPEG, PNG, WebP)
+
+Week 2 — Illustrator & CorelDRAW Basics
+  ✦  Adobe Illustrator – Vector Graphics & Pen Tool
+› Artboards, paths, anchor points & bezier curves
+› Pen tool mastery – smooth & corner points, handles
+› Shape builder tool, pathfinder operations (unite, minus front, intersect)
+› Gradient mesh, pattern fills & live paint bucket
+  ✦  CorelDRAW – Layout, Shapes & Text Effects
+› CorelDRAW workspace, toolbox & property bar
+› Drawing precise shapes with Bezier & pen tools
+› Paragraph & artistic text, text on path & wrapping
+› Power Clip – placing objects inside containers
+  ✦  Icon Design & Vector Illustrations
+› Flat design icon set creation (UI icons, social media icons)
+› Character / mascot illustration using basic shapes
+› Isometric illustration basics in Illustrator
+› Organizing complex artwork with layers, groups & sublayers
+  ✦  Practical Exercises & Assignments
+› Recreate a famous logo from scratch in Illustrator
+› Design a set of 10 flat-style icons for a mobile app
+› CorelDRAW assignment: design a gym membership card
+› Peer critique session and revision
+
+Week 3 — Canva Pro, Logo & Branding
+  ✦  Canva Pro – Templates, Brand Kit & Collaboration
+› Canva Pro interface: templates, elements, uploads & brand kit
+› Setting up a brand kit: logo, fonts & brand colors
+› Creating social media posts, presentations & marketing materials
+› Team collaboration – sharing, commenting & approvals in Canva
+  ✦  Logo Design Principles & Process
+› Types of logos: wordmark, lettermark, icon, combination & emblem
+› The design brief – client questionnaire & creative direction
+› Sketching concepts to digital: from idea to vector logo
+› Logo presentation: mockups, variations (horizontal, stacked, icon-only) & usage rules
+  ✦  Brand Identity – Colors, Fonts & Guidelines
+› Color psychology & building a brand color palette
+› Typography pairing – choosing primary and secondary fonts
+› Brand consistency across touchpoints: digital, print & social media
+› Creating a Brand Style Guide (mini brand book PDF)
+  ✦  Print Design – Business Card, Flyer & Brochure
+› Business card design: bleed, safe zone & CMYK color mode
+› A4 / A5 flyer layout: hierarchy, imagery & call-to-action
+› Tri-fold brochure design: front, inside & back panels
+› Preparing print-ready files: PDF/X-1a with bleed & crop marks
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Complete Brand Identity Package
+› Logo design (primary + variations) for a fictional brand
+› Brand style guide PDF: logo, colors, typography & usage rules
+› 5 social media post designs + Instagram story
+› Print collateral: business card, flyer & brochure
+  ✦  Portfolio Presentation (Behance / PDF)
+› Organizing case studies: problem → process → final result
+› Creating a professional PDF portfolio with project writeups
+› Uploading to Behance with tags, descriptions & category selection
+› Getting appreciation / followers & sharing on LinkedIn
+  ✦  LinkedIn & Freelance Profile Setup
+› LinkedIn headline & about section for graphic designers
+› Showcasing projects with images & brief descriptions
+› Fiverr gig creation – logo design, social media & branding
+› Upwork profile – bio, skills, hourly rate & portfolio upload
+  ✦  Career Guidance & Mock Interviews
+› Creative portfolio review – what clients and employers look for
+› Freelance client acquisition strategies
+› Pricing design work: per project, hourly & package rates
+› Certificate distribution & internship opportunity info
+
+
+
+7. Digital Marketing Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹11,999
+Eligibility
+Anyone
+Career Opportunities
+Digital Marketing Executive, SEO Executive
+
+Weekly Module Breakdown
+
+Week 1 — SEO & Content Strategy
+  ✦  Digital Marketing Overview & Channels
+› Digital marketing funnel: awareness, consideration & conversion
+› Overview of channels: SEO, PPC, social media, email & content
+› Setting up a Google Analytics 4 & Google Search Console account
+› Digital marketing KPIs: traffic, CTR, conversions, CPC & ROAS
+  ✦  Search Engine Optimization – On-Page, Off-Page & Technical
+› Keyword research with Google Keyword Planner, Ubersuggest & Ahrefs free tools
+› On-page SEO: title tags, meta descriptions, headings & internal links
+› Off-page SEO: link building, guest posting & citations
+› Technical SEO: site speed, mobile-first indexing, sitemap & robots.txt
+  ✦  Keyword Research & Content Planning
+› Long-tail vs. short-tail keywords & search intent (informational, transactional)
+› Competitor keyword gap analysis
+› Building a 30-day content calendar
+› Content briefs: structure, word count & SEO targets per article
+  ✦  Blogging & Content Marketing Strategy
+› Choosing a blog platform (WordPress, Medium) & blog structure
+› Writing SEO-friendly articles: headings, LSI keywords & readability
+› Content repurposing: blog → social posts → video → newsletter
+› Measuring content performance with GA4 & Search Console
+
+Week 2 — Paid Advertising (Google & Meta)
+  ✦  Google Ads – Search, Display & Shopping Campaigns
+› Google Ads account structure: campaigns, ad groups & ads
+› Keyword match types: broad, phrase, exact & negative keywords
+› Writing high-converting search ad copy (headlines, descriptions & extensions)
+› Display campaigns: audience targeting, banner ads & remarketing
+  ✦  Meta Ads – Facebook & Instagram Advertising
+› Meta Business Suite & Ads Manager setup
+› Campaign objectives: awareness, traffic, leads & conversions
+› Audience targeting: custom audiences, lookalike audiences & interests
+› Ad formats: single image, carousel, video, reels & story ads
+  ✦  Ad Copywriting & Creative Best Practices
+› AIDA framework: Attention, Interest, Desire & Action in ad copy
+› A/B testing headlines, CTAs & creative variations
+› Designing scroll-stopping visuals using Canva for ads
+› Compliance: Google & Meta ad policies – what to avoid
+  ✦  Budget Management & ROI Measurement
+› Setting daily vs. lifetime budgets & bid strategies (CPC, CPM, ROAS)
+› Understanding Quality Score (Google) & Relevance Score (Meta)
+› Tracking conversions with Google Tag Manager & Meta Pixel
+› Reporting dashboard: ROAS, CPA & impression share analysis
+
+Week 3 — Social Media, Email & Analytics
+  ✦  Social Media Marketing – Strategy & Content
+› Platform selection by audience: Instagram, LinkedIn, YouTube, X (Twitter)
+› Content pillars & posting strategy for brand growth
+› Creating engaging Reels, carousels & Stories
+› Scheduling tools: Buffer, Hootsuite & Meta Business Suite
+  ✦  YouTube Marketing & Video SEO
+› YouTube channel optimization: banner, description & tags
+› Video SEO: title, description, timestamps & end screens
+› Growing subscribers with playlists, community posts & Shorts
+› YouTube Analytics – watch time, CTR & audience retention metrics
+  ✦  Email Marketing – Campaigns & Automation
+› Building an email list: opt-in forms, lead magnets & pop-ups
+› Mailchimp / Brevo setup – campaigns, sequences & templates
+› Email automation: welcome series, abandoned cart & re-engagement flows
+› Email metrics: open rate, click rate, unsubscribe & deliverability tips
+  ✦  Analytics – GA4 & Meta Insights
+› GA4 dashboard: users, sessions, events & conversions
+› Setting up goals / key events in GA4
+› UTM parameters for tracking campaign performance
+› Meta Insights: reach, engagement, page likes & ad reporting
+
+Week 4 — AI Marketing, Capstone & Career
+  ✦  AI Marketing Tools
+› ChatGPT for ad copy, blog outlines, email sequences & social captions
+› AI image tools for ad creatives: Canva Magic, Adobe Firefly
+› AI SEO tools: SurferSEO, Frase & Clearscope overview
+› AI chatbots for lead generation & customer support (ManyChat, Tidio)
+  ✦  Capstone Project – Full Digital Marketing Campaign
+› Choose a niche business and build a complete 360° campaign plan
+› SEO-optimized landing page + blog article
+› Google Search Ad campaign with 3 ad groups & 6 ads
+› Meta Ads campaign + 30-day social media content calendar + email sequence
+  ✦  Portfolio & Case Study Presentation
+› Presenting campaign strategy, execution & projected results
+› Creating a 1-page case study PDF for portfolio
+› LinkedIn content strategy for personal branding as a marketer
+› Adding certifications (Google Ads, HubSpot) to LinkedIn
+  ✦  Career & Freelance Guidance
+› Digital marketing career paths: SEO executive, PPC manager, social media manager
+› Freelance pricing: SEO retainers, ad management fees & content packages
+› Finding clients on LinkedIn, Fiverr & UrbanClap / Sulekha
+› Certificate distribution & placement assistance
+
+
+
+8. Computer Hardware & Networking Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹12,999
+Eligibility
+Students
+Career Opportunities
+Hardware Engineer, Network Support Technician
+
+Weekly Module Breakdown
+
+Week 1 — PC Assembly & OS Installation
+  ✦  Computer Components – CPU, RAM, Storage & Motherboard
+› Identifying components: CPU, RAM, SSD/HDD, motherboard, PSU & GPU
+› Form factors: ATX, micro-ATX & mini-ITX motherboards
+› Understanding CPU sockets, RAM slots, PCIe slots & SATA ports
+› Choosing compatible components for building a PC (hands-on lab)
+  ✦  PC Assembly & Disassembly (Hands-On)
+› ESD (electrostatic discharge) precautions & workbench setup
+› Step-by-step PC assembly: CPU → thermal paste → cooler → RAM → GPU → PSU
+› Cable management & connecting front panel connectors
+› First boot check, POST process & BIOS splash screen
+  ✦  Windows OS Installation, BIOS & Drivers
+› Creating a bootable USB with Rufus & Windows ISO
+› BIOS/UEFI settings: boot order, AHCI mode & secure boot
+› Clean Windows 11 installation: partitioning & formatting
+› Installing chipset, GPU, audio & network drivers post-installation
+  ✦  System Configuration & Device Management
+› Windows Device Manager – checking & updating drivers
+› Disk Management – creating, formatting & resizing partitions
+› Task Manager & Resource Monitor – CPU, RAM, disk & network usage
+› System Restore, Windows Defender & Windows Update management
+
+Week 2 — LAN & Router Configuration
+  ✦  Networking Concepts – OSI Model & IP Addressing
+› OSI 7-layer model – function of each layer with real-world examples
+› IP addressing: IPv4 classes, subnet mask & CIDR notation
+› Private vs. public IP, static vs. DHCP & loopback address
+› MAC addresses, ARP & the role of switches vs. routers
+  ✦  LAN Setup – Switch, Cables & Topology
+› Network topologies: star, bus, ring & mesh
+› Straight-through vs. crossover cables & RJ-45 crimping (hands-on)
+› Configuring an unmanaged & managed switch – VLAN basics
+› LAN testing with ping, ipconfig & network discovery
+  ✦  Router & Wi-Fi Configuration
+› Router web interface: admin login, WAN & LAN settings
+› DHCP server configuration – IP range, lease time & reservations
+› Wi-Fi security modes: WEP, WPA2, WPA3 & guest network setup
+› Port forwarding, DMZ & QoS settings on a home/office router
+  ✦  Network Troubleshooting Tools
+› ping – connectivity testing, TTL & packet loss interpretation
+› tracert / traceroute – path analysis & hop-by-hop latency
+› nslookup & ipconfig /all for DNS & IP diagnostics
+› Wireshark basics – capturing and reading network packets
+
+Week 3 — Advanced Networking & Peripherals
+  ✦  VPN, Firewall & Network Security Basics
+› VPN types: site-to-site, remote access & SSL VPN
+› Windows Firewall – inbound/outbound rules & profiles (domain, private, public)
+› Network security best practices: strong passwords, WPA3 & firmware updates
+› Introduction to intrusion detection: network scanning with Nmap
+  ✦  Printer & Peripheral Setup over Network
+› Installing printers: USB, Wi-Fi & network (IP-based) printing
+› Windows shared printer setup & driver deployment
+› Scanner, webcam & external display configuration
+› UPS setup, power management & surge protection for office systems
+  ✦  Remote Desktop & IT Support Tools
+› Enabling & connecting via Windows Remote Desktop (RDP)
+› Remote support tools: AnyDesk & TeamViewer setup & usage
+› IT ticketing concepts: logging, prioritizing & resolving issues
+› Documentation: writing an IT support log / incident report
+  ✦  Live Lab Sessions – Real Network Scenarios
+› Lab 1: Set up a 5-PC office LAN with shared printer & internet
+› Lab 2: Diagnose and fix simulated network faults (IP conflict, bad cable)
+› Lab 3: Configure Wi-Fi router with guest network & parental controls
+› Lab 4: Remote desktop from laptop to desktop with AnyDesk
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone – End-to-End Network Setup Project
+› Design and build a small office network (5 PCs + 1 printer + Wi-Fi router)
+› Configure DHCP, shared folders & network printer
+› Document IP scheme, network diagram & configuration steps
+› Present setup to trainer as a simulated client handover
+  ✦  Hardware Fault Diagnosis Practical
+› Identify and fix simulated faults: RAM not seated, dead CMOS battery, bad HDD
+› POST beep codes & their meanings
+› Using diagnostic tools: MemTest86, CrystalDiskInfo & HWiNFO
+› Writing a hardware fault report
+  ✦  Resume for IT Support / Network Roles
+› Highlighting hardware, networking & troubleshooting skills
+› Adding practical lab experience as a project on resume
+› LinkedIn profile for IT support professionals
+› CompTIA A+ & Network+ certification roadmap overview
+  ✦  Mock Interviews & Placement Guidance
+› Common IT support interview questions & model answers
+› Scenario-based questions: 'A user can't connect to the internet, what do you do?'
+› Technical Q&A: OSI model, subnetting & Windows troubleshooting
+› Certificate distribution & placement assistance
+
+
+
+9. Cyber Security Associate
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹13,999
+Eligibility
+Students & Professionals
+Career Opportunities
+Cyber Security Analyst (Entry Level), SOC Support
+
+Weekly Module Breakdown
+
+Week 1 — Networking & Linux Basics
+  ✦  Networking Fundamentals – TCP/IP, DNS, HTTP & Ports
+› TCP vs. UDP: connection-oriented vs. connectionless protocols
+› DNS resolution process: from browser to IP address
+› HTTP vs. HTTPS: how TLS/SSL works in the browser
+› Common ports: 22 (SSH), 80 (HTTP), 443 (HTTPS), 3306 (MySQL), 3389 (RDP)
+  ✦  Linux Command Line – Navigation & Permissions
+› Linux file system hierarchy: /, /etc, /var, /home, /tmp
+› Navigation commands: ls, cd, pwd, mkdir, rm, mv, cp
+› File permissions: chmod, chown & reading rwx notation
+› Text processing: cat, grep, awk, sed & piping
+  ✦  Virtual Machine Setup (Kali Linux / Ubuntu)
+› Installing VirtualBox / VMware Workstation Player
+› Downloading & installing Kali Linux and Ubuntu ISOs
+› VM snapshots – creating restore points before lab exercises
+› Bridged vs. NAT vs. host-only network adapters explained
+  ✦  Basic Scripting & Automation
+› Bash scripting: variables, loops & conditionals
+› Writing scripts for file backup, log cleanup & user creation
+› Python basics for security: reading files, making HTTP requests
+› Scheduling scripts with cron jobs
+
+Week 2 — Security Concepts & Firewalls
+  ✦  Cybersecurity Framework – CIA Triad & Threat Landscape
+› CIA Triad: Confidentiality, Integrity & Availability explained
+› Threat actors: script kiddies, hacktivists, nation-state & insiders
+› Attack lifecycle: reconnaissance → exploitation → persistence → exfiltration
+› Security frameworks overview: NIST, ISO 27001 & CIS Controls
+  ✦  Cryptography – Encryption, Hashing & SSL/TLS
+› Symmetric encryption: AES, DES & 3DES
+› Asymmetric encryption: RSA, ECC & public/private key pairs
+› Hashing algorithms: MD5, SHA-1, SHA-256 & password hashing (bcrypt)
+› TLS handshake: how HTTPS establishes a secure connection
+  ✦  Firewalls, IDS/IPS & Network Defense
+› Firewall types: packet filter, stateful, application-layer & NGFW
+› Configuring UFW (Linux firewall) & Windows Defender Firewall
+› IDS vs. IPS: detection vs. prevention, Snort & Suricata overview
+› DMZ architecture & network segmentation concepts
+  ✦  OWASP Top 10 – Web Vulnerabilities
+› Injection (SQL injection): concept, demo & prevention (prepared statements)
+› Cross-Site Scripting (XSS): reflected, stored & DOM-based
+› Broken Access Control & IDOR (Insecure Direct Object Reference)
+› Security Misconfiguration, Sensitive Data Exposure & Vulnerable Dependencies
+
+Week 3 — Vulnerability Assessment & Ethical Hacking
+  ✦  Vulnerability Scanning – Nmap, Nessus & Nikto
+› Nmap scan types: -sS (SYN), -sV (version), -O (OS detection), -A (aggressive)
+› Interpreting Nmap output: open/closed/filtered ports & service versions
+› Nessus Essentials – running a host scan & analyzing vulnerability report
+› Nikto web server scanner – common findings & false positives
+  ✦  Ethical Hacking Methodology
+› Phases: Reconnaissance, Scanning, Gaining Access, Maintaining Access, Reporting
+› Passive recon: WHOIS, Shodan, theHarvester & Google dorking
+› Active recon: Nmap, Netcat & banner grabbing
+› Understanding scope & rules of engagement in a pentest
+  ✦  Password Attacks & Phishing Awareness
+› Password cracking concepts: dictionary, brute force & rainbow table attacks
+› Hashcat & John the Ripper basics on sample hashes
+› Social engineering: pretexting, vishing & phishing techniques
+› Building phishing awareness: red flags in emails, URLs & attachments
+  ✦  SOC Basics – Log Analysis & Incident Response
+› Security Operations Center (SOC) roles and responsibilities
+› Log types: Windows event logs, Apache access logs & firewall logs
+› Analyzing logs with grep & basic SIEM concepts (Splunk, Elastic Stack)
+› Incident response steps: Identify → Contain → Eradicate → Recover → Lessons Learned
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone – Penetration Testing Simulation Report
+› Perform a full pentest on a local lab VM (TryHackMe / HackTheBox room)
+› Document findings: vulnerability name, risk rating (CVSS), evidence & remediation
+› Write an executive summary + technical findings report
+› Present findings to trainer as simulated client debrief
+  ✦  CTF (Capture The Flag) Challenge
+› Solving beginner CTF challenges: web, crypto, forensics & binary
+› Tools: Burp Suite Community, CyberChef, Ghidra basics
+› Team-based CTF competition within the batch
+› Writeup submission – documenting methodology & flag capture
+  ✦  Resume for Cyber Security Roles
+› Listing tools: Nmap, Wireshark, Burp Suite, Kali Linux, Metasploit
+› Adding certifications roadmap: CEH, CompTIA Security+, OSCP
+› LinkedIn profile for cybersecurity – headline & skills
+› Bug bounty introduction: HackerOne & Bugcrowd platforms
+  ✦  Mock Interviews & Career Guidance
+› Common interview Q&A: OSI model, TCP handshake, SQL injection, XSS
+› Scenario questions: 'How would you respond to a ransomware attack?'
+› SOC analyst interview prep – log analysis & alert triage questions
+› Certificate distribution & placement / internship guidance
+
+
+
+10. Power BI & Business Analytics Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹12,999
+Eligibility
+Graduates
+Career Opportunities
+BI Executive, Data Analyst
+
+Weekly Module Breakdown
+
+Week 1 — Advanced Excel & SQL Fundamentals
+  ✦  Advanced Excel – Pivot Tables, VLOOKUP & Functions
+› VLOOKUP, HLOOKUP & XLOOKUP with exact & approximate match
+› INDEX-MATCH combination for flexible lookups
+› Pivot Tables: grouping, calculated fields & % of total
+› SUMIFS, COUNTIFS, AVERAGEIFS & nested IF logic
+  ✦  Excel Dashboards & Conditional Formatting
+› Dynamic charts: combo charts, sparklines & waterfall charts
+› Slicers & timelines for interactive filtering in Pivot Tables
+› Conditional formatting: data bars, color scales & icon sets
+› Building an automated monthly sales dashboard
+  ✦  SQL Basics – Querying, Filtering & Joining Data
+› SELECT, FROM, WHERE, ORDER BY & LIMIT
+› Aggregate functions: SUM, COUNT, AVG, MIN, MAX with GROUP BY
+› INNER JOIN, LEFT JOIN, RIGHT JOIN & FULL OUTER JOIN
+› Subqueries, aliases & creating views
+  ✦  Data Import & Cleaning in Excel
+› Importing CSV, text files & web data into Excel
+› Text to Columns, Remove Duplicates & Find & Replace
+› TRIM, CLEAN, PROPER, LEFT, RIGHT, MID functions
+› Flash Fill for pattern-based data transformation
+
+Week 2 — Power BI Core
+  ✦  Power BI Desktop – Interface & Data Connections
+› Power BI Desktop layout: Report, Data & Model views
+› Connecting to Excel, CSV, SQL Server & web data sources
+› Refresh settings: manual vs. scheduled refresh
+› Power BI Service – publishing & workspace overview
+  ✦  Data Modeling – Relationships & Star Schema
+› Star schema vs. snowflake schema for BI modeling
+› Creating one-to-many & many-to-many relationships
+› Understanding cross-filter direction in relationships
+› Date table creation & marking as Date Table for time intelligence
+  ✦  Power Query – Data Transformation & ETL
+› Power Query Editor: applied steps, M formula language basics
+› Merging queries (JOIN equivalent) & appending tables (UNION)
+› Splitting columns, pivoting, unpivoting & transposing data
+› Handling nulls, data type errors & custom columns
+  ✦  Building Basic Reports & Visuals
+› Core visuals: bar, column, line, pie, donut & scatter charts
+› Cards, multi-row cards & KPI visuals for metric display
+› Tables & matrix visuals with conditional formatting
+› Filters pane: visual, page & report level filters
+
+Week 3 — DAX & Advanced Dashboards
+  ✦  DAX Functions – CALCULATE, SUMX & Time Intelligence
+› Measures vs. calculated columns – when to use each
+› CALCULATE with multiple filter arguments
+› Time intelligence: SAMEPERIODLASTYEAR, DATESYTD, DATEADD
+› SUMX, AVERAGEX & RANKX for iterative calculations
+  ✦  Advanced Visuals & Conditional Formatting
+› Waterfall chart, funnel, gauge & decomposition tree visuals
+› Custom tooltips – mini reports on hover
+› Conditional formatting based on measures: color scales & icons
+› Bookmarks, buttons & page navigation for interactive reports
+  ✦  Drill-Through, Tooltips & Report Design
+› Drill-through pages – passing context between report pages
+› Sync slicers across multiple pages
+› Report theming: JSON themes for brand colors & fonts
+› Designing clean, executive-level BI reports with proper layout
+  ✦  Real-World KPI Dashboards
+› Sales KPI dashboard: revenue, growth %, top products & regional map
+› HR analytics dashboard: headcount, attrition & department breakdown
+› Finance dashboard: P&L summary, budget vs. actual & cash flow trend
+› E-commerce dashboard: orders, conversion rate, returns & lifetime value
+
+Week 4 — Publishing, Capstone & Career
+  ✦  Power BI Service – Publishing & Sharing
+› Publishing reports to Power BI Service workspace
+› Creating dashboards by pinning visuals from multiple reports
+› Row-Level Security (RLS) – restricting data per user role
+› Embedding reports in websites & sharing via Power BI apps
+  ✦  Capstone Project – End-to-End Analytics
+› Choose a business domain (retail, HR or finance) with raw dataset
+› Clean & model data in Power Query, build DAX measures
+› Create a 3-page Power BI report with executive summary page
+› Publish to Power BI Service & share live link
+  ✦  Portfolio & LinkedIn Optimization
+› Exporting report screenshots & recording a walkthrough video
+› LinkedIn post showcasing the dashboard project
+› GitHub – uploading .pbix file with a detailed README
+› Adding Microsoft Power BI Data Analyst certification roadmap
+  ✦  Mock Interviews & Career Guidance
+› Common BI interview questions: joins, DAX, data modeling & Power Query
+› Whiteboard challenge: design a star schema for given scenario
+› Excel + SQL + Power BI combined test
+› Certificate distribution & placement / internship guidance
+
+
+
+11. Video Editing & Motion Graphics Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹11,999
+Eligibility
+Anyone
+Career Opportunities
+Video Editor, Motion Graphics Designer
+
+Weekly Module Breakdown
+
+Week 1 — Premiere Pro Fundamentals
+  ✦  Premiere Pro Interface, Timeline & Workspace
+› Project setup: resolution (1080p, 4K), frame rate (24/30/60 fps) & sequence settings
+› Import media, project panel organization & proxy workflow
+› Timeline tracks: video layers (V1–V3) & audio tracks (A1–A2)
+› Essential keyboard shortcuts: I/O points, C (razor), V (select), spacebar (play)
+  ✦  Cutting, Trimming & Assembling Footage
+› Ripple edit, rolling edit & slip/slide trim techniques
+› Multi-camera editing workflow with sync by audio waveform
+› J-cut & L-cut transitions for natural audio flow
+› Building a rough cut → fine cut → picture lock workflow
+  ✦  Transitions, Titles & Basic Color Grading
+› Built-in video transitions: cross dissolve, dip to black & wipe
+› Essential Graphics panel – animated title templates
+› Lumetri Color: exposure, contrast, highlights, shadows & white balance
+› Color matching across multiple clips for consistent look
+  ✦  Audio Editing – Sync, Music & Noise Reduction
+› Syncing external audio (from DSLR mic) to video
+› Essential Sound panel: dialogue, music & SFX categories
+› Noise reduction & removing background hum with Denoise effect
+› Music ducking: auto-lower music when dialogue plays
+
+Week 2 — After Effects & CapCut
+  ✦  After Effects – Compositions, Layers & Keyframing
+› AE workspace: composition, timeline, layer types (text, solid, shape, null)
+› Keyframe types: linear, bezier, easy ease & graph editor basics
+› Parenting layers & using null objects for group animation
+› Pre-composing & nesting for organized project structure
+  ✦  Text Animations & Lower Thirds
+› Text animator: range selector with position, opacity & blur properties
+› Animating individual characters, words & lines
+› Creating professional lower thirds with branded colors & logo
+› Saving animated text presets for reuse across projects
+  ✦  CapCut for Mobile Editing
+› CapCut interface: timeline, clips, audio & text tracks
+› Auto-captions, voice effects & trending template usage
+› Speed ramp: slow motion & hyperlapse effects on mobile
+› Exporting for TikTok, Instagram Reels & YouTube Shorts (9:16 vertical)
+  ✦  Exporting for Different Platforms
+› Premiere Pro: H.264 export for YouTube, Vimeo & web delivery
+› Export presets: YouTube 1080p, Instagram 4K, Facebook HD
+› After Effects: render queue vs. Media Encoder for efficiency
+› File size optimization – bitrate settings & format comparisons (MP4 vs. MOV)
+
+Week 3 — Motion Graphics & Production
+  ✦  Motion Graphics – Logo Animations & Explainer Elements
+› Logo reveal animation: build-up using shape layers & trim paths
+› Kinetic typography: text bouncing, sliding & scaling to music beat
+› Animated icons & infographics (bar charts, counters & maps)
+› Using free Motion Bro / AEJuice elements as base templates
+  ✦  Green Screen (Chroma Key) & Visual Effects
+› Ultra Key effect in Premiere Pro for green screen removal
+› Spill suppression & edge refinement for realistic compositing
+› Background replacement: virtual studio & product demo compositing
+› Light leaks, lens flares & film grain overlays for cinematic look
+  ✦  Reels, YouTube Shorts & Social Media Production
+› Shooting tips for Reels: framing, lighting & stabilization
+› Hook in first 3 seconds, pacing & trending audio sync
+› Caption & subtitle animation for silent viewing
+› Content repurposing: cutting a long YouTube video into 5 Reels/Shorts
+  ✦  Color Grading & Professional Finishing
+› Lumetri Scopes: waveform, vectorscope & parade for accurate grading
+› Cinematic LUTs – applying, adjusting & stacking
+› Skin tone correction & selective color adjustments
+› Final delivery: loudness normalization (−14 LUFS for YouTube) & peak limiting
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – Full Video Production
+› 60–90 second brand/product video: script → shoot → edit → color → audio mix
+› YouTube-ready video with custom thumbnail, end screen & chapters
+› Animated intro (After Effects logo reveal) + lower thirds throughout
+› Instagram Reel cut-down (30 sec) from the main video
+  ✦  Showreel / Portfolio Compilation
+› Assembling a 60-second editor's showreel from all course projects
+› Adding music, cuts-on-beat & pacing for maximum impact
+› Uploading to YouTube (unlisted) & Vimeo for client sharing
+› Portfolio PDF: project stills, roles & software used
+  ✦  LinkedIn & Freelance Profile Setup
+› LinkedIn headline for video editors & featured section with showreel link
+› Fiverr gig creation: video editing, Reels production & logo animation
+› YouTube channel as portfolio: naming, banner & channel description
+› Pricing guide: per minute, per video & monthly retainer rates
+  ✦  Career & Freelance Guidance
+› Career paths: YouTube editor, corporate video, ad agency & wedding films
+› Finding clients: local businesses, content creators & marketing agencies
+› Client communication: briefs, revisions & final delivery workflow
+› Certificate distribution & internship / placement assistance
+
+
+
+12. Mobile App Development Professional (Flutter Basics)
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹14,999
+Eligibility
+Students
+Career Opportunities
+Flutter Developer (Junior), Mobile App Developer
+
+Weekly Module Breakdown
+
+Week 1 — Dart & Flutter Setup
+  ✦  Dart Programming – Variables, Functions & OOP
+› Dart data types: int, double, String, bool, List, Map & Set
+› null safety: nullable (?) vs. non-nullable types
+› Functions: named, optional, positional & arrow functions
+› OOP in Dart: classes, constructors, inheritance & mixins
+  ✦  Flutter SDK Setup & Project Structure
+› Installing Flutter SDK, Android Studio & VS Code Flutter extension
+› Creating first Flutter project: flutter create & project folder structure
+› pubspec.yaml – managing dependencies, assets & fonts
+› Running app on Android emulator, iOS simulator & physical device
+  ✦  Understanding Widgets – Stateless & Stateful
+› Everything is a widget: tree structure & composition model
+› StatelessWidget – immutable UI component with build() method
+› StatefulWidget – mutable state with setState() for UI updates
+› Widget lifecycle: initState(), build(), dispose()
+  ✦  Hot Reload, Debugging & Flutter DevTools
+› Hot reload (r) vs. hot restart (R) – difference and use cases
+› Flutter Inspector: widget tree & layout explorer
+› Dart DevTools: performance profiler & memory view
+› print() debugging vs. structured logging with debugPrint()
+
+Week 2 — Flutter Layouts & UI
+  ✦  Core Widgets – Container, Row, Column & ListView
+› Container: padding, margin, decoration, color & BoxDecoration
+› Row & Column: mainAxisAlignment, crossAxisAlignment & Flexible/Expanded
+› Stack & Positioned for overlapping UI elements
+› ListView, GridView & SingleChildScrollView for scrollable content
+  ✦  Navigation & Routing Between Screens
+› Navigator.push() & Navigator.pop() for basic navigation
+› Named routes: MaterialApp routes map & Navigator.pushNamed()
+› Passing data between screens via constructor arguments
+› Bottom navigation bar & Drawer for app-level navigation
+  ✦  Forms, Input Validation & Buttons
+› TextFormField with validators & Form widget with GlobalKey
+› FocusNode management for keyboard navigation
+› ElevatedButton, OutlinedButton, TextButton & IconButton styling
+› Custom styled buttons with InkWell & GestureDetector
+  ✦  Responsive & Adaptive UI Design
+› MediaQuery: screen width, height & device pixel ratio
+› LayoutBuilder for widget-level responsiveness
+› Flutter responsive_framework or flutter_screenutil package
+› Adaptive design: showing different UI on mobile vs. tablet
+
+Week 3 — Firebase & API Integration
+  ✦  Firebase Setup – Authentication & Firestore
+› Creating a Firebase project & adding Flutter app (google-services.json)
+› Firebase Auth: email/password sign-up, login & logout
+› StreamBuilder to listen to auth state changes
+› Firestore: collections, documents & real-time data listeners
+  ✦  CRUD Operations with Firebase Firestore
+› Adding documents with add() & set() methods
+› Reading documents: getDocs() & onSnapshot() stream
+› Updating documents with update() & deleting with delete()
+› Building a simple todo/notes app with full Firestore CRUD
+  ✦  REST API Integration – HTTP Package & JSON Parsing
+› Adding http package & making GET/POST requests
+› async/await & Future for handling asynchronous operations
+› JSON parsing with jsonDecode() & mapping to Dart models
+› FutureBuilder for displaying API data in widgets
+  ✦  State Management Basics
+› setState() for simple local state
+› Provider package: ChangeNotifier, Consumer & context.watch()
+› When to lift state up vs. using a global state solution
+› Mini project: shopping cart with Provider state management
+
+Week 4 — Deployment & Career
+  ✦  UI Polishing & Performance Optimization
+› Custom fonts, icons (font_awesome_flutter) & theme customization
+› Animations: AnimatedContainer, Hero transitions & Lottie files
+› Lazy loading images with CachedNetworkImage
+› Performance: const widgets, build() optimizations & avoiding rebuilds
+  ✦  App Deployment – Android APK & Play Store
+› Building release APK: flutter build apk --release
+› Signing the APK with a keystore file
+› Google Play Store: account setup, app bundle, screenshots & store listing
+› TestFlight overview for iOS distribution
+  ✦  Capstone Project – Full Flutter App
+› Build a 4–6 screen app with Firebase Auth + Firestore + REST API
+› Features: login/register, data listing, add/edit/delete & profile screen
+› Responsive UI with clean theme & custom fonts
+› Published APK + GitHub repo with structured README
+  ✦  Career Guidance & Mock Interviews
+› Flutter developer interview Q&A: widgets, state, async & Firebase
+› Code challenge: build a counter or form app in 20 minutes
+› GitHub portfolio review & LinkedIn optimization for mobile developers
+› Certificate distribution & placement guidance
+
+
+
+13. Artificial Intelligence Productivity Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹9,999
+Eligibility
+Anyone
+Career Opportunities
+AI Productivity Specialist, AI Content Creator
+
+Weekly Module Breakdown
+
+Week 1 — AI Tools Fundamentals
+  ✦  Introduction to AI & How LLMs Work
+› What is Artificial Intelligence, Machine Learning & Generative AI
+› How Large Language Models (LLMs) work: tokens, context window & temperature
+› AI capabilities & limitations: hallucinations, knowledge cutoff & bias
+› Ethical AI use: privacy, intellectual property & responsible prompting
+  ✦  ChatGPT – Features & Advanced Use Cases
+› ChatGPT interface: conversations, memory & custom instructions
+› Using GPT-4o: text, image analysis & file uploads
+› ChatGPT for writing: emails, reports, scripts & creative content
+› Custom GPTs: creating personal assistants for specific tasks
+  ✦  Google Gemini – Research & Workspace Integration
+› Gemini Advanced vs. Gemini in Google Workspace
+› Deep Research feature for multi-step research synthesis
+› Using Gemini in Gmail (Smart Reply, email drafting) & Docs (summarize, rewrite)
+› Gemini for image analysis, code generation & web grounding
+  ✦  Microsoft Copilot – Office 365 Productivity
+› Copilot in Word: draft from prompt, rewrite, summarize & translate
+› Copilot in Excel: data insights, formula suggestions & chart creation
+› Copilot in PowerPoint: generate slides from document or topic
+› Copilot in Teams: meeting transcription, summary & action items
+
+Week 2 — Prompt Engineering & Productivity
+  ✦  Prompt Engineering Techniques
+› Zero-shot, one-shot & few-shot prompting with examples
+› Chain-of-thought prompting for step-by-step reasoning
+› Role prompting, persona assignment & tone control
+› Prompt chaining: breaking complex tasks into multi-step AI workflows
+  ✦  AI for Professional Writing
+› Email drafting: cold outreach, follow-ups & formal correspondence
+› AI-assisted blog post workflow: outline → draft → SEO optimize → edit
+› Writing proposals, business plans & executive summaries with AI
+› Adapting AI output to your personal voice & style
+  ✦  AI for Data & Research
+› Uploading CSV/Excel to ChatGPT Advanced Data Analysis for insights
+› AI-powered literature review & summarizing long documents
+› Perplexity AI & Gemini Deep Research for cited, web-grounded research
+› Fact-checking AI outputs & cross-referencing sources
+  ✦  AI-Powered Project & Task Management
+› Using ChatGPT to create project plans, timelines & meeting agendas
+› Notion AI & ClickUp AI for task tracking & documentation
+› AI for brainstorming: mind maps, problem trees & ideation sessions
+› Building a personal productivity system with AI assistance
+
+Week 3 — AI Automation & Content Creation
+  ✦  AI Automation Tools – Zapier AI & Make.com
+› No-code automation: triggers, actions & multi-step Zaps
+› Automating email → sheet → notification workflows
+› Make.com (Integromat): visual workflow builder for complex automations
+› AI actions in Zapier: AI formatting, classification & content generation
+  ✦  AI Image Generation – Midjourney, DALL-E & Ideogram
+› Midjourney prompting: style, aspect ratio, quality & version parameters
+› DALL-E 3 in ChatGPT: generating images from text descriptions
+› Ideogram for typography-heavy images & logo concepts
+› Editing generated images: inpainting, outpainting & style transfer
+  ✦  AI Video & Audio Tools
+› Sora / Kling AI for short AI video generation from text prompts
+› HeyGen: AI avatar video creation for marketing & training content
+› ElevenLabs: voice cloning & text-to-speech for podcasts & videos
+› CapCut AI: auto-captions, B-roll suggestions & AI-generated effects
+  ✦  AI for Business Use Cases
+› AI customer support: chatbot design & training with FAQs
+› AI for e-commerce: product descriptions, SEO & review analysis
+› AI in HR: job description writing, resume screening & interview Q generation
+› AI for education: quiz generation, lesson planning & study guides
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – AI-Powered Business Workflow
+› Choose a real-world scenario (marketing agency, HR team, content creator)
+› Design and implement a complete AI-assisted workflow using 5+ tools
+› Document: problem, tools used, prompts, output & time saved
+› Present as a business case: before vs. after AI adoption
+  ✦  AI Ethics & Responsible Use
+› AI content disclosure: when and how to declare AI-assisted work
+› Copyright concerns with AI-generated images, text & code
+› Data privacy: what NOT to input into public AI tools (confidential data)
+› Combating AI misinformation & deepfake awareness
+  ✦  Portfolio & LinkedIn Optimization
+› Creating a personal AI productivity portfolio (Notion or Google Sites)
+› LinkedIn posts showcasing AI workflow projects & learnings
+› Writing an 'AI Skills' section on resume with specific tools listed
+› AI content creation samples: blogs, social media & video scripts
+  ✦  Career & Freelance Guidance
+› AI productivity job roles: AI trainer, prompt engineer, AI content manager
+› Freelance AI services: content creation, automation setup & AI consulting
+› Upwork, Fiverr & Toptal gigs for AI specialists
+› Certificate distribution & next steps for advanced AI learning
+
+
+
+14. Professional Data Analytics Foundation
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹13,999
+Eligibility
+Graduates
+Career Opportunities
+Junior Data Analyst, Reporting Executive
+
+Weekly Module Breakdown
+
+Week 1 — Excel & SQL Foundations
+  ✦  Advanced Excel – Functions, Pivot Tables & Charts
+› VLOOKUP, XLOOKUP, INDEX-MATCH for data lookup & merging
+› Pivot Tables: row/column fields, value aggregation, filters & slicers
+› SUMIFS, COUNTIFS, dynamic array functions (FILTER, SORT, UNIQUE)
+› Chart types for data analysis: histogram, scatter, waterfall & combo charts
+  ✦  Data Cleaning & Preprocessing in Excel
+› Removing duplicates, handling blanks & standardizing formats
+› Text functions: TRIM, PROPER, CONCATENATE, LEFT, RIGHT, MID, TEXT
+› Find & Replace, Flash Fill & Power Query for bulk transformations
+› Data validation to prevent future entry errors
+  ✦  SQL Basics – Querying, Filtering & Joining
+› Setting up MySQL Workbench / DB Browser for SQLite
+› SELECT, WHERE, BETWEEN, IN, LIKE & NULL handling
+› Aggregate queries: COUNT, SUM, AVG, MAX, MIN with GROUP BY & HAVING
+› Joins: INNER, LEFT, RIGHT & FULL OUTER JOIN with real datasets
+  ✦  Database Concepts – Tables, Keys & Relationships
+› Primary key, foreign key, composite key & unique constraints
+› Entity-Relationship (ER) diagram reading & interpretation
+› Normalization: 1NF, 2NF & 3NF with examples
+› Creating & populating tables: CREATE TABLE, INSERT, ALTER & DROP
+
+Week 2 — Python for Data
+  ✦  Python Basics – NumPy & Pandas
+› NumPy: arrays, vectorized operations, broadcasting & statistical functions
+› Pandas Series & DataFrame: creating, indexing, selecting & slicing
+› Reading/writing CSV, Excel & JSON with Pandas
+› Merging, joining & concatenating DataFrames
+  ✦  Data Cleaning with Pandas
+› Detecting & filling missing values: fillna(), dropna() & interpolate()
+› Removing duplicates with drop_duplicates()
+› Detecting & treating outliers using IQR & Z-score methods
+› Type conversion, renaming columns & resetting index
+  ✦  Exploratory Data Analysis (EDA)
+› df.describe(), df.info(), value_counts() & correlation matrix
+› Distribution plots: histogram, boxplot & violin plot with Seaborn
+› Relationship plots: scatter, pairplot & heatmap for correlations
+› Groupby aggregation & pivot_table() for summary statistics
+  ✦  Data Aggregation & Grouping
+› groupby() with agg() for multi-column aggregations
+› Rolling averages, cumulative sums & shift() for time-series analysis
+› Reshaping data with melt() & pivot_table()
+› Practical assignment: customer sales analysis from raw CSV dataset
+
+Week 3 — Power BI & Reporting
+  ✦  Power BI – Import, Model & Visualize
+› Importing Excel, CSV & SQL data into Power BI Desktop
+› Data modeling: relationships, star schema & calculated columns
+› Power Query transformations: merge, append, unpivot & split columns
+› Core visuals: bar, line, pie, card, table & matrix
+  ✦  Interactive KPI Dashboards
+› Slicers, filters & cross-highlighting for interactivity
+› DAX basics: SUM, COUNT, CALCULATE, DIVIDE & IF measures
+› KPI visual, gauge & sparklines for performance tracking
+› Drill-through pages for detailed analysis from summary views
+  ✦  Data Storytelling & Report Writing
+› Principles of data storytelling: context, conflict & resolution
+› Choosing the right chart for the insight (comparison, trend, distribution)
+› Writing executive summaries: key findings, insights & recommendations
+› Data report templates: monthly sales, HR & operational reports
+  ✦  Combined Workflow – Excel + SQL + Python + Power BI
+› Extract data from SQL → clean in Python → model in Power BI
+› Automating data pipeline: Python script to Excel → Power BI refresh
+› SQL stored procedures feeding into Power BI via DirectQuery
+› End-to-end case study: retail sales analytics project
+
+Week 4 — Capstone, Assessment & Career
+  ✦  Capstone Project – End-to-End Analytics Report
+› Select a real dataset (Kaggle HR, sales or e-commerce dataset)
+› Clean & analyze in Python (Pandas + Matplotlib/Seaborn)
+› SQL queries for business questions (top products, monthly trends, segments)
+› Power BI report: 3 pages with 8+ visuals, DAX measures & slicers
+  ✦  Presentation of Insights & Findings
+› 5-minute project presentation: business context → analysis → insights → recommendations
+› Storytelling with data: one visual per key insight
+› Handling trainer Q&A on methodology, tools & findings
+› Creating a written one-page analytics brief for a simulated stakeholder
+  ✦  GitHub Portfolio & LinkedIn Optimization
+› Uploading Jupyter Notebook, .pbix file & SQL scripts to GitHub
+› Writing a README with project overview, tools, findings & screenshots
+› LinkedIn carousel post showcasing dashboard insights
+› Adding Python, SQL & Power BI as featured skills with endorsements
+  ✦  Career Guidance & Mock Interviews
+› Common data analyst interview Q&A: SQL, Excel, Python & statistics
+› Take-home assignment format: solving a business analytics case in 1 hour
+› Career paths: data analyst → senior analyst → data scientist / BI manager
+› Certificate distribution & placement assistance
+
+
+
+15. UI/UX Design Professional
+
+Duration
+1 Month (4 Weeks)
+Fees (Bihar)
+₹12,999
+Eligibility
+Students & Designers
+Career Opportunities
+UI/UX Designer, Product Designer
+
+Weekly Module Breakdown
+
+Week 1 — Design Principles & Figma Basics
+  ✦  Design Fundamentals – Typography, Color & Grid
+› Typography: typeface anatomy, classification, pairing & hierarchy
+› Color theory: hue, saturation, value, complementary & analogous palettes
+› Grid systems: 12-column web grid, 4-column mobile grid & baseline grid
+› Gestalt principles: proximity, similarity, closure & figure-ground
+  ✦  Figma Interface – Frames, Components & Auto Layout
+› Figma workspace: pages, frames, groups, layers & assets panel
+› Components & variants – creating reusable UI elements
+› Auto Layout: responsive resizing, padding, gap & direction
+› Constraints & grid settings for pixel-perfect layouts
+  ✦  Web & Mobile Design Standards
+› iOS Human Interface Guidelines: navigation bars, tab bars & safe areas
+› Material Design 3: color system, typography scale & components
+› Touch target sizes (minimum 44×44pt iOS / 48×48dp Android)
+› Responsive breakpoints: 375px mobile, 768px tablet, 1440px desktop
+  ✦  Recreating Real App UI Screens
+› Recreate 3 screens from popular apps (Swiggy, Spotify or Instagram)
+› Pixel-perfect accuracy from reference: spacing, fonts & colors
+› Peer critique: comparing recreation to original with Figma overlay
+› Building muscle memory for Figma tools & keyboard shortcuts
+
+Week 2 — Wireframing & User Research
+  ✦  Information Architecture & User Flows
+› Sitemap creation: mapping all screens & navigation paths
+› User flow diagrams: entry points, decision nodes & exit points
+› Card sorting for navigation structure (open & closed methods)
+› Task flow vs. user flow – and when to use each
+  ✦  Low-Fidelity Wireframing
+› Paper sketching: rapid UI exploration with 6-up wireframe sheets
+› Digital lo-fi wireframes in Figma using simple shapes & placeholders
+› Wireframe best practices: no colors, minimal text, focus on layout
+› Wireframe annotation: labeling interactions & component behavior
+  ✦  User Research – Personas & Journey Maps
+› Primary & secondary research: surveys (Google Forms), interviews & analytics
+› Creating 2 user personas: demographics, goals, frustrations & tech savviness
+› Customer journey map: stages, touchpoints, emotions & opportunities
+› Empathy map: says, thinks, does, feels quadrant
+  ✦  Competitive Analysis & Moodboarding
+› Heuristic evaluation of 3 competitor apps using Nielsen's 10 principles
+› SWOT analysis for competitor UX: strengths, weaknesses & opportunities
+› Moodboard creation: visual direction for style, feel & brand personality
+› Design inspiration sources: Dribbble, Behance, Mobbin & Awwwards
+
+Week 3 — Prototyping & Design Systems
+  ✦  High-Fidelity UI Design
+› Applying brand colors, typography & imagery to wireframes
+› Micro-interactions: button states (default, hover, pressed, disabled)
+› Empty states, error states, loading states & success screens
+› Data-driven design: realistic content over 'lorem ipsum' placeholders
+  ✦  Interactive Prototyping in Figma
+› Connecting frames: smart animate, dissolve & slide transitions
+› Overlays: modals, dropdowns, side drawers & tooltips
+› Scroll behavior: vertical scroll, fixed nav & sticky elements
+› Sharing prototype link for stakeholder review & user testing
+  ✦  Design Systems – Components & Style Guides
+› Atomic design: atoms → molecules → organisms → templates → pages
+› Building a component library: buttons, inputs, cards, nav & modals
+› Color & typography tokens in Figma Variables (local styles)
+› Documentation: component usage rules, do/don't examples & spacing guide
+  ✦  Developer Handoff – Figma Inspect & Annotations
+› Figma Inspect panel: CSS properties, spacing & asset export
+› Zeplin / Figma Dev Mode overview for developer handoff
+› Annotating designs: numbering interactions & writing spec notes
+› Asset export: SVG icons, PNG images & 2x/3x image sets for iOS & Android
+
+Week 4 — User Testing, Capstone & Career
+  ✦  Usability Testing & Iteration
+› Planning a usability test: tasks, scenarios & success metrics
+› Moderated testing: think-aloud protocol with 3–5 participants
+› Unmoderated testing with Maze / UserTesting tools
+› Affinity mapping test findings → prioritized improvement backlog
+  ✦  Capstone Project – Full App UI/UX Design
+› Brief: design a mobile app for a chosen domain (health, finance, food, travel)
+› Deliverables: user research → wireframes → hi-fi UI → interactive prototype
+› 3–5 key screens with full component library & style guide
+› Usability testing with 2 peers + revision based on feedback
+  ✦  Portfolio Presentation
+› Case study structure: problem → research → design process → final UI → outcomes
+› Presenting on Behance & Figma Community with project thumbnails
+› PDF portfolio for email/LinkedIn sharing
+› 30-second project pitch: elevator pitch for interviews
+  ✦  Mock Interviews & Career Guidance
+› Portfolio review: what employers look for in a UX case study
+› Common UI/UX interview questions: design process, tools, trade-offs & critiques
+› Design challenge: 20-minute whiteboard redesign exercise
+› Certificate distribution, placement assistance & freelance guidance
+
+

@@ -1,0 +1,1272 @@
+Fillip Technologies
+1-Year Premium Program Curriculum
+Detailed Month-by-Month Module Guide
+4 Flagship Programs  •  12 Months Each  •  48 Detailed Monthly Modules
+
+#1 — AI Software Engineer Pro
+Domain: Artificial Intelligence
+ Duration: 12 Months
+ Fees: Rs.89,999
+
+Month 1 — Python Programming Foundations
+
+✦  Python Core Language & OOP
+
+›  Python syntax deep dive: variables, data types, operators, and type conversion with examples
+
+›  Control flow mastery: if-elif-else chains, for/while loops, break, continue, and comprehensions
+
+›  Functions: default arguments, *args, **kwargs, lambda expressions, and closures
+
+›  OOP in Python: classes, objects, constructors, instance vs. class variables, and dunder methods
+
+›  Modules and packages: import system, __init__.py, virtual environments, and pip package management
+
+✦  Data Structures & Algorithm Fundamentals
+
+›  Built-in structures: lists, tuples, sets, and dicts — operations, slicing, and performance trade-offs
+
+›  Stacks, queues, and deques using Python collections module with real-world use cases
+
+›  Linked lists, trees, and graphs: node-based implementation in Python with traversal algorithms
+
+›  Sorting algorithms: bubble, selection, insertion, merge, and quicksort with time complexity analysis
+
+›  Searching and recursion: binary search, DFS, BFS, and dynamic programming (memoization/tabulation)
+
+Month 2 — Mathematics & Statistics for AI
+
+✦  Linear Algebra Essentials
+
+›  Scalars, vectors, and matrices: notation, operations (add, subtract, multiply), and broadcasting
+
+›  Matrix multiplication, transposition, inverse, and determinant — computation with NumPy
+
+›  Eigenvalues and eigenvectors: geometric intuition, power iteration, and PCA application
+
+›  Singular Value Decomposition (SVD): theory, computation, and use in image compression and recommenders
+
+›  Dot products, projections, and cosine similarity for ML distance and similarity metrics
+
+✦  Probability & Statistics
+
+›  Probability fundamentals: sample space, events, conditional probability, and Bayes theorem with examples
+
+›  Random variables: discrete (Bernoulli, Binomial, Poisson) and continuous (Normal, Exponential) distributions
+
+›  Descriptive statistics: mean, median, mode, variance, standard deviation, skewness, and kurtosis
+
+›  Inferential statistics: hypothesis testing, p-values, confidence intervals, and z/t/chi-square tests
+
+›  Calculus for AI: derivatives, partial derivatives, gradients, and the chain rule for backpropagation
+
+Month 3 — Data Manipulation & Visualization
+
+✦  NumPy & Pandas Mastery
+
+›  NumPy: array creation, shape manipulation, indexing, slicing, broadcasting, and universal functions
+
+›  Pandas Series and DataFrame: creation, indexing (loc/iloc), filtering, and boolean masking
+
+›  Data cleaning: handling missing values (fillna, dropna), duplicates, and inconsistent data types
+
+›  Data transformation: apply, map, groupby, agg, pivot_table, merge, join, and reshape (melt/stack)
+
+›  Time series with Pandas: datetime indexing, resampling, rolling windows, and period conversion
+
+✦  Data Visualization & EDA
+
+›  Matplotlib deep dive: figure/axes architecture, subplots, annotations, twinx, and custom styling
+
+›  Seaborn statistical plots: distplot, boxplot, heatmap, pairplot, violinplot, and lmplot
+
+›  Plotly and interactive charts: scatter, bar, line, choropleth maps, and animated visualizations
+
+›  EDA workflow: univariate analysis, bivariate analysis, correlation matrices, and outlier detection
+
+›  Storytelling with data: choosing the right chart type, color use, and creating presentation-ready plots
+
+Month 4 — Machine Learning Core Algorithms
+
+✦  Supervised Learning — Regression & Classification
+
+›  Linear regression: OLS derivation, gradient descent, regularization (Ridge, Lasso, ElasticNet)
+
+›  Logistic regression: sigmoid function, binary and multi-class (OvR, Softmax), and decision boundary
+
+›  Decision trees: information gain, Gini impurity, splitting criteria, pruning, and depth tuning
+
+›  Naive Bayes: Gaussian, Multinomial, and Bernoulli classifiers for text and numeric classification
+
+›  K-Nearest Neighbors (KNN): distance metrics, weighted KNN, and curse of dimensionality
+
+✦  Model Evaluation & Pipeline Building
+
+›  Train/validation/test split, k-fold and stratified cross-validation for robust evaluation
+
+›  Classification metrics: accuracy, precision, recall, F1-score, AUC-ROC, and PR curves
+
+›  Regression metrics: MAE, MSE, RMSE, R-squared, and adjusted R-squared interpretation
+
+›  Scikit-learn Pipeline: ColumnTransformer, StandardScaler, OneHotEncoder, and chained steps
+
+›  Hyperparameter tuning: GridSearchCV, RandomizedSearchCV, and nested cross-validation
+
+Month 5 — Advanced ML & Model Optimization
+
+✦  Ensemble Methods & Advanced Algorithms
+
+›  Bagging: Bootstrap Aggregating, Random Forest — feature importance, OOB score, and n_estimators
+
+›  Boosting: AdaBoost, Gradient Boosting, XGBoost, LightGBM, and CatBoost — theory and practice
+
+›  XGBoost advanced: tree parameters, regularization (gamma, alpha, lambda), and early stopping
+
+›  Support Vector Machines (SVM): margin maximization, kernel trick (RBF, polynomial), and SVR
+
+›  Stacking and blending: meta-learner design, out-of-fold predictions, and multi-level ensembles
+
+✦  Feature Engineering & Dimensionality Reduction
+
+›  Feature scaling: StandardScaler, MinMaxScaler, RobustScaler, and when to use each method
+
+›  Encoding categoricals: one-hot, label, ordinal, target encoding, and hash tricks for high cardinality
+
+›  Feature creation: polynomial features, interaction terms, log transform, and binning strategies
+
+›  PCA: variance explained ratio, scree plot, and choosing optimal number of principal components
+
+›  Feature selection: correlation filtering, Recursive Feature Elimination (RFE), and SHAP-based selection
+
+Month 6 — Deep Learning Foundations
+
+✦  Neural Network Architecture & Training
+
+›  Biological neuron to artificial neuron: perceptron, MLP architecture, and universal approximation theorem
+
+›  Activation functions: Sigmoid, Tanh, ReLU, Leaky ReLU, ELU, GELU, and Swish — pros and cons
+
+›  Loss functions: MSE for regression, binary/categorical cross-entropy, Focal Loss for imbalanced data
+
+›  Backpropagation from scratch: forward pass, compute loss, backward pass, and weight update rule
+
+›  Optimizers: SGD with momentum, RMSprop, Adam, AdaMax, Nadam — theory and practical comparison
+
+✦  Regularization, Tuning & Frameworks
+
+›  Overfitting solutions: L1/L2 weight decay, dropout (inverted dropout), batch normalization, layer norm
+
+›  Weight initialization: Glorot/Xavier (tanh layers), He initialization (ReLU layers), and LSUV
+
+›  Learning rate strategies: constant, step decay, exponential decay, cosine annealing, and ReduceLROnPlateau
+
+›  TensorFlow/Keras: Sequential and Functional API, model.compile, fit, evaluate, and callbacks
+
+›  PyTorch: tensors, autograd, nn.Module, DataLoader, training loop, and model saving/loading
+
+Month 7 — Computer Vision with Deep Learning
+
+✦  Convolutional Neural Networks
+
+›  Convolution operation: kernel, stride, padding, output size formula, and multiple filters/channels
+
+›  Pooling layers: MaxPool, AvgPool, global average pooling, and their effect on spatial dimensions
+
+›  CNN architectures: LeNet-5, AlexNet, VGGNet-16, ResNet-50, EfficientNet-B0, and MobileNetV3
+
+›  Transfer learning: feature extraction vs. fine-tuning, unfreezing layers, and learning rate warm-up
+
+›  Data augmentation: random flip, rotation, crop, color jitter, cutout, and MixUp techniques
+
+✦  Object Detection & Image Segmentation
+
+›  Object detection pipeline: anchor boxes, IoU, Non-Maximum Suppression (NMS), and mAP metric
+
+›  YOLOv8: architecture, custom dataset annotation with Roboflow, training, and inference optimization
+
+›  Faster R-CNN: Region Proposal Network (RPN), ROI pooling, and two-stage detection pipeline
+
+›  Semantic segmentation: FCN, U-Net architecture, skip connections, and training on custom masks
+
+›  Instance segmentation: Mask R-CNN, panoptic segmentation, and Segment Anything Model (SAM)
+
+Month 8 — Natural Language Processing & Transformers
+
+✦  Classical NLP to Embeddings
+
+›  Text preprocessing: lowercasing, tokenization, stopword removal, stemming, and lemmatization (spaCy)
+
+›  Feature extraction: Bag-of-Words, TF-IDF, N-grams, and their limitations for semantic understanding
+
+›  Word2Vec: CBOW vs. Skip-gram architecture, negative sampling, and subsampling frequent words
+
+›  GloVe and FastText: global co-occurrence matrix and subword embeddings for morphology handling
+
+›  Sentence embeddings: Doc2Vec, Universal Sentence Encoder, and cosine similarity for semantic search
+
+✦  Transformers & BERT Fine-Tuning
+
+›  Transformer architecture: input embedding, positional encoding, multi-head self-attention, and FFN
+
+›  BERT: masked language modeling pre-training, NSP task, WordPiece tokenization, and [CLS] token
+
+›  Fine-tuning BERT for tasks: text classification, NER, QA (SQuAD), and sentence similarity
+
+›  Hugging Face Trainer API: training arguments, evaluation strategy, logging, and checkpoint saving
+
+›  PEFT methods: LoRA adapters, prefix tuning, and prompt tuning for efficient BERT fine-tuning
+
+Month 9 — Generative AI & Large Language Models
+
+✦  LLM Architecture & Prompt Engineering
+
+›  GPT architecture: autoregressive language modeling, causal self-attention, and scaling laws
+
+›  LLaMA, Mistral, Gemma, and Phi-3: architecture differences, parameter counts, and capability comparison
+
+›  Prompt engineering: zero-shot, few-shot, CoT, ReAct, system prompts, and prompt injection mitigation
+
+›  OpenAI and Anthropic APIs: chat completion, function calling, streaming, and token cost management
+
+›  LangChain: chains, agents, tools, memory (ConversationBufferMemory), and LangSmith tracing
+
+✦  RAG, Fine-Tuning & GenAI Applications
+
+›  Retrieval Augmented Generation: document loading, chunking, embedding, vector store, and retrieval
+
+›  Vector databases: Pinecone, ChromaDB, Qdrant — similarity search, metadata filtering, and hybrid search
+
+›  QLoRA fine-tuning: 4-bit quantization, LoRA rank selection, and training with Axolotl on custom data
+
+›  Evaluation: RAGAS for RAG systems, LLM-as-judge, and human preference evaluation methodology
+
+›  GenAI app patterns: RAG chatbot, AI agent, code assistant, and document Q&A with Streamlit frontend
+
+Month 10 — MLOps, CI/CD & Monitoring
+
+✦  Experiment Tracking & Model Management
+
+›  MLflow: logging parameters, metrics, artifacts, and models with autolog and custom logging
+
+›  MLflow Model Registry: model versioning, staging (Staging/Production/Archived), and aliasing
+
+›  DVC (Data Version Control): data versioning, pipeline stages, and remote storage (S3/GCS)
+
+›  Weights & Biases (W&B): sweeps for hyperparameter optimization, dashboards, and team collaboration
+
+›  Feature stores: Feast introduction — feature definitions, materialization, and retrieval for training/serving
+
+✦  Deployment & Production Monitoring
+
+›  Model serialization: pickle, joblib, ONNX export, and TorchScript for cross-platform deployment
+
+›  FastAPI model serving: REST endpoint, request/response schemas (Pydantic), async, and batching
+
+›  Docker: containerize ML app with Dockerfile, multi-stage build, and docker-compose for local testing
+
+›  Deploy to cloud: AWS SageMaker endpoint, GCP Vertex AI Prediction, and Azure ML Online Endpoint
+
+›  Production monitoring: data drift (Evidently AI), prediction drift, SHAP explanations, and alerting
+
+Month 11 — AI System Design & Specialization
+
+✦  AI System Design Principles
+
+›  Designing scalable ML systems: data pipeline, training infrastructure, and serving architecture
+
+›  Batch vs. real-time inference: trade-offs, use cases, and architecture patterns for each
+
+›  A/B testing ML models: traffic splitting, statistical significance, and safe rollout strategies
+
+›  Model compression: knowledge distillation, quantization (INT8/FP16), pruning, and ONNX optimization
+
+›  AI product design: defining success metrics, building feedback loops, and iterative improvement
+
+✦  Domain Specialization & Advanced Topics
+
+›  Recommender systems: collaborative filtering, matrix factorization, two-tower model, and sequential recs
+
+›  Time series deep learning: N-BEATS, N-HiTS, and Temporal Fusion Transformer for forecasting
+
+›  Reinforcement Learning: MDP framework, Q-learning, DQN, policy gradient, and PPO basics
+
+›  Multimodal AI: CLIP (image-text alignment), BLIP-2, Flamingo, and LLaVA for vision-language tasks
+
+›  AI ethics: bias detection, fairness metrics, model explainability (LIME, SHAP), and responsible AI
+
+Month 12 — Capstone Project, Portfolio & Placement
+
+✦  End-to-End Capstone AI Project
+
+›  Problem definition: choose a real-world AI challenge in healthcare, finance, NLP, or computer vision
+
+›  Data pipeline: collect, clean, version (DVC), and perform EDA with documented findings
+
+›  Model development: experiment tracking (MLflow/W&B), iterative modeling, and evaluation framework
+
+›  Production deployment: FastAPI + Docker + cloud hosting + monitoring dashboard + CI/CD pipeline
+
+›  Documentation: technical report, architecture diagram, performance benchmarks, and demo video
+
+✦  Interview Preparation & Placement Drive
+
+›  Coding interview prep: LeetCode patterns (arrays, trees, DP, graphs) in Python — 60+ problems solved
+
+›  ML system design: practice 10 design questions (recommendation, fraud detection, search ranking)
+
+›  Behavioral interviews: STAR method, project walkthroughs, handling failure stories, and culture fit
+
+›  Portfolio polish: GitHub cleanup, LinkedIn optimization, personal website, and Kaggle profile
+
+›  Placement support: resume shortlisting, mock interview rounds, company referrals, and salary negotiation
+
+#8 — Data Science Master Program
+Domain: Data Science
+ Duration: 12 Months
+ Fees: Rs.84,999
+
+Month 1 — Python & SQL Foundations
+
+✦  Python for Data Science
+
+›  Python environment setup: Anaconda, Jupyter Notebook, VS Code, and virtual environments
+
+›  Python essentials: data types, collections (list, dict, set, tuple), comprehensions, and functions
+
+›  File I/O: reading/writing CSV, JSON, Excel files, and connecting to APIs with requests library
+
+›  Error handling: try/except/finally, custom exceptions, and writing defensive data science code
+
+›  NumPy foundations: array operations, broadcasting, vectorization, and statistical functions
+
+✦  SQL for Data Analysis
+
+›  SQL basics: SELECT, WHERE, ORDER BY, DISTINCT, LIMIT, and working with NULL values
+
+›  Aggregate functions: COUNT, SUM, AVG, MIN, MAX, and GROUP BY with HAVING clause
+
+›  Joins: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN with multi-table business examples
+
+›  Subqueries, correlated subqueries, CTEs (WITH clause), and when to use each approach
+
+›  Window functions: ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD, and cumulative aggregations
+
+Month 2 — Statistics & Exploratory Data Analysis
+
+✦  Statistical Foundations
+
+›  Descriptive statistics: mean, median, mode, variance, standard deviation, IQR, and percentiles
+
+›  Probability distributions: Binomial, Poisson, Normal, Uniform, Exponential — PDF, CDF, and sampling
+
+›  Hypothesis testing: null/alternative hypothesis, Type I/II errors, p-value, and significance level
+
+›  Statistical tests: one-sample t-test, two-sample t-test, paired t-test, ANOVA, and chi-square test
+
+›  Correlation and causation: Pearson, Spearman, Kendall correlation and interpretation pitfalls
+
+✦  Exploratory Data Analysis (EDA)
+
+›  Pandas mastery: loc/iloc, boolean indexing, apply, groupby, agg, pivot_table, and merge/join
+
+›  Missing data handling: identifying patterns, imputation strategies (mean, median, KNN, iterative)
+
+›  Outlier detection and treatment: IQR method, Z-score, Isolation Forest, and visual methods
+
+›  Univariate analysis: histograms, KDE plots, box plots, and distribution shape interpretation
+
+›  Multivariate analysis: scatter plots, pair plots, correlation heatmaps, and feature interaction
+
+Month 3 — Machine Learning Core Algorithms
+
+✦  Supervised Learning Fundamentals
+
+›  ML workflow: problem framing, data splitting, baseline model, iteration, and evaluation cycle
+
+›  Linear regression: gradient descent derivation, OLS, regularization (Ridge, Lasso, ElasticNet)
+
+›  Logistic regression: sigmoid, log-loss, ROC curve, and multi-class with Softmax
+
+›  Decision Trees: CART algorithm, Gini vs. entropy, max_depth tuning, and feature importance
+
+›  KNN and Naive Bayes: distance metrics, probabilistic classifiers, and text classification use cases
+
+✦  Model Evaluation & Selection
+
+›  Classification metrics: accuracy (and when it misleads), precision, recall, F1, and macro vs. micro
+
+›  ROC-AUC and Precision-Recall curve: interpretation, comparison of models, and choosing thresholds
+
+›  Regression metrics: MAE, MSE, RMSE, R2, and adjusted R2 — business interpretation
+
+›  Cross-validation: k-fold, stratified k-fold, leave-one-out, and time-series CV for temporal data
+
+›  Bias-variance tradeoff: learning curves, validation curves, and diagnosing over/underfitting
+
+Month 4 — Advanced ML & Ensemble Methods
+
+✦  Ensemble Learning
+
+›  Bagging: Bootstrap sampling concept, variance reduction, and Random Forest intuition
+
+›  Random Forest: n_estimators, max_features, min_samples_leaf, OOB score, and feature importance
+
+›  Gradient Boosting: additive training, weak learners, learning rate vs. n_estimators trade-off
+
+›  XGBoost: tree-specific parameters (gamma, min_child_weight), regularization, and early stopping
+
+›  LightGBM and CatBoost: leaf-wise growth, histogram optimization, and categorical feature handling
+
+✦  Unsupervised Learning
+
+›  K-Means: centroid initialization (k-means++), elbow method, silhouette score, and inertia analysis
+
+›  DBSCAN: density-based clustering, epsilon and min_samples tuning, and noise point identification
+
+›  Hierarchical clustering: agglomerative, dendrogram reading, linkage methods, and cophenetic distance
+
+›  PCA: explained variance ratio, scree plot, biplot interpretation, and reconstruction error
+
+›  Anomaly detection: Isolation Forest, One-Class SVM, and Local Outlier Factor for fraud detection
+
+Month 5 — Deep Learning for Data Science
+
+✦  Neural Network Foundations
+
+›  MLP architecture: input layer, hidden layers, activation functions, output layer, and forward pass
+
+›  Backpropagation: chain rule, gradient computation, weight update, and vanishing gradient problem
+
+›  Training best practices: mini-batch SGD, learning rate tuning, batch normalization, and dropout
+
+›  Keras Functional API: multi-input/output models, skip connections, and custom training loops
+
+›  Overfitting prevention: early stopping, ReduceLROnPlateau, model checkpointing, and regularization
+
+✦  CNNs & RNNs for Data Science
+
+›  CNN applications: image classification (medical imaging, satellite), feature extraction for tabular data
+
+›  Transfer learning for data science: using pretrained CNNs as feature extractors in pipelines
+
+›  RNN and LSTM for sequential data: time series prediction, text classification, and anomaly detection
+
+›  Attention mechanism intuition and practical LSTM with attention for sequence modeling tasks
+
+›  TabNet and other DL models for tabular data: entity embeddings and wide & deep architectures
+
+Month 6 — Natural Language Processing
+
+✦  Classical NLP & Text Analysis
+
+›  Text preprocessing pipeline: cleaning, tokenization, stopwords, stemming, lemmatization, and POS tagging
+
+›  Feature extraction: Bag-of-Words, TF-IDF, N-grams, and co-occurrence matrix construction
+
+›  Topic modeling: Latent Dirichlet Allocation (LDA), Gensim, pyLDAvis visualization, and interpretation
+
+›  Sentiment analysis: VADER, TextBlob, and ML-based (logistic regression, SVM on TF-IDF features)
+
+›  Named Entity Recognition: spaCy NER pipeline, custom entity training, and entity linking
+
+✦  Transformers & BERT for NLP
+
+›  Word embeddings: Word2Vec, GloVe, and FastText — training custom embeddings on domain text
+
+›  BERT and sentence transformers: fine-tuning for classification, similarity, and information retrieval
+
+›  Hugging Face pipeline: sentiment, NER, QA, translation, and summarization in 5 lines of code
+
+›  Text summarization: extractive (BertSum, LexRank) and abstractive (T5, BART) comparison
+
+›  LLM integration: ChatGPT/Claude API for text analysis, bulk data processing, and automation
+
+Month 7 — Time Series & Forecasting
+
+✦  Time Series Analysis Fundamentals
+
+›  Time series components: trend, seasonality, cyclicality, and residual — decomposition methods
+
+›  Stationarity: Augmented Dickey-Fuller test, differencing, log transform, and KPSS test
+
+›  Autocorrelation: ACF and PACF plots for identifying ARMA order selection
+
+›  ARIMA/SARIMA: model fitting, AIC/BIC selection, residual diagnostics, and forecast intervals
+
+›  Exponential smoothing: Simple, Double (Holt), Triple (Holt-Winters) for seasonal forecasting
+
+✦  Advanced Forecasting Methods
+
+›  Prophet by Meta: trend changepoints, seasonality components, holiday effects, and uncertainty intervals
+
+›  LSTM for time series: sequence length, look-back window, stacking layers, and multi-step forecasting
+
+›  Temporal Fusion Transformer (TFT): attention for multi-horizon forecasting with covariates
+
+›  Feature engineering for time series: lag features, rolling statistics, calendar features, and encoding
+
+›  Multi-variate forecasting: VAR models, cross-correlation, and external regressor integration
+
+Month 8 — Business Intelligence & Data Visualization
+
+✦  Power BI — Deep Dive
+
+›  Power BI Desktop: data import, Power Query editor, data profiling, and transformation steps
+
+›  Data modeling: star schema design, relationships, cardinality, bidirectional filters, and role playing dims
+
+›  DAX fundamentals: calculated columns vs. measures, evaluation context, CALCULATE, and FILTER
+
+›  Advanced DAX: time intelligence (DATEADD, SAMEPERIODLASTYEAR), ranking, and dynamic segmentation
+
+›  Dashboard design: KPI cards, drill-through, bookmarks, row-level security (RLS), and publication to service
+
+✦  Tableau & Advanced Visualization
+
+›  Tableau Desktop: connecting to data, joins vs. blends, data extract vs. live connection
+
+›  Calculated fields: string functions, date functions, LOD expressions (FIXED, INCLUDE, EXCLUDE)
+
+›  Advanced charts: dual-axis, Gantt, bullet, waterfall, hex binning, and custom shapes in Tableau
+
+›  Dashboard actions: filter, highlight, URL, set actions, and parameter-driven interactivity
+
+›  Storytelling: presentation mode, tooltip customization, and sharing reports via Tableau Public/Server
+
+Month 9 — Big Data Technologies
+
+✦  Apache Spark with PySpark
+
+›  Spark architecture: driver, executors, cluster manager, RDDs, DAG scheduler, and lazy evaluation
+
+›  PySpark DataFrames: creation, schema definition, transformations (select, filter, groupBy, join)
+
+›  SparkSQL: creating views, writing SQL queries, and mixing DataFrame API with SQL expressions
+
+›  Spark MLlib: feature transformers, pipelines, classification/regression, and model evaluation
+
+›  Optimization: broadcast joins, caching, partitioning strategy, and Spark UI for debugging
+
+✦  Data Pipelines & Streaming
+
+›  Apache Airflow: DAGs, operators (Python, Bash, SQL), XComs, connections, and scheduling
+
+›  Apache Kafka: topics, partitions, producers, consumers, consumer groups, and offset management
+
+›  Spark Structured Streaming: sources (Kafka, files), transformations, watermarking, and sinks
+
+›  Data lake architecture: Bronze (raw), Silver (cleaned), Gold (aggregated) pattern with Delta Lake
+
+›  dbt (data build tool): models, tests, documentation, and analytics engineering workflow
+
+Month 10 — Cloud Analytics & Data Engineering
+
+✦  Cloud Data Platforms
+
+›  AWS data stack: S3, Glue (ETL), Athena (SQL on S3), Redshift (DWH), and QuickSight (BI)
+
+›  GCP data stack: BigQuery (SQL DWH), Dataflow (Beam pipelines), Looker Studio, and Vertex AI
+
+›  Azure data stack: Data Factory (ETL), Synapse Analytics, Data Lake Gen2, and Power BI Premium
+
+›  Snowflake: architecture (virtual warehouses, micro-partitioning), Time Travel, and data sharing
+
+›  Data mesh concepts: domain-oriented ownership, data-as-a-product, and federated governance
+
+✦  Data Engineering Essentials
+
+›  ETL vs. ELT: traditional vs. modern data stack, and when to use each transformation approach
+
+›  Data modeling for analytics: Kimball dimensional modeling, slowly changing dimensions (SCD Types)
+
+›  Data quality: schema validation (Great Expectations), data profiling, and automated quality checks
+
+›  API data ingestion: RESTful APIs, pagination, rate limiting, and incremental extraction strategies
+
+›  Infrastructure as Code for data: Terraform for cloud resources, and CloudFormation for AWS stacks
+
+Month 11 — Advanced Projects & Kaggle
+
+✦  Applied Data Science Projects
+
+›  Project 1: Customer churn prediction — feature engineering, SMOTE, XGBoost, and SHAP explanation
+
+›  Project 2: Retail demand forecasting — Prophet, LightGBM, and ensemble for multi-store forecasting
+
+›  Project 3: NLP sentiment analysis — BERT fine-tuning, custom dataset labeling, and deployment
+
+›  Project 4: Real-time analytics dashboard — Kafka + Spark Streaming + Grafana pipeline
+
+›  Project documentation: Jupyter notebooks with markdown explanations and executive summary
+
+✦  Kaggle Competitions & Open Data
+
+›  Kaggle workflow: EDA notebooks, feature engineering, model stacking, and leaderboard strategy
+
+›  Competition techniques: pseudo-labeling, target encoding, and cross-validation leaderboard tricks
+
+›  Open dataset analysis: government data, health data, financial data, and creating public notebooks
+
+›  Medium/Substack articles: writing data science blog posts to build online credibility and following
+
+›  GitHub portfolio: pinned repos, polished READMEs, Binder/Colab links, and project showcase
+
+Month 12 — Portfolio Building & Placement Drive
+
+✦  Data Science Portfolio & Brand Building
+
+›  Portfolio site: React or Notion-based personal site with project case studies and bio section
+
+›  Kaggle profile: competition medals, published datasets, top notebooks, and public recognition
+
+›  LinkedIn optimization: headline formula, about section storytelling, and featured project section
+
+›  GitHub cleanup: pinned repos with screenshots, badges, and demo GIFs for maximum visual impact
+
+›  Blog presence: 3 published Medium articles on projects — getting views through SEO and sharing
+
+✦  Interview Preparation & Placement
+
+›  SQL interview prep: 50+ interview questions from window functions to complex multi-table scenarios
+
+›  Python and statistics: coding challenges, probability puzzles, and statistical inference problems
+
+›  ML interviews: algorithm explanations, model selection rationale, and evaluation metric deep dives
+
+›  Case study interviews: structured approach — clarify, explore data, model, interpret, and recommend
+
+›  Placement drive: resume shortlisting, company referrals, mock panel interviews, and salary coaching
+
+#31 — Cyber Security Professional
+Domain: Cyber Security
+ Duration: 12 Months
+ Fees: Rs.79,999
+
+Month 1 — Networking Fundamentals & Lab Setup
+
+✦  Networking Concepts & Protocols
+
+›  OSI model: all 7 layers explained with real-world protocol mapping and data flow (PDU) at each layer
+
+›  TCP/IP model: application, transport, internet, and network access layers with protocol examples
+
+›  IP addressing: IPv4 binary conversion, subnetting (VLSM), CIDR notation, and private vs public ranges
+
+›  Core protocols: ARP, ICMP, DNS, DHCP, HTTP/S, FTP, SSH, Telnet, SMTP, and their security implications
+
+›  Network devices: routers, switches, firewalls, IDS/IPS, load balancers, and proxies — how each works
+
+✦  Security Lab Setup & Packet Analysis
+
+›  Virtualization lab: VMware/VirtualBox setup with Kali Linux, Metasploitable 2, and Windows Server VM
+
+›  Wireshark deep dive: capture filters, display filters, protocol dissection, and traffic analysis workflow
+
+›  Packet analysis: analyzing TCP handshake, DNS queries, HTTP traffic, and identifying anomalous patterns
+
+›  Nmap basics: host discovery (-sn), TCP SYN scan (-sS), service detection (-sV), and OS detection (-O)
+
+›  Network baseline: understanding normal traffic patterns to recognize attacks and anomalies
+
+Month 2 — Linux & Windows Security Hardening
+
+✦  Linux Security Administration
+
+›  Linux file system hierarchy: critical directories (/etc, /var/log, /proc, /sys) and their security relevance
+
+›  User and permission management: chmod, chown, umask, SUID/SGID/Sticky Bit, and ACLs (setfacl)
+
+›  Service hardening: disable unnecessary services (systemctl), configure SSH (key auth, no root login)
+
+›  Firewall configuration: iptables rules (INPUT/OUTPUT/FORWARD), ufw, and firewalld zone management
+
+›  Log analysis: /var/log/auth.log, /var/log/syslog, auditd configuration, and rsyslog centralization
+
+✦  Windows Security Administration
+
+›  Active Directory fundamentals: domains, forests, trusts, OUs, users, groups, and GPO application
+
+›  Group Policy hardening: account lockout, password policy, software restriction, and AppLocker
+
+›  Windows Event Logs: Security (4624, 4625, 4688, 4698), System, Application — Filtering and analysis
+
+›  Windows Defender: configuration, exclusions, real-time protection, and Microsoft Defender ATP overview
+
+›  CIS Benchmarks Level 1: applying hardening scripts for Windows Server and workstation security
+
+Month 3 — Ethical Hacking Foundations
+
+✦  Penetration Testing Methodology
+
+›  Penetration testing phases: pre-engagement, reconnaissance, scanning, exploitation, post-exploitation, reporting
+
+›  Passive reconnaissance: OSINT with Maltego, theHarvester, Shodan, Google Dorks, and LinkedIn scraping
+
+›  Active reconnaissance: Nmap advanced scans (NSE scripts, UDP, version, and vulnerability scanning)
+
+›  Vulnerability databases: CVE, NVD, Exploit-DB, and CVSS v3 scoring for vulnerability prioritization
+
+›  Scope definition: rules of engagement, target scope, IP ranges, and legal authorization documentation
+
+✦  Metasploit Framework Fundamentals
+
+›  Metasploit architecture: modules (exploit, payload, auxiliary, post, encoder), handlers, and sessions
+
+›  Searching and selecting exploits: search command, show options, set RHOSTS/LPORT, and run/exploit
+
+›  Payloads: staged vs. stageless, Meterpreter, shell, and generating payloads with msfvenom
+
+›  Post-exploitation basics: sysinfo, getuid, hashdump, getsystem, download, upload, and screenshot
+
+›  Maintaining access: persistence mechanisms, scheduled tasks, startup entries, and backdoor creation
+
+Month 4 — Web Application Penetration Testing
+
+✦  Web Application Security & OWASP Top 10
+
+›  HTTP deep dive: methods (GET, POST, PUT, DELETE), headers, cookies, sessions, and authentication flows
+
+›  OWASP Top 10 2021: injection, broken auth, XSS, IDOR, security misconfiguration, and XXE explained
+
+›  SQL Injection: error-based, union-based, blind (Boolean/time-based), and second-order SQL injection
+
+›  Cross-Site Scripting (XSS): reflected, stored, DOM-based — bypass WAF using encoding and polyglots
+
+›  Broken Authentication: credential stuffing, session fixation, token prediction, and JWT attacks
+
+✦  Burp Suite Pro & API Security
+
+›  Burp Suite setup: FoxyProxy, CA certificate, and intercepting HTTPS traffic from browsers and mobile
+
+›  Burp tools mastery: Repeater, Intruder (attack types), Decoder, Comparer, and Sequencer
+
+›  Burp Scanner and active scan: crawl configuration, scan scope, issue severity, and false positive handling
+
+›  CSRF, SSRF, Open Redirect, Insecure Deserialization, and Business Logic flaw testing methodology
+
+›  API security testing: endpoint discovery, authentication bypass, parameter tampering, and mass assignment
+
+Month 5 — Network Penetration Testing
+
+✦  Network Scanning & Exploitation
+
+›  Advanced Nmap: OS fingerprinting, banner grabbing, firewall evasion (fragmentation, decoy), and timing
+
+›  Service exploitation: FTP (anonymous, vsftpd backdoor), SSH (brute force, old versions), and Telnet
+
+›  SMB exploitation: SMB null sessions, EternalBlue (MS17-010), SMBGhost (CVE-2020-0796)
+
+›  Password attacks: Hydra for online brute force (SSH, FTP, HTTP), Medusa, and CrackMapExec
+
+›  Traffic interception: ARP spoofing with Ettercap/Bettercap, MitM attacks, and SSL stripping
+
+✦  Post-Exploitation & Lateral Movement
+
+›  Privilege escalation Linux: SUID binaries, sudo misconfigurations, cron jobs, and kernel exploits
+
+›  Privilege escalation Windows: unquoted service paths, weak file permissions, and token impersonation
+
+›  Lateral movement techniques: Pass-the-Hash, Pass-the-Ticket, and WMI/PSExec for remote execution
+
+›  Pivoting: SSH tunneling, ProxyChains, Chisel, and Ligolo-ng for accessing internal network segments
+
+›  Data exfiltration: DNS tunneling, HTTPS C2, staged exfil, and detection evasion during data theft
+
+Month 6 — Active Directory & Windows Exploitation
+
+✦  Active Directory Attacks
+
+›  AD enumeration: BloodHound data collection (SharpHound), graph analysis, and attack path identification
+
+›  Kerberoasting: SPN enumeration, TGS ticket request, offline cracking with Hashcat, and mitigation
+
+›  AS-REP Roasting: accounts without pre-auth, GetNPUsers.py, and cracking AS-REP hashes
+
+›  DCSync attack: replicating NTDS.dit using Mimikatz, extracting NTLM hashes, and domain takeover
+
+›  Golden/Silver Ticket attacks: forging Kerberos tickets, persistence, and detection indicators
+
+✦  Windows Exploitation & Credential Attacks
+
+›  Mimikatz: lsadump, sekurlsa (logon passwords, wdigest, kerberos tickets), and credential dumping
+
+›  LSASS attack methods: ProcDump, Task Manager, and Comsvcs.dll for LSASS memory dumping
+
+›  NTLM relay attacks: Responder for credential capture and ntlmrelayx for relay exploitation
+
+›  UAC bypass techniques: fodhelper, eventvwr, and CMSTP-based UAC bypass methods
+
+›  PowerShell for red team: Invoke-Expression, AMSI bypass, execution policy bypass, and obfuscation
+
+Month 7 — SOC Operations & SIEM
+
+✦  Security Operations Center (SOC) Fundamentals
+
+›  SOC structure: roles (L1/L2/L3 analyst, threat hunter, SOC manager) and responsibilities at each tier
+
+›  Alert triage workflow: receive alert → prioritize by severity → investigate → escalate → document
+
+›  MITRE ATT&CK framework: tactics (TA0001-TA0040), technique mapping, and defensive use cases
+
+›  Threat intelligence consumption: IOC management, STIX/TAXII, sharing via MISP, and enrichment
+
+›  Incident ticket management: Jira Service Management, ServiceNow, and documentation best practices
+
+✦  Splunk SIEM — Deep Dive
+
+›  Splunk architecture: indexers, search heads, forwarders, and deployment server configuration
+
+›  SPL (Search Processing Language): search commands (stats, eval, rex, transaction, lookup, join)
+
+›  Correlation searches: creating detection rules for brute force, lateral movement, and data exfiltration
+
+›  Splunk dashboards: visualization panels, drill-down, time picker, and sharing with stakeholders
+
+›  Splunk SOAR integration: playbook automation for auto-blocking IPs, enrichment, and ticketing
+
+Month 8 — Digital Forensics & Incident Response
+
+✦  Digital Forensics Fundamentals
+
+›  Forensic principles: Locard exchange principle, evidence integrity, chain of custody, and legal standards
+
+›  Evidence acquisition: bit-for-bit imaging with FTK Imager, dd, and dcfldd with MD5/SHA256 verification
+
+›  Windows artifact analysis: Registry hives (SAM, SECURITY, SYSTEM, SOFTWARE), Prefetch, and LNK files
+
+›  Timeline analysis: log2timeline (Plaso), Timesketch, and correlating events from multiple sources
+
+›  File system forensics: NTFS MFT analysis, $LogFile, $UsnJrnl, and deleted file recovery techniques
+
+✦  Incident Response & Malware Analysis
+
+›  IR lifecycle: preparation (playbooks), detection (SIEM alerts), containment (isolation), eradication, recovery
+
+›  Memory forensics: Volatility 3 plugins (pslist, netscan, malfind, dumpfiles) for memory investigation
+
+›  Static malware analysis: PE header analysis, string extraction, import table, and YARA rule writing
+
+›  Dynamic malware analysis: ANY.RUN sandbox, Process Monitor, Wireshark, and behavior observation
+
+›  Postmortem reporting: executive summary, technical timeline, root cause, IOCs, and remediation actions
+
+Month 9 — Malware Analysis & Threat Intelligence
+
+✦  Advanced Malware Analysis
+
+›  Malware taxonomy: viruses, worms, trojans, RATs, ransomware, rootkits, spyware, and adware
+
+›  Reverse engineering basics: x86/x64 assembly, calling conventions, and reading disassembled code
+
+›  Ghidra tool: loading binaries, function analysis, decompiler output, and identifying malicious functions
+
+›  Packer and obfuscation detection: PEiD, Detect-It-Easy, entropy analysis, and manual unpacking
+
+›  Ransomware analysis: encryption algorithm identification, C2 communication, and decryption possibility
+
+✦  Threat Intelligence & Threat Hunting
+
+›  Threat intelligence lifecycle: planning, collection, processing, analysis, dissemination, and feedback
+
+›  APT groups: studying Lazarus, APT29, FIN7 — TTPs, targets, tools, and attribution challenges
+
+›  YARA rules: writing signatures for malware families, testing with yarGen, and deploying in SIEM
+
+›  Threat hunting: hypothesis-driven hunts using MITRE ATT&CK, behavioral analytics, and anomaly detection
+
+›  Threat sharing platforms: MISP, OpenCTI, and integrating external feeds into defensive tooling
+
+Month 10 — Cloud Security & DevSecOps
+
+✦  Cloud Security (AWS/Azure/GCP)
+
+›  AWS security architecture: VPC, Security Groups, NACLs, IAM least privilege, and SCPs in Organizations
+
+›  AWS threat detection: GuardDuty alert types, CloudTrail log analysis, and Security Hub aggregation
+
+›  Azure security: Entra ID (AAD) security, Conditional Access, PIM, and Microsoft Sentinel SIEM
+
+›  Container security: image vulnerability scanning (Trivy, Snyk), runtime security (Falco), and K8s RBAC
+
+›  Cloud penetration testing: AWS CLI exploitation, S3 bucket misconfigurations, and metadata SSRF attacks
+
+✦  DevSecOps & Application Security
+
+›  DevSecOps principles: shifting security left, threat modeling (STRIDE), and security gates in CI/CD
+
+›  SAST: SonarQube and Semgrep for static code analysis integration in GitHub Actions pipeline
+
+›  DAST: OWASP ZAP automated scanning in CI/CD and interpreting scan results for developers
+
+›  SCA (Software Composition Analysis): Snyk for dependency vulnerabilities, SBOM, and policy enforcement
+
+›  Secrets management: HashiCorp Vault, AWS Secrets Manager, and preventing secrets in Git repositories
+
+Month 11 — Advanced Red Team & Bug Bounty
+
+✦  Red Team Operations
+
+›  Red team vs. penetration testing: adversary simulation, purple team exercises, and C2 framework use
+
+›  C2 frameworks: Cobalt Strike concepts, Havoc C2 (open-source), and Sliver for red team operations
+
+›  OPSEC for red teamers: traffic obfuscation, domain fronting, staging infrastructure, and cleanup
+
+›  Physical security basics: lock picking, badge cloning (Flipper Zero), and tailgating social engineering
+
+›  Report writing for red team: narrative-based reports, attack chain diagrams, and business impact
+
+✦  Bug Bounty Program & CTF
+
+›  Bug bounty platforms: HackerOne, Bugcrowd, Intigriti — account setup, program selection, and scope review
+
+›  Valid vulnerability research: IDOR chains, OAuth misconfigurations, subdomain takeover, and 2FA bypass
+
+›  Report writing: title, summary, reproduction steps, proof-of-concept, impact, and remediation suggestion
+
+›  Responsible disclosure: coordinated vulnerability disclosure process, CVE assignment, and hall of fame
+
+›  CTF competitions: HackTheBox, TryHackMe Pro, and PicoCTF — solving 20+ challenges across categories
+
+Month 12 — Certifications, Compliance & Placement
+
+✦  Security Certifications & Compliance
+
+›  CEH (v13) exam preparation: all 20 modules, official courseware, and iLabs practice environment
+
+›  CompTIA Security+ (SY0-701): exam domains, Professor Messer videos, Darril Gibson book, and mock tests
+
+›  OSCP preparation roadmap: TJ Null list, HackTheBox Pro Labs, and exam report writing practice
+
+›  Compliance frameworks: ISO 27001 controls, NIST CSF tiers, PCI-DSS SAQ types, and GDPR obligations
+
+›  Risk management: asset identification, threat modeling, vulnerability assessment, and risk treatment plan
+
+✦  Interview Preparation & Placement
+
+›  SOC analyst interviews: log analysis exercises, SIEM scenario questions, and alert triage simulations
+
+›  Penetration tester interviews: methodology questions, tool proficiency, and live demo on HackTheBox
+
+›  Resume building: ATS-optimized format, certifications listed, projects, and quantified achievements
+
+›  Portfolio: HTB/THM profile, CTF writeups blog, GitHub with scripts and tools, and LinkedIn presence
+
+›  Placement support: referrals to MNCs (Wipro CyberSecurity), BPO SOC teams, and security startups
+
+#46 — Robotics & Embedded Systems Professional
+Domain: Robotics
+ Duration: 12 Months
+ Fees: Rs.89,999
+
+Month 1 — Electronics Fundamentals & C Programming
+
+✦  Electronics & Circuit Basics
+
+›  Electrical fundamentals: voltage, current, resistance, Ohm&apos;s Law, Kirchhoff&apos;s voltage and current laws
+
+›  Electronic components: resistors, capacitors, inductors, diodes (LED, Zener), and transistors (BJT, MOSFET)
+
+›  Breadboard prototyping: reading circuit diagrams, wire routing, power rails, and common mistakes
+
+›  Multimeter and oscilloscope usage: measuring voltage, current, resistance, and signal waveforms
+
+›  PCB basics: schematic reading, footprints, SMD vs. THT components, and PCB design introduction (EasyEDA)
+
+✦  C Programming for Embedded Systems
+
+›  C fundamentals: data types, variables, operators, control flow (if, switch, for, while, do-while)
+
+›  Functions: declaration, definition, call, return, scope, and recursive functions with stack implications
+
+›  Pointers: pointer arithmetic, pointer to pointer, function pointers, and void pointers for embedded
+
+›  Bit manipulation: bitwise operators (AND, OR, XOR, NOT, shift), masking, setting, clearing, and toggling bits
+
+›  Memory concepts: stack vs. heap, static vs. dynamic allocation (malloc/free), and memory-mapped I/O
+
+Month 2 — Microcontroller Programming (Arduino & STM32)
+
+✦  Arduino Programming & Peripherals
+
+›  Arduino IDE: sketch structure (setup/loop), serial monitor, digital/analog I/O, and PWM output
+
+›  Sensors: DHT11 (temperature/humidity), HC-SR04 (ultrasonic), PIR (motion), LDR (light), and MPU-6050 (IMU)
+
+›  Actuators: servo motor (PWM angle control), DC motor (L298N driver), stepper motor (step/dir control)
+
+›  Communication: I2C (Wire library), SPI (SPI library), UART (Serial), and 1-Wire for DS18B20
+
+›  Interrupts: attachInterrupt(), ISR design, debouncing, timer interrupts, and interrupt-driven programming
+
+✦  STM32 Microcontroller Development
+
+›  STM32 architecture: ARM Cortex-M4 core, memory map, clock system, and power modes overview
+
+›  STM32CubeIDE: project creation, pin configuration with CubeMX, code generation, and debugging with J-Link
+
+›  HAL library: GPIO (HAL_GPIO_WritePin/ReadPin), UART (HAL_UART_Transmit/Receive), and TIM for PWM
+
+›  Clock configuration: internal/external oscillators, PLL setup, and peripheral clock enabling in RCC registers
+
+›  Direct register programming: accessing GPIO registers (ODR, IDR, MODER) without HAL for bare-metal control
+
+Month 3 — Communication Protocols & Sensor Integration
+
+✦  Embedded Communication Protocols
+
+›  UART/USART: baud rate, data bits, stop bits, parity, flow control, and RS-232/RS-485 physical layer
+
+›  SPI protocol: CPOL/CPHA modes, master/slave wiring, chip select, and full-duplex data exchange
+
+›  I2C protocol: 7-bit vs 10-bit addressing, ACK/NACK, clock stretching, and multi-master arbitration
+
+›  CAN bus: differential signaling, message frames (standard/extended), arbitration, and error handling
+
+›  Wireless protocols: Bluetooth Classic vs. BLE (ATT, GATT, profiles), Wi-Fi (ESP32), and LoRa basics
+
+✦  Advanced Sensor Integration Projects
+
+›  GPS module (NEO-6M/8M): NMEA sentence parsing, latitude/longitude extraction, and speed/heading data
+
+›  IMU (MPU-6050/9250): accelerometer, gyroscope, magnetometer reading, and Kalman filter for attitude
+
+›  Environmental sensors: BMP280 (pressure/altitude), MQ-series (gas sensors), and ADS1115 (ADC expander)
+
+›  RFID and NFC: MFRC522 module, reading/writing MIFARE cards, and access control project build
+
+›  Sensor fusion: complementary filter and Madgwick filter for combining accelerometer and gyroscope data
+
+Month 4 — RTOS & Advanced Embedded Programming
+
+✦  FreeRTOS Implementation
+
+›  RTOS concepts: preemptive vs. cooperative scheduling, task states, context switching, and tick timer
+
+›  FreeRTOS tasks: xTaskCreate, task priorities, task deletion, vTaskDelay, and task notification
+
+›  Synchronization primitives: binary semaphore, counting semaphore, mutex, and recursive mutex
+
+›  Inter-task communication: queues (xQueueCreate, xQueueSend, xQueueReceive) and message buffers
+
+›  Memory management: heap_1 through heap_5, stack size calculation, stack overflow detection (watermark)
+
+✦  Advanced Embedded Techniques
+
+›  Bootloader development: writing a simple bootloader in C, firmware verification (CRC), and jump to application
+
+›  Firmware update (OTA): receive firmware over UART/BLE/Wi-Fi, write to flash, and verify before boot
+
+›  DMA (Direct Memory Access): DMA configuration for UART, SPI, ADC — freeing CPU during transfers
+
+›  Low-power design: sleep modes (sleep, deep sleep, hibernate), RTC wakeup, and power consumption measurement
+
+›  Debug techniques: printf debugging, JTAG/SWD debugging with breakpoints, watchpoints, and live expressions
+
+Month 5 — Embedded Linux & Raspberry Pi
+
+✦  Embedded Linux Fundamentals
+
+›  Linux boot process: bootloader (U-Boot), kernel, device tree (DTB), and root filesystem (initramfs)
+
+›  Buildroot and Yocto Project: building minimal custom Linux images for embedded targets
+
+›  Device drivers: character device drivers, kernel modules (insmod/rmmod), and /dev file creation
+
+›  Embedded Linux I/O: sysfs GPIO control (/sys/class/gpio), SPI/I2C from userspace, and memory mapping
+
+›  Cross-compilation: toolchain setup (arm-linux-gnueabihf-gcc) and deploying binaries via SSH
+
+✦  Raspberry Pi & Python for Embedded
+
+›  Raspberry Pi 4/5 setup: Raspberry Pi OS, SSH, VNC, and GPIO header (40-pin) pinout reference
+
+›  Python GPIO: RPi.GPIO and gpiozero library for digital I/O, PWM, and interrupt callbacks
+
+›  Camera module: PiCamera2, OpenCV on Pi, frame capture, video streaming (MJPEG), and face detection
+
+›  Node-RED: visual flow programming, MQTT broker (Mosquitto), dashboard nodes, and IoT automation
+
+›  Real-time Linux: PREEMPT_RT patch, measuring latency, and comparing RT vs standard kernel performance
+
+Month 6 — Robot Operating System (ROS2) Foundations
+
+✦  ROS2 Architecture & Core Concepts
+
+›  ROS2 vs ROS1: DDS middleware, no ROS Master, real-time support, and security improvements
+
+›  Nodes, topics, services, and actions: communication patterns and when to use each in robotics
+
+›  Publisher/subscriber: writing pub/sub nodes in Python and C++, topic introspection with ros2 topic
+
+›  Services and clients: synchronous request/response for robot commands and query operations
+
+›  Parameters: declaring, getting, setting, and dynamic parameter updates with parameter callbacks
+
+✦  ROS2 Tools, Visualization & Simulation
+
+›  ROS2 workspace: colcon build, package creation (ros2 pkg create), and dependency management
+
+›  Launch files: Python launch files, including other launches, passing arguments, and node remapping
+
+›  RViz2: display types (LaserScan, PointCloud2, MarkerArray, TF), configuration, and custom panels
+
+›  Gazebo Classic and Gazebo Harmonic: spawning robots, plugins, sensors, and world file creation
+
+›  TF2 (Transform Framework): static transforms, dynamic transforms, tf2_ros broadcasters, and listeners
+
+Month 7 — Robot Mechanics, Kinematics & Control
+
+✦  Robot Mechanics & Kinematics
+
+›  Robot coordinate frames: world, robot, camera, and end-effector frames with transformation matrices
+
+›  Forward kinematics: Denavit-Hartenberg (DH) parameters, transformation matrices, and workspace analysis
+
+›  Inverse kinematics: geometric, analytical, and numerical (Jacobian inverse) methods for robot arms
+
+›  URDF (Unified Robot Description Format): links, joints, visual, collision, and inertia properties
+
+›  Xacro macros: parameterized URDF, include, property, and macro definitions for modular robot descriptions
+
+✦  Robot Control Systems
+
+›  PID control: proportional, integral, derivative terms — tuning Kp, Ki, Kd for motor speed control
+
+›  Encoder interfacing: quadrature encoder reading, velocity estimation (angular and linear odometry)
+
+›  Differential drive kinematics: forward/inverse kinematics, wheel radius, track width, and odometry
+
+›  ros2_control: hardware interfaces, controller manager, diff_drive_controller, and joint_state_broadcaster
+
+›  MoveIt2: arm kinematics, motion planning (OMPL planners), collision checking, and execute on real robot
+
+Month 8 — SLAM & Autonomous Navigation
+
+✦  Sensors for Navigation & Mapping
+
+›  LiDAR technology: 2D (RPLidar A1/A3), 3D (Velodyne, Ouster), scan formats, and ROS2 integration
+
+›  Depth cameras: Intel RealSense D435i — depth image, point cloud, and RGB-D data processing in ROS2
+
+›  IMU integration: sensor_msgs/Imu topic, complementary filter for pitch/roll, and EKF sensor fusion
+
+›  Wheel odometry: publishing nav_msgs/Odometry, covariance setting, and drift characteristics
+
+›  Sensor calibration: extrinsic calibration (LiDAR-camera), IMU calibration, and time synchronization
+
+✦  SLAM & Nav2 Stack
+
+›  SLAM algorithms: GMapping (particle filter), Cartographer (graph optimization), and RTAB-Map overview
+
+›  Nav2 navigation stack: BT navigator, planner server (NavFn/Smac), controller server (DWB/TEB)
+
+›  Costmaps: global and local costmap layers (static, obstacle, inflation, voxel), and parameter tuning
+
+›  Path planning: Dijkstra, A*, and Smac (hybrid-A*) planner comparison and configuration in Nav2
+
+›  Behavior Trees: Nav2 BT XML structure, recovery behaviors, and creating custom BT nodes in C++
+
+Month 9 — Computer Vision for Robotics
+
+✦  OpenCV & Image Processing for Robots
+
+›  Image representation: BGR vs RGB, grayscale conversion, and ROI (Region of Interest) extraction
+
+›  Color-based detection: HSV color space, inRange masking, contour detection, and centroid tracking
+
+›  Edge detection and morphology: Canny, Sobel, dilation, erosion, and morphological operations
+
+›  Camera calibration: chessboard pattern, distortion coefficients, undistortion, and reprojection error
+
+›  Stereo vision: rectification, disparity map, and depth estimation from stereo camera pairs
+
+✦  Deep Learning Vision for Robots
+
+›  YOLOv8 on Jetson: model conversion to TensorRT, FP16 inference, and achieving 30+ FPS on edge
+
+›  Object pose estimation: PnP algorithm, ArUco markers, and 6-DoF pose for robot manipulation
+
+›  Object tracking: SORT, DeepSORT, and ByteTrack for multi-object tracking across video frames
+
+›  Semantic segmentation for navigation: SegFormer on RealSense for free space detection
+
+›  Visual servoing: image-based (IBVS) and position-based (PBVS) control for robot end-effector alignment
+
+Month 10 — AI & Machine Learning for Robotics
+
+✦  Reinforcement Learning for Robots
+
+›  RL fundamentals: MDP, state/action/reward, policy, value function, and Bellman equation
+
+›  Q-learning: tabular Q-learning, Q-table update rule, epsilon-greedy exploration, and convergence
+
+›  Deep Q-Network (DQN): experience replay, target network, and training on CartPole/LunarLander
+
+›  Policy gradient methods: REINFORCE, PPO (Proximal Policy Optimization), and SAC for continuous action
+
+›  Isaac Sim / Isaac Lab: NVIDIA physics simulation, domain randomization, and sim-to-real transfer
+
+✦  Robot Learning & Advanced AI
+
+›  Imitation learning: behavior cloning, DAgger algorithm, and learning from human demonstrations
+
+›  Manipulation learning: DVRK dataset, training pick-and-place policies, and real robot deployment
+
+›  Foundation models for robotics: RT-2 (Robotics Transformer), OpenVLA, and language-conditioned control
+
+›  Point cloud processing: Open3D, PointNet++ for 3D object classification and robotic grasping
+
+›  AI planning: PDDL basics, ROS2 PlanSys2, and task-level planning for multi-step robot missions
+
+Month 11 — Advanced Robotics & Industrial Applications
+
+✦  Drone & Multi-Robot Systems
+
+›  Drone hardware: flight controller (Pixhawk), ESCs, brushless motors, propellers, and frame selection
+
+›  PX4 and ArduPilot: QGroundControl, flight modes, MAVLink protocol, and mission planning
+
+›  MAVSDK and DroneKit: autonomous drone programming, waypoint missions, and companion computer setup
+
+›  Multi-robot systems: ROS2 multi-robot namespacing, swarm coordination, and distributed task allocation
+
+›  ROS2 Fleet Management: fleet management concepts, vehicle-to-vehicle communication, and simulation
+
+✦  Industrial Robotics & IoT Integration
+
+›  Industrial robot arms: UR3/UR5 (Universal Robots) programming with URScript and MoveIt2 driver
+
+›  PLC and SCADA integration: Modbus TCP, OPC-UA, and connecting ROS2 to industrial control systems
+
+›  Industry 4.0: digital twin concepts, MQTT-based sensor data to cloud, and predictive maintenance
+
+›  Safety standards: ISO 10218, collaborative robot (cobot) safety, and force/torque sensor integration
+
+›  ROS2 production deployment: containerized ROS2 with Docker, lifecycle nodes, and watchdog monitoring
+
+Month 12 — Capstone Robot Project, Portfolio & Placement
+
+✦  Capstone Robotics Project
+
+›  Project options: autonomous mobile robot (AMR), 6-DoF robotic arm, drone delivery system, or industrial cobot
+
+›  Full system integration: hardware assembly, firmware, ROS2 software stack, and perception-action pipeline
+
+›  SLAM + Nav2 integration: real-world mapping, localization, and goal-directed autonomous navigation
+
+›  Computer vision integration: object detection → grasp pose estimation → arm motion planning and execution
+
+›  Project presentation: live demo, technical report, video documentation, and GitHub repository with README
+
+✦  Portfolio Building & Placement Drive
+
+›  GitHub portfolio: 5 embedded/robotics projects with circuit diagrams, code, and demonstration videos
+
+›  YouTube project demos: recording, editing, and publishing robot project videos for online visibility
+
+›  LinkedIn and robotics communities: joining ROS Discourse, IEEE Robotics, and local maker communities
+
+›  Resume and application: tailoring for embedded engineer, robotics engineer, and automation R&D roles
+
+›  Placement support: referrals to DRDO, ISRO contractors, automotive OEMs, and robotics startups

@@ -7,6 +7,9 @@ import {
   getCourseBySlug,
   updateCourse,
   deleteCourse,
+  getDeletedCourses,
+  restoreCourse,
+  permanentlyDeleteCourse,
   getTrending,
   getTopRated,
   getRecommended,
@@ -63,6 +66,9 @@ courseRouter.post("/search-log", optionalAuth, logSearch);
 // Admin review-moderation queue — literal path, must precede "/:courseId".
 courseRouter.get("/reviews/pending", verifyJWT, requireRole("admin"), getPendingReviews);
 
+// Recycle bin — literal path, must precede "/:courseId".
+courseRouter.get("/bin", verifyJWT, requireRole("admin"), getDeletedCourses);
+
 courseRouter.get("/slug/:slug", optionalAuth, getCourseBySlug);  // by URL slug
 courseRouter.get("/:courseId", optionalAuth, getCourseById);
 courseRouter.post("/:courseId/view", optionalAuth, recordCourseView);
@@ -74,6 +80,8 @@ courseRouter.patch(
   updateCourse,
 );
 courseRouter.delete("/:courseId", verifyJWT, requireRole("admin"), deleteCourse);
+courseRouter.post("/:courseId/restore", verifyJWT, requireRole("admin"), restoreCourse);
+courseRouter.delete("/:courseId/permanent", verifyJWT, requireRole("admin"), permanentlyDeleteCourse);
 
 // ─── Modules ──────────────────────────────────────────────
 courseRouter.post("/:courseId/modules", verifyJWT, requireRole("admin"), createModule);

@@ -12,27 +12,26 @@ const batchSchema = new mongoose.Schema(
       ref: "Course",
       required: true,
     },
-    // Assigned instructor — must have an APPROVED teaching request for this course
+
     instructorId: {
       type: String, // user id
       required: true,
     },
-    // Offline students hand-picked by admin (offline-enrolled in the course)
+    
     studentIds: [
       {
-        type: String, // user id
+        type: String, 
       },
     ],
     schedule: {
-      type: String, // e.g. "Mon–Fri, 7:00 PM - 9:00 PM"
+      type: String, 
       default: "",
     },
     location: {
-      type: String, // offline venue / address
+      type: String, 
       default: "",
     },
-    // A batch groups either classroom (in-person) students or live (Zoom/Meet)
-    // students under one instructor and schedule.
+    
     mode: {
       type: String,
       enum: ["classroom", "live"],
@@ -48,7 +47,7 @@ const batchSchema = new mongoose.Schema(
       default: "upcoming",
     },
     createdBy: {
-      type: String, // admin user id
+      type: String, 
       required: true,
     },
   },

@@ -6,8 +6,7 @@ const socialLinkSchema = new mongoose.Schema(
   { _id: false }
 );
 
-// Applications to become an affiliate. A partial unique index on lower(email)
-// WHERE status='pending' prevents two pending applications with the same email.
+
 const affiliateApplicationSchema = new mongoose.Schema(
   {
     _id:          { type: String, default: newId },
@@ -28,13 +27,13 @@ const affiliateApplicationSchema = new mongoose.Schema(
   }
 );
 
-// Partial unique: one pending application per (lowercased) email.
+
 affiliateApplicationSchema.index(
   { email: 1 },
   {
     unique: true,
     partialFilterExpression: { status: "pending" },
-    collation: { locale: "en", strength: 2 }, // case-insensitive
+    collation: { locale: "en", strength: 2 }, 
   }
 );
 

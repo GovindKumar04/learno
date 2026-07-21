@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { newId } from "../utils/id.util.js";
 
-// Affiliate marketing resources.
+
 const affiliateResourceSchema = new mongoose.Schema(
   {
     _id:         { type: String, default: newId },

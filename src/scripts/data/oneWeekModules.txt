@@ -1,0 +1,1359 @@
+﻿1-Week Professional Certification Programs
+Detailed 6-Day Module Curriculum
+"Master In-Demand Skills in Just 6 Days"
+
+
+Standard 6-Day Learning Framework
+
+Day
+Learning Focus
+Day 1
+Fundamentals, Software Setup & Introduction to Core Concepts
+Day 2
+Core Skills – Part 1: Building on Fundamentals with Hands-On Practice
+Day 3
+Core Skills – Part 2: Deeper Concepts, Tools & Practical Exercises
+Day 4
+Intermediate Topics, Advanced Features & Real-World Application
+Day 5
+Mini Project, Polish & Integration of All Skills Learned
+Day 6
+Final Assessment, Project Presentation, Career Guidance & Certificate
+
+
+
+
+1. Computer Foundation Professional (CFP)
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹2,999
+Eligibility
+Anyone
+Career Opportunities
+Office Assistant, Computer Operator
+
+6-Day Module Breakdown
+
+Day 1 — Introduction to Computers & Windows OS
+  ✦  Computer Hardware & Software Basics
+› Types of computers: desktop, laptop, tablet & their components
+› Hardware vs. software: CPU, RAM, HDD/SSD, keyboard, monitor vs. OS & apps
+› Input & output devices: keyboard, mouse, printer, scanner, projector
+› Understanding file sizes: KB, MB, GB, TB and their practical significance
+  ✦  Windows OS Navigation
+› Desktop, taskbar, Start menu, notification area & virtual desktops
+› File Explorer: creating, renaming, moving, copying & deleting files/folders
+› Keyboard shortcuts: Ctrl+C, Ctrl+V, Ctrl+Z, Alt+Tab, Win+D, Win+E, Win+L
+› Control Panel & Settings: date/time, display, sound & default apps
+
+Day 2 — Typing Skills, Internet & Email
+  ✦  Touch Typing & Internet Basics
+› Home row keys (ASDF JKL;) & correct finger placement for all keys
+› Online typing tutor: Typing.com or Keybr – target 20–30 WPM by end of day
+› Google Chrome: address bar, tabs, bookmarks, incognito mode & downloads
+› Effective searching: Google search tips, quotes, site:, filetype: operators
+  ✦  Professional Email & Online Communication
+› Gmail account setup: profile, signature & notification settings
+› Composing emails: To, CC, BCC, subject line, body & attachments
+› Email etiquette: professional tone, formatting & reply/forward best practices
+› Video calls: joining a Google Meet or Zoom call, screen sharing & chat
+
+Day 3 — Microsoft Word & PowerPoint
+  ✦  MS Word – Document Creation & Formatting
+› Page setup: margins, orientation, paper size & paragraph alignment
+› Text formatting: font, size, bold, italic, underline, colors & highlight
+› Inserting: tables, images, shapes, page numbers & headers/footers
+› Creating a formatted 1-page document: letter, resume or notice
+  ✦  MS PowerPoint – Presentations
+› Slide layouts: title slide, content, blank & two-content layouts
+› Inserting content: text boxes, images, SmartArt, charts & icons
+› Design & themes: applying preset themes and customizing colors/fonts
+› Animations & transitions: entrance effects, slide timing & presenter view
+
+Day 4 — Microsoft Excel & Google Workspace
+  ✦  MS Excel Fundamentals
+› Spreadsheet structure: rows, columns, cells, sheets & workbooks
+› Essential formulas: SUM, AVERAGE, MAX, MIN, COUNT & basic IF statement
+› Formatting cells: borders, background colors, number formats (currency, %) 
+› Creating a bar or pie chart from a simple data table
+  ✦  Google Workspace – Docs, Sheets & Drive
+› Google Drive: uploading files, creating folders & sharing with view/edit access
+› Google Docs: collaborative editing, comments, version history & export to Word/PDF
+› Google Sheets: basic data entry, formulas & real-time collaboration
+› Google Meet: scheduling, joining & hosting a video meeting with screen share
+
+Day 5 — Practical Lab & Mini Project
+  ✦  Hands-On Practice Sessions
+› Typing test: achieve 20+ WPM on a 2-minute timed test
+› Word task: create and format a formal letter with table, header & page number
+› Excel task: build a monthly expense tracker with SUM, categories & pie chart
+› PowerPoint task: design a 5-slide presentation on any topic with theme & animations
+  ✦  Mini Project – Digital Office Simulation
+› Create a complete business document set: letter (Word) + budget sheet (Excel) + presentation (PPT)
+› Share all files on Google Drive in a structured folder with correct permissions
+› Send a professional email to trainer attaching the Google Drive link
+› Google Slides version: recreate the PowerPoint in Google Slides for online sharing
+
+Day 6 — Assessment, Career Guidance & Certificate
+  ✦  Practical Assessment
+› Timed test (30 min): format a document, complete an Excel task & create 3 slides
+› Typing speed final test: 2-minute test with accuracy score
+› Q&A round: revision of all tools covered across the week
+› Peer showcase: demonstrate mini project to the batch
+  ✦  Career Guidance & Certificate
+› Job roles overview: computer operator, office assistant, data entry executive
+› Resume tips: listing MS Office, Google Workspace & typing speed as skills
+› LinkedIn profile intro: creating a profile with skills & course certificate
+› Certificate distribution & guidance on the 1-Month MS Office Professional course
+
+
+
+2. Advanced Microsoft Office Professional
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹3,999
+Eligibility
+Students & Professionals
+Career Opportunities
+Office Executive, MIS Executive
+
+6-Day Module Breakdown
+
+Day 1 — Advanced MS Word
+  ✦  Document Structure & Styles
+› Heading Styles (H1–H4) for auto-generating a Table of Contents
+› Section breaks: next page, continuous & odd/even for multi-section documents
+› Headers & footers: different first page, odd/even & inserting fields (date, page #)
+› Document protection: restricting editing, read-only mode & password protection
+  ✦  Mail Merge & Collaboration Tools
+› Mail Merge: connecting a Word letter to an Excel data source for bulk output
+› Merging fields: name, address, salutation & conditional content (IF merge field)
+› Track Changes: accepting/rejecting edits & viewing change history
+› Comments: inserting, replying, resolving & deleting comment threads
+
+Day 2 — Advanced MS PowerPoint
+  ✦  Slide Master & Brand Consistency
+› Slide Master view: setting global fonts, colors, logo & background for all slides
+› Creating custom slide layouts within Slide Master
+› Applying consistent theme to a 20-slide deck in one action
+› Saving custom template as .potx for reuse across presentations
+  ✦  Advanced Animations & Multimedia
+› Custom animation paths: motion path effects for diagrams & infographics
+› Trigger animations: clicking a specific element to start another animation
+› Embedding audio (background music) & video (auto-play on slide open)
+› Presenter tools: speaker notes, slide timings & recording a narrated presentation
+
+Day 3 — Advanced Excel – Formulas & Data
+  ✦  Lookup & Logical Functions
+› VLOOKUP: exact match for employee/product lookup across sheets
+› INDEX-MATCH: flexible 2D lookup that works left-to-right & right-to-left
+› Nested IF: multi-condition logic (grades, performance bands, salary tiers)
+› IFERROR & IFNA: wrapping formulas to handle #N/A & #VALUE! errors gracefully
+  ✦  Data Tools & Conditional Formatting
+› Data Validation: dropdown lists, date restrictions & custom formula rules
+› Conditional Formatting: color scales (heat map), data bars & icon sets (traffic lights)
+› Remove Duplicates, Text to Columns & Flash Fill for data cleaning
+› SUMIF, COUNTIF, AVERAGEIF: aggregating data by one condition
+
+Day 4 — Pivot Tables, Dashboards & Outlook
+  ✦  Pivot Tables & Dashboard Design
+› Building a Pivot Table from raw sales/HR data: rows, columns, values & filters
+› Calculated field in Pivot Table: e.g., profit margin = (revenue−cost)/revenue
+› Pivot Charts: dynamic bar & line charts that update when Pivot Table changes
+› Dashboard: linking slicers to multiple Pivot Tables for cross-filtering
+  ✦  Outlook & Professional Communication
+› Email rules: auto-sorting incoming emails to folders by sender or subject
+› Calendar: creating recurring meetings, inviting attendees & setting reminders
+› Task management in Outlook: creating tasks, due dates & flagging emails
+› Out-of-office auto-reply: setting message, date range & internal/external text
+
+Day 5 — OneDrive, Teams & Collaboration
+  ✦  OneDrive & Office 365 Cloud
+› OneDrive sync: setting up desktop & Documents folder sync to cloud
+› Sharing files: anyone-with-link vs. specific people, view vs. edit permissions
+› Version history: restoring a previous version of a Word or Excel file
+› Co-authoring: editing a Word/Excel file simultaneously with a colleague in real time
+  ✦  Microsoft Teams Basics
+› Teams channels: general, project-specific & department channels
+› Chat vs. channel post: when to use each for communication
+› Sharing files in Teams: uploading to channel & co-editing in browser
+› Video meetings in Teams: scheduling, screen sharing, muting & recording
+
+Day 6 — Capstone Project, Assessment & Certificate
+  ✦  Capstone Mini Project
+› Mail-Merge letter to 10 contacts from an Excel data source
+› Excel sales dashboard: Pivot Table + slicer + 2 charts + KPI cells
+› Branded 10-slide PowerPoint using Slide Master with animations & speaker notes
+› Share all via OneDrive & present demo to trainer in 5 minutes
+  ✦  Assessment & Career Guidance
+› Timed practical: Word mail merge + Excel Pivot + PPT Slide Master in 40 min
+› MCQ quiz: 20 questions on all tools covered
+› Career paths: MIS executive, admin officer, executive assistant, office manager
+› Certificate distribution & path to Power BI / Data Analytics course
+
+
+
+3. Professional Excel & Data Analysis
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹4,499
+Eligibility
+Students & Professionals
+Career Opportunities
+Data Analyst (Entry Level), MIS Executive
+
+6-Day Module Breakdown
+
+Day 1 — Advanced Formulas & Lookup Functions
+  ✦  Lookup & Reference Functions
+› VLOOKUP: syntax, exact vs. approximate match & common errors (col_index pitfall)
+› HLOOKUP: row-based lookup for horizontal datasets like rate cards
+› INDEX-MATCH: why it beats VLOOKUP – left-side lookup & dynamic column reference
+› XLOOKUP (Office 365): multi-column return, wildcard match & search from last
+  ✦  Logical & Conditional Functions
+› Nested IF: building grade bands (A/B/C/D/F) from raw score data
+› IFS function: cleaner alternative to deeply nested IF statements
+› IFERROR: wrapping VLOOKUP to return 'Not Found' instead of #N/A
+› AND, OR, NOT: combining multiple conditions in IF & data validation formulas
+
+Day 2 — Text, Date & Statistical Functions
+  ✦  Text & String Functions
+› CONCATENATE / & operator / TEXTJOIN for combining name + department fields
+› LEFT, RIGHT, MID, LEN: extracting portions of text (ID codes, phone suffixes)
+› TRIM, CLEAN, PROPER, UPPER, LOWER: fixing messy imported text data
+› FIND, SEARCH, SUBSTITUTE, REPLACE: locating & swapping text within strings
+  ✦  Date & Statistical Functions
+› TODAY(), NOW(), DATE(), YEAR(), MONTH(), DAY() for date calculations
+› DATEDIF: calculating age (years) or tenure (months) from birthdate/join date
+› EDATE: project due dates; EOMONTH: last day of month for billing cycles
+› COUNTIF, SUMIF, AVERAGEIF with wildcard (*) and multiple criteria versions
+
+Day 3 — Pivot Tables & Dynamic Reporting
+  ✦  Pivot Tables – Build & Customize
+› Creating a Pivot Table from a 500+ row sales dataset
+› Row/column fields: product category in rows, region in columns, revenue in values
+› Grouping dates by month/quarter/year in Pivot Table automatically
+› Calculated field: profit margin = (revenue−cost)/revenue directly in Pivot Table
+  ✦  Pivot Charts & Slicers
+› Inserting a Pivot Chart: bar, line & combo chart types linked to Pivot Table
+› Chart formatting: axis titles, data labels, gridlines & color palette customization
+› Slicers: adding region & category slicers and linking to multiple Pivot Tables
+› Timelines: filtering Pivot Table by month/quarter with a date timeline slicer
+
+Day 4 — Dashboard Design & Data Validation
+  ✦  Excel Dashboard Design
+› Dashboard layout: dedicated sheet with linked charts, KPI cells & slicers
+› Named ranges: using meaningful names in formulas (=SUM(Revenue) vs =SUM(D2:D100))
+› Dynamic chart titles: linking title cell to a slicer-selected value via formula
+› Print-ready formatting: removing gridlines, adding logo & setting print area
+  ✦  Data Validation & Protection
+› Dropdown lists from a range: product names, department list, status (Active/Inactive)
+› Custom validation: accept only values between 1–100 or dates in current year
+› Error alerts: Stop (block invalid entry), Warning & Information message types
+› Sheet & workbook protection: locking formula cells while leaving input cells editable
+
+Day 5 — Power Query & Data Cleaning
+  ✦  Power Query – Import & Transform
+› Connecting to CSV, Excel & folder of files as a single query
+› Removing duplicate rows, filtering blanks & replacing error values in Power Query
+› Splitting columns: full name → first/last; date → day/month/year
+› Merging two tables (JOIN): combining sales table with product master by product ID
+  ✦  Data Cleaning Best Practices
+› TRIM & CLEAN functions vs. Power Query 'Trim' transform – when to use each
+› Standardizing inconsistent entries: 'Male'/'male'/'M' → 'Male' with PROPER or Replace
+› Removing duplicates with Excel's built-in tool vs. Power Query method
+› Flash Fill: auto-detecting patterns for email extraction, code formatting & name parsing
+
+Day 6 — Capstone Project, Assessment & Certificate
+  ✦  Capstone – Business Analytics Report
+› Import a provided 300-row raw sales dataset using Power Query & clean it
+› Build 3 Pivot Tables: by product, by region & by month with calculated margin field
+› Dashboard sheet: 3 charts, 2 slicers, KPI cells (total revenue, avg margin, top product)
+› Export a print-ready PDF report & present insights in 3 minutes to trainer
+  ✦  Assessment & Career Guidance
+› Timed test: 10 formula tasks + 1 Pivot Table + 1 dashboard in 45 minutes
+› MCQ quiz: 15 questions on functions, Pivot Tables & data cleaning
+› Career paths: MIS executive, data analyst, reporting analyst, business analyst
+› Certificate distribution & path to Power BI Business Intelligence course
+
+
+
+4. Python Programming Bootcamp
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹4,999
+Eligibility
+Students
+Career Opportunities
+Junior Python Developer
+
+6-Day Module Breakdown
+
+Day 1 — Python Setup & Fundamentals
+  ✦  Installation, IDE & First Programs
+› Installing Python 3.x & VS Code with Python extension
+› Running scripts: python file.py in terminal vs. Run button in VS Code
+› print(), input(), comments (#) & Python indentation rules
+› Variables: naming conventions, data types (int, float, str, bool) & type()
+  ✦  Operators & String Basics
+› Arithmetic: +, -, *, /, //, % (modulus), ** (exponent)
+› Comparison: ==, !=, <, >, <=, >= → returns True/False
+› String operations: concatenation (+), repetition (*) & f-string formatting
+› Type conversion: int(), float(), str() with examples and error handling intro
+
+Day 2 — Control Flow & Loops
+  ✦  Conditionals – if / elif / else
+› Single if, if-else & multi-branch if-elif-else chains
+› Logical operators: and, or, not in compound conditions
+› Nested if: checking age, then checking membership level (example)
+› Practical programs: grade calculator, day-of-week detector, login validator
+  ✦  Loops – for & while
+› for loop with range(start, stop, step) and iterating over a list/string
+› while loop: countdown timer, menu loop & sentinel-value pattern
+› break: exit loop early; continue: skip current iteration; pass: placeholder
+› Nested loops: multiplication table, pattern printing (stars, numbers)
+
+Day 3 — Functions, Lists & Dictionaries
+  ✦  Functions & Modules
+› Defining functions: def name(params): with return statement
+› Default arguments, keyword arguments & variable-length args (*args, **kwargs)
+› Scope: local vs. global variables & the global keyword
+› Importing built-in modules: math, random, datetime, os & using their functions
+  ✦  Lists, Tuples, Dictionaries & Sets
+› List methods: append, insert, remove, pop, sort, reverse, index, count
+› List comprehensions: [x**2 for x in range(1,11) if x%2==0]
+› Dictionary: creating, accessing, updating, deleting & looping with .items()
+› Tuple (immutable) & Set (unique elements) – use cases & basic operations
+
+Day 4 — File Handling & Error Handling
+  ✦  File I/O & CSV
+› Opening files: open(path, mode) – 'r', 'w', 'a', 'r+' modes
+› Reading: read(), readline(), readlines() and writing: write(), writelines()
+› with statement: context manager for safe auto-close of files
+› CSV module: csv.reader & csv.writer for reading/writing tabular data
+  ✦  Exception Handling & Debugging
+› try-except: catching ValueError, TypeError, ZeroDivisionError & FileNotFoundError
+› Multiple except blocks and the generic except Exception as e catch-all
+› else (runs if no exception) & finally (always runs) clauses
+› Debugging: print-debug, VS Code breakpoints & reading traceback messages
+
+Day 5 — OOP Basics & Mini Projects
+  ✦  Object-Oriented Programming Introduction
+› Class definition, __init__ constructor & self parameter
+› Instance attributes vs. class attributes with examples
+› Instance methods: defining behaviors like deposit(), withdraw(), display()
+› Inheritance: creating a SavingsAccount class that extends BankAccount
+  ✦  Mini Projects
+› Project 1: Number Guessing Game (random, while loop, try-except)
+› Project 2: Student Grade Calculator (list, dict, function, file save)
+› Project 3: Simple Contact Book CLI (dict CRUD, file persistence, menu loop)
+› Project 4: Mini ATM (class, methods, balance check, deposit/withdraw)
+
+Day 6 — GitHub, Assessment & Career Guidance
+  ✦  GitHub & Code Portfolio
+› Creating a GitHub account & setting up profile README
+› git init, git add, git commit -m 'message', git push to remote repo
+› Pushing 2 mini projects to GitHub with descriptive README.md files
+› GitHub profile tips: pinned repositories, contribution graph & bio
+  ✦  Assessment & Career Guidance
+› Coding test: 5 problems covering loops, functions, list/dict, file I/O (30 min)
+› Live code walkthrough: explain your mini project logic to trainer
+› Career paths: Python automation, web scraping, Django/Flask developer, data science
+› Certificate distribution & path to Python OOP + Flask (Advanced) course
+
+
+
+5. Website Development Starter
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,499
+Eligibility
+Anyone
+Career Opportunities
+Web Designer, Freelancer
+
+6-Day Module Breakdown
+
+Day 1 — HTML5 Foundations
+  ✦  HTML Structure & Core Tags
+› Document boilerplate: <!DOCTYPE html>, <html>, <head>, <meta>, <title>, <body>
+› Text tags: h1–h6, p, strong, em, blockquote, br, hr & pre
+› Links: <a href> (internal, external, anchor); images: <img src alt width>
+› Semantic HTML5: <header>, <nav>, <main>, <section>, <article>, <aside>, <footer>
+  ✦  Lists, Tables & Forms
+› Unordered (<ul><li>), ordered (<ol><li>) & description lists (<dl><dt><dd>)
+› Tables: <table>, <thead>, <tbody>, <tr>, <th>, <td> with colspan/rowspan
+› Forms: <input> types (text, email, password, number, checkbox, radio, date)
+› Form elements: <textarea>, <select>/<option>, <label>, <button> & required attribute
+
+Day 2 — CSS3 Styling & Layout
+  ✦  CSS Selectors, Box Model & Typography
+› Selectors: element, .class, #id, grouping, descendant & pseudo-class (:hover, :focus)
+› Box model: content → padding → border → margin & box-sizing: border-box
+› Typography: font-family stacks, Google Fonts @import, font-size, line-height, letter-spacing
+› Color systems: HEX (#1A3C5E), RGB(26,60,94), RGBA with transparency & HSL
+  ✦  Flexbox, Grid & CSS Variables
+› Flexbox: display:flex, flex-direction, justify-content, align-items, flex-wrap & gap
+› CSS Grid: grid-template-columns (repeat, fr units), grid-gap & placing items
+› CSS custom properties: --primary-color, --font-size-base for consistent theming
+› Transitions & hover effects: transition: all 0.3s ease, transform: scale(), rotate()
+
+Day 3 — Bootstrap 5 & Responsive Design
+  ✦  Bootstrap Grid & Components
+› Bootstrap 5 CDN setup & container vs. container-fluid
+› Responsive 12-column grid: col-12, col-sm-6, col-md-4, col-lg-3 breakpoints
+› Navbar: brand logo, hamburger toggle, links & dropdown in mobile view
+› Components: cards, buttons (variants & sizes), badges, alerts & modals
+  ✦  Responsive Design Principles
+› Mobile-first design: write CSS for small screens, then add @media for larger
+› Media queries: @media (min-width: 768px) { ... } for tablet & desktop overrides
+› Responsive images: max-width:100% & Bootstrap's img-fluid class
+› Testing with Chrome DevTools device toolbar: iPhone SE, iPad & laptop views
+
+Day 4 — Multi-Page Website Build
+  ✦  Building a 3-Page Business Website
+› Homepage: hero section (background image, headline, CTA button) using Flexbox + Bootstrap
+› About page: team cards using Bootstrap grid (3 columns) with images & short bios
+› Contact page: Bootstrap form with name, email, subject & message fields + submit button
+› Navigation bar linking all 3 pages with active state highlighting
+  ✦  CSS Enhancements & Polishing
+› Custom CSS on top of Bootstrap: brand colors, fonts & hover effects
+› Sticky/fixed navbar: position:sticky top:0 with box-shadow
+› Simple CSS animation: fade-in hero text with @keyframes & animation property
+› Favicon: adding a .ico file link in <head> for browser tab icon
+
+Day 5 — GitHub Deployment & SEO Basics
+  ✦  Git & GitHub Pages Deployment
+› Git setup: git config --global user.name & user.email
+› Workflow: git init → git add . → git commit -m 'first commit' → git push
+› Creating a GitHub repo & connecting local repo to remote with git remote add origin
+› Enabling GitHub Pages: Settings → Pages → Source (main branch) → live URL
+  ✦  Basic On-Page SEO for Websites
+› <title> tag: keyword-rich, unique per page & under 60 characters
+› <meta name='description'>: compelling 150-160 character summary for search results
+› Heading hierarchy: one H1 per page, H2 for sections, H3 for sub-sections
+› Image alt text: descriptive text for accessibility & Google image search indexing
+
+Day 6 — Project Presentation, Assessment & Certificate
+  ✦  Final Project Demo & Code Review
+› Live demo of the 3-page website on GitHub Pages URL to trainer
+› Responsive check: demo on mobile (Chrome DevTools), tablet & desktop
+› Accessibility review: alt texts, button labels, keyboard navigation & color contrast
+› Code quality feedback: HTML semantic structure, CSS organization & Bootstrap usage
+  ✦  Career Guidance & Certificate
+› Freelance starter: Fiverr gig setup for static website design (₹2,000–₹10,000 range)
+› Portfolio approach: using GitHub profile & this project as first portfolio piece
+› Next steps: JavaScript, CSS animations, WordPress & Full-Stack roadmap
+› Certificate distribution & LinkedIn profile update with GitHub project link
+
+
+
+6. WordPress Website Development
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹4,999
+Eligibility
+Anyone
+Career Opportunities
+WordPress Developer, Freelancer
+
+6-Day Module Breakdown
+
+Day 1 — WordPress Setup & Theme Configuration
+  ✦  Domain, Hosting & Installation
+› Understanding domain names, hosting types (shared, VPS, cloud) & cPanel
+› One-click WordPress install via Softaculous in cPanel
+› WordPress dashboard: Posts, Pages, Appearance, Plugins, Settings & Users
+› General settings: site title, tagline, timezone, email & permalink structure (/post-name/)
+  ✦  Theme Setup & Elementor
+› Installing Astra or Hello Elementor theme & activating child theme
+› WordPress Customizer: logo, site icon (favicon), colors & typography
+› Installing Elementor (free) page builder plugin
+› Elementor editor: sections, columns, widgets & mobile/tablet view toggle
+
+Day 2 — Pages, Posts & Navigation
+  ✦  Creating Pages & Blog Posts
+› Difference between Pages (static) & Posts (dynamic/dated blog content)
+› Creating Home, About, Services & Contact pages with Elementor
+› Blog posts: title, content, categories, tags, featured image & excerpt
+› Page attributes: setting parent pages for hierarchical URL structures (/services/seo/)
+  ✦  Navigation Menus & Site Structure
+› Creating a primary menu: adding pages, posts, custom links & categories
+› Dropdown submenus: hover-reveal child menu items
+› Footer menu: adding social media links, privacy policy & sitemap
+› Setting a static homepage: Reading settings → Static page → Home & Blog selection
+
+Day 3 — Plugins, WooCommerce & E-Commerce
+  ✦  Essential Plugin Setup
+› Yoast SEO: meta title & description templates, XML sitemap & breadcrumbs
+› Contact Form 7 or WPForms: building enquiry forms & embedding with shortcode
+› WP Super Cache or LiteSpeed Cache: enabling page caching for speed
+› Smush: bulk image compression & WebP conversion for faster loading
+  ✦  WooCommerce Basics
+› WooCommerce install & setup wizard: currency, payment & shipping configuration
+› Adding simple & variable products: title, description, price, stock & images
+› Product categories, tags & attribute management (size, color)
+› Cash on Delivery + Razorpay/PayPal payment gateway basic setup
+
+Day 4 — SEO, Security & Backup
+  ✦  On-Page SEO & Google Search Console
+› Optimizing page meta titles & descriptions with Yoast focus keyword
+› Heading hierarchy in Elementor: H1 (page title), H2 (sections), H3 (sub-topics)
+› Submitting XML sitemap to Google Search Console & checking index status
+› Internal linking: connecting related service pages & blog posts for SEO & UX
+  ✦  Security & Automated Backups
+› Wordfence Security: enabling firewall, malware scan & brute-force login protection
+› Limiting login attempts & changing login URL with WPS Hide Login plugin
+› UpdraftPlus: scheduling weekly automatic backup to Google Drive
+› SSL certificate: verifying HTTPS is active & forcing HTTP → HTTPS redirect in settings
+
+Day 5 — Speed Optimization & Client Handover
+  ✦  Website Performance Optimization
+› GTmetrix & Google PageSpeed Insights: reading score & diagnosing issues
+› Image optimization: resize before upload (max 1200px wide) & compress with Smush
+› Cloudflare CDN setup (free plan): connecting domain for global performance boost
+› Disabling unused plugins & removing bloated theme features for leaner site
+  ✦  Client Handover Workflow
+› Creating a client admin user account with Editor or Admin role
+› Walking the client through the WordPress dashboard (30-min handover session)
+› Preparing a maintenance guide PDF: how to add posts, update plugins & take backups
+› Setting up a staging environment link for future updates without breaking live site
+
+Day 6 — Project Demo, Assessment & Certificate
+  ✦  Capstone Project Demo
+› Demo a fully built 5-page business or e-commerce website to trainer
+› Show: Elementor homepage, blog post, contact form, WooCommerce shop & Yoast SEO setup
+› Live GTmetrix score demo & Wordfence security scan results
+› Client handover simulation: explain dashboard, plugins & backup schedule to trainer as 'client'
+  ✦  Assessment & Career Guidance
+› Practical test: build a page in Elementor from a wireframe in 30 minutes
+› MCQ quiz: 15 questions on WordPress features, plugins & SEO
+› Freelance pricing: static site (₹5,000), business site (₹12,000), e-commerce (₹25,000+)
+› Certificate distribution & path to WordPress + WooCommerce Advanced (1-Month) course
+
+
+
+7. Graphic Design Professional
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,999
+Eligibility
+Students & Designers
+Career Opportunities
+Graphic Designer
+
+6-Day Module Breakdown
+
+Day 1 — Photoshop Fundamentals
+  ✦  Photoshop Interface & Core Tools
+› Workspace: panels, toolbox, options bar, history & layers panel overview
+› Selection tools: Rectangular/Elliptical Marquee, Lasso, Quick Selection & Magic Wand
+› Move, Transform (Ctrl+T), Crop & Perspective Crop tools
+› Canvas size vs. image size: understanding resolution (72 PPI web, 300 DPI print)
+  ✦  Layers, Masks & Basic Editing
+› Creating, naming, grouping & linking layers; layer opacity & fill
+› Layer masks: painting black to hide, white to reveal – non-destructive editing
+› Adjustment layers: Brightness/Contrast, Levels, Curves & Hue/Saturation
+› Clone Stamp, Healing Brush & Patch Tool for photo retouching
+
+Day 2 — Photoshop Advanced & Social Media Design
+  ✦  Typography & Smart Objects
+› Text tool: point text vs. paragraph text, character & paragraph panels
+› Warp text, text on a path & text inside a shape
+› Smart Objects: embedding Illustrator/vector files & applying non-destructive filters
+› Layer styles: Drop Shadow, Stroke, Inner Glow, Bevel & Emboss & Gradient Overlay
+  ✦  Social Media Creatives
+› Instagram post (1080×1080px): layout, hierarchy, brand colors & export at 72 PPI
+› Instagram Story (1080×1920px): full-bleed background, centered text & gradient overlay
+› YouTube thumbnail (1280×720px): bold text, face close-up, high contrast background
+› Exporting: Save for Web (JPEG 80% quality, PNG-24 for transparency, WebP)
+
+Day 3 — Adobe Illustrator Basics
+  ✦  Vector Fundamentals & Drawing Tools
+› Raster vs. vector: why logos must be vector for infinite scalability
+› Artboards: creating multiple artboards for different logo variations
+› Shape tools: Rectangle, Ellipse, Polygon, Star & combining with Pathfinder (Unite, Minus Front)
+› Pen Tool: drawing straight & curved paths, anchor points & bezier handles
+  ✦  Typography & Icon Design
+› Type tool: point text, area text & text on a path in Illustrator
+› Font pairing for brand identity: serif + sans-serif or display + body combination
+› Creating a flat-design icon set (5 icons): app icons, social media or e-commerce icons
+› Outline text (Ctrl+Shift+O), expand shapes & preparing for print or export
+
+Day 4 — Canva Pro & Brand Identity
+  ✦  Canva Pro for Professional Design
+› Brand Kit: uploading logo, setting primary/secondary/accent colors & brand fonts
+› Template customization: modifying layouts while maintaining brand consistency
+› Magic Resize: instantly resizing a design for Instagram, Facebook, LinkedIn & Twitter
+› Canva team collaboration: sharing designs for comments & approval workflow
+  ✦  Logo Design Process
+› Types of logos: wordmark, lettermark, icon-only, combination mark & emblem
+› 3-concept sketching process: rough ideas before going digital
+› Building a combination mark in Illustrator: icon + wordmark aligned & balanced
+› Logo package: primary horizontal, stacked, icon-only & white/black reversed versions
+
+Day 5 — Branding & Print Design
+  ✦  Brand Identity Development
+› Color palette: primary, secondary & accent colors with HEX, RGB & CMYK values
+› Typography system: H1/H2/H3 font, body font & caption font with sizes
+› Brand consistency: applying identity across digital & print touchpoints
+› Creating a mini Brand Style Guide (2-page PDF) in Canva or Illustrator
+  ✦  Print Design – Business Card & Flyer
+› Business card setup: 3.5×2 inch, 300 DPI, CMYK color mode with 3mm bleed
+› Front design: logo, name, designation, phone & email with visual hierarchy
+› Back design: brand pattern, tagline or QR code
+› A5 Flyer: headline, supporting image, 3 key points, CTA & contact details — print-ready PDF
+
+Day 6 — Portfolio, Assessment & Certificate
+  ✦  Portfolio Compilation & Peer Review
+› Compiling week's work into a PDF portfolio: 6 projects with title & brief description each
+› Case study format for logo project: brief → sketches → digital → final → mockup
+› Uploading to Behance: project title, tags, tools used & short description
+› Peer critique session: giving 1 positive + 1 constructive feedback per peer's work
+  ✦  Assessment & Career Guidance
+› Design challenge: create a logo + business card from a brief in 45 minutes
+› Trainer evaluation: creativity, technical accuracy, typography & print readiness
+› Freelance platforms: Fiverr (logo design gig: ₹500–₹5,000), Upwork & 99designs
+› Certificate distribution & path to Advanced Graphic Design + Motion Graphics course
+
+
+
+8. Digital Marketing Professional
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,999
+Eligibility
+Anyone
+Career Opportunities
+Digital Marketing Executive
+
+6-Day Module Breakdown
+
+Day 1 — SEO Fundamentals
+  ✦  How Search Engines Work & Keyword Research
+› Search engine process: crawling (Googlebot), indexing (database) & ranking (algorithm)
+› Keyword research with Google Keyword Planner: search volume, CPC & competition
+› Ubersuggest & Answer The Public for long-tail keyword & question keyword ideas
+› Search intent: informational, navigational, commercial & transactional queries
+  ✦  On-Page & Off-Page SEO
+› Title tag (55–60 chars), meta description (150–160 chars) & H1-H3 heading hierarchy
+› Keyword placement: title, first 100 words, headings, alt text & URL slug
+› Off-page SEO: backlinks (DA/PA), guest posting, business directory listings & social signals
+› Google Search Console setup: verifying site, submitting sitemap & monitoring search clicks
+
+Day 2 — Google Business Profile & Local SEO
+  ✦  Google Business Profile Setup & Optimization
+› Creating & verifying a Google Business Profile (formerly Google My Business)
+› Completing 100% profile: business name, category, description, hours, photos & Q&A
+› Posting updates, offers & events on GBP for local engagement
+› Responding to reviews: thanking positive reviewers & professionally addressing negative ones
+  ✦  Local SEO Strategies
+› NAP consistency: Name, Address, Phone must match exactly across all platforms
+› Local citations: submitting business to JustDial, IndiaMart, Sulekha & Yellow Pages
+› Google Maps ranking factors: proximity, prominence (reviews/links) & relevance (category match)
+› Location-specific landing pages for businesses serving multiple cities/areas
+
+Day 3 — Meta Ads (Facebook & Instagram)
+  ✦  Meta Business Suite & Campaign Setup
+› Meta Business Suite: connecting Facebook page, Instagram account & creating ad account
+› Meta Pixel installation: adding the pixel snippet to website for conversion tracking
+› Campaign structure: Campaign (objective) → Ad Set (audience + budget) → Ad (creative)
+› Campaign objectives: Brand Awareness, Traffic, Engagement, Leads & Conversions
+  ✦  Audience Targeting & Ad Creation
+› Core targeting: age, gender, location (city/pin code radius), interests & behaviors
+› Custom audiences: website visitors (Pixel), video viewers & customer email list upload
+› Lookalike audiences: 1%–3% lookalike from best customers for cold audience expansion
+› Ad formats: single image, carousel (multiple products), video ad & lead generation form ad
+
+Day 4 — Content Marketing & Social Media Strategy
+  ✦  Content Strategy & Calendar
+› Content pillars: educational, promotional, testimonial & entertainment content mix (70-20-10)
+› Building a 30-day social media content calendar for Instagram & Facebook
+› Content formats by platform: Reels (Instagram/Facebook), Shorts (YouTube), Stories & posts
+› Writing engaging captions: hook (first line), value (body), CTA & 3–10 targeted hashtags
+  ✦  Content Creation Tools & Scheduling
+› Canva for social media graphics: using branded templates & Magic Write for captions
+› CapCut for Reels: trimming, adding text, music & trending transitions
+› Meta Business Suite scheduling: queuing 7 days of posts at optimal times
+› Buffer (free): cross-platform scheduling for Instagram, Facebook & LinkedIn in one place
+
+Day 5 — Email Marketing & Google Analytics
+  ✦  Email Marketing with Mailchimp
+› Mailchimp free account: creating audience list, signup form & embedding on website
+› Campaign types: regular (newsletter), automated (welcome sequence) & A/B test email
+› Email design: single-column layout, hero image, body text, CTA button & footer with unsubscribe
+› Subject line best practices: under 50 chars, personalization, curiosity & urgency tactics
+  ✦  Google Analytics 4 & Reporting
+› GA4 property setup & adding Google tag (gtag.js) to website
+› GA4 dashboard: users, sessions, bounce rate, engagement rate & top pages
+› UTM parameters: tracking campaign traffic with source, medium & campaign name in URLs
+› Building a monthly marketing performance report: sessions, conversions, top channels & ROI
+
+Day 6 — Campaign Project, Assessment & Certificate
+  ✦  Mini Campaign Project
+› Create a complete 360° mini campaign for a fictional local business
+› SEO: optimize the homepage title, description & 1 blog post for a target keyword
+› Meta Ads: design ad creative in Canva + write copy + define audience targeting plan
+› Email: write a 3-email welcome sequence; report: 1-page campaign plan with budget & KPIs
+  ✦  Assessment & Career Guidance
+› Online quiz: 25 MCQs covering SEO, Meta Ads, email marketing & GA4
+› Practical task: optimize a given Facebook page & write 3 post captions with hashtags
+› Career paths: SEO executive, social media manager, digital marketing executive, PPC specialist
+› Certificate distribution & guidance on Google Ads & HubSpot Inbound certifications (free)
+
+
+
+9. AI Tools for Business & Professionals
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹4,999
+Eligibility
+Anyone
+Career Opportunities
+AI Productivity Specialist
+
+6-Day Module Breakdown
+
+Day 1 — Introduction to AI & ChatGPT
+  ✦  Understanding Generative AI
+› What is AI, ML, Deep Learning & Generative AI – simple plain-language explanation
+› How LLMs work: tokens, training data, context window & temperature setting
+› Key players: OpenAI (ChatGPT), Google (Gemini), Microsoft (Copilot) & Meta (LLaMA)
+› AI limitations: hallucinations, knowledge cutoff, bias & privacy concerns
+  ✦  ChatGPT for Professional Tasks
+› ChatGPT interface: creating conversations, using memory & setting custom instructions
+› Drafting professional emails: formal requests, follow-ups & meeting summaries
+› Rewriting & improving: paste your draft, ask ChatGPT to improve clarity or change tone
+› Custom Instructions: tell ChatGPT your role, industry & preferred output format for consistent results
+
+Day 2 — Google Gemini & Microsoft Copilot
+  ✦  Google Gemini in Workspace
+› Gemini in Gmail: summarize long email threads & draft replies in one click
+› Gemini in Google Docs: generate first draft from a topic prompt & rewrite sections
+› Gemini in Google Sheets: describe what analysis you need in plain English
+› Gemini Deep Research: multi-step web research with cited sources for reports
+  ✦  Microsoft Copilot in Office 365
+› Copilot in Word: 'Draft a report on…' & 'Rewrite this paragraph in a formal tone'
+› Copilot in PowerPoint: generate a 10-slide deck from a Word document or typed brief
+› Copilot in Excel: 'Show me trends in this data' & formula suggestions from plain English
+› Copilot in Teams: meeting transcription, summarizing action items & drafting follow-up email
+
+Day 3 — Prompt Engineering
+  ✦  Core Prompting Techniques
+› Zero-shot: direct instruction without examples – best for simple, clear tasks
+› One-shot & few-shot: providing 1–3 examples so AI mimics the format or style
+› Role prompting: 'Act as a senior financial advisor and explain…' for expert-level output
+› Chain-of-thought: adding 'Think step by step' for logic-heavy tasks (math, reasoning, analysis)
+  ✦  Advanced Prompt Patterns
+› Persona + task + format: 'You are a copywriter. Write a tagline for X. Give 5 options in bullet points.'
+› Iterative refinement: using follow-up prompts to improve, shorten, expand or change tone
+› Prompt chaining: output of Prompt 1 (outline) → input for Prompt 2 (full draft) → Prompt 3 (SEO optimize)
+› Negative prompting: 'Do NOT use jargon, bullet points or more than 200 words'
+
+Day 4 — AI for Content Creation & Image Generation
+  ✦  AI Writing & Content Tools
+› Blog writing workflow: ChatGPT (outline) → draft → Grammarly (edit) → Hemingway (readability)
+› Social media captions: generating 5 caption variations for the same post, choosing the best
+› AI for ad copy: AIDA framework prompts for Facebook ad headlines & Google ad descriptions
+› Adapting AI output to your personal voice: editing AI drafts so they sound authentic
+  ✦  AI Image Generation
+› DALL-E 3 in ChatGPT: generating images from text descriptions with style & composition control
+› Canva Magic Media: AI image generator integrated into Canva for design assets
+› Ideogram: generating images with legible text (posters, banners, thumbnails with text)
+› Adobe Firefly: style-matched image generation directly inside Photoshop & Express
+
+Day 5 — AI Automation & Research Tools
+  ✦  No-Code AI Automation
+› Zapier AI: creating multi-step Zaps with AI actions (format, classify, generate text)
+› Example Zap: Gmail new email → AI summarize → add to Notion database
+› Make.com (Integromat): visual automation builder for more complex multi-app workflows
+› Notion AI: writing meeting notes, summarizing pages & generating action items from text
+  ✦  AI Research & Productivity Tools
+› Perplexity AI: cited answers with live web sources for fact-checked research
+› Otter.ai: recording & auto-transcribing meetings with speaker labels & summary
+› ChatGPT Advanced Data Analysis: upload a CSV and ask questions in plain English for instant insights
+› Building a personal AI workflow: email → summarize → categorize → draft reply → calendar invite
+
+Day 6 — AI Workflow Project, Assessment & Certificate
+  ✦  Capstone AI Productivity Project
+› Design a complete AI-assisted workflow for a chosen scenario (job search, content creator or business)
+› Use minimum 4 AI tools: research (Perplexity) → write (ChatGPT) → design (Canva AI) → automate (Zapier)
+› Document a prompt library: 10 best prompts used during the week with tool, purpose & output quality rating
+› Present workflow to trainer: time saved comparison (manual vs. AI) + demo of 2 AI-generated outputs
+  ✦  Ethics, Assessment & Career Guidance
+› AI ethics: what not to put into AI (confidential data, personal info), deepfake awareness & disclosure
+› Practical test: complete 5 real-world business tasks using AI tools in 30 minutes
+› Career paths & freelance: AI content manager, prompt engineer, AI trainer, AI automation consultant
+› Certificate distribution & roadmap to AI Automation + Advanced AI Agents course
+
+
+
+10. Cyber Security Foundation
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,999
+Eligibility
+Anyone
+Career Opportunities
+Security Support Executive
+
+6-Day Module Breakdown
+
+Day 1 — Networking Basics for Security
+  ✦  Network Fundamentals
+› IP addresses: IPv4 vs. IPv6, public vs. private (192.168.x.x) & loopback (127.0.0.1)
+› Ports & protocols: HTTP (80), HTTPS (443), SSH (22), FTP (21), DNS (53), SMTP (25)
+› OSI model: Layer 1 (Physical) → Layer 7 (Application) with real security relevance per layer
+› Network devices: hub, switch, router & firewall – role and position in a network
+  ✦  DNS, HTTP & Packet Flow
+› DNS resolution: browser → resolver → root → TLD → authoritative server → IP returned
+› HTTP vs. HTTPS: how TLS/SSL encrypts data in transit (handshake overview)
+› Packet structure: headers (source IP, dest IP, port) & payload (actual data)
+› Wireshark intro: capturing packets on local network & identifying HTTP vs. HTTPS traffic
+
+Day 2 — Cyber Threats & Attack Types
+  ✦  Malware & Attack Categories
+› Malware types: virus (self-replicates in files), worm (spreads without user action), trojan (disguised software)
+› Ransomware: encryption of victim files + ransom demand – WannaCry & LockBit real examples
+› Spyware, adware & keyloggers: silent data theft & credential harvesting
+› APT (Advanced Persistent Threat): long-term targeted attack by state-sponsored or organized groups
+  ✦  Social Engineering Attacks
+› Phishing: fake login pages, urgent emails & lookalike sender domains (amaz0n.com)
+› Spear phishing: targeted attack using personal info from LinkedIn, social media & company website
+› Vishing (phone): fake IT support or bank calls to obtain OTPs or passwords
+› Smishing (SMS): fake delivery notifications, bank alerts & prize-winning links via text
+
+Day 3 — Password Security & Authentication
+  ✦  Strong Password Practices
+› Password anatomy: minimum 12 characters, uppercase, lowercase, numbers & special characters
+› Password patterns to avoid: dictionary words, birthdates, keyboard patterns (qwerty, 123456)
+› Setting up Bitwarden (free, open-source) or LastPass as a personal password manager
+› Have I Been Pwned (haveibeenpwned.com): checking if email/password has been leaked in breaches
+  ✦  Multi-Factor Authentication (MFA)
+› MFA types: SMS OTP, authenticator app (Google Authenticator / Authy), hardware key (YubiKey)
+› Enabling 2FA on Gmail, Instagram, LinkedIn & banking apps – step-by-step walkthrough
+› Why SMS-OTP is weaker than authenticator apps: SIM-swap attack explanation
+› Passkeys: the future of passwordless authentication (FIDO2 standard) – intro overview
+
+Day 4 — Firewalls, VPNs & Safe Browsing
+  ✦  Firewalls & Network Defense
+› Firewall types: packet-filter, stateful inspection & application-layer (WAF)
+› Windows Defender Firewall: viewing active rules, blocking an app & inbound/outbound rule creation
+› WAF (Web Application Firewall): protecting web apps from SQLi, XSS & CSRF at application layer
+› IDS vs. IPS: detection-only vs. active blocking of suspicious traffic
+  ✦  VPNs & Safe Browsing Habits
+› What a VPN does: encrypts traffic, masks IP & routes through remote server
+› ProtonVPN (free): setup & connecting to a server on Windows/Android
+› HTTPS Everywhere: verifying padlock, checking certificate validity & avoiding HTTP sites on public Wi-Fi
+› Safe browsing: ad blockers (uBlock Origin), script blockers & avoiding suspicious downloads
+
+Day 5 — Ethical Hacking Intro & Digital Hygiene
+  ✦  Ethical Hacking Basics
+› Ethical hacking vs. black-hat hacking: authorization, scope & legal framework (IT Act 2000)
+› Phases: Reconnaissance → Scanning → Gaining Access → Post-Exploitation → Reporting
+› Passive recon tools: WHOIS, Shodan (IoT device search), Google dorking (inurl:, filetype:)
+› Nmap basics: nmap -sV 192.168.1.0/24 to scan local network for open ports & services
+  ✦  Digital Hygiene & Incident Response
+› 3-2-1 backup rule: 3 copies, 2 different media, 1 offsite (Google Drive or external HDD)
+› Software patching: why unpatched apps are the #1 attack vector with real CVE examples
+› Incident response steps: Identify → Contain → Eradicate → Recover → Post-mortem
+› Personal security checklist: 10-point audit (2FA, strong passwords, updates, VPN, backups)
+
+Day 6 — Security Audit Project, Assessment & Certificate
+  ✦  Mini Security Audit Project
+› Audit a provided simulated small business IT setup: identify 5+ security vulnerabilities
+› Categorize risks by severity (Critical/High/Medium/Low) with CVSS score concept
+› Write a 1-page security report: vulnerability, current risk, recommended fix & priority
+› Present findings as a simulated security briefing to trainer (client role-play)
+  ✦  Assessment & Career Guidance
+› Online MCQ test: 25 questions on networking, malware, passwords, firewalls & ethical hacking
+› Practical: identify phishing indicators in 5 sample emails & flag the suspicious elements
+› Career paths: SOC Tier 1 analyst, IT security support, network security technician
+› Certificate distribution & certification roadmap: CompTIA Security+, CEH & OSCP path
+
+
+
+11. Computer Hardware & Networking Essentials
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹6,499
+Eligibility
+Students
+Career Opportunities
+Hardware Technician
+
+6-Day Module Breakdown
+
+Day 1 — Computer Components & Identification
+  ✦  Core Hardware Components
+› Motherboard: form factors (ATX/mATX), CPU socket, RAM slots, PCIe slots & SATA ports
+› Processor (CPU): cores, threads, clock speed (GHz), cache & TDP – Intel vs. AMD comparison
+› RAM: DDR4/DDR5 types, frequency (3200MHz), capacity & single vs. dual-channel mode
+› Storage: HDD (spinning disk, cheaper, slower) vs. SSD SATA vs. NVMe M.2 (fast, silent)
+  ✦  PSU, GPU, Cooling & Peripherals
+› PSU: wattage calculation, 80+ efficiency ratings & modular vs. non-modular cables
+› GPU: dedicated vs. integrated graphics, VRAM & PCIe slot installation
+› Cooling: stock cooler, aftermarket air cooler, AIO liquid cooler & case airflow setup
+› Peripherals: keyboard types (membrane/mechanical), monitor specs (Hz, ms, resolution, panel type)
+
+Day 2 — PC Assembly (Hands-On Lab)
+  ✦  ESD Safety & Pre-Assembly Checklist
+› ESD (Electrostatic Discharge): using anti-static wrist strap, mat & grounding to case
+› Organizing components & tools: Phillips screwdriver, thermal paste, zip ties & cable management kit
+› Reading motherboard manual: locating CPU socket, RAM slots, M.2 slot & front panel headers
+› Component compatibility check: CPU socket + motherboard chipset + RAM generation + PSU wattage
+  ✦  Step-by-Step PC Assembly
+› Step 1: CPU installation – align arrow marker, zero-force insertion, secure retention arm
+› Step 2: Thermal paste application (pea-size) + cooler mounting; RAM seating (click until locked)
+› Step 3: M.2 SSD installation – angle in slot, screw down standoff; GPU seating in PCIe x16 slot
+› Step 4: PSU installation + 24-pin ATX, 8-pin CPU EPS, SATA power & PCIe power cable routing
+
+Day 3 — Windows Installation & Driver Setup
+  ✦  BIOS/UEFI & Bootable USB
+› Creating a bootable Windows 11 USB with Rufus (ISO + GPT + UEFI settings)
+› Entering BIOS: manufacturer shortcut keys (Del, F2, F10, F12)
+› BIOS settings: setting USB as first boot device, enabling AHCI (not IDE) & XMP for RAM
+› Secure Boot & TPM 2.0: enabling for Windows 11 compatibility
+  ✦  Windows Clean Install & Driver Setup
+› Windows install wizard: language, edition, custom (clean) install & disk partitioning
+› Creating a 100GB system partition (C:) & data partition (D:) during setup
+› Post-install priorities: Windows Update → chipset driver → GPU driver → audio & network drivers
+› Device Manager: checking all devices show green ticks & updating any missing drivers
+
+Day 4 — Networking Basics & IP Addressing
+  ✦  Networking Concepts
+› OSI model: 7 layers with real-world examples per layer (physical cable, IP address, HTTP)
+› TCP vs. UDP: connection-oriented reliable delivery vs. fast but unreliable transmission
+› IPv4 addressing: Class A (10.x.x.x), B (172.16.x.x), C (192.168.x.x) private ranges
+› Subnet mask: /24 = 255.255.255.0 means 254 usable hosts on that network
+  ✦  Network Commands & Diagnostics
+› ipconfig /all: reading IP, subnet, gateway, DNS & MAC address on Windows
+› ping 8.8.8.8: testing internet connectivity; ping google.com: testing DNS resolution
+› tracert google.com: tracing hops to a destination & identifying where latency occurs
+› nslookup: querying DNS records; netstat -an: viewing active connections & listening ports
+
+Day 5 — LAN Setup & Router Configuration
+  ✦  LAN Cabling & Switch Setup
+› Cat5e vs. Cat6: bandwidth (1Gbps vs. 10Gbps) & max run length (100m)
+› RJ-45 crimping (hands-on): stripping cable, T568B color order & crimping with RJ-45 tool & tester
+› Connecting 3 PCs via an unmanaged switch & verifying all appear in Network Discovery
+› Troubleshooting cable faults: cable tester, checking LED link light on switch port
+  ✦  Router Configuration & Wi-Fi Setup
+› Accessing router admin panel via 192.168.1.1 & changing default admin credentials
+› WAN settings: DHCP (auto from ISP) vs. PPPoE (username/password for fiber connections)
+› Wi-Fi: SSID name, WPA2/WPA3 security, channel selection & guest network isolation
+› DHCP reservation: assigning fixed IP to printer/NAS by MAC address
+
+Day 6 — Capstone Lab, Assessment & Certificate
+  ✦  Capstone Lab – Full IT Setup Project
+› Assemble a PC from parts, install Windows 11 & configure all drivers (2-hour lab)
+› Set up a 3-PC LAN with switch, configure DHCP reservations & test shared folder access
+› Configure a Wi-Fi router: custom SSID, WPA3 password, guest network & port forwarding
+› Document the lab: IP address table, network diagram sketch & hardware component list
+  ✦  Assessment & Career Guidance
+› Practical fault-finding: diagnose 3 simulated hardware or network faults in 20 minutes
+› MCQ test: 25 questions on components, BIOS, Windows, networking & router setup
+› Career paths: hardware engineer, IT support technician, desktop support, network administrator
+› Certificate distribution & CompTIA A+ certification roadmap (Core 1 & Core 2 exam guidance)
+
+
+
+12. Tally Prime with GST Professional
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,499
+Eligibility
+Commerce Students
+Career Opportunities
+Accountant, Accounts Assistant
+
+6-Day Module Breakdown
+
+Day 1 — Accounting Fundamentals & Tally Setup
+  ✦  Accounting Basics
+› Accounting equation: Assets = Liabilities + Owner's Equity
+› Double-entry rule: every transaction has equal debit & credit entries
+› Account types: personal (individuals/firms), real (assets), nominal (income/expenses)
+› Golden rules: debit the receiver/what comes in/all expenses; credit the giver/what goes out/all incomes
+  ✦  Tally Prime Setup & Interface
+› Installing Tally Prime (educational) & activating license or using unlicensed (25-entry) mode
+› Creating a company: name, financial year (April–March), currency, GST state & GSTIN
+› Tally interface: Gateway of Tally, menu navigation, function keys (F1–F12) & shortcut keys
+› Company features: enabling GST, cost centres & inventory for full functionality
+
+Day 2 — Ledger Creation & Voucher Entry
+  ✦  Ledger Masters & Groups
+› Pre-defined groups: Capital, Sundry Debtors, Sundry Creditors, Bank Accounts, Sales & Purchase
+› Creating ledgers: cash, bank account, trade receivables, trade payables, office expenses
+› Altering & deleting ledgers; setting opening balances for existing businesses
+› Understanding the Chart of Accounts in Tally & mapping to real business accounts
+  ✦  Day-to-Day Voucher Entry
+› Journal voucher (F7): recording expense accruals & adjusting entries
+› Receipt voucher (F6): cash/bank receipt from customers
+› Payment voucher (F5): cash/bank payments to suppliers & for expenses
+› Contra voucher (F4): cash withdrawal from bank (Dr Cash, Cr Bank) or deposit
+
+Day 3 — Sales, Purchase & GST Invoicing
+  ✦  Sales & Purchase Vouchers with GST
+› Creating stock items with HSN code, GST rate (5%/12%/18%/28%) & unit of measure
+› Sales invoice (F8): party name, item, quantity, rate → auto-calculates CGST & SGST / IGST
+› Purchase invoice (F9): supplier bill entry with GST ITC (Input Tax Credit) tracking
+› Credit note (Alt+F6): sales return; Debit note (Alt+F5): purchase return with GST reversal
+  ✦  GST Reports in Tally
+› GSTR-1 in Tally: outward supply summary (B2B, B2C large, B2C small) auto-populated from invoices
+› GSTR-3B summary: tax liability (output GST) minus ITC (input GST) = net GST payable
+› GST reconciliation: matching Tally data against GST portal data before filing
+› Exporting GSTR-1 & GSTR-3B from Tally as JSON for upload to GST portal
+
+Day 4 — Inventory Management & Payroll
+  ✦  Inventory Management
+› Stock groups & categories: organizing items (Electronics → Laptops → 15-inch)
+› Stock items: name, unit, GST HSN, opening stock quantity & value
+› Stock vouchers: receipt note (GRN), delivery note & stock journal for adjustments
+› Stock summary report: current quantity, value & location (godown-wise)
+  ✦  Payroll Processing in Tally
+› Enabling payroll feature in company features & creating departments/designations
+› Employee master: joining date, department, designation & pay structure allocation
+› Pay head creation: Basic (40% of CTC), HRA (20%), TA, PF (12% of basic), ESI (3.25%)
+› Processing monthly payroll for 3 employees & generating pay slips for each
+
+Day 5 — Financial Reports & Analysis
+  ✦  Core Financial Reports
+› Trial Balance: verifying all debit totals equal credit totals after all entries
+› Profit & Loss Account: gross profit (sales − purchase − direct exp) & net profit (gross − indirect exp)
+› Balance Sheet: reading current assets, fixed assets, current liabilities & capital account
+› Cash Flow Statement: operating, investing & financing activities overview
+  ✦  MIS & Management Reports
+› Outstanding Receivables (Sundry Debtors): ageing analysis (0–30, 30–60, 60–90 days)
+› Outstanding Payables (Sundry Creditors): dues to suppliers & payment planning
+› Day Book: complete record of all vouchers for any date range
+› Bank Reconciliation Statement (BRS): matching Tally bank ledger with bank passbook
+
+Day 6 — Capstone Project, Assessment & Certificate
+  ✦  End-to-End Accounting Project
+› Create a new company & enter 1 month of transactions: 8 sales invoices, 6 purchase bills, 5 expense payments & 2 payroll entries
+› Generate complete GST reports: GSTR-1 data + GSTR-3B liability summary
+› Print Trial Balance, P&L & Balance Sheet & verify they balance correctly
+› Export GSTR-1 as JSON & payslips as PDF for submission
+  ✦  Assessment & Career Guidance
+› Timed practical: 10 voucher entries + 3 reports generation in 30 minutes
+› MCQ test: 20 questions on Tally features, GST rates, accounting rules & payroll
+› Career paths: accounts assistant, GST executive, payroll executive & junior accountant
+› Certificate distribution & path to Professional Accountant with GST (1-Month) course
+
+
+
+13. Video Editing & Content Creation
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹5,999
+Eligibility
+Anyone
+Career Opportunities
+Video Editor, Content Creator
+
+6-Day Module Breakdown
+
+Day 1 — Premiere Pro Setup & Interface
+  ✦  Project Setup & Import
+› Installing Adobe Premiere Pro & understanding system requirements (RAM, GPU, storage)
+› Creating a new project & sequence: 1920×1080, 25 fps (India standard) or 30 fps (YouTube)
+› Importing footage: media browser, drag-to-project & organizing bins by scene/day/type
+› Proxy workflow: creating low-res proxies for smooth editing on slower computers
+  ✦  Timeline & Navigation Basics
+› Timeline anatomy: video tracks (V1 above = on top visually), audio tracks (A1 primary)
+› In/Out points: pressing I & O to mark clip in source monitor before inserting
+› Keyboard shortcuts: spacebar (play), J/K/L (reverse/pause/forward), C (razor), V (select), A (track select)
+› Zooming timeline: scroll wheel or +/- keys; fit sequence: Shift+Backslash
+
+Day 2 — Cutting, Audio & Transitions
+  ✦  Editing Techniques
+› Ripple Edit Tool (B): trim one clip without leaving a gap – most-used trim tool
+› Rolling edit: adjusting edit point between two clips simultaneously (both change)
+› Three-point editing: set in/out on source, drop into timeline at playhead position
+› J-cut & L-cut: audio from next/previous clip plays before/after the video cut for natural flow
+  ✦  Audio Editing & Transitions
+› Volume keyframes: fade in/out & ducking music under dialogue with rubber band control
+› Essential Sound panel: assigning dialogue, music, SFX & ambience categories for auto-treatment
+› Noise reduction using DeNoise effect in Essential Sound panel (dialogue cleanup)
+› Cross Dissolve, Dip to Black & Film Dissolve transitions – when and how to use each
+
+Day 3 — Color Grading & Titles
+  ✦  Color Grading with Lumetri
+› Lumetri Color panel: Basic Correction (WB, exposure, contrast, highlights, shadows, saturation)
+› Tone curve: S-curve for contrast boost; Hue/Saturation curves for selective color adjustment
+› Lumetri Scopes: waveform (exposure), vectorscope (color cast) & parade (RGB balance)
+› LUT application: importing a .cube LUT for cinematic look & adjusting Intensity slider
+  ✦  Titles & Graphics
+› Essential Graphics panel: browsing Adobe Stock title templates & customizing text/color
+› Creating a lower third: name + title text with animated underline or background bar
+› Responsive design in Essential Graphics: pinning to safe title margin & text box resizing
+› End screen placeholder: leaving last 20 seconds of video clear for YouTube Cards & Subscribe button
+
+Day 4 — CapCut & Short-Form Content
+  ✦  CapCut Mobile Editing
+› CapCut interface: timeline, clips, audio, text, effects, filters & transitions tracks
+› Auto-captions: generating subtitles in one click & styling font, color & position
+› Speed ramp: slow motion (0.3×) on key beat drops; time-lapse (5×) for B-roll sequences
+› Trending transitions: glitch, zoom punch, whip pan & applying CapCut viral templates
+  ✦  Reels & Short-Form Production
+› Vertical video (9:16) framing: rule of thirds placement & headroom for face shots
+› Hook strategy: first 2 seconds must show action, text or visual question to stop scroll
+› Beat sync editing: using CapCut 'Auto Beat' or manual markers to sync cuts to music
+› Exporting Reels from CapCut: 1080×1920, H.264, highest quality for Instagram upload
+
+Day 5 — Final Cut Polish & Export Settings
+  ✦  Fine Cut & Polish
+› Audio mix finalization: dialogue at −12 dB, music at −18 dB, SFX at −15 dB (target levels)
+› Motion graphics: adding animated icons, lower thirds & end card using Premiere Essential Graphics
+› Review checklist: jump cuts, audio pops, color consistency, spelling in titles & music rights
+› Generating a 30-second cutdown version of a 90-second video for social media use
+  ✦  Export Settings & Platform Optimization
+› YouTube export: H.264, 1920×1080, 8–16 Mbps VBR 2-pass, AAC stereo 320 kbps
+› Instagram Reel export: H.264, 1080×1920, <4GB, under 90 seconds, mp4 container
+› Thumbnail design in Canva: 1280×720px, 72 PPI, bold text + face + contrasting background
+› Uploading checklist: title (SEO keyword), description (timestamps + links), tags & thumbnail
+
+Day 6 — Final Project, Assessment & Certificate
+  ✦  Final Video Project
+› Edit a 60–90 second brand or topic video in Premiere Pro: assembly → fine cut → color → audio → titles
+› Create a 30-second vertical Reel cutdown from the same footage in CapCut with captions & music
+› Design a YouTube thumbnail (1280×720) in Canva with bold text, subject photo & brand color
+› Upload the main video to YouTube (unlisted) & share the link as portfolio
+  ✦  Assessment & Career Guidance
+› Speed edit challenge: assemble a 30-second video from 5 provided clips in 20 minutes
+› Trainer review: pacing, color quality, audio mix, title design & mobile Reel quality
+› Career paths: YouTube editor, social media content creator, corporate video editor, ad agency editor
+› Certificate distribution & path to Advanced Video Editing + Motion Graphics (1-Month) course
+
+
+
+14. Power BI Business Intelligence Starter
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹6,999
+Eligibility
+Graduates
+Career Opportunities
+BI Analyst (Entry Level)
+
+6-Day Module Breakdown
+
+Day 1 — Power BI Setup & Data Import
+  ✦  Power BI Desktop Installation & Interface
+› Downloading & installing Power BI Desktop (free from Microsoft)
+› Three views: Report (canvas), Data (table rows) & Model (relationship diagram)
+› Fields pane: tables & columns; Visualizations pane: visual types & formatting options
+› Power BI service vs. Desktop: Desktop for authoring, Service for sharing & scheduling
+  ✦  Connecting to Data Sources
+› Get Data from Excel: selecting specific sheets & tables; previewing before loading
+› Get Data from CSV/Text: delimiter detection, header row & column type assignment
+› Get Data from Web: pasting a URL to import public data (Wikipedia tables, govt datasets)
+› Refresh settings: manual refresh vs. scheduled refresh (Power BI Service overview)
+
+Day 2 — Power Query Data Cleaning
+  ✦  Power Query Editor Basics
+› Opening Power Query Editor: Home → Transform Data
+› Applied Steps pane: every transformation recorded as a step (undo/redo any step)
+› Renaming queries, removing columns & reordering columns for clean model
+› Filtering rows: removing blanks, nulls & test/dummy data rows before loading
+  ✦  Data Transformations
+› Changing data types: text → whole number, text → date, decimal number corrections
+› Splitting columns: first name/last name split; date → separate Day, Month, Year columns
+› Replacing values: 'M' → 'Male', 'F' → 'Female', fixing inconsistent category names
+› Merging queries: combining a sales table with a product master table by product ID (LEFT JOIN)
+
+Day 3 — Data Modeling & Relationships
+  ✦  Building a Data Model
+› Model view: dragging tables & creating relationships by connecting matching columns
+› One-to-many relationship: one product in Product table → many rows in Sales table
+› Cardinality & cross-filter direction: single vs. both – when each is appropriate
+› Star schema: fact table (Sales) surrounded by dimension tables (Date, Product, Customer, Region)
+  ✦  Date Table & Time Intelligence
+› Why a dedicated Date table is needed: covering all dates including those with no sales
+› Creating a Date table using DAX: CALENDAR(DATE(2023,1,1), DATE(2024,12,31))
+› Adding Year, Month, Month Name, Quarter & Week Number columns to Date table
+› Marking the Date table: right-click → Mark as Date Table for time-intelligence DAX to work
+
+Day 4 — DAX Measures & Core Visuals
+  ✦  DAX Fundamentals
+› Measures vs. calculated columns: measures are dynamic (recalculate per filter), columns are static
+› SUM, COUNT, COUNTROWS, AVERAGE & DISTINCTCOUNT – the essential 5 aggregation measures
+› CALCULATE: overriding filter context – e.g., CALCULATE(SUM(Sales[Revenue]), Region='North')
+› DIVIDE(numerator, denominator, alternate): safe division avoiding divide-by-zero errors
+  ✦  Core Report Visuals
+› Bar & column charts: clustered vs. stacked; X-axis = category, Y-axis = measure
+› Line chart: trend over time; combo chart: bar (revenue) + line (profit %) on dual axis
+› Card visual: single KPI number (Total Revenue: ₹12.4L); Multi-row card: 4 KPIs in one visual
+› Table & matrix: matrix with rows (product) × columns (region) × values (revenue) for cross-tab
+
+Day 5 — Dashboard Design & Publishing
+  ✦  Interactive Dashboard Design
+› Report canvas sizing: 16:9 standard (1280×720) for screen presentations
+› Slicers: dropdown, list & between (date range) – controlling all visuals on the page
+› Bookmark + button navigation: creating tab-style navigation between report pages
+› Conditional formatting: color scale on matrix values & icon sets (up/down arrows on % change)
+  ✦  Publishing to Power BI Service
+› Publishing: Home → Publish → selecting workspace in Power BI Service
+› Power BI Service dashboard: pinning visuals from multiple reports onto one dashboard
+› Sharing a report: 'Share' button → enter email or 'Publish to Web' for public embed link
+› Row-Level Security intro: creating roles to restrict which data each user can see
+
+Day 6 — Dashboard Project, Assessment & Certificate
+  ✦  Capstone Project – Business Intelligence Dashboard
+› Build a 2-page Power BI report from a provided retail sales dataset (500+ rows)
+› Page 1 (Executive View): revenue card, MoM growth %, top 5 products bar & region map visual
+› Page 2 (Detail View): product × region matrix + date slicer + drill-through to transaction table
+› Publish to Power BI Service & share live report link with trainer
+  ✦  Assessment & Career Guidance
+› Practical test: build a 1-page dashboard from a new CSV dataset in 45 minutes
+› DAX quiz: 10 questions on measures, CALCULATE, time intelligence & filter context
+› Career paths: BI analyst, data analyst, reporting analyst, Power BI developer
+› Certificate distribution & path to Power BI & Business Analytics Professional (1-Month) course
+
+
+
+15. Professional Employability & Career Success Program
+
+Duration
+6 Days
+Training Hours
+30–36 Hours
+Fees (Bihar)
+₹3,999
+Eligibility
+Final-Year Students & Job Seekers
+Career Opportunities
+Career Readiness
+
+6-Day Module Breakdown
+
+Day 1 — Resume Writing & Personal Branding
+  ✦  Professional Resume Crafting
+› Resume formats: chronological (most common), functional & combination – when to use each
+› Sections: Header (name, phone, email, LinkedIn), Summary, Skills, Education, Projects, Certifications
+› ATS optimization: mirroring keywords from job description naturally in resume language
+› Action verb + metric formula: 'Increased social media engagement by 40% using content strategy'
+  ✦  Personal Branding Basics
+› Personal brand statement: who you are, what you do, for whom & what makes you different
+› Online presence audit: Google yourself – what does your digital footprint say about you?
+› Professional email address format: firstname.lastname@gmail.com (not cool_boy99@...)
+› Consistent profile across resume, LinkedIn & job portals: same photo, headline & skills
+
+Day 2 — LinkedIn Profile Optimization
+  ✦  Profile Completeness & Visibility
+› Profile photo: plain background, professional attire, face fills 60% of frame, good lighting
+› Banner image: Canva template for job seekers (field + tagline or career goal)
+› Headline formula: [Current Role or Aspiring Role] | [Top 2–3 Skills] | [Value Proposition]
+› Open To Work: enabling for recruiters only vs. all LinkedIn members – strategic choice
+  ✦  About, Experience & Skills Sections
+› About section: 3-paragraph story – who you are, what you bring & what you're looking for
+› Experience: bullet points with accomplishments (not just duties) using STAR format briefly
+› Projects section: listing academic, freelance or personal projects with tools used & outcome
+› Skills & endorsements: listing 10–15 relevant skills; requesting endorsements from batchmates & seniors
+
+Day 3 — Aptitude, Reasoning & Verbal Ability
+  ✦  Quantitative & Logical Reasoning
+› Percentages: calculating % increase/decrease, profit/loss & discount shortcuts
+› Ratio & proportion, time-speed-distance & work-rate problems with speed tricks
+› Logical reasoning: number series, letter series, coding-decoding & blood relation questions
+› Syllogism & direction sense: Venn diagram method for 'All A are B, some B are C' type questions
+  ✦  Verbal Ability & English
+› Reading comprehension: finding main idea, inference & vocabulary-in-context in 2 minutes
+› Error spotting: subject-verb agreement, tense consistency & article/preposition errors
+› Sentence completion & para-jumbles: logical coherence & transition word clues
+› Practice platforms: IndiaBix, Freshersworld & specific company previous year papers online
+
+Day 4 — Communication Skills & Group Discussion
+  ✦  Verbal Communication & Public Speaking
+› The 3 Cs of communication: Clear, Concise & Confident delivery
+› Eliminating filler words (um, uh, you know, basically): pause technique practice
+› Structured speaking: PREP method (Point, Reason, Example, Point) for clear responses
+› Extempore practice: 2-minute speech on assigned topics – done by every student this day
+  ✦  Group Discussion (GD) Mastery
+› GD formats: topic-based, case study, abstract (e.g., 'Blue is better than red') & current affairs
+› Entry strategies: initiating with a strong opening statement & citing data or example
+› Contributing: making 3–4 high-quality points vs. dominating the conversation
+› GD practice round: 6-member batch GD on 'AI in Education' with trainer as observer & scorer
+
+Day 5 — Interview Preparation & Soft Skills
+  ✦  HR Interview Mastery
+› 'Tell me about yourself': 90-second pitch = education + skills + achievement + career goal
+› Strength & weakness: real answers with self-awareness + mitigation strategy for weakness
+› STAR method (Situation, Task, Action, Result) for behavioral questions: 'Tell me about a challenge you faced'
+› Salary negotiation: researching market rate, countering low offers & discussing CTC vs. in-hand
+  ✦  Professional Soft Skills
+› Time management: Eisenhower matrix (urgent/important 4-quadrant) for daily prioritization
+› Workplace etiquette: punctuality, email tone, meeting behavior & social media professionalism
+› Teamwork & conflict resolution: active listening, 'I' statements & finding common ground
+› First 90 days at work: listening more than talking, building trust & showing initiative
+
+Day 6 — Mock Interviews, Job Search & Certificate
+  ✦  Mock Interview Session
+› Individual 10-minute HR mock interview: recorded on phone, then reviewed together with trainer
+› Panel GD: 6-member final group discussion with marks for initiation, participation, content & language
+› Technical round simulation: basic domain questions based on each student's field of study/interest
+› Post-interview debrief: written feedback form + verbal coaching on 2 key improvements
+  ✦  Job Search Strategy & Certificate
+› Smart job hunting: Naukri, LinkedIn Jobs, Internshala, Indeed & Wellfound (startups) profile setup
+› Application tracking sheet: company, role, date applied, status & follow-up date
+› Networking for jobs: informational interviews, alumni connections & LinkedIn cold messaging template
+› Certificate distribution & 60-day placement assistance + weekly check-in support
+
+

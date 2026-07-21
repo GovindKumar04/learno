@@ -28,23 +28,17 @@ import { getSitemap } from "./controllers/sitemap.controller.js";
 
 const app = express();
 
-// Behind Nginx in production — trust exactly one proxy hop so req.ip is the real
-// client (needed for rate limiting and audit logging), without trusting
-// arbitrary X-Forwarded-For values.
+
 app.set("trust proxy", 1);
 
-// Security headers. CORP is relaxed to cross-origin because the API serves
-// images/PDFs (avatars, certificates) that the client loads from another origin.
+
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
-// Gzip responses — free latency/bandwidth win.
+
 app.use(compression());
 
-// Cap request bodies so a single oversized payload can't pin a worker.
 app.use(express.json({ limit: "100kb" }));
-// Allowed browser origins. Local dev origins are always permitted so you can run
-// the frontend on localhost against this (deployed) API; CLIENT_URL adds your
-// production frontend domain(s) — comma-separate to allow more than one.
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
@@ -52,7 +46,7 @@ const allowedOrigins = [
 ];
 app.use(cors({
   origin: (origin, cb) => {
-    // No Origin header → same-origin or non-browser client (curl, server-to-server): allow.
+   
     if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
     return cb(new Error(`Not allowed by CORS: ${origin}`));
   },
@@ -60,8 +54,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
-// General flood protection on every route (targeted limiters live on the
-// sensitive routers below).
+
 app.use(apiLimiter);
 
 // Dynamic sitemap — built from published courses + static routes.

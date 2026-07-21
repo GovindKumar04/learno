@@ -8,6 +8,9 @@ import {
   getCourseBySlugService,
   updateCourseService,
   deleteCourseService,
+  listDeletedCoursesService,
+  restoreCourseService,
+  permanentlyDeleteCourseService,
   getTrendingCoursesService,
   getTopRatedCoursesService,
   getRecommendedCoursesService,
@@ -51,9 +54,28 @@ const updateCourse = asyncHandler(async (req, res) => {
   return res.json(new ApiResponse(200, course, "Course updated successfully"));
 });
 
+// Soft delete — move the course to the recycle bin (restorable for 60 days).
 const deleteCourse = asyncHandler(async (req, res) => {
-  await deleteCourseService({ courseId: req.params.courseId, password: req.body?.password, adminId: req.user.id });
-  return res.json(new ApiResponse(200, null, "Course deleted successfully"));
+  await deleteCourseService({ courseId: req.params.courseId });
+  return res.json(new ApiResponse(200, null, "Course moved to the recycle bin"));
+});
+
+// List the recycle bin (admin).
+const getDeletedCourses = asyncHandler(async (req, res) => {
+  const courses = await listDeletedCoursesService();
+  return res.json(new ApiResponse(200, { courses }));
+});
+
+// Restore a binned course.
+const restoreCourse = asyncHandler(async (req, res) => {
+  const course = await restoreCourseService({ courseId: req.params.courseId });
+  return res.json(new ApiResponse(200, course, "Course restored"));
+});
+
+// Permanently delete a binned course now (password-gated).
+const permanentlyDeleteCourse = asyncHandler(async (req, res) => {
+  await permanentlyDeleteCourseService({ courseId: req.params.courseId, password: req.body?.password, adminId: req.user.id });
+  return res.json(new ApiResponse(200, null, "Course permanently deleted"));
 });
 
 // ─── Home-page discovery ────────────────────────────────────────────────────
@@ -101,5 +123,6 @@ const logSearch = asyncHandler(async (req, res) => {
 
 export {
   createCourse, getAllCourses, getCourseCategories, getCourseById, getCourseBySlug, updateCourse, deleteCourse,
+  getDeletedCourses, restoreCourse, permanentlyDeleteCourse,
   getTrending, getTopRated, getRecommended, getBecauseYouViewed, recordCourseView, logSearch,
 };

@@ -6,7 +6,7 @@ const socialLinkSchema = new mongoose.Schema(
   { _id: false }
 );
 
-// Affiliate accounts.
+
 const affiliateSchema = new mongoose.Schema(
   {
     _id:              { type: String, default: newId },

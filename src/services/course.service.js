@@ -192,6 +192,11 @@ export const updateCourseService = async ({ courseId, body, file }) => {
     const uploaded = await uploadToCloudinary(file.path, file.mimetype, "course-thumbnails");
     course.thumbnail = uploaded.url;
     course.thumbnailPublicId = uploaded.publicId;
+  } else if (body.removeThumbnail === "true" || body.removeThumbnail === true) {
+    // Explicit "remove thumbnail" with no replacement uploaded.
+    if (course.thumbnailPublicId) await deleteFromCloudinary(course.thumbnailPublicId, "image");
+    course.thumbnail = undefined;
+    course.thumbnailPublicId = undefined;
   }
 
   if (course.isPublished) {
@@ -204,38 +209,91 @@ export const updateCourseService = async ({ courseId, body, file }) => {
   return course;
 };
 
-export const deleteCourseService = async ({ courseId, password, adminId }) => {
-  await verifyAdminPassword(adminId, password);
+// ─── Recycle bin (soft delete / restore / purge) ────────────────────────────
 
+// Move a course to the recycle bin (soft delete). The course and its modules /
+// materials are kept intact and hidden; it stays in the bin indefinitely until an
+// admin restores or permanently deletes it. We only block on things that make
+// hiding the course harmful or irreversible: students mid-course, or issued
+// certificates that reference it.
+export const deleteCourseService = async ({ courseId }) => {
   const course = await Course.findById(courseId);
   if (!course) throw new ApiError(404, "Course not found");
 
-  // Refuse to delete while structural records still depend on this course — the
-  // admin must remove those first (no silent cascade).
-  const [modules, batches, onlineClasses, activeEnrollments, certificates] = await Promise.all([
-    Module.countDocuments({ course: courseId }),
-    Batch.countDocuments({ courseId }),
-    OnlineClass.countDocuments({ courseId }),
+  const [activeEnrollments, certificates] = await Promise.all([
     Enrollment.countDocuments({ courseId, isActive: true }),
     Certificate.countDocuments({ courseId }),
   ]);
   assertNoDependents("course", [
-    { label: "module(s)", count: modules },
-    { label: "batch(es)", count: batches },
-    { label: "live class(es)", count: onlineClasses },
     { label: "active enrollment(s)", count: activeEnrollments },
     { label: "issued certificate(s)", count: certificates },
   ]);
 
-  // Safe to remove: only historical leftovers (already-unenrolled rows + their
-  // progress) remain, plus the thumbnail asset.
-  if (course.thumbnailPublicId) await deleteFromCloudinary(course.thumbnailPublicId, "image");
+  course.deletedAt = new Date();
+  await course.save();
+  await bumpNs(COURSES_NS);
+  return course;
+};
+
+// Physically remove a course and everything that belongs only to it. Used by the
+// permanent-delete action and the retention sweep. Best-effort on Cloudinary so a
+// single asset failure can't leave the DB half-cleaned.
+const cascadeDeleteCourse = async (course) => {
+  const courseId = course._id;
+
+  const modules = await Module.find({ course: courseId }).select("_id").lean();
+  const moduleIds = modules.map((m) => m._id);
+
+  if (moduleIds.length) {
+    const materials = await Material.find({ module: { $in: moduleIds } }).select("publicId type").lean();
+    for (const mat of materials) {
+      if (!mat.publicId) continue;
+      const resType = mat.type === "video" ? "video" : mat.type === "pdf" ? "raw" : "image";
+      await deleteFromCloudinary(mat.publicId, resType).catch(() => {});
+    }
+    await Material.deleteMany({ module: { $in: moduleIds } });
+    await Module.deleteMany({ course: courseId });
+  }
+
+  if (course.thumbnailPublicId) await deleteFromCloudinary(course.thumbnailPublicId, "image").catch(() => {});
+
   await Promise.all([
+    Batch.deleteMany({ courseId }),
+    OnlineClass.deleteMany({ courseId }),
     Enrollment.deleteMany({ courseId }),
     Progress.deleteMany({ courseId }),
   ]);
 
-  await Course.findByIdAndDelete(courseId);
+  // deleteOne isn't affected by the soft-delete scope, so it removes the binned doc.
+  await Course.deleteOne({ _id: courseId });
+};
+
+// List every course currently in the recycle bin (most recently deleted first).
+// Courses stay here indefinitely until an admin restores or purges them.
+export const listDeletedCoursesService = async () => {
+  return Course.find({ deletedAt: { $ne: null } })
+    .setOptions({ withDeleted: true })
+    .select("-modules -reviews")
+    .sort({ deletedAt: -1 })
+    .lean();
+};
+
+// Restore a binned course back to its previous (live) state.
+export const restoreCourseService = async ({ courseId }) => {
+  const course = await Course.findOne({ _id: courseId, deletedAt: { $ne: null } }).setOptions({ withDeleted: true });
+  if (!course) throw new ApiError(404, "Course not found in the recycle bin");
+  course.deletedAt = null;
+  await course.save();
+  await bumpNs(COURSES_NS);
+  return course;
+};
+
+// Permanently delete a binned course now (skips the 60-day wait). Password-gated.
+export const permanentlyDeleteCourseService = async ({ courseId, password, adminId }) => {
+  await verifyAdminPassword(adminId, password);
+  const course = await Course.findOne({ _id: courseId }).setOptions({ withDeleted: true });
+  if (!course) throw new ApiError(404, "Course not found");
+  await cascadeDeleteCourse(course);
   await bumpNs(COURSES_NS);
 };
 
