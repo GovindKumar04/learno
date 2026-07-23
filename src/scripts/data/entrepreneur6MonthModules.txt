@@ -1,0 +1,184 @@
+Course #E46: Startup Incubation & Accelerator Program
+Domain
+Startup Ecosystem & Venture Building
+Duration
+6 Months
+Fees
+Rs.49,999
+
+Month 1 - Idea Validation & Problem-Solution Fit
+> Startup Ideation Framework
+  Problem-first ideation: identifying problems worth solving (large market, acute pain, poor existing solutions, personal insight), and avoiding solution-first thinking
+  Idea validation frameworks: Lean Canvas (9-block one-page business model), Business Model Canvas, and Mom Test (customer interview technique to avoid false positives)
+  Market sizing: TAM (Total Addressable Market), SAM (Serviceable Addressable Market), SOM (Serviceable Obtainable Market) -- bottom-up vs. top-down sizing
+  Competitor mapping: direct (same solution), indirect (different solution, same problem), substitute (alternative behavior), and white space identification
+  India startup ecosystem: Startup India registration benefits (tax exemption, IPR fast-track, self-certification), DPIIT recognition process, and startup India portal
+> Customer Discovery
+  Customer segments: defining the primary customer (who pays), secondary customer (who uses), and influencer (who recommends) -- and their different motivations
+  Interview methodology: 30+ customer discovery interviews, open-ended questions ("Tell me about the last time you faced X"), avoiding leading questions, and synthesis patterns
+  Persona development: building data-driven proto-personas from interview patterns, and validating with quantitative survey to 200+ potential customers
+  Jobs-to-be-done deep dive: functional job (what they're trying to accomplish), emotional job (how they want to feel), and social job (how they want to be perceived)
+  Pivot triggers: when to pivot (insufficient traction, pattern of wrong customer responses, better opportunity discovered), pivot types, and conducting a structured pivot
+
+Month 2 - Business Model Design & MVP
+> Business Model Innovation
+  Revenue model selection: subscription (predictable, loyal), transactional (volume-dependent), marketplace (network effects), freemium (wide top of funnel), and razor-blade (subsidized hardware, paid consumables)
+  Pricing strategy: value-based pricing (willingness to pay research), penetration pricing (low to gain share), premium pricing (for quality signal), and dynamic pricing
+  Unit economics from day one: LTV calculation (ARPU × gross margin × average lifetime), CAC (fully-loaded -- including salaries, tools, overhead), and LTV:CAC target (>3x)
+  Financial modeling: building a 3-year bottom-up financial model (hiring plan → costs → revenue assumptions → P&L → cash flow → runway)
+  Scenario planning: base, bull, bear cases -- and identifying the key assumptions that most affect the outcome (sensitivity analysis)
+> MVP Development
+  MVP philosophy: the minimum feature set that tests your riskiest assumption -- not the smallest possible product, but the most learning-efficient product
+  MVP types: landing page (test demand before building), concierge (manual service before automation), wizard of oz (fake automation), prototype (clickable Figma), and paper prototype
+  Build vs. buy vs. partner: for non-core features, using APIs (Stripe for payments, Twilio for SMS, SendGrid for email), no-code tools (Bubble, Glide, Webflow), and freelancers
+  Tech stack selection for early startups: MERN (MongoDB, Express, React, Node) for web, React Native or Flutter for mobile -- and when to care about technology choices
+  Launch and feedback loop: soft launch (50-100 users), structured feedback collection (in-app NPS, user interviews), and rapid iteration cycles (weekly sprints)
+
+Month 3 - Go-to-Market & Early Traction
+> Go-to-Market Strategy
+  GTM strategy framework: who (ICP -- Ideal Customer Profile), what (value proposition and messaging), where (channels), how (sales motion), and when (launch timing)
+  Channel selection: inbound (content, SEO, social) vs. outbound (cold email, cold call, LinkedIn outreach), and paid (search, social, display) -- prioritizing by CAC and conversion
+  Product-led growth (PLG): free trial, freemium, self-serve onboarding, and viral loops (collaboration, sharing, referral) -- examples (Slack, Notion, Calendly)
+  Community-led growth: building a community around the problem (not the product), providing value before selling, and converting community members to customers
+  Launch playbook: building waitlist (Product Hunt, BetaList, LinkedIn), launch day tactics, press outreach, and first 100 customers strategy (do things that don't scale)
+> Early Traction & Metrics
+  North Star Metric: the single metric that best captures the core value delivered to customers -- and secondary metrics (inputs) that drive it
+  Pirate metrics (AARRR): Acquisition (how users find you), Activation (first value experience), Retention (do they come back?), Referral (do they tell others?), Revenue (do they pay?)
+  Retention analysis: cohort retention curves (D1, D7, D30 retention), churn analysis (why users leave), and identifying the "aha moment" (when users find core value)
+  Experiments and A/B tests: structured experiment framework (hypothesis, variant, control, metric, duration), and building a culture of experimentation
+  Investor traction metrics: what investors look for at pre-seed (problem validation, team), seed (early PMF signals, initial revenue), and Series A (strong retention, clear GTM)
+
+Month 4 - Fundraising & Investor Relations
+> Fundraising Strategy
+  Fundraising landscape India: angels (individual, Rs.5L-50L), angel networks (Mumbai Angels, Indian Angel Network, LetsVenture), seed funds (Blume, Kae, Antler), and VCs (Sequoia Surge, Nexus, Accel)
+  Funding stages: pre-seed (idea + team, Rs.25L-2Cr), seed (MVP + initial traction, Rs.1-10Cr), Series A (PMF + repeatable GTM, Rs.25-100Cr), and Series B+ (scaling)
+  Instruments: equity (straightforward ownership), SAFE (Simple Agreement for Future Equity -- Y Combinator standard), and convertible notes (India: compulsorily convertible preference shares -- CCPS)
+  Valuation at early stage: pre-revenue valuation methods (scorecard, Berkus, risk factor summation), and negotiation dynamics (founder vs. investor leverage)
+  Alternative funding: government grants (DST, BIRAC, Startup India Seed Fund Scheme -- Rs.20L-1Cr), revenue-based financing (Velocity, Recur Club), and accelerators (Y Combinator, Antler India, Sequoia Surge, 100X.VC)
+> Pitch Deck & Investor Outreach
+  Pitch deck structure: Problem, Solution, Market Size, Product, Traction, Business Model, Team, Competition, Financials, Ask -- and what investors focus on most
+  Storytelling in pitch: the narrative arc (hero's journey for founder story), making investors feel the problem, and ending with a compelling vision
+  Traction slide: showing momentum (MoM growth), key metrics (GMV, ARR, users, NPS), and customer logos/quotes
+  Financial slide: 3-year projections (revenue, burn, runway), use of funds (hiring plan + marketing + product), and key milestones to achieve with this round
+  Investor outreach: warm intro vs. cold email, researching investor portfolio fit, and follow-up cadence (persistent but not desperate)
+
+Month 5 - Team Building & Organizational Design
+> Founding Team Dynamics
+  Co-founder relationship: complementary skills (tech + business, product + sales), alignment on vision and values, conflict resolution mechanism, and vesting schedule (4-year, 1-year cliff -- standard)
+  First key hires: founding engineer (full-stack, pragmatic), head of growth/marketing, first salesperson -- and hiring for startup stage vs. experience at large companies
+  Equity for early employees: ESOP pool (10-15% at seed stage), vesting schedule, exercise price (fair market value, usually low at early stage), and liquidation preference implications
+  Culture as competitive advantage: defining values (behaviors, not platitudes), hiring for culture add (not just culture fit), and rituals that reinforce culture (all-hands, retrospectives)
+  Remote and hybrid teams: async communication (Slack, Notion, Loom), documentation culture, and managing a distributed team across India (time zones, connectivity)
+> Legal & Compliance for Startups
+  Company structure: private limited company (recommended for funded startups -- investor-friendly, allows ESOP), LLP (for consulting, lower compliance), and one-person company
+  Shareholder agreement: key clauses (anti-dilution, pro-rata rights, information rights, drag-along, tag-along, ROFR), and founder vs. investor negotiation
+  IP assignment: ensuring all IP created by founders and employees is assigned to the company (invention assignment agreement), and open-source license compliance
+  Startup India and DPIIT: registration process, benefits (80IC tax exemption for 3 years, IPR fee reduction, fast-track exit), and inter-ministerial board recognition
+  Employment contracts: offer letter, employment agreement (IP assignment, non-compete -- limited enforceability in India, NDA), and ESOP grant letter
+
+Month 6 - Scaling & Exit Strategy
+> Scaling the Startup
+  Scaling readiness: PMF confirmed (retention flattens, users pull product), unit economics work (LTV:CAC > 3x, payback < 12 months), and repeatable GTM motion
+  Scaling channels: from 100 to 10,000 customers -- which channels that worked at small scale fail at large scale (referral caps out, cold outreach doesn't scale), and channel expansion
+  Organizational scaling: from flat (everyone reports to founder) to functional (heads of product, engineering, sales, marketing) to divisional (business units) -- and when each transition happens
+  International expansion: expanding to Southeast Asia (similar markets), Middle East (Indian diaspora), or US (largest market) -- playbook for geographic expansion
+  Building a board: why startups need a board (governance, strategy, fundraising advice), board composition (founders + investors + independents), and running effective board meetings
+> Capstone - Investor-Ready Startup
+  Complete a full startup pitch package: executive summary (1 page), pitch deck (12-15 slides), financial model (3-year with assumptions), and data room setup
+  Conduct mock investor due diligence: present to a panel of real investors/mentors, receive critical feedback, and iterate based on feedback
+  Document the customer discovery and validation journey: interview summary, pivot history, and evidence of PMF
+  Build a 12-month operating plan post-funding: quarterly OKRs, hiring plan, product roadmap, and marketing calendar
+  Present the complete investor-ready startup to a live audience of investors, entrepreneurs, and mentors at a Demo Day event
+
+
+Course #E50: CEO Excellence & Executive Leadership Program
+Domain
+Executive Leadership & CEO Development
+Duration
+6 Months
+Fees
+Rs.59,999
+
+Month 1 - CEO Role & Strategic Leadership
+> The CEO Mindset
+  CEO vs. founder: the hardest transition in a startup's life -- from building to enabling, from doing to leading, and from expert to generalist
+  CEO job description: setting direction (vision, strategy), building the team (hiring, culture), allocating resources (capital, talent, time), and representing the company externally
+  Time management for CEOs: "Maker vs. Manager" schedule (Paul Graham), CEO time audit (how you spend time vs. how you should), and protecting deep work time
+  Decision-making frameworks: RAPID (Recommend, Agree, Perform, Input, Decide), decision rights (who decides what), and separating reversible (fast) from irreversible (careful) decisions
+  CEO psychology: dealing with loneliness at the top, managing anxiety and uncertainty, finding peer support (CEO roundtables, YPO, EO), and building resilience
+> Strategic Planning
+  Strategic planning process: external analysis (PESTEL, Porter's Five Forces, competitive intelligence), internal analysis (SWOT, core competencies, resource audit)
+  Vision and mission: crafting a 10-year vision (BHAG -- Big Hairy Audacious Goal), 3-year picture (vivid description of success), and annual goals
+  Strategy frameworks: Blue Ocean Strategy (value innovation, creating uncontested market space), Ansoff Matrix (market/product growth options), and Porter's generic strategies
+  OKR system for the organization: company OKRs → department OKRs → individual OKRs, quarterly planning rhythm, and avoiding OKR theater (compliance without commitment)
+  Strategic communication: cascading strategy to the organization (all-hands, manager meetings, written strategy memo), and ensuring alignment without creating rigidity
+
+Month 2 - Financial Leadership & Capital Allocation
+> Financial Acumen for CEOs
+  Financial statements mastery: P&L (revenue model, cost structure, operating leverage), balance sheet (working capital management, asset efficiency), and cash flow (operating cash flow is the real profitability measure)
+  Key financial metrics by stage: pre-revenue (burn rate, runway), early revenue (ARR, MRR, gross margin), growth (CAC, LTV, payback, NRR), and mature (EBITDA margin, FCF conversion, ROIC)
+  Financial forecasting: rolling 13-week cash flow forecast (treasury management), annual budget process (zero-based vs. incremental), and quarterly reforecast
+  Working capital management: AR (invoicing promptly, collections process, factoring), AP (payment terms optimization), and inventory (if applicable) -- cash conversion cycle
+  Audit and compliance: statutory audit requirements (Companies Act), tax compliance (advance tax, TDS, GST), and building a finance team (CFO, controller, FP&A)
+> Capital Allocation & Investor Relations
+  Capital allocation framework: investing in growth (R&D, sales, marketing), maintaining core (operations, infrastructure), and returning capital (buybacks, dividends -- rare for growth companies)
+  Fundraising strategy: when to raise (before you need it), how much (18-24 months runway), from whom (strategic vs. financial investors), and at what terms
+  Board management: board meeting preparation (pre-read, materials), conducting effective board meetings (discussion-heavy, not presentation-heavy), and managing difficult board members
+  Investor communication: monthly/quarterly investor updates (transparency builds trust), managing investor expectations (under-promise, over-deliver), and crisis communication with investors
+  M&A strategy: acquiring for talent (acqui-hire), technology, customers, or distribution -- and M&A process (thesis, target identification, due diligence, integration planning)
+
+Month 3 - People Leadership & Culture
+> Executive Team Building
+  Building the C-suite: when to hire a COO (when operations are complex), CFO (before Series B), CTO (when tech is core), CMO (when brand/marketing is strategic), and CPO
+  Executive hiring: using executive search firms (retained vs. contingency), structured interviews for senior roles, and reference checks (backdoor references are critical)
+  Managing executives: setting clear outcomes (not activities), CEO-executive 1:1 structure, managing underperforming executives (direct feedback, PIP, parting ways), and executive team dynamics
+  Compensation for senior leaders: market benchmarking (Radford, Aon Hewitt surveys), equity vs. cash trade-off, and retention mechanisms (cliff vesting, special retention grants)
+  Succession planning: identifying internal leadership potential, developing successors (stretch assignments, mentoring), and CEO succession (board-level responsibility for public companies)
+> Culture & Organizational Health
+  Culture defined: "the way we do things around here" -- and why culture is the CEO's primary product at scale (Patrick Lencioni, Edgar Schein)
+  Culture assessment: Organizational Health Index (McKinsey), culture surveys (eNPS, Gallup Q12), and qualitative culture diagnosis (Glassdoor, exit interviews, team observations)
+  Building psychological safety: Amy Edmondson's research, leader behaviors that create safety (modeling vulnerability, inviting input, responding non-defensively), and team norms
+  Diversity, Equity & Inclusion (DEI): business case for diversity (McKinsey research), DEI strategy (not just hiring quotas), and inclusion practices that make diverse talent stay
+  Change management: leading large-scale change (Kotter's 8-step model), communicating change (ADKAR model -- Awareness, Desire, Knowledge, Ability, Reinforcement), and managing resistance
+
+Month 4 - Sales, Marketing & Customer Leadership
+> Revenue Leadership
+  CEO as Chief Revenue Officer: in early stages, the CEO sells -- using the CEO role to open doors, build relationships, and close strategic deals
+  Sales strategy: transactional (high volume, low touch, inside sales) vs. enterprise (low volume, high touch, field sales), and building the right sales motion for your product
+  Sales team structure: SDR (lead generation), AE (closing), CSM (retention), and VP Sales -- when to hire each, and how to build a sales management layer
+  Revenue operations (RevOps): aligning sales, marketing, and customer success around revenue, single source of truth (CRM), and revenue reporting cadence
+  Pricing power: building pricing power through product differentiation, switching costs, and network effects -- and raising prices without losing customers
+> Marketing & Brand Leadership
+  CEO as brand ambassador: thought leadership (LinkedIn, speaking, press), personal brand vs. company brand, and the "founder effect" on company reputation
+  Marketing strategy: brand marketing (long-term, awareness, trust) vs. performance marketing (short-term, measurable, scalable) -- and the portfolio approach
+  Content strategy at scale: editorial calendar, content distribution (owned, earned, paid), and building a content machine (internal team vs. agency)
+  PR and media relations: building journalist relationships, crafting press-worthy stories (product launches, funding, milestones, research), and crisis PR
+  Digital marketing sophistication: multi-touch attribution, marketing mix modeling, brand lift studies, and measuring the unmeasurable (brand equity)
+
+Month 5 - Operations, Technology & Risk
+> Operational Excellence
+  Operating cadence: daily standup (optional for executives), weekly leadership team meeting, monthly business review (MBR), quarterly business review (QBR), and annual planning offsite
+  KPI dashboard design: company scorecard (financial + operational + customer + people KPIs), leading vs. lagging indicators, and data-driven decision culture
+  Process excellence: Lean Six Sigma at the leadership level (identifying waste, improving flow), and when to invest in process improvement vs. staying flexible
+  Outsourcing and partnerships: strategic outsourcing (non-core activities), partnership types (technology, distribution, co-marketing), and managing partner relationships
+  Operational risk management: risk register (identify, assess, mitigate, monitor), business continuity planning, and supply chain resilience (multi-source strategy)
+> Technology & Digital Leadership
+  Digital transformation: what it means for non-tech businesses (digitizing customer experience, internal processes, and business model), and avoiding digital transformation theater
+  Technology governance: IT committee, technology investment criteria (ROI, strategic fit, risk), and managing technical debt at the leadership level
+  Data strategy: data as a strategic asset, building data infrastructure (data warehouse, BI tools), data governance (DPDP Act compliance, data quality), and AI/ML adoption strategy
+  Cybersecurity leadership: CEO's role in cybersecurity (risk appetite, budget, culture), key risks (ransomware, data breach, phishing), and incident response plan
+  Emerging technology: AI impact on your industry (automation of tasks, new products, competitive disruption), and building AI capability (team, data, partnerships)
+
+Month 6 - Governance, Exit & Legacy
+> Corporate Governance & Compliance
+  Board of directors: roles (fiduciary duty -- duty of care and loyalty), board committees (audit, compensation, nomination), and independent directors (Companies Act requirement for listed companies)
+  Corporate governance best practices: board meeting frequency (quarterly minimum), board information rights (monthly MIS, annual report, related party disclosures), and conflict of interest management
+  Regulatory compliance: Companies Act 2013 compliance calendar (board meetings, AGM, ROC filings), SEBI compliance (for listed companies), and sector-specific regulations
+  Related party transactions: definition, disclosure requirements, shareholder approval, and arm's length principle -- compliance and transparency
+  ESG reporting: SEBI Business Responsibility and Sustainability Report (BRSR) for top 1000 listed companies, and voluntary ESG reporting for private companies (investor expectation)
+> Exit Strategy & CEO Legacy
+  Exit options: IPO (public listing -- BSE/NSE, or GIFT City IFSC), strategic acquisition (sell to larger player), secondary sale (founders/early investors sell to PE), and management buyout
+  IPO readiness: SEBI ICDR regulations, financial track record requirements (3 years profitability for main board), corporate governance standards, and DRHP (Draft Red Herring Prospectus) preparation
+  Acquisition process: positioning for acquisition (build the right product/team/metrics), M&A process from seller side (banker selection, teaser, CIM, management presentations, due diligence, closing)
+  CEO transition: CEO succession planning, handing over to a professional CEO, and founder role post-transition (executive chairman, product visionary, board member)
+  Building a legacy: what leaders are remembered for (not just financial returns, but people they developed, culture they built, problems they solved), and the CEO's long-term impact

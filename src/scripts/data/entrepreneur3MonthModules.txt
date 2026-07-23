@@ -1,0 +1,763 @@
+Course #E3: Startup Financial Modeling & Valuation
+Domain
+Finance & Accounting
+Duration
+3 Months
+Fees
+Rs.18,999
+
+Month 1 - Financial Foundations & Modeling Basics
+> Financial Statements for Startups
+  P&L statement: revenue lines, COGS, gross margin, operating expenses (burn), EBITDA, and net loss -- what each line means for a startup
+  Balance sheet: assets (cash, AR, inventory, fixed assets), liabilities (debt, AP, deferred revenue), equity (founder shares, investor capital, retained earnings)
+  Cash flow statement: operating (day-to-day), investing (capex), financing (fundraising, debt repayment), and free cash flow
+  Financial ratios for startups: gross margin %, burn multiple (net burn / net new ARR), quick ratio, and CAC payback period
+  Common startup accounting mistakes: mixing personal/business finances, not tracking deferred revenue, and ignoring equity dilution impact
+> Excel Financial Modeling
+  Excel fundamentals for finance: named ranges, OFFSET, INDEX/MATCH, IFERROR, and array formulas for dynamic models
+  Model architecture: assumption sheet → revenue sheet → cost sheet → P&L → balance sheet → cash flow (linked, not hardcoded)
+  Revenue model types: subscription (MRR/ARR), transactional (volume × price), marketplace (GMV × take rate), and SaaS seats
+  Scenario analysis: data tables (one-variable, two-variable), scenario manager, and sensitivity analysis for key assumptions
+  Model auditing: precedent/dependent tracing, formula consistency checks, and using color coding (blue = input, black = formula)
+
+Month 2 - Advanced Modeling & Valuation Methods
+> Startup-Specific Financial Models
+  SaaS metrics model: MRR waterfall (new + expansion - contraction - churn), ARR, NRR (net revenue retention), and LTV/CAC model
+  Unit economics deep dive: cohort analysis in Excel, calculating blended vs. marginal CAC, and payback period by channel
+  Three-statement model: linking P&L to balance sheet (retained earnings) and cash flow (net income + non-cash + working capital)
+  Fundraising model: pre-money/post-money valuation, SAFE mechanics (discount rate, valuation cap, MFN clause), and dilution table
+  Burn rate modeling: runway calculation, hiring plan impact on burn, and sensitivity analysis for different growth scenarios
+> Startup Valuation Methods
+  Venture Capital method: post-money valuation = exit value / expected ROI, and back-calculating pre-money valuation
+  Comparable company analysis (comps): selecting peer companies, EV/Revenue multiples for SaaS (ARR multiple), and adjusting for growth
+  DCF for startups: why traditional DCF is hard (no positive cash flows), terminal value dominance, and using scenario-weighted DCF
+  Scorecard valuation (pre-revenue): comparing startup to median pre-money, scoring on team/market/product/traction factors
+  First Chicago method: three scenarios (success, sideways, failure) × probability × exit value = weighted valuation
+
+Month 3 - Investor Decks, Due Diligence & Capstone
+> Investor Financial Presentation
+  Financial slide in pitch deck: 3-year forecast (revenue, gross margin, EBITDA, cash), key metrics dashboard, and use of funds
+  Data room preparation: audited or reviewed financials, MIS reports, board minutes, cap table, and contracts
+  Due diligence financial checklist: revenue recognition policy, AR aging, deferred revenue schedule, and customer concentration risk
+  Virtual data room (VDR) setup: DocSend (analytics + NDAs), Notion, Google Drive with permission tiers, and folder structure
+  Financial Q&A prep: practicing answers to "How did you arrive at this forecast?", "What are your key assumptions?", "What does your downside look like?"
+> Capstone - Complete Financial Model
+  Build a full 3-statement financial model for a mock SaaS startup from scratch using provided assumptions
+  Perform valuation using VC method and comps -- arrive at a defensible pre-money valuation range
+  Create a 5-slide financial presentation: business model summary, unit economics, 3-year forecast, valuation, and use of funds
+  Stress-test the model: what if churn doubles? What if CAC increases by 50%? What if fundraising is delayed by 6 months?
+  Present model to a mock "investor panel" (peers + instructor) and handle tough financial due diligence questions
+
+
+Course #E26: Operations & Supply Chain for Startups
+Domain
+Operations & Supply Chain
+Duration
+3 Months
+Fees
+Rs.17,999
+
+Month 1 - Operations Fundamentals & Process Design
+> Startup Operations Foundations
+  Operations defined: the system that converts inputs (money, people, materials, time) into outputs (products, services, value) reliably
+  Operations vs. strategy: strategy is what to do, operations is how to do it reliably at scale -- and why most startups fail at operations
+  Process mapping: swimlane diagrams (who does what when), process flow diagrams, and identifying bottlenecks (Theory of Constraints)
+  KPIs for operations: throughput, cycle time, defect rate, on-time delivery, and operational efficiency ratio (output/input)
+  Operations tech stack for startups: Notion/Trello (process docs), Slack (communication), Zapier (automation), and Monday.com (project ops)
+> Supply Chain Basics
+  Supply chain anatomy: supplier → manufacturer → distributor → retailer → customer, and where value is added/lost at each node
+  Make vs. buy decision: total cost analysis (unit cost + overhead + quality + lead time + strategic control), and when to outsource
+  Supplier selection: RFQ (Request for Quotation) process, vendor scorecard (quality, cost, delivery, responsiveness), and multi-sourcing
+  Inventory basics: EOQ (Economic Order Quantity), reorder point (ROP = lead time demand + safety stock), and ABC analysis
+  India-specific supply chain: MSME vendor ecosystem, Government e-Marketplace (GeM), and leveraging SIDBI supply chain financing
+
+Month 2 - Logistics, Quality & Technology
+> Logistics & Fulfillment
+  Last-mile delivery in India: Delhivery, Shiprocket, Ecom Express -- comparison of rates, RTO%, and API integration capability
+  Warehouse operations: layout design (ABC zoning), pick-pack-ship process, WMS (Warehouse Management System) basics
+  Returns management (reverse logistics): return rate benchmarks by category, return processing cost, and refurbishment/resale strategy
+  Freight and shipping: domestic (road, rail, air -- cost vs. speed), international (Incoterms -- FOB, CIF, DDP), and customs documentation
+  3PL vs. in-house fulfillment: decision matrix (volume, SKU count, geographic reach, capital availability), and 3PL contract negotiation
+> Quality Management
+  Quality management systems: ISO 9001 framework, PDCA cycle (Plan-Do-Check-Act), and Six Sigma DMAIC for process improvement
+  Statistical Process Control (SPC): control charts (X-bar, R-chart), control limits vs. specification limits, and detecting process drift
+  Root cause analysis tools: 5 Whys (simple, iterative), Fishbone diagram (cause-effect for complex problems), and Fault Tree Analysis
+  Supplier quality management: incoming quality control (IQC), Approved Vendor List (AVL), and supplier audit process
+  Quality culture: building quality-first mindset in team, cost of poor quality (COPQ), and using quality data for continuous improvement
+
+Month 3 - Scaling Operations & Capstone
+> Scaling Operations
+  Scaling challenges: what breaks at 10x volume (people, process, systems), and the "scaling valley of death" for startups
+  Standard Operating Procedures (SOPs): writing effective SOPs (purpose, scope, steps, owner, frequency), and SOP management system
+  OKRs for operations: setting quarterly operational OKRs, cascading from company to team to individual, and weekly check-ins
+  Tech-enabled operations: ERP systems for SMEs (Zoho ERP, Odoo), when to implement ERP, and avoiding premature ERP complexity
+  Automation roadmap: identifying automation candidates (repetitive, rule-based, high-volume tasks), RPA tools (UiPath, Automation Anywhere)
+> Capstone - Operations Improvement Project
+  Select a real or mock startup with an operational problem (high RTO%, slow fulfillment, quality defects, supplier issues)
+  Map the current state process (as-is), identify waste and bottlenecks using lean tools, and design the future state (to-be)
+  Develop a supply chain strategy: make/buy decisions, supplier selection, inventory policy, and logistics model
+  Create an ops tech stack recommendation: specific tools, integration architecture, implementation timeline, and ROI calculation
+  Present the complete operations transformation plan with before/after KPI projections to a mock board
+
+
+Course #E28: Product Management for Non-Tech Founders
+Domain
+Product Management
+Duration
+3 Months
+Fees
+Rs.19,999
+
+Month 1 - Product Thinking & Discovery
+> Product Management Fundamentals
+  PM role defined: the intersection of business (why), tech (how), and user experience (what) -- and why non-tech founders often make great PMs
+  Product vs. project: product is ongoing (evolves with users), project is finite (defined scope, end date) -- and why confusing them kills startups
+  Product thinking: starting with the problem (not the solution), defining the user, the problem, and the desired outcome
+  Jobs-to-be-done (JTBD) framework: what "job" is the user hiring your product to do? Milkshake example and startup applications
+  Product-market fit signals: retention curves flatten, NPS > 40, users are "very disappointed" without product (Sean Ellis survey)
+> User Research Methods
+  User interview framework: recruiting (5-7 users per segment), interview guide (open-ended, past behavior, not hypothetical), and synthesis
+  Observation methods: contextual inquiry (watch users in their environment), usability testing (task-based), and diary studies
+  Survey design: Likert scale pitfalls, question ordering bias, and validated survey tools (NPS, CSAT, CES -- Customer Effort Score)
+  Persona creation: data-driven personas (from research, not assumptions), anti-persona (who you're NOT building for), and jobs map
+  Competitive analysis: feature matrix, positioning map, and identifying whitespace (unmet needs your competitors are ignoring)
+
+Month 2 - Roadmapping, Prioritization & Design
+> Product Roadmap & Prioritization
+  Roadmap types: now-next-later (flexible, outcome-based), timeline roadmap (for stakeholders), and feature roadmap (for engineering)
+  Prioritization frameworks: RICE (Reach × Impact × Confidence / Effort), MoSCoW (Must-have, Should-have, Could-have, Won't-have), Kano model
+  User story writing: "As a [user], I want to [action] so that [outcome]" -- acceptance criteria, and definition of done
+  Backlog management: epic → user story → task hierarchy, sprint planning, and balancing new features vs. tech debt vs. bug fixes
+  Stakeholder management: saying no (kindly), managing founder/investor feature requests, and using data to defend prioritization decisions
+> UX/UI for Non-Designers
+  UX principles: affordance (visual cues for actions), consistency, feedback (system status), error prevention, and accessibility
+  Information architecture: card sorting, navigation design, and creating site maps for web/mobile apps
+  Wireframing with Figma: low-fidelity wireframes (boxes and lines), component libraries, and collaborative design for non-designers
+  Prototyping: clickable prototypes in Figma, prototype testing (usability sessions), and iterating on feedback
+  Design handoff to developers: Figma inspect mode, design tokens (colors, typography, spacing), and developer Q&A process
+
+Month 3 - Product Launch, Metrics & Capstone
+> Product Launch & Growth
+  Go-to-market for product features: internal beta (dogfooding), closed beta (selected users), and public launch sequencing
+  Launch checklist: support documentation, in-app onboarding (tooltips, walkthroughs), sales enablement, and PR/marketing coordination
+  Feature adoption metrics: activation rate (users who complete key action), adoption rate (% of users using new feature), and engagement depth
+  A/B testing: hypothesis formation, sample size calculation, statistical significance, and interpreting inconclusive results
+  Product-led growth (PLG): freemium model, viral loops (referral, collaboration features), and optimizing the self-serve onboarding funnel
+> Capstone - Product Spec & Roadmap
+  Write a complete Product Requirements Document (PRD) for a new product feature: problem statement, user research summary, goals, user stories, scope, and success metrics
+  Create a 6-month product roadmap with priorities, rationale, and business impact estimates for each initiative
+  Build a product metrics dashboard: define North Star metric, supporting metrics, and leading indicators for a mock product
+  Conduct a mock usability test: create tasks, recruit 3 users, run sessions, synthesize findings, and present recommendations
+  Present the complete product strategy to a mock board: vision, roadmap, resource ask, and expected business outcomes
+
+
+Course #E32: Social Media Marketing & Content Strategy
+Domain
+Marketing & Sales
+Duration
+3 Months
+Fees
+Rs.14,999
+
+Month 1 - Platform Mastery & Content Creation
+> Social Media Fundamentals
+  Algorithm basics: how Facebook/Instagram (engagement rate, watch time, saves), LinkedIn (early engagement, relevance), and YouTube (CTR, watch time) algorithms work
+  Platform selection strategy: where does your target customer spend time? B2B (LinkedIn), B2C fashion (Instagram/Pinterest), educational (YouTube), local (Facebook Groups)
+  Content pillars: 3-5 themes your brand talks about consistently -- and why pillar-based content beats random posting
+  Brand voice and tone: formal vs. conversational, expert vs. peer, and creating a brand voice guide for consistency across team/agency
+  Competitor social media audit: analyzing top 3 competitors (posting frequency, content types, engagement rates, follower growth)
+> Content Creation
+  Graphic design with Canva: brand kit setup (colors, fonts, logo), template creation, and maintaining visual consistency across posts
+  Short-form video (Reels/Shorts): hook in first 3 seconds, caption structure, trending audio usage, and batch filming efficiently
+  Copywriting for social: AIDA formula (Attention, Interest, Desire, Action), power words, and writing captions that drive saves/shares
+  Content calendar: 30-day calendar template, content batching (creating 2 weeks of content in one session), and scheduling tools (Buffer, Later, Meta Business Suite)
+  User-generated content (UGC): how to encourage customers to create content, repurposing UGC legally, and running UGC campaigns
+
+Month 2 - Growth, Engagement & Paid Social
+> Organic Growth Strategies
+  Instagram growth tactics: Reels prioritization, hashtag strategy (mix of niche/mid/broad), Story engagement (polls, Q&A, sliders), and Collab posts
+  LinkedIn growth for founders: thought leadership posts (personal stories + business lessons), engagement pods (ethical use), and LinkedIn newsletter
+  YouTube growth: SEO-optimized titles and descriptions, thumbnail A/B testing, end screens/cards, and community posts for subscriber engagement
+  Community building: Facebook Groups strategy, Discord for product communities, and Telegram for high-engagement audiences
+  Influencer/creator collaboration: micro-influencer identification (10K-100K, high engagement), outreach template, and measuring collaboration ROI
+> Paid Social Media Advertising
+  Meta Ads fundamentals: campaign objective selection (awareness, traffic, engagement, leads, sales), ad set (audience, placement, budget), and ad (creative, copy)
+  Audience targeting: custom audiences (website visitors, customer list, video viewers), lookalike audiences, and interest-based targeting
+  Ad creative best practices: static image vs. video vs. carousel vs. collection, hook-first video structure, and social proof in ads
+  Budgeting and bidding: daily vs. lifetime budget, cost per result benchmarks by objective, and scaling (horizontal vs. vertical)
+  Ad analytics: key metrics (CPM, CTR, CPC, CPL, ROAS), attribution windows (1-day vs. 7-day click), and diagnosing underperforming ads
+
+Month 3 - Analytics, Strategy & Capstone
+> Social Media Analytics & Optimization
+  Platform native analytics: Instagram Insights, LinkedIn Analytics, YouTube Studio -- what each metric means and how to use it
+  Third-party analytics tools: Sprout Social (comprehensive), Hootsuite Analytics, and native Meta/LinkedIn ad manager analytics
+  Content performance analysis: best vs. worst performing content analysis (by reach, engagement, saves, link clicks), and iterating based on data
+  ROI measurement: attributing social media to business outcomes (leads, sales, signups), UTM parameters, and multi-touch attribution
+  Reporting framework: monthly social media report template (KPIs, trends, wins, pivots, next month plan) for founder/investor update
+> Capstone - 90-Day Social Media Strategy
+  Develop a complete 90-day social media strategy for a real or mock brand: platform selection, content pillars, posting frequency, and paid budget allocation
+  Create a 30-day content calendar with actual post copies, visual briefs, and posting schedule
+  Set up and run a small paid social campaign (even Rs. 500 budget): targeting, creative, and analytics reporting
+  Build a social media metrics dashboard tracking: follower growth, engagement rate, reach, website traffic from social, and leads generated
+  Present the strategy and results to a mock client, including lessons learned and next 90-day plan
+
+
+Course #E33: E-Commerce Business Mastery
+Domain
+E-Commerce & Digital Business
+Duration
+3 Months
+Fees
+Rs.16,999
+
+Month 1 - E-Commerce Setup & Product Strategy
+> E-Commerce Business Models
+  B2C e-commerce models: D2C (brand.com), marketplace (Amazon/Flipkart), social commerce (Instagram Shopping), and quick commerce (Blinkit/Zepto)
+  B2B e-commerce: GeM (Government e-Marketplace), Udaan (B2B marketplace), and building direct B2B online ordering systems
+  Dropshipping vs. inventory-owned: margin comparison, quality control, brand building ability, and capital requirements
+  Product selection: niche vs. broad, digital vs. physical, subscription vs. one-time purchase, and using tools (Google Trends, Amazon BSR) to validate
+  D2C brand building: why own website matters (margins, data, brand control), and building brand moat vs. marketplace dependency
+> Setting Up Your Online Store
+  Platform selection: Shopify (best for D2C, global), WooCommerce (WordPress, flexible), Dukaan (India-first, simple), and Meesho/Fynd for marketplace first
+  Domain, hosting, and SSL: choosing brandable domain, Shopify hosting vs. self-hosted, and why HTTPS is non-negotiable for checkout trust
+  Product pages that convert: product photography (white background + lifestyle), SEO-optimized title and description, and social proof (reviews, UGC)
+  Payment gateway integration: Razorpay, PayU, CCAvenue -- comparison of fees, settlement cycle, and international payment support
+  Shipping setup: Shiprocket integration, zone-based shipping rates, free shipping threshold strategy, and COD (Cash on Delivery) management
+
+Month 2 - Marketing, Operations & Conversion
+> E-Commerce Marketing
+  SEO for e-commerce: product page SEO (title tag, meta description, schema markup for products), category page SEO, and blog for informational keywords
+  Google Shopping ads: merchant center setup, product feed optimization, Performance Max campaigns, and ROAS optimization
+  Email marketing for e-commerce: welcome series (5 emails), abandoned cart (3-email sequence), post-purchase (review request + upsell), and win-back campaigns
+  WhatsApp marketing: WhatsApp Business API (Interakt, Wati, AiSensy), broadcast lists, and conversational commerce flows
+  Influencer and affiliate marketing: affiliate program setup (ShareASale, in-house), commission structures, and influencer seeding for new product launches
+> Conversion Rate Optimization (CRO)
+  CRO fundamentals: conversion rate = orders/sessions, and industry benchmarks (1-3% average, 3-5% good, 5%+ excellent)
+  Homepage optimization: above-the-fold hero (clear value prop, CTA), trust signals (reviews count, press logos, return policy), and product discovery
+  Checkout optimization: guest checkout, progress indicator, address autofill, payment options (UPI, cards, wallets, BNPL), and abandonment recovery
+  Heatmaps and session recordings: Hotjar, Microsoft Clarity (free) -- identifying where users click, scroll, and drop off
+  A/B testing for e-commerce: testing product page elements (images, price display, CTA button), statistical significance, and iterating winners
+
+Month 3 - Analytics, Scaling & Capstone
+> E-Commerce Analytics & Scaling
+  Google Analytics 4 (GA4) for e-commerce: enhanced e-commerce setup, funnel analysis (sessions → product views → add to cart → checkout → purchase)
+  Key e-commerce metrics: AOV (Average Order Value), repeat purchase rate, CLV (Customer Lifetime Value), return rate, and net revenue per customer
+  Scaling channels: from Rs.1L/month to Rs.10L/month -- doubling down on what works, expanding to new channels, and managing working capital
+  International expansion: cross-border e-commerce (Shopify Markets), international shipping (DHL, FedEx), customs and duties, and localization
+  Marketplace expansion: selling on Amazon, Flipkart, Myntra simultaneously -- catalog management, inventory sync, and pricing strategy across channels
+> Capstone - Launch Your E-Commerce Business
+  Set up a complete Shopify store: domain, theme, product pages (minimum 5 products), payment gateway, and shipping zones
+  Develop a 90-day marketing plan: SEO plan, paid ads budget allocation (Meta + Google), email flows setup, and influencer outreach plan
+  Run a real (or simulated with mock budget) Google Shopping and Meta ads campaign -- document setup, targeting, creative, and initial results
+  Create an e-commerce metrics dashboard: daily revenue, conversion rate, CAC, ROAS, and inventory dashboard
+  Present the complete e-commerce business plan and early traction (or projections) to a mock investor panel
+
+
+Course #E36: Franchise Business Development
+Domain
+Business Expansion & Franchising
+Duration
+3 Months
+Fees
+Rs.22,999
+
+Month 1 - Franchise Fundamentals & System Design
+> Franchise Business Model
+  Franchise defined: licensor (franchisor) gives licensee (franchisee) right to use brand, system, and support in exchange for fees
+  Franchise economics: initial franchise fee (one-time), royalty (% of revenue, ongoing), marketing fund contribution, and total investment breakdown
+  Franchise vs. company-owned expansion: capital efficiency (franchisee invests), speed (faster geographic expansion), and trade-offs (less control, shared profit)
+  Indian franchise landscape: Amul (largest franchise network), DTDC, Jawed Habib, Lenskart -- success factors and lessons
+  Legal framework: Franchise Agreement under Indian Contract Act, Intellectual Property protection (trademark, trade secret), and FDD (Franchise Disclosure Document)
+> Operations Manual Development
+  Operations manual purpose: capturing the "how" of your business so franchisees can replicate it without founder involvement
+  Operations manual structure: brand standards, product/service delivery SOPs, customer service scripts, quality checklists, and training program
+  Systemizing your business: process documentation (video + written), recipe standardization (F&B), service delivery checklist, and mystery shopping
+  Brand standards: visual identity usage (logo, colors, signage), uniform standards, store layout/planogram, and digital brand standards
+  Pilot franchise: before franchising, run 2-3 company-owned locations as "labs" to test and refine systems
+
+Month 2 - Franchisee Recruitment & Training
+> Franchisee Recruitment
+  Ideal franchisee profile: financial capability (investment + working capital), local market knowledge, operational aptitude, and brand alignment
+  Franchise discovery process: lead generation (franchise expos, portals like Franchise India), discovery day, application, vetting, and signing
+  Franchise sales without being "salesy": education-first approach, letting the business model sell itself, and avoiding pressure tactics
+  Franchise agreement negotiation: territory exclusivity, renewal terms, exit clauses, and sub-franchising rights
+  Franchise disclosure: what must be disclosed (financial performance representations, litigation history, franchisee contacts for due diligence)
+> Franchisee Training & Support
+  Initial training program: classroom (brand, systems, product knowledge) + on-the-job (at existing location) + pre-opening support
+  Training delivery: LMS (Learning Management System) for online modules, video library of SOPs, and certification program for franchisees
+  Grand opening support: site selection assistance, store setup supervision, marketing launch, and first 30 days hand-holding
+  Ongoing support structure: field business consultants (FBC) visiting franchisees, helpdesk, monthly calls, and annual franchisee conference
+  Performance management: franchisee scorecard (sales vs. target, mystery shop score, customer satisfaction), underperformer intervention process
+
+Month 3 - Franchise Growth & Capstone
+> Scaling the Franchise Network
+  Territory management: exclusive territory definition (by PIN code, geography, population density), white space analysis, and territory mapping
+  Master franchise model: appointing a master franchisee for a region/state who sub-franchises -- used for rapid geographic expansion
+  Technology for franchise management: franchise management software (FranchiseSoft, Naranga), POS integration for royalty auto-calculation, and performance dashboards
+  Marketing at scale: national brand campaigns (funded by marketing fees), co-op advertising, local marketing playbook for franchisees
+  International franchising: selecting target markets, master franchise for country, adapting to local regulations (FSSAI, labor laws), and managing cultural fit
+> Capstone - Franchise Blueprint
+  Develop a complete franchise feasibility study for your existing or planned business: market analysis, competitive landscape, and investment return model
+  Create a franchise disclosure document (FDD) outline and a full franchise agreement summary (key clauses)
+  Write a 20-page operations manual for one aspect of the business (e.g., customer service, product delivery, store setup)
+  Design a franchisee recruitment pitch deck and discovery day agenda
+  Present the complete franchise expansion plan: business concept, franchise model, financial projections (franchisor P&L), recruitment plan, and support structure
+
+
+Course #E37: Export Business & International Trade
+Domain
+Export & International Trade
+Duration
+3 Months
+Fees
+Rs.19,999
+
+Month 1 - Export Fundamentals & Documentation
+> Export Business Foundations
+  India export opportunity: India exports $450B+ annually, top categories (engineering goods, pharma, textiles, IT services), and finding your product niche
+  Export readiness checklist: IEC (Import Export Code from DGFT), GST registration, current account in bank for foreign remittance, and RCMC (Registration cum Membership Certificate)
+  Export market research: using DGFT trade data, ITC-HS code lookup, top importing countries for your product, and IBEF country reports
+  Pricing for export: cost-plus pricing (production cost + profit + freight + insurance), market-based pricing, and understanding Incoterms impact on price
+  Export promotion councils: APEDA (agriculture), FIEO (general), EPC for textiles/gems/pharma -- benefits, membership, and government scheme access
+> Export Documentation
+  Core export documents: Commercial Invoice (price, quantity, parties), Packing List (weight, dimensions, package count), Bill of Lading/Airway Bill (transport contract)
+  Customs documents: Shipping Bill (export declaration in ICEGATE), Certificate of Origin (for FTA benefits), and ARE-1 form (for excise-free exports)
+  Certificate of Origin: self-certification (for some FTAs), Authorized Economic Operator (AEO), and country-specific CO requirements
+  Letter of Credit (LC): LC at sight vs. usance LC, LC terms (partial shipments, transshipment), and how to read and comply with LC conditions
+  Trade finance documents: Bill of Exchange, Export Packing Credit (Pre-shipment finance from bank at concessional rate), and ECGC insurance
+
+Month 2 - Logistics, Buyers & Market Entry
+> Export Logistics
+  Freight modes: sea freight (FCL vs. LCL -- cost, lead time, min volume), air freight (faster, higher cost, for high-value/perishable goods), and courier (DHL, FedEx -- for samples, small shipments)
+  Freight forwarder selection: IATA-certified, experience in your product/destination, customs broker network, and end-to-end visibility platform
+  Incoterms 2020: EXW (factory pick-up, buyer risk), FOB (seller until vessel), CIF (seller pays freight+insurance), DDP (seller pays all) -- when to use each
+  Customs clearance at destination: HS code classification, import duties (MFN rate vs. preferential rate under FTA), and anti-dumping duties (if applicable)
+  Export packaging: ISPM 15 (wood packaging fumigation requirement), product labeling requirements by country (FDA for US, CE for EU), and packaging for sea transport (humidity, shock)
+> Finding Buyers & Market Entry
+  Digital channels for buyer discovery: Alibaba.com (supplier profile, RFQ response), Global Sources, IndiaMART for international leads, and LinkedIn for B2B
+  Trade fairs and exhibitions: Hannover Messe (engineering), SIAL (food), Magic (apparel) -- how to exhibit cost-effectively (FIEO subsidies available)
+  Buyer qualification: checking importer credibility (Dun & Bradstreet, credit reports), trade references, and starting with small trial orders
+  Distributor vs. direct sales: distributor (faster market entry, local expertise, lower control), direct (higher margin, relationship ownership, more investment)
+  FTA leverage: India-UAE CEPA (0% duty for 97% goods), India-Australia ECTA, GSP benefits for US/EU -- calculating duty savings and competitive advantage
+
+Month 3 - Finance, Compliance & Capstone
+> Export Finance & Compliance
+  Export payment methods: Advance payment (safest for exporter), LC (secure, complex), Documents against Payment (D/P), Open Account (riskiest for exporter)
+  Foreign exchange management: FEMA compliance, realization of export proceeds (within 9 months), and ECB (External Commercial Borrowings) regulations
+  Government export incentives: RoDTEP (Remission of Duties and Taxes on Exported Products) -- rates by HS code, MEIS replacement, and claiming online
+  ECGC (Export Credit Guarantee Corporation): buyer default insurance, political risk insurance, and bank guarantee for post-shipment credit
+  GST on exports: zero-rated supply, LUT (Letter of Undertaking) filing for exports without IGST payment, and IGST refund process (automated vs. manual)
+> Capstone - Export Business Plan
+  Select a product category and target market: HS code identification, import duty in target country, and top competing origins
+  Develop a complete export business plan: product strategy, pricing (FOB/CIF), target buyers (5 specific companies with contact details), and marketing plan
+  Create a sample export documentation set: pro forma invoice, packing list, CO application, and shipping bill draft
+  Calculate export P&L: total landed cost to buyer, landed cost vs. competing origins, and net margin at different Incoterms
+  Present the export business plan to a mock FIEO/bank panel: market opportunity, competitive advantage, financial projections, and government support plan
+
+
+Course #E38: Agricultural Business & Agri-Tech Entrepreneurship
+Domain
+Agriculture & Agri-Tech
+Duration
+3 Months
+Fees
+Rs.15,999
+
+Month 1 - Agriculture Business Models & Value Chain
+> Agri Business Fundamentals
+  India agriculture opportunity: 58% population dependent on agriculture, Rs.20L crore sector, and massive value chain gaps for entrepreneurs
+  Agriculture value chain: input (seeds, fertilizer, equipment) → production (farming) → post-harvest (storage, processing) → distribution (APMC, FPOs) → retail (kirana, modern trade, D2C)
+  Business models in agri: input retail (seeds/agrochem), farm services (mechanization, drone spraying), processing (dal mill, rice mill, flour mill), cold chain, and D2C agri brands
+  FPO (Farmer Producer Organization): government-promoted cooperative model, benefits (collective bargaining, credit access, SFAC grant), and supporting FPOs as a business
+  Agri policy: MSP (Minimum Support Price) mechanism, e-NAM (National Agriculture Market), PM-KISAN, and how policy creates/destroys business opportunities
+> Post-Harvest & Processing
+  Post-harvest loss in India: 15-25% of produce lost (fruits/vegetables), Rs.90,000 crore annual loss -- and the business opportunity this represents
+  Cold chain infrastructure: cold storage (capacity, power requirements, chambers for different commodities), refrigerated transport, and CA (Controlled Atmosphere) storage
+  Processing opportunities: primary processing (cleaning, grading, packaging), secondary processing (value-added -- mango pulp, tomato paste, potato chips), and tertiary (packaged food brands)
+  FSSAI licensing for agri-processing: basic, state, central license categories, GMP (Good Manufacturing Practice) requirements, and organic certification
+  Packaging for agri products: MAP (Modified Atmosphere Packaging) for fresh produce, vacuum packaging for grains, and branding for premium D2C agri products
+
+Month 2 - Agri-Tech & Digital Agriculture
+> Agri-Tech Solutions
+  Agri-tech landscape: precision farming (drones, sensors, soil testing), market linkage platforms (Ninjacart, DeHaat, Agribazaar), input e-commerce (Bijak, Gramophone), and fintech for farmers
+  Drone technology in agriculture: crop spraying (DGCA certification, NPNT compliance), aerial mapping (NDVI for crop health), and seed broadcasting -- business models and economics
+  IoT and sensors: soil moisture sensors (for precision irrigation), weather stations, and automated greenhouses -- cost-benefit for farmers and service provider business model
+  AI/ML in agriculture: crop disease detection (image recognition), yield prediction, and price forecasting -- available APIs and building on top of existing models
+  Agri fintech: Kisan Credit Card (KCC) digitization, crop insurance (PMFBY -- how it works and agent business), and supply chain finance for agri traders
+> Market Linkage & Distribution
+  APMC reform: e-NAM (digital mandi), impact of Farm Laws (2020, now repealed), and alternative marketing channels for farmers
+  Direct farmer-to-consumer models: farm-to-fork subscription boxes, urban farm stores, and online farmer markets -- margins, logistics, and customer acquisition
+  Ninjacart/DeHaat model: aggregating farmer supply, quality grading, and supplying to organized retail/restaurants -- and how to build on this model
+  Export of agricultural products: APEDA-registered products, phytosanitary certificates (plant health), and organic certification for export premium
+  Agri-tourism and diversified farm income: farm stays, organic farm experiences, and agri-education camps -- building rural tourism on existing agricultural assets
+
+Month 3 - Finance, Policy & Capstone
+> Agri Finance & Government Support
+  Agri credit: priority sector lending (banks must lend 18% of ANBC to agriculture), KCC interest subvention (7% effective rate), and NABARD refinance
+  Government schemes: PM Kisan Sampada Yojana (food processing), Agriculture Infrastructure Fund (AIF -- 3% interest subvention for cold chain, processing), and SFAC support for FPOs
+  Subsidy navigation: state government subsidies for greenhouses, drip irrigation (PM Krishi Sinchai Yojana), and solar pumps -- application process and disbursement timeline
+  Agri business financing: project finance for processing units (term loan + machinery loan), MUDRA for small agri enterprises, and Venture Capital (Omnivore Partners, Asha Impact)
+  Insurance for agri business: PMFBY (crop insurance), weather-based insurance, and asset insurance for cold storage/processing equipment
+> Capstone - Agri Business Plan
+  Select an agri business opportunity in your region: identify the specific value chain gap, target customer (farmer, trader, consumer), and business model
+  Conduct market research: primary (interview 10 farmers or agri traders), secondary (district agriculture office data, APEDA data), and competitive landscape
+  Develop financial projections: startup costs (land, equipment, working capital), revenue model, breakeven analysis, and 3-year P&L
+  Identify applicable government schemes: list schemes, eligibility, application process, and estimated subsidy/grant amount
+  Present the complete agri business plan: opportunity, solution, financial projections, government support, and team structure -- to a mock NABARD panel
+
+
+Course #E40: Tourism & Hospitality Business
+Domain
+Tourism & Hospitality
+Duration
+3 Months
+Fees
+Rs.15,999
+
+Month 1 - Tourism Business Models & Setup
+> Tourism Industry Overview
+  India tourism opportunity: Rs.19 lakh crore GDP contribution by 2030, domestic tourism boom (Dekho Apna Desh), and international arrivals recovery
+  Tourism business models: travel agency (OTA partner, B2B, corporate), tour operator (package design, execution), DMC (Destination Management Company), and niche experiences (adventure, wellness, pilgrimage)
+  Hospitality models: hotels (budget to luxury), homestays (Airbnb, MakeMyTrip), serviced apartments, and boutique properties
+  Tourism regulation: Ministry of Tourism approved tour operator, IATA accreditation for air ticketing, SEBI for forex, and state-specific tourism licenses
+  Technology in tourism: GDS (Global Distribution System -- Amadeus, Sabre) for air/hotel inventory, OTA integration, and building direct booking to reduce commission
+> Tourism Business Setup
+  Business registration: MSME registration, GST (tourism services at 5% and 18% depending on service), and state tourism department registration
+  MakeMyTrip/Goibibo affiliate/white-label: becoming a registered travel agent, commission structure (air 1-2%, hotels 10-15%), and building on OTA platform
+  Tour package design: fixed departure (cost efficient, group minimum), FIT (Fully Independent Traveler -- customized), and MICE (Meetings, Incentives, Conferences, Events)
+  Pricing tourism products: cost-plus (hotel + transport + guide + margin), competitive pricing, and dynamic pricing for peak/off-peak seasons
+  Supplier contracts: hotel rate contracts (BAR vs. contracted rates, allotment, release periods), transport contracts, and guide agreements
+
+Month 2 - Marketing & Operations
+> Tourism Marketing
+  Digital marketing for tourism: SEO (destination keywords, "things to do in [city]"), Google Ads (high intent, "Manali tour package"), and Meta Ads (inspiration phase)
+  Content marketing: travel blog (SEO), YouTube travel videos (organic reach + ad revenue), Instagram reels (destination showcase), and Pinterest (travel planning)
+  B2B tourism marketing: corporate travel accounts (HR and admin contacts), wedding market (destination weddings), and school/college tour tie-ups
+  Review management: TripAdvisor, Google My Business for tourism, responding to reviews (positive and negative), and leveraging 5-star reviews in sales
+  WhatsApp for tourism sales: broadcast lists for seasonal offers, personalized itinerary sharing, and quick query response (golden hour -- respond within 1 hour)
+> Tour Operations Management
+  Group tour execution: pre-departure checklist (vouchers, guide briefing, emergency contacts), day-of coordination, and post-tour feedback collection
+  CRM for tourism: tracking leads (inquiry → quotation → booking → post-tour), customer history for repeat business, and referral tracking
+  Guide management: hiring, training, and quality control; government-approved regional guides (IITTM training), and building a guide network
+  Crisis management in tourism: medical emergency protocol, natural disaster contingency, political unrest cancellation policy, and travel insurance recommendations
+  Supplier payment and reconciliation: advance payments, credit terms with hotels, and reconciling multi-supplier tour costs
+
+Month 3 - Niche Tourism & Capstone
+> Niche Tourism Opportunities
+  Adventure tourism: permits (river rafting NOC, trekking permits in restricted areas), safety equipment standards, and liability insurance
+  Wellness tourism: Yoga retreats, Ayurveda packages, spa packages -- India's unique advantage and targeting international wellness tourists
+  Pilgrimage tourism: Char Dham, Vaishno Devi, Shirdi, and Buddhist circuit -- logistics complexity and volume opportunity
+  Rural and community tourism: Ministry of Tourism's village tourism initiative, community-based tourism (CBT), and ethical tourism principles
+  Sustainable tourism: eco-certification (Ecotourism Society of India), carbon footprint calculation for tours, and marketing to eco-conscious travelers
+> Capstone - Tourism Business Plan
+  Design a complete tourism product for a specific destination and niche: detailed itinerary, pricing, inclusions/exclusions, and target market profile
+  Develop a marketing plan: digital channels, OTA listing strategy, B2B partnerships, and content calendar for 3 months
+  Create operational templates: booking confirmation, pre-departure information sheet, and feedback form
+  Calculate tourism business P&L: revenue per tour × departures/month, fixed costs, variable costs, and breakeven occupancy
+  Present the tourism business plan to a mock investor, including SWOT analysis, competitive differentiation, and 3-year financial projections
+
+
+Course #E41: Healthcare & Wellness Business
+Domain
+Healthcare & Wellness
+Duration
+3 Months
+Fees
+Rs.18,999
+
+Month 1 - Healthcare Business Models & Regulation
+> Healthcare Business Landscape
+  India healthcare opportunity: Rs.8.6 lakh crore market growing at 22% CAGR, under-doctored rural areas, and rising lifestyle disease burden
+  Healthcare business models: clinic/polyclinic, diagnostics lab, pharmacy, home healthcare, health tech (telemedicine, health app), and wellness (yoga, fitness, nutrition)
+  Regulatory framework: Clinical Establishments Act (state-specific), AERB for radiology, CDSCO for medical devices, and NABH accreditation for quality
+  Licensing: clinical establishment registration, PCPNDT registration (for ultrasound), Biomedical Waste authorization (BMW Rules 2016), and narcotics license for scheduled drugs
+  Digital health regulation: Telemedicine Practice Guidelines (2020), DPDP Act implications for patient data, and ABDM (Ayushman Bharat Digital Mission) integration
+> Healthcare Business Setup
+  Location and infrastructure: clinic layout (reception, consultation rooms, procedure room, pharmacy), equipment selection, and compliance with state-specific infrastructure norms
+  Staffing: doctor empanelment (visiting consultants vs. full-time), paramedical staff (nurse, lab technician, receptionist), and HR compliance (labor laws, PF, ESIC)
+  Biomedical waste management: color-coded bin system (yellow, red, blue, black), BMW contract with authorized recycler, and maintaining BMW register
+  Quality systems: SOPs for patient safety (hand hygiene, medication administration), incident reporting, and patient satisfaction measurement
+  Insurance empanelment: CGHS (Central Government Health Scheme), ECHS, state government insurance schemes (PM-JAY/Ayushman Bharat), and TPA (Third Party Administrator) tie-ups
+
+Month 2 - Operations, Marketing & Finance
+> Healthcare Operations
+  Patient flow management: appointment scheduling (queue management, no-shows handling), OPD vs. IPD workflow, and discharge process
+  Healthcare technology: HIS (Hospital Information System -- Practo, Meddbase), EMR (Electronic Medical Records), and lab information system (LIS) integration
+  Pharmacy management: formulary design (essential medicines), inventory management (expiry tracking, FIFO), and Schedule H drug dispensing compliance
+  Diagnostics operations: lab SOPs (sample collection, processing, reporting), quality control (internal QC + external EQAS), and TAT (Turnaround Time) management
+  Telemedicine operations: platform selection (Practo, Mfine, in-house), consent documentation, prescription guidelines (Telemedicine 2020), and emergency protocol
+> Healthcare Marketing & Finance
+  Healthcare marketing: Google My Business optimization for "doctor near me", health content marketing (patient education), and referral program (general practitioners to specialists)
+  Digital health marketing: Practo/1mg listing optimization, YouTube health education channel, and managing online reputation (patient reviews)
+  Healthcare financial model: OPD revenue (consultations × average fee), IPD revenue (bed occupancy × package rates), and ancillary revenue (pharmacy, lab, procedures)
+  Cost structure: fixed (rent, salaries, equipment depreciation, insurance) vs. variable (consumables, drugs, lab reagents), and contribution margin per service line
+  Health insurance billing: claim submission process (TPA billing, pre-authorization, discharge summary requirements), rejection handling, and cash collection for non-insured patients
+
+Month 3 - Scaling & Capstone
+> Scaling Healthcare Business
+  Clinic to chain: standardizing the model (processes, quality, branding), unit economics (what makes a clinic profitable), and franchising vs. company-owned for expansion
+  Digital health business models: subscription wellness (annual health plan), teleconsultation subscription, and preventive health checkup packages
+  Health tech opportunities: remote patient monitoring (IoT devices), AI-assisted diagnostics (radiology AI, dermatology AI), and chronic disease management platforms
+  Government programs: PM-JAY provider enrollment, Ayushman Bharat HWC (Health and Wellness Centre), and NCD (Non-Communicable Disease) screening programs
+  Wellness business models: corporate wellness (B2B annual contracts), gyms/fitness centers (membership model), and integrated wellness centers (yoga + nutrition + mental health)
+> Capstone - Healthcare Business Plan
+  Design a complete healthcare or wellness business plan: service mix, target patient segment, location analysis, and capacity planning
+  Regulatory compliance checklist: all licenses required, timeline for obtaining, and estimated costs
+  Financial model: startup costs (equipment, fit-out, licenses), working capital, revenue projections (conservative, base, optimistic), and break-even analysis
+  Marketing plan: pre-launch (community awareness), launch (offers, health camp), and ongoing (digital, referral, insurance empanelment)
+  Present to a mock healthcare investor or bank: business concept, regulatory status, financial model, team, and growth strategy
+
+
+Course #E42: Educational Institution & EdTech Startup
+Domain
+Education & EdTech
+Duration
+3 Months
+Fees
+Rs.16,999
+
+Month 1 - Education Business Models & Setup
+> Education Business Landscape
+  India education market: Rs.6 lakh crore market, K-12 (largest), higher education, test prep (JEE, UPSC, CAT -- massive market), and skill development (Govt focus)
+  Education business models: offline coaching institute, franchise education center (BYJU's, Vedantu), online EdTech platform, corporate training, and content licensing
+  Education regulation: K-12 (CBSE, ICSE, state board affiliation), higher education (UGC, AICTE), vocational training (NCVET, NSDC), and coaching institutes (limited regulation -- but changing)
+  EdTech models: subscription (monthly/annual access), live tutoring (per session), recorded courses (one-time), freemium (free content + paid features), and B2B (school/college licensing)
+  Government EdTech initiatives: PM eVIDYA, DIKSHA platform, SWAYAM (MOOC), and PMKVY for skill development -- partnership and content opportunities
+> Setting Up Education Business
+  Offline institute setup: location selection (near schools, residential areas, transport hub), infrastructure (classroom size, AC, projector, whiteboard), and fire/safety compliance
+  Online education platform: LMS selection (Teachable, Thinkific, or custom-built on Moodle), video hosting (Vimeo, Wistia), and live class tools (Zoom, Google Meet)
+  Content development: curriculum design (learning outcomes → content → assessment → certification), instructional design principles, and content team (SME + instructional designer + video editor)
+  Faculty/tutor management: qualification standards, training program, quality monitoring (student feedback, class observations), and performance-based pay
+  Pricing strategy for education: one-time course fee, monthly subscription, annual batch fee, and scholarship strategy for aspiration vs. economics trade-off
+
+Month 2 - Marketing, Operations & Student Success
+> Education Marketing
+  Student and parent marketing: understanding the dual-customer (student wants, parent decides in K-12), and targeting both with different messages
+  Digital marketing for education: Google Search Ads (high-intent "JEE coaching in [city]"), YouTube pre-roll ads (reach with study content channel), and Facebook/Instagram for parents
+  Content marketing for education: free study material (YouTube, PDF), mock tests, and webinars -- building trust before selling
+  Admission process: demo class (free), counseling session (converting leads), enrollment, and onboarding (orientation, app/portal access)
+  Referral program: sibling discount, student ambassador program, and institutional referrals (schools recommending coaching institutes)
+> Student Success & Retention
+  Learning management: attendance tracking, progress monitoring (test scores, assignment completion), and early identification of struggling students
+  Doubt resolution system: doubt clearing sessions (daily), WhatsApp/Telegram doubt group (with moderation), and AI chatbot for common doubts (24/7)
+  Student motivation: gamification (leaderboards, badges, streaks), peer learning groups, and celebrating wins (rank improvements, selection announcements)
+  Parent communication: weekly progress report (SMS/WhatsApp), parent-teacher meeting (monthly), and app-based real-time notification
+  Fee collection and defaults: EMI facility (education loans, in-house installment plans), fee reminder automation, and handling financial hardship cases sensitively
+
+Month 3 - Scaling & Capstone
+> Scaling Education Business
+  Franchising education: center franchise model (BYJU's, Vedantu partner center), master franchise, and company-owned vs. franchise expansion decision
+  Geographic expansion: tier 2/3 cities opportunity (lower competition, high aspiration), digital expansion (pan-India without physical presence), and blended model
+  EdTech product development: building proprietary app (adaptive learning, AI tutor), white-labeling existing tech vs. building, and tech team structure for EdTech
+  Institutional partnerships: school tie-ups for after-school programs, college partnerships for placement training, and corporate training contracts
+  Impact metrics and CSR: student outcomes (pass rates, rank improvements, placements), social impact reporting, and aligning with National Education Policy 2020 priorities
+> Capstone - Education Business Plan
+  Design a complete education business plan: subject/exam focus, target student segment, offline/online/hybrid model, and capacity plan
+  Develop a curriculum outline for one course: learning objectives, weekly schedule, assessment plan, and faculty requirements
+  Create a student acquisition funnel: awareness (content/ads) → interest (free demo) → decision (counseling) → enrollment -- with conversion rate benchmarks
+  Financial model: per-student revenue, batch economics (minimum viable batch size), faculty cost, and contribution margin
+  Present the education business plan to a mock investor: market opportunity, differentiation, unit economics, team, and 3-year growth plan
+
+
+Course #E45: IP & Technology Transfer
+Domain
+Intellectual Property & Legal
+Duration
+3 Months
+Fees
+Rs.20,999
+
+Month 1 - IP Fundamentals & Protection
+> Intellectual Property Overview
+  IP types: patents (inventions), trademarks (brand identifiers), copyrights (creative works), trade secrets (confidential business information), and GI tags (geographic indications)
+  Why IP matters for startups: competitive moat, investor attractiveness (IP portfolio signals defensibility), licensing revenue potential, and preventing copying
+  India IP ecosystem: IP India (patents, trademarks, designs, GI), Copyright Office, and WIPO (international protection via PCT, Madrid Protocol)
+  IP audit: identifying what IP you own (product innovations, brand elements, software code, content, trade secrets), and prioritizing protection
+  IP strategy: not everything needs formal protection -- trade secret vs. patent decision (cost, disclosure risk, enforcement), and building an IP portfolio over time
+> Patent & Trademark Filing
+  Patent types: utility patent (how it works), design patent (how it looks), and plant patent -- what startups typically need
+  Patentability criteria: novelty (not previously disclosed), inventive step (non-obvious to a skilled person), and industrial applicability
+  Patent filing process in India: provisional application (12-month placeholder, faster and cheaper), complete application, examination, and grant -- timeline (5-7 years typically)
+  Patent costs: government fees (startup reduced fees -- 80% reduction!), attorney fees, and international PCT filing costs
+  Trademark registration: classes (Nice Classification -- 45 classes), clearance search (IP India trademark database), application, examination, and registration (2-3 years)
+
+Month 2 - Technology Transfer & Licensing
+> Technology Transfer
+  Technology transfer defined: moving technology from one entity (university, research lab, large company) to another (startup, licensee) for commercialization
+  Technology Transfer Offices (TTOs): India's university TTOs (IIT TTO, CSIR, DRDO), NRDC (National Research Development Corporation), and identifying available technologies
+  Due diligence for tech transfer: freedom-to-operate (FTO) search, IP ownership chain verification, existing licensee search, and technical feasibility assessment
+  Technology Transfer Agreement (TTA): license vs. assignment, exclusive vs. non-exclusive, field of use restrictions, royalty structure, sublicensing rights, and milestone payments
+  Government technology transfer programs: DST (Department of Science & Technology) NIDHI scheme, BIRAC for biotech, and Startup India IP facilitation for affordable licensing
+> IP Licensing & Commercialization
+  IP licensing models: exclusive license (only you can use), non-exclusive (licensor and multiple licensees), and sole license (only licensor and one licensee)
+  Royalty structures: running royalty (% of revenue), lump sum, milestone-based, and minimum annual guarantee -- negotiating each
+  Licensing revenue model: building a licensing business (IP holding company licensing to operating companies), and IP monetization without manufacturing
+  Cross-licensing: exchanging IP licenses between companies (common in tech industry to avoid costly litigation), and creating defensive patent portfolios
+  Trade secret management: NDA (Non-Disclosure Agreement) -- key clauses (definition of confidential info, exclusions, duration, return of materials), and maintaining trade secret status (access controls, employee training)
+
+Month 3 - IP Enforcement & Capstone
+> IP Enforcement & International Protection
+  IP infringement: identifying infringement (marketplace monitoring, Google Alerts for trademark misuse, patent claim comparison), and building evidence
+  Cease and desist letter: when to use, drafting (IP details, infringement details, demanded action, timeline), and escalation to litigation if ignored
+  IP litigation in India: Commercial Courts (IP suits above Rs.3 crore), Delhi High Court IP Division, and costs/timeline of IP litigation
+  International IP protection: PCT (Patent Cooperation Treaty) for multi-country patent protection, Madrid Protocol for international trademark, and Hague System for industrial designs
+  Online IP enforcement: DMCA takedown for copyright infringement (Google, YouTube), Amazon brand registry for trademark protection on marketplace, and OTA (Online Trademark Abuse) monitoring tools
+> Capstone - IP Strategy for a Startup
+  Conduct an IP audit for your own startup or a mock company: identify all IP assets, current protection status, and gaps
+  Develop an IP strategy: prioritize 3-5 IP protection actions (patent filing, trademark registration, trade secret controls), with timeline and budget
+  Draft an NDA and a simple IP license term sheet for a mock technology licensing deal
+  Search for available technologies at NRDC/IIT TTO and identify one technology that could be licensed for a startup opportunity
+  Present the complete IP strategy: IP portfolio summary, protection plan, licensing opportunity analysis, and estimated IP-related revenue potential
+
+
+Course #E47: Fashion & Lifestyle Brand Building
+Domain
+Fashion & Lifestyle
+Duration
+3 Months
+Fees
+Rs.17,999
+
+Month 1 - Brand Foundation & Product Development
+> Fashion Business Models
+  Fashion business models: D2C brand (own website + marketplaces), B2B wholesale (supplying to retailers), private label (designing + manufacturing, selling under your brand), and fashion tech
+  India fashion market: Rs.6.5 lakh crore market, ethnic wear (largest segment), western wear (fastest growing), sustainable fashion (emerging), and men's grooming
+  Brand positioning: luxury (Sabyasachi), premium (Fabindia), mid-market (FabAlley), value (Shein, Meesho) -- and what your target customer buys, and why
+  Fashion business risks: inventory risk (fashion is seasonal, unsold inventory = cash stuck), trend risk, and manufacturing quality inconsistency
+  Sustainable fashion opportunity: organic fabrics (GOTS certified), fair trade certification, upcycling, and marketing to conscious consumers (growing segment)
+> Product Development
+  Design process: trend research (WGSN, Pinterest, runway, street), mood board creation, sketch, tech pack (detailed specification for manufacturing), and sample
+  Tech pack: flat sketches (front, back, side), measurement chart, fabric specification (GSM, composition, weave), trim details (buttons, zippers, labels), and quality standards
+  Fabric sourcing: India fabric clusters (Surat for synthetic, Tiruppur for knitwear, Bhilwara for suiting, Varanasi for silk), quality testing, and MOQ (Minimum Order Quantity) negotiation
+  Manufacturing: cut-make-trim (CMT) vs. full package production (FPP), finding manufacturers (Justdial, IndiaMart, trade fairs like PTC Mumbai), and factory audit
+  Costing: fabric cost + trim cost + manufacturing cost + overhead + profit = MRP, and checking MRP vs. perceived value (customer willing to pay)
+
+Month 2 - Marketing, Retail & Operations
+> Fashion Marketing
+  Fashion photography: styling (mood board to shoot), photographer selection (product vs. editorial), model vs. flat lay vs. ghost mannequin, and post-processing
+  Instagram for fashion: aesthetic feed (cohesive look, brand colors), Reels (styling videos, behind-the-scenes, fabric sourcing), and shopping tags (Instagram Shopping setup)
+  Influencer marketing for fashion: micro-influencers (fashion bloggers 10K-100K followers), gifting vs. paid collaboration, and measuring ROI (coupon code, swipe-up link tracking)
+  Marketplace strategy: Myntra (premium brand position), AJIO, Amazon Fashion, and Nykaa Fashion -- listing optimization, sponsored ads, and returns management
+  PR for fashion: press release for collection launch, fashion magazine features (Vogue India, Harper's Bazaar), and designer collaborations for brand credibility
+> Retail & Operations
+  D2C website: Shopify for fashion (product variants -- size/color matrix, size guide, fit predictor, COD option for Indian consumers)
+  Inventory management: size ratio planning (buying more medium/large than XS/XXL), seasonal buying plan, and markdown strategy for end-of-season sale
+  Warehouse and fulfillment: picking, packing (branded packaging -- tissue paper, box, ribbon, thank you card), and shipping (Delhivery, Shiprocket for fashion)
+  Returns in fashion: 30-40% return rate for fashion (especially in apparel), size-related returns, and reverse logistics cost management
+  Quality control: fabric inspection (before cutting), inline inspection (during stitching), and final inspection (before packaging) -- AQL (Acceptable Quality Level) standards
+
+Month 3 - Scaling & Capstone
+> Scaling Fashion Business
+  Collection planning: seasonal calendar (SS = Spring/Summer, AW = Autumn/Winter in India: festive and wedding season), and building 3-4 drops per year
+  International fashion: export to Indian diaspora (US, UK, UAE), Etsy for handcraft and niche fashion, and international wholesale (boutique buyers from abroad)
+  Fashion tech: virtual try-on (AR), size recommendation AI (True Fit, Sizebay), and personalization algorithms for D2C fashion sites
+  Sustainability scaling: transitioning to sustainable fabrics (cost implications, certification), and measuring and reporting environmental impact
+  Fashion brand exits: acquisition by larger brand (case studies -- Wrogn, HRX acquired by Myntra parent), strategic partnerships, and licensing your brand for categories you don't produce
+> Capstone - Fashion Brand Launch
+  Develop a complete brand identity: name, logo, color palette, typography, and brand story (founder background, design philosophy, customer persona)
+  Create a capsule collection plan: 8-10 SKUs, fabric and trim specifications, price points, and production timeline
+  Build a go-to-market plan: pre-launch (building waitlist on Instagram), launch (influencer seeding + website go-live), and post-launch (reorder and restock plan)
+  Financial model: per-unit economics (cost → MRP → discount → net revenue), collection P&L, and working capital requirement
+  Present the complete fashion brand business plan: brand concept, collection, financials, and 1-year roadmap to a mock fashion investor or retailer buyer
+
+
+Course #E48: Environmental & Sustainability Business
+Domain
+Environment & Sustainability
+Duration
+3 Months
+Fees
+Rs.18,999
+
+Month 1 - Sustainability Business Models & Green Economy
+> Sustainability Business Landscape
+  Green economy opportunity: India's climate commitments (Net Zero by 2070, 500GW renewables by 2030) and the business creation these require
+  Sustainability business models: clean energy (solar, wind), waste management (recycling, upcycling, waste-to-energy), sustainable products (packaging, fashion, food), green consulting, and carbon markets
+  ESG for startups: Environmental (carbon footprint, water use, waste), Social (fair wages, community impact), Governance (transparency, ethics) -- and why investors increasingly require ESG reporting
+  India green policy: PLI for solar, Waste Management Rules (2016, 2022 amendments), EPR (Extended Producer Responsibility) for plastics, and EV policy (FAME scheme)
+  Circular economy: designing products for reuse, repair, and recycling -- business models that profit from keeping materials in use (vs. linear take-make-dispose)
+> Clean Energy Business
+  Solar energy business models: rooftop solar installation (residential, commercial, industrial), solar project development (utility scale), O&M (Operations & Maintenance), and solar financing
+  Rooftop solar economics: system sizing (kWh consumption → kW system), unit cost (Rs.35-45/Wp), payback period (3-5 years), and net metering (selling excess to grid)
+  Government solar incentives: PM Surya Ghar Muft Bijli Yojana (residential rooftop subsidy), accelerated depreciation for commercial systems, and MNRE scheme access
+  Solar business setup: MNRE empanelment, EPC (Engineering, Procurement, Construction) contracting, and vendor tie-ups (module, inverter, mounting structure suppliers)
+  Emerging clean energy: green hydrogen, EV charging infrastructure, biogas (from agricultural waste), and energy storage (battery) -- opportunities and current market stage
+
+Month 2 - Waste Management & Sustainable Products
+> Waste Management Business
+  Waste management hierarchy: prevention → reuse → recycling → recovery → disposal -- business opportunities at each level
+  EPR (Extended Producer Responsibility): plastic EPR (obligatory for producers, importers, brand owners) -- creating demand for recyclers and waste aggregators
+  E-waste business: collection, dismantling, refurbishment, and material recovery -- CPCB authorization required, and formal vs. informal sector dynamics
+  Organic waste to biogas: biogas plant setup (institutional and community scale), gas utilization (cooking, electricity), and compost as byproduct for agriculture
+  Recycling business models: scrap dealer (aggregator), material recovery facility (MRF), and value-added recycling (plastic pellets from waste plastic, paper pulp)
+> Sustainable Products & Green Marketing
+  Sustainable product development: eco-design principles (material selection, durability, recyclability, packaging minimization), lifecycle assessment (LCA), and green product claims substantiation
+  Sustainable packaging: alternatives to single-use plastic (compostable packaging -- PLA, bagasse, areca palm), paper packaging, and refill/return models
+  Green certifications: BIS eco-mark (India), LEED for buildings, Fair Trade for food/textile, GOTS (organic textile), and Rainforest Alliance -- certification process and marketing value
+  Greenwashing risk: FTC Green Guides (US), India's BIS norms, and avoiding vague claims ("eco-friendly", "natural", "green") without substantiation
+  B2B sustainability: selling to corporates with ESG commitments (packaging → green packaging supplier, travel → carbon offset program, waste → corporate waste management contract)
+
+Month 3 - Carbon Markets & Capstone
+> Carbon Markets & Climate Finance
+  Carbon credits: Voluntary Carbon Market (VCM) -- Gold Standard, Verra (VCS) credits; and Compliance Market (EU ETS, India's emerging Carbon Credit Trading Scheme -- CCTS)
+  Carbon project types: renewable energy (additional crediting), avoided deforestation (REDD+), improved cookstoves, and methane capture from agriculture/waste
+  Carbon credit business opportunities: project developer (create and sell credits), broker (connect buyers and sellers), and corporate carbon management (footprint calculation and offset strategy)
+  India Carbon Credit Trading Scheme (CCTS): launched 2023, PAT (Perform Achieve Trade) scheme evolution, and Bureau of Energy Efficiency (BEE) as regulator
+  Climate finance sources: Green Climate Fund (GCF), NABARD's National Adaptation Fund, IFC (International Finance Corporation), and green bonds for climate-positive projects
+> Capstone - Sustainability Business Plan
+  Identify a sustainability business opportunity: specific problem (waste, energy, water, emissions), solution (product, service, platform), and target customer (B2C, B2B, government)
+  Conduct a market sizing exercise: TAM (e.g., rooftop solar in your district), SAM (serviceable), and SOM (realistic first-year target)
+  Develop an impact measurement framework: environmental KPIs (CO2 saved, waste diverted, energy generated), social KPIs, and reporting methodology
+  Financial model: startup cost, unit economics, revenue model, and identifying applicable government grants/subsidies
+  Present the sustainability business plan to a mock green investor or government program panel: problem, solution, impact, financial viability, and team
+
+
+Course #E49: Sports & Fitness Business
+Domain
+Sports & Fitness
+Duration
+3 Months
+Fees
+Rs.16,999
+
+Month 1 - Sports Business Models & Setup
+> Sports & Fitness Industry
+  India sports market: Rs.1.05 lakh crore growing at 22% CAGR, cricket dominance (IPL Rs.67,000 crore brand value), fitness boom (gym memberships up 35% post-COVID), and youth sports investment
+  Sports business models: facility (gym, sports complex, swimming pool), coaching academy (cricket, football, tennis), sports events (leagues, tournaments), sports retail, sports nutrition, and sports tech
+  Fitness business models: gym (equipment-heavy, membership), yoga/pilates studio (lower investment, experience-led), CrossFit box, online fitness (subscription), and corporate wellness
+  Sports regulation: NSFs (National Sports Federations) for recognized sports, SAI (Sports Authority of India) programs, Khelo India scheme, and FSSAI for sports nutrition products
+  Sports sponsorship ecosystem: brands sponsoring athletes (endorsement), team sponsorship, event title sponsorship, and stadium naming rights -- revenue opportunities for sports businesses
+> Setting Up Fitness Business
+  Gym setup: equipment selection (strength -- benches, racks, dumbbells; cardio -- treadmills, bikes, elliptical), layout design (safety, flow, spacing standards), and total capex estimation
+  Location selection for fitness: catchment area analysis (target age group density), competition mapping (existing gyms within 2km), accessibility, and parking
+  Licensing: local municipal trade license, fire NOC, building use certificate, and music licensing (PPL India for playing music in commercial spaces)
+  Fitness staff: certified personal trainers (ACE, NASM, ACSM certifications), group fitness instructors (Zumba, yoga certification), and front desk/sales staff
+  Membership pricing: monthly, quarterly, annual (discounted), couple/family packages, and day pass -- and membership management software (Mindbody, Zen Planner, Fitbudd)
+
+Month 2 - Marketing, Coaching & Operations
+> Sports & Fitness Marketing
+  Fitness marketing: transformation stories (before-after, member success stories), free trial class (lower barrier to join), and challenge-based campaigns (21-day challenge)
+  Social media for fitness: Instagram (workout videos, trainer profiles, member features), YouTube (free workout content for organic reach), and Strava/fitness apps community
+  Corporate fitness contracts: B2B corporate wellness programs (annual contracts with companies), on-site fitness classes, and health challenge programs
+  Sports academy marketing: school tie-ups (after-school sports programs), summer camps, and open trials (talent identification program for advanced players)
+  Retention marketing: member engagement (birthday wish, progress milestones), win-back campaigns (lapsed member reactivation), and referral program (bring a friend month)
+> Coaching Operations
+  Sports coaching methodology: skill periodization (annual training plan -- preparation, competition, transition phases), drills library, and age-appropriate training for junior athletes
+  Fitness programming: strength and conditioning program design (periodization -- linear, undulating), group class programming (variety, progression), and personal training protocols
+  Technology for coaching: video analysis (Hudl, Coach's Eye for sports), fitness tracking (Garmin, Polar HRV data), and AI-assisted training load monitoring
+  Sports injury prevention: warm-up protocols, movement screening (FMS -- Functional Movement Screen), and return-to-sport protocols after injury
+  Competitions and events: organizing internal competitions (member tournaments, fitness challenges), and participating in external events (marathons, sports leagues) as marketing
+
+Month 3 - Scaling & Capstone
+> Scaling Sports Business
+  Gym chain expansion: second location decision (unit economics must be proven), standardizing the experience, and area developer/franchise model
+  Online fitness scaling: subscription platform (app or web), live classes (Zoom, Moxie), on-demand library, and global audience (English instruction for international subscribers)
+  Sports tech opportunities: performance analytics platforms, wearable-integrated coaching, esports (fastest growing, low infrastructure), and fantasy sports business models
+  Sports nutrition business: building a brand (protein, BCAA, pre-workout), manufacturing (own plant vs. third-party contract manufacturing), and direct-to-athlete sales
+  Talent management agency: representing athletes for endorsements, events, and career management -- building a roster of regional athletes with national potential
+> Capstone - Sports Business Plan
+  Design a complete sports or fitness business plan: specific niche, target customer (age, income, aspiration), location or digital model, and capacity plan
+  Create a facility layout or service blueprint: equipment/space allocation, staffing plan, and customer journey map
+  Financial model: startup costs, monthly fixed and variable costs, membership revenue projection, and break-even membership count
+  Marketing launch plan: pre-opening (waitlist, founding member offer), launch week (events, trial classes), and first 90 days (retention + new member acquisition)
+  Present the sports business plan to a mock investor, covering: market opportunity, competitive advantage, financial projections, team, and 3-year expansion plan

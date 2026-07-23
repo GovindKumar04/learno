@@ -33,6 +33,7 @@
     "seed:testimonials": "node src/migration/seedTestimonials.js",
     "seed:course-testimonials": "node src/migration/seedCourseTestimonials.js",
     "seed:admin": "node src/migration/seedAdmin.js",
+    "seed:six-month-courses": "node src/scripts/seedSixMonthCourses.js",
     "clean:legacy": "node src/migration/cleanLegacyUserRefs.js",
     "migrate:enquiries": "node src/migration/normalizeLegacyEnquiries.js",
     "migrate:copy": "node src/migration/copyCollections.js",

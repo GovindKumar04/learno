@@ -54,6 +54,11 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
+// Lightweight health check for aaPanel / uptime monitors and Nginx.
+// Declared BEFORE the rate limiter so frequent polling is never throttled.
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", uptime: process.uptime() });
+});
 
 app.use(apiLimiter);
 

@@ -1,0 +1,1558 @@
+Course #E1: Startup Launchpad Mastery Program
+Domain
+Entrepreneurship
+Duration
+1 Month
+Fees
+Rs.12,999
+
+Week 1 - Idea Validation & Market Research
+> From Idea to Opportunity
+  Problem vs. solution thinking: start with a painful, urgent, widespread problem -- not a product idea looking for a market
+  Idea evaluation: PAIN framework (Problem severity, Accessible market, Innovation edge, Next step clear)
+  Customer discovery interviews: 5-question structure (current situation, pain points, current solutions, frustration, spending), and note-taking
+  Desk research: Google Trends, Statista India, NASSCOM reports, and Reddit/Quora for unfiltered customer problems
+  Idea matrix: rating 5 ideas on market size, pain severity, competition, founder fit, and monetizability
+> Market Research & Validation
+  Primary vs. secondary research: surveys (Typeform), interviews, observation vs. reports and databases
+  TAM/SAM/SOM calculation: bottom-up method using known data points (number of potential customers x average spend)
+  Landing page MVP: Carrd.co or Webflow no-code landing page, Google Ads test (Rs.5000 budget), and conversion rate measurement
+  Smoke test results: >2% conversion = demand signal, <0.5% = pivot needed, and iterating the value proposition
+  Competitive map: identifying 5 direct competitors, 5 substitutes, and positioning differentiation
+
+Week 2 - Business Model & Legal Foundation
+> Business Model Design
+  Revenue model selection: SaaS, marketplace, D2C, service, franchise, or hybrid -- matching to customer behavior
+  Pricing strategy: cost-plus vs. value-based vs. competitive pricing, and psychological pricing for India market
+  Unit economics first principles: LTV (lifetime value), CAC (customer acquisition cost), payback period, and gross margin
+  Financial projections: 12-month revenue model, expense budget, and funding requirement calculation
+  Go-to-market strategy: beachhead customer segment, initial sales channel, and 90-day traction plan
+> Legal Setup & Registration
+  Entity type selection: Proprietorship (fast start), LLP (flexibility), or Pvt Ltd (fundable) -- for startup context
+  Startup India registration: DPIIT recognition, benefits (income tax exemption 3 years, fast-track IP, and self-certify compliance)
+  Bank account: current account documents, MSME Udyam registration for loan benefits, and GST registration basics
+  IP protection: trademark search and application for brand name, and basic NDA for co-founders and early employees
+  Founder agreement: equity split, vesting schedule (4 years, 1-year cliff), role definition, and decision-making rules
+
+Week 3 - Product/Service Launch
+> MVP Development Strategy
+  MVP types: Concierge (manual), Wizard of Oz (fake automation), landing page, video (Dropbox), and single-feature product
+  Feature prioritization: MoSCoW (Must have, Should have, Could have, Won't have) for MVP scope
+  No-code tools for MVP: Webflow (website), Glide (mobile app), Notion (database), Stripe (payments), and Calendly (bookings)
+  Launch checklist: website, payment gateway, analytics (GA4), customer support (WhatsApp), and social media presence
+  First 10 customers: friends and family, direct LinkedIn outreach, WhatsApp groups, and local business community
+> Sales & Customer Acquisition
+  Sales funnel stages: Awareness, Interest, Consideration, Intent, Evaluation, Purchase -- mapping your tactics per stage
+  Cold outreach: personalized email formula (1-2-3: 1 compliment, 2 sentences on problem you solve, 3 lines on offer)
+  Referral engine: asking every happy customer for 2 referrals, and incentivizing with discount or added value
+  Social selling: LinkedIn for B2B (daily posts + DM outreach), Instagram for B2C (visual content + story CTAs)
+  Pricing test: launch at 80% of target price to early customers, increase to full price after testimonials collected
+
+Week 4 - Growth, Operations & Scaling Plan
+> Growth Fundamentals
+  Growth hacking vs. sustainable growth: viral loops (Dropbox referral), content SEO (long-term), and paid ads (scalable)
+  Metrics dashboard: weekly tracking of Revenue, New Customers, Churn Rate, NPS, and Cash Runway
+  Email marketing: building list from day 1 (free download lead magnet), and weekly newsletter for retention
+  Customer retention: Net Promoter Score (NPS) survey monthly, churn analysis, and proactive customer success
+  Referral program: simple reward (₹500 off next purchase or 1 free month) for successful referrals
+> Operations & 6-Month Plan
+  Operations basics: tools stack (Notion for PM, Zoho for CRM, Razorpay for payments, Slack for team)
+  Hiring first employees: freelancer vs. full-time, job description writing, and culture fit in first 5 hires
+  Standard Operating Procedures (SOPs): document top 5 processes in Notion before first hire
+  6-month milestone plan: Month 1 (10 customers), Month 2 (20 customers), Month 3 (profitability), Month 6 (team of 3)
+  Capstone: full startup plan document -- problem, solution, market, BMC, financial model, and 6-month roadmap
+
+
+Course #E6: GST, Taxation & Business Accounting
+Domain
+Finance & Compliance
+Duration
+1 Month
+Fees
+Rs.8,999
+
+Week 1 - GST Fundamentals
+> GST Basics & Registration
+  GST structure: CGST (central), SGST (state), IGST (inter-state), UTGST -- and how they apply to transactions
+  GST slabs: 0%, 5%, 12%, 18%, 28% -- and key items in each slab relevant to small businesses
+  GST registration: threshold limits, voluntary registration benefits, composition scheme eligibility (turnover <Rs.1.5 Cr)
+  GSTIN structure: 15-digit breakdown (state code + PAN + entity number + Z + check digit)
+  Documents required for GST registration: PAN, Aadhaar, bank statement, address proof, and digital signature
+> GST on Transactions
+  Place of supply rules: goods (location of delivery), services (complex rules by service type), and inter-state determination
+  Tax invoice: mandatory fields (GSTIN, HSN/SAC code, tax rate, tax amount, reverse charge indicator, QR code)
+  Reverse Charge Mechanism (RCM): applicable supplies (GTA, legal services, import of services), and self-invoicing requirement
+  Input Tax Credit (ITC): eligibility (business purpose, tax invoice, received goods/services), blocked credits (Section 17(5))
+  E-way bill: applicability (>Rs.50,000 inter-state, state-specific threshold), Part A/B, and validity period
+
+Week 2 - GST Returns & E-Invoicing
+> GST Return Filing
+  GSTR-1: outward supplies report, B2B invoices, B2C summary, nil returns, HSN-wise summary, due dates (11th of next month)
+  GSTR-3B: monthly summary return, ITC claim, net tax payment, and consequences of late filing (interest + late fee)
+  GSTR-2B: auto-populated ITC statement from supplier GSTR-1, and reconciling with purchase register
+  Annual return GSTR-9: filing deadline (December 31), GSTR-9C (reconciliation statement for >Rs.5 Cr turnover)
+  Composition scheme returns: GSTR-4 (annual), CMP-08 (quarterly statement), and no ITC claim under composition
+> E-Invoicing & E-Way Bills
+  E-invoicing applicability: mandatory for >Rs.5 Cr turnover, and API integration with IRP (Invoice Registration Portal)
+  IRN (Invoice Reference Number): 64-character unique hash, QR code, and validity of e-invoice
+  NIC IRP portal: live demo of e-invoice generation, JSON format, and ERP integration options (Tally, Zoho, QuickBooks)
+  Cancellation of e-invoice: only within 24 hours of IRN generation, and cannot amend after cancellation
+  E-way bill integration: auto-generation from e-invoice, and separate e-way bill for below e-invoice threshold
+
+Week 3 - Income Tax for Business
+> Business Income Tax
+  Presumptive taxation: Section 44AD (8%/6% of turnover for eligible business), Section 44ADA (50% of receipts for professionals)
+  Tax audit: Section 44AB applicability (business turnover >Rs.1 Cr, professional >Rs.50 Lakh, non-presumptive)
+  ITR filing for business: ITR-3 (business income in individual return), ITR-5 (partnership/LLP), ITR-6 (company)
+  Advance tax: payment schedule (15% by June 15, 45% by Sep 15, 75% by Dec 15, 100% by March 15), and interest (234B/234C)
+  Deductions for business: Section 37 (ordinary business expenses), depreciation (WDV method), and startup deductions (Section 80-IAC)
+> TDS & Tax Planning
+  TDS basics: deductor/deductee, applicable sections (194C contractor 1%/2%, 194J professional 10%, 194H commission 5%)
+  TDS payment: Challan 281, due dates (7th of next month), and TDS certificate (Form 16A within 15 days of quarter end)
+  Form 26AS and AIS: reconciling TDS credits, annual information statement, and resolving mismatches before filing
+  Tax planning strategies: legitimate deductions (home office, car, mobile), timing of income recognition, and Section 80C for proprietors
+  Advance tax vs. TDS: how TDS offsets advance tax liability, and managing cash flow for both obligations
+
+Week 4 - Business Accounting & Tally
+> Accounting Fundamentals
+  Accounting equation: Assets = Liabilities + Equity -- and every transaction's impact on the equation
+  Double-entry accounting: debit/credit rules, journal entries, and T-account visualization for common transactions
+  Financial statements: Balance Sheet (snapshot of assets/liabilities), P&L (period performance), and Cash Flow Statement
+  Bank reconciliation: matching bank statement with ledger, common reconciling items, and monthly reconciliation process
+  Accounting software comparison: Tally Prime, Zoho Books, QuickBooks, and Vyapar for India GST accounting
+> Tally Prime for GST Business
+  Tally Prime setup: company creation, GST configuration (GSTIN, state, registration type, HSN/SAC mapping)
+  Purchase and sales entry: GST-compliant voucher entry, ITC ledger, and GST summary report
+  Bank entry: bank payment/receipt vouchers, contra entries, and bank reconciliation in Tally
+  GST reports in Tally: GSTR-1, GSTR-3B ready reports, and exporting to JSON for direct portal filing
+  MIS reports: Profit & Loss, Balance Sheet, Cash Flow, Sundry Debtors/Creditors aging -- for business decisions
+
+
+Course #E7: Financial Planning for Entrepreneurs
+Domain
+Finance
+Duration
+1 Month
+Fees
+Rs.9,999
+
+Week 1 - Personal Finance & Business Finance Separation
+> Financial Foundations for Entrepreneurs
+  Personal vs. business finance: separate bank accounts, salary from business (even for founders), and personal financial security before business risk
+  Emergency fund: 6-12 months of personal expenses liquid before starting a business -- protecting the downside
+  Net worth calculation: assets (savings, property, business equity, investments) minus liabilities (loans, credit card, personal debt)
+  Cash flow management: tracking monthly personal income and expenses, and identifying discretionary cuts during lean startup periods
+  Financial goal setting: business target (revenue, profit), personal target (house, emergency fund, retirement), and aligning timelines
+> Business Financial Structure
+  Founder salary: paying yourself market rate (even if deferred), and the purpose (tax efficiency, burn tracking, financial health)
+  Profit First system: allocating revenue into buckets (owner's pay, taxes, profit, operating expenses) -- Mike Michalowicz framework
+  Break-even analysis: fixed costs / gross margin percentage = break-even revenue, and monthly tracking
+  Cash vs. accrual accounting: cash (recognize when paid), accrual (recognize when earned) -- and India IT Act requirement
+  Working capital management: accounts receivable days, accounts payable days, inventory days, and cash conversion cycle
+
+Week 2 - Financial Projections & Modeling
+> Building Financial Models
+  Revenue model: units x price (retail), clients x monthly fee (SaaS), hours x rate (services), and GMV x take rate (marketplace)
+  3-statement model: P&L, Balance Sheet, and Cash Flow linked -- changes in P&L flow to Balance Sheet and Cash Flow
+  Bottom-up vs. top-down: build revenue from customer count x conversion rate x ARPU, not "0.1% of Rs.100B market"
+  Sensitivity analysis: changing key assumptions (price, volume, churn) and seeing impact on profit and cash
+  Google Sheets financial model: template with assumptions tab, revenue build, expense budget, and summary statements
+> Funding & Investment Planning
+  Bootstrap vs. funding: advantages (control, no dilution) vs. disadvantages (slow growth, personal risk)
+  Funding stages: Pre-Seed (idea, Rs.5-25 Lakh), Seed (PMF, Rs.25L-2Cr), Series A (growth, Rs.5-20 Cr) -- and typical dilution
+  Valuation basics: revenue multiple (SaaS 5-10x ARR), user-based, and comparable transaction analysis
+  Dilution calculator: pre-money valuation + investment = post-money valuation, and ownership % after round
+  Debt vs. equity: MSME loan (collateral-based, no dilution), Angel investment (equity, expertise), and when to choose each
+
+Week 3 - Cash Flow & Working Capital
+> Cash Flow Management
+  Cash flow statement: operating (business operations), investing (asset purchase/sale), financing (loans/equity) -- and reading it
+  Weekly cash flow tracker: cash in (collections), cash out (payments), end balance, and 4-week rolling forecast
+  Receivables management: invoice immediately on delivery, clear payment terms (Net 15/30), and follow-up sequence (3-7-14 days)
+  Payables optimization: extending supplier credit (Net 45/60), early payment discounts vs. cash retention
+  Cash flow crisis signals: 3 consecutive months of negative cash flow, paying suppliers late, and using credit cards for operations
+> Working Capital Financing
+  Overdraft facility: CC (Cash Credit) limit from bank against stock/receivables pledge, interest only on drawn amount
+  Invoice discounting: sell outstanding invoices to NBFCs (KredX, M1xchange) at 1-1.5% per month discount
+  Supply chain finance: TReDS platform, Axis Bank invoice discounting, and receivable monetization for MSMEs
+  MSME loans: PSB Loans in 59 minutes (up to Rs.5 Cr), MUDRA loans (Shishu/Kishore/Tarun), and CGTMSE coverage
+  Credit score for business: CIBIL commercial score, Experian business score, and improving score over 12 months
+
+Week 4 - Insurance, Investments & Exit Planning
+> Business Insurance & Risk Management
+  Types of business insurance: Keyman insurance (Rs.1 Cr term cover on key founders), Fire insurance, Marine (for goods), and D&O liability
+  Health insurance: Group health insurance for employees (mandatory for 20+), and ESIC coverage for <21,000/month salary
+  Professional indemnity: for consultants, lawyers, doctors, and tech companies against client claims of negligence
+  Business interruption insurance: covers lost revenue during forced shutdown (fire, flood, pandemic), and India availability
+  Product liability insurance: for manufacturers and e-commerce sellers, and recall insurance for consumer goods
+> Exit Planning & Wealth Building
+  Exit strategy options: strategic acquisition, PE buyout, IPO, management buyout, and passing to next generation
+  Business valuation: EBITDA multiple (3-8x for SMEs), revenue multiple (0.5-2x), and asset-based valuation
+  Shareholder agreement: right of first refusal, drag-along, tag-along, and exit waterfall provisions for investors
+  Personal wealth building alongside business: NPS for retirement (tax deduction + employer contribution), PPF, and MF SIP
+  Financial independence number: calculating the corpus needed to live off returns (25x annual expenses rule), and timeline
+
+
+Course #E8: Investment Readiness & Fundraising
+Domain
+Fundraising
+Duration
+1 Month
+Fees
+Rs.14,999
+
+Week 1 - Are You Investment Ready?
+> Investment Readiness Assessment
+  Investment readiness checklist: market size (>Rs.500 Cr SAM), growth rate (>20% MoM), scalable model, and defensibility
+  Founder-market fit: why this team is uniquely positioned -- domain expertise, distribution advantage, and lived experience
+  Product-market fit signals: NPS >50, organic growth, users who would be "very disappointed" if product went away (>40%)
+  Startup metrics by stage: Pre-seed (idea + team), Seed (10-100 customers, MRR Rs.1-10 Lakh), Series A (Rs.10-50 Lakh MRR, 15%+ MoM)
+  Common investor rejections: market too small, no moat, team gap, and pre-revenue (for institutional investors)
+> Building Investor Pipeline
+  Investor research: AngelList India, LetsVenture, LinkedIn, Tracxn, and YourStory Funding database
+  ICP for investors: thesis (sector, stage), typical check size, portfolio companies (conflict check), and preferred geography
+  Warm vs. cold: warm intro (from portfolio founder or mutual connection) has 10x higher response rate than cold email
+  Investor CRM: Notion or Airtable tracker (name, firm, stage, contact, status, next action, notes, intro source)
+  Building relationships before fundraising: commenting on investor tweets/LinkedIn, attending events, and sharing updates
+
+Week 2 - Fundraising Documents
+> Pitch Deck Deep Dive
+  Pitch deck sections: Cover, Problem, Solution, Market, Product (demo), Business Model, Traction, Team, Financials, Ask
+  Traction slide: Month-over-month growth chart is the single most important slide -- show steep slope and explain dip
+  Team slide: Why us? Prior exits, domain expertise, and complementary skills -- not just logos and job titles
+  Competitive positioning: avoid saying "we have no competition" -- show competitors and your differentiation clearly
+  One-pager (teaser): 1-page PDF for initial investor outreach -- 5 elements: problem, solution, traction, team, ask
+> Financial Model & Data Room
+  Investor-grade financial model: 3-year P&L, monthly year 1, key assumptions visible, and scenarios (base, bull, bear)
+  Unit economics slide: LTV (by cohort), CAC (by channel), payback period, and gross margin -- with data source
+  Cap table: founding team, option pool (15-20%), pre-money cap table, and post-money cap table after proposed round
+  Data room setup: Google Drive or DocSend folder structure (deck, model, cap table, legal docs, customer references)
+  DocSend analytics: tracking which slides investors spend time on, page-by-page analytics, and email capture for visits
+
+Week 3 - Fundraising Process
+> Running the Process
+  Fundraise timeline: 3-6 months is normal -- batching meetings to create urgency and FOMO among investors
+  Investor meeting: 10-minute pitch + 20-minute Q&A -- practice until numbers are instant, and prepare for deep dives
+  Follow-up protocol: same-day email (thank you + deck if not sent + data room link), and 2-week follow-up cadence
+  Term sheet basics: pre-money valuation, investment amount, liquidation preference (1x non-participating standard), anti-dilution
+  iSAFE (India SAFE): Scribd downloadable iSAFE template, valuation cap, discount rate, and MFN clause -- for early stage
+> Negotiating & Closing
+  Negotiation leverage: multiple term sheets create competition, and investor FOMO (portfolio company referral timing)
+  Due diligence: financial (audited accounts, MIS), legal (MOA, contracts, IP ownership), and technical (for SaaS)
+  Closing documents: SHA (Shareholders Agreement), SSA (Share Subscription Agreement), and ESOP scheme approval
+  Compliance post-investment: Form PAS-3 (allotment return), Form FC-GPR for FDI (foreign investment), and FEMA compliance
+  Post-raise relationship: monthly investor update email (2 pages: wins, challenges, asks), and board meeting conduct
+
+Week 4 - Alternative Funding & Grant Programs
+> Government Grants & Schemes
+  Startup India Seed Fund: up to Rs.20 Lakh (validation), Rs.50 Lakh (prototype), and Rs.1.5 Cr (market entry) via incubators
+  SIDBI Startup Mitra: Rs.10-50 Lakh at concessional rates for Startup India recognized companies
+  TIDE 2.0 (MeitY): technology innovation program, up to Rs.4.5 Lakh for IT/ITeS startups, and IT support
+  State-specific schemes: Bihar Startup Policy (details), UP Startup Policy, and Maharashtra Startup Week grants
+  Atal Innovation Mission: AIM grants, ATL (Atal Tinkering Labs), and Atal Incubation Centre partnerships
+> Revenue-Based & Non-Dilutive Funding
+  Revenue-Based Financing (RBF): Velocity, Klub, GetVantage -- 5-25% revenue share until 1.5-2.5x repaid, for Rs.10L-5Cr
+  Bank loans: SBI SME loan, HDFC Business Loan, and PSB Loans in 59 Minutes platform for quick sanction
+  NBFC fintech: Lendingkart, Indifi, Flexiloans -- faster than banks, higher rate, for working capital needs
+  Crowdfunding: Milaap (social cause), Ketto (personal + social), Wishberry (creative), and SEBI-regulated equity crowdfunding
+  Accelerators with funding: Y Combinator (global), 100X.VC (India), Antler India, and Surge (Sequoia) -- stipend + equity
+
+
+Course #E9: Venture Capital & Angel Investment Readiness
+Domain
+Fundraising
+Duration
+1 Month
+Fees
+Rs.18,999
+
+Week 1 - VC & Angel Ecosystem
+> How VCs & Angels Think
+  VC fund structure: LP → GP → portfolio companies, carry (20%), management fee (2%), and fund lifecycle (10 years)
+  Power law returns: VCs need 1 company to return the entire fund -- explaining why they only invest in high-growth startups
+  Deal flow funnel: 1000 companies seen → 100 meetings → 20 term sheets → 10 investments → 1-2 breakouts per fund
+  Investment thesis: sector focus (B2B SaaS, D2C, fintech), stage focus (Seed, Series A), and geographic focus (India, SEA)
+  Angel investor profile: HNIs (Rs.25-50 Lakh ticket), ex-founders (Rs.5-25 Lakh), and family offices (Rs.50L-2Cr)
+> India VC Landscape
+  Top VCs by stage: Pre-seed/Seed (100X.VC, Antler, Blume, Arali), Series A (Accel, Matrix, Elevation, Sequoia India)
+  Sector specialists: Stellaris (SaaS), Lightspeed India (consumer), Nexus (enterprise), and Kalaari (internet/mobile)
+  Angel networks: Indian Angel Network (IAN), Mumbai Angels, Chennai Angels, and Let'sVenture platform for deal syndication
+  Corporate VCs: Tata Capital, Axis Growth Avenues, Ola Electric Mobility, and Google for Startups India
+  Unicorn factory: Bangalore (tech), Mumbai (fintech), Delhi-NCR (consumer), and Hyderabad (pharma/biotech) -- geography and ecosystem
+
+Week 2 - Advanced Pitch & Due Diligence
+> VC-Level Pitch Preparation
+  Series A pitch vs. Seed pitch: Series A needs repeatable GTM, unit economics, and market leadership -- not just product
+  Narrating your numbers: every metric needs context (compared to cohort, vs. market benchmark, vs. own past)
+  Technical due diligence prep: system architecture diagram, tech debt documentation, engineering velocity (story points), and team structure
+  Market sizing for VCs: build a narrative (India has 50M SMEs, 30% lack X, 10M are your ICP, Rs.5000 ARPU = Rs.500 Cr SAM)
+  Managing investor objections: "market is too small" → show adjacencies; "too competitive" → show 10x differentiation
+> Term Sheet Deep Dive
+  Economics: pre-money valuation, price per share, pro-rata rights (right to invest in future rounds), and information rights
+  Control: board seat composition (founders 2, lead investor 1, independent 1), veto rights (major decisions), and board observer
+  Protective provisions: founder liquidity restrictions, ROFR (Right of First Refusal), drag-along (sale), and tag-along
+  Anti-dilution: broad-based weighted average (startup-friendly) vs. full ratchet (investor-friendly), and carve-outs
+  Employee stock option pool (ESOP): creation pre-investment (dilutes founders, not investor), option pool size negotiation
+
+Week 3 - Investor Relations & Post-Investment
+> Investor Update Best Practices
+  Monthly investor update format: MoM growth, key wins, key challenges, asks (intros, advice, hires), and next month plan
+  Sequoia AMP format: 1-pager with ARR, Net New ARR, Gross Margin, Net Revenue Retention, CAC/LTV, Cash, Headcount
+  Celebrating milestones: sharing customer wins, press coverage, and product launches via WhatsApp/Slack investor group
+  Bad news protocol: share bad news (key employee departure, major customer churn) proactively before investors hear elsewhere
+  Board meeting preparation: board pack (financials, strategy, decisions needed), pre-read 2 days before, and follow-up minutes
+> Building a Board & Advisors
+  Board composition: 3-member board (2 founders, 1 investor) at Seed, expanding to 5 at Series A with independent director
+  Independent director: choosing someone with relevant industry expertise, not a friend -- and compensation (ESOP 0.25-0.5%)
+  Advisor program: formal advisor agreement (FAST agreement template), ESOP 0.1-0.5% with 2-year vesting, and 4-hour/month commitment
+  Mentor network: building relationships with 5 experienced founders in adjacent spaces for pattern recognition and introductions
+  Investor as partners: using VC network (talent, customers, co-investors) -- asking for introductions proactively
+
+Week 4 - Valuation & Cap Table Management
+> Startup Valuation Methods
+  Pre-revenue valuation: Berkus method (idea, prototype, team, strategic relationships, product rollout -- Rs.10L each)
+  Revenue-based: SaaS (5-10x ARR), marketplace (1-3x GMV), D2C (1-2x revenue), services (1-2x EBITDA)
+  Comparable transactions: looking at similar stage/sector Indian startup rounds (Tracxn, Crunchbase data)
+  VC method: exit value (5-year projected revenue x exit multiple) discounted at 30-50% IRR = post-money valuation today
+  409A valuation equivalent: India fair market value opinion for ESOP issuance -- and selecting a valuation firm
+> Cap Table & ESOP Management
+  Cap table evolution: Founding (100%) → Angel round → Seed round → ESOP pool → Series A -- dilution per round
+  ESOP scheme: company ESOP scheme approval (Board + Shareholders), vesting schedule, exercise price, and tax on exercise
+  ESOP taxation in India: perquisite tax at exercise (on FMV - exercise price), LTCG on sale after 24 months
+  Secondary transactions: founder liquidity (selling 20-30% in secondary at Series B+), and secondhand market platforms
+  Cap table tools: Carta (global), trica equity (India), and Excel templates for early-stage cap table management
+
+
+Course #E11: Digital Marketing for Business Growth
+Domain
+Digital Marketing
+Duration
+1 Month
+Fees
+Rs.11,999
+
+Week 1 - Digital Marketing Strategy & SEO
+> Digital Marketing Strategy
+  Digital marketing audit: current website traffic (GA4), social media presence, and search visibility (Google Search Console)
+  Customer journey mapping: Awareness (blog/social), Consideration (email/webinar), Decision (case study/demo), and Retention
+  Channel selection: B2B (LinkedIn + SEO + email), B2C (Instagram + Meta Ads + SEO), Local (Google Business + WhatsApp)
+  Marketing budget allocation: 40% performance (PPC), 30% content/SEO, 20% social, 10% email -- starting framework
+  KPI setting: Website traffic (20% MoM), Lead generation (50 leads/month), and CAC per channel (target <3x gross margin)
+> Search Engine Optimization
+  Keyword research: Semrush/Ahrefs free trial, long-tail keywords (lower competition, higher intent), and local keywords
+  On-page SEO: title tag (60 chars, keyword first), meta description (160 chars, CTA), H1-H3 structure, and image alt text
+  Technical SEO: website speed (PageSpeed Insights), mobile-friendly test, HTTPS, and sitemap submission to Google Search Console
+  Local SEO: Google Business Profile optimization, NAP consistency, Google reviews strategy, and local keyword targeting
+  Content creation: 2 blog posts per week (1000-1500 words), targeting informational + commercial keywords, and internal linking
+
+Week 2 - Social Media & Content Marketing
+> Social Media for Business
+  Platform selection: Instagram (visual product/service), LinkedIn (B2B consulting/tech), YouTube (education/tutorial), WhatsApp (retention)
+  Content calendar: monthly themes, weekly content pillars (educational, promotional, social proof, behind-the-scenes)
+  Instagram for business: Reels (30-60 sec, trending audio), carousel posts (step-by-step guides), and Stories with CTA stickers
+  WhatsApp Business: broadcast lists, automated welcome/away messages, quick replies, and catalog for product showcase
+  Social proof collection: screenshot testimonials (with permission), Google review requests, and case study posts
+> Content Marketing
+  Content strategy: pillar content (comprehensive guide), cluster content (specific sub-topics), and internal linking structure
+  Blog SEO: long-tail keyword in title, headers (H2, H3), 2-3 internal links, 1-2 external links, and schema markup
+  YouTube SEO: keyword in title (first 60 chars), description (first 125 chars searchable), chapters, and end screen to subscribe
+  Email newsletter: Mailchimp free (up to 500 contacts), weekly value email (not promotional), and growing to 1000 in 90 days
+  Video content: phone-shot Reels (good lighting, clear audio, hook in 3 seconds), repurposed as YouTube Shorts
+
+Week 3 - Paid Advertising
+> Google Ads for Business
+  Google Search Ads: keyword match types (phrase match for balance), negative keywords list (day 1), and Quality Score improvement
+  Ad copy: 3 headlines (15 chars each), 2 descriptions (90 chars each), and RSA best practices (include keyword in headline)
+  Google My Business Ads: Local Search Ads (show in Maps), Local Services Ads (pay per lead), and call-only ads for local
+  Smart Campaigns: Google's automated ads for small businesses -- good for local, limited for precise targeting
+  Conversion tracking: Google Tag setup (GA4 linked), conversion events (form submit, phone click, purchase), and attribution
+> Meta (Facebook & Instagram) Ads
+  Campaign structure: Awareness (reach/brand), Consideration (traffic/engagement/lead gen), Conversion (purchase/lead)
+  Ad creative best practices: video (first 3 seconds hook), image (text <20% rule relaxed but still best practice), and carousel
+  Audience targeting: Interest stacking (3-5 interests), Lookalike (from customer list), and retargeting website visitors (Meta Pixel)
+  Budget optimization: daily budget (Rs.500/day minimum for learning phase), and CBO (Campaign Budget Optimization)
+  India-specific: vernacular content (Hindi captions), festival season campaigns (Diwali, Holi), and tier-2/3 city targeting
+
+Week 4 - Email Marketing & Analytics
+> Email Marketing Automation
+  List building: website pop-up (15-second delay, 10% offer), lead magnets (free download), and WhatsApp-to-email conversion
+  Welcome email sequence: Email 1 (thank you + free value), Email 2 (your story), Email 3 (social proof), Email 4 (soft offer)
+  Broadcast emails: weekly newsletter, monthly offer, and festival/seasonal campaigns -- and unsubscribe discipline
+  Email subject lines: personalization ([First Name]), urgency (24 hours), curiosity, and A/B testing subject lines in Mailchimp
+  Deliverability: avoid spam words (FREE!, CLICK NOW), verify email domain (SPF, DKIM, DMARC), and clean list monthly
+> Analytics & Optimization
+  GA4 setup: data stream, GA4 property, key events (page view, scroll, contact form submit, purchase), and goal configuration
+  Marketing dashboard: weekly report (website sessions, leads generated, cost per lead per channel, conversion rate)
+  A/B testing: landing page headline test (send 50/50 traffic), email subject line test, and ad creative test
+  Attribution analysis: which channels are actually driving revenue (first touch vs. last click vs. data-driven)
+  Capstone: 30-day digital marketing plan with specific budget allocation, content calendar, and KPI tracking template
+
+
+Course #E14: CRM & Customer Relationship Management
+Domain
+Sales & CRM
+Duration
+1 Month
+Fees
+Rs.9,999
+
+Week 1 - CRM Fundamentals & Setup
+> Understanding CRM Strategy
+  CRM purpose: centralized customer data, pipeline visibility, automated follow-ups, and relationship history across team
+  CRM vs. spreadsheet: when to upgrade (5+ salespeople, losing deals due to follow-up misses, data in silos)
+  CRM selection for SMEs: HubSpot Free (unlimited contacts, deals, pipeline), Zoho CRM, Freshsales, and Pipedrive comparison
+  CRM implementation plan: data migration (import CSV), field mapping, pipeline stages (Lead → Qualified → Proposal → Won/Lost)
+  User adoption: training the team, making CRM the single source of truth, and manager accountability for CRM hygiene
+> HubSpot CRM Setup
+  HubSpot portal setup: company settings, user roles (Admin, Sales, Marketing), and currency/language configuration
+  Contact properties: standard fields (name, email, phone, company, deal stage), and creating custom properties
+  Pipeline creation: deal stages matching your sales process, probability per stage, and lost reason tracking
+  Deals and associations: linking contacts to companies to deals, and many-to-many relationship management
+  HubSpot mobile app: logging calls, emails, and notes on the go -- and iOS/Android integration for calling and email
+
+Week 2 - Sales Pipeline & Automation
+> Sales Pipeline Management
+  Pipeline metrics: leads in, deals created, win rate per stage, average deal size, and sales cycle length -- weekly review
+  Deal scoring: assigning scores based on company size, budget, pain, timeline, and authority (BANT)
+  Activity tracking: logging calls (HubSpot call integration), emails (email tracking pixel), and meetings (Calendly integration)
+  Sales forecasting: commit vs. best case vs. pipeline, and building a reliable weekly forecast from CRM data
+  Stalled deals: identifying deals not moving (30 days no activity), and revival email sequence
+> HubSpot Sales Automation
+  Sequences: automated email + task sequence for outbound prospecting (5-touch over 21 days), and enrollment criteria
+  Workflows: automated internal notifications (deal moved to won → notify finance), task creation, and deal stage updates
+  Email templates: creating reusable templates (follow-up, proposal sent, meeting booked), with personalization tokens
+  Meeting scheduling: HubSpot Meetings (Calendly alternative), availability sync with Google Calendar, and automated reminders
+  Sales Playbooks: providing reps with call scripts, email templates, and competitive responses inside HubSpot
+
+Week 3 - Customer Success & Retention
+> Customer Onboarding
+  Onboarding workflow: kickoff call (Day 1), setup assistance (Day 2-7), check-in call (Day 14), and 30-day review
+  Customer success metrics: Time-to-Value (TTV), onboarding completion rate, and 30/60/90 day engagement score
+  HubSpot Service Hub: tickets for customer issues, knowledge base, and customer portal self-service
+  NPS survey: monthly NPS email (Delighted or SurveyMonkey), Detractor (0-6) follow-up workflow, and Promoter referral ask
+  Customer health score: composite score (login frequency, feature adoption, support tickets, NPS) in HubSpot
+> Retention & Expansion
+  Churn analysis: exit interviews, churn reason tagging in CRM, and cohort churn rate tracking (monthly retention by cohort)
+  Expansion revenue: upsell timing (60 days after onboarding success), cross-sell triggers, and expansion playbook
+  Renewal management: renewal pipeline, 90-day renewal outreach, and incentive for annual vs. monthly commitment
+  Re-engagement campaign: identifying dormant customers (no login 30 days), and automated 3-email re-engagement sequence
+  Customer Lifetime Value (CLV) improvement: reducing churn 1% → CLV increases by 10-15% -- the math and actions
+
+Week 4 - CRM Analytics & Integration
+> CRM Reporting & Dashboards
+  Sales dashboards: deal velocity (average days to close), win rate by rep, pipeline coverage ratio, and revenue attainment
+  Activity reports: calls made, emails sent, meetings held per rep -- and activity-to-outcome correlation analysis
+  Forecasting reports: weighted pipeline, commit forecast, and historical accuracy tracking for calibration
+  Marketing-Sales funnel: lead source to revenue attribution, MQL-to-SQL conversion rate, and channel ROI report
+  Custom reports: HubSpot custom report builder, filtering, grouping, and scheduling reports to email/Slack
+> Integrations & Advanced CRM
+  WhatsApp integration: Interakt or Wati connecting WhatsApp Business to HubSpot for unified inbox
+  Gmail/Outlook integration: email tracking, logging emails automatically, and HubSpot sidebar in Gmail for CRM-in-inbox
+  Razorpay/Stripe integration: deal stage update on payment, invoice creation, and payment link sending from HubSpot
+  Zapier automation: HubSpot → Slack (new deal won notification), Google Sheets (CRM data export), and Calendly sync
+  Capstone: complete CRM setup for a sample business with 50 contacts, 20 deals, automation workflow, and weekly dashboard
+
+
+Course #E15: Sales & Business Development Mastery
+Domain
+Sales
+Duration
+1 Month
+Fees
+Rs.10,999
+
+Week 1 - Sales Fundamentals & Prospecting
+> Sales Mindset & Process
+  Sales as a career: highest-paying non-technical profession, and sales skills compound into entrepreneurship and leadership
+  SPIN Selling: Situation (understand context), Problem (uncover pain), Implication (amplify consequences), Need-Payoff (paint value)
+  Challenger Sale: teach (insight), tailor (to stakeholder), take control (of the conversation) -- for complex B2B sales
+  Consultative selling: asking questions before pitching, understanding the real underlying need vs. stated request
+  Sales process design: Prospecting → Qualification → Discovery → Proposal → Negotiation → Close → Onboard → Renew
+> Prospecting & Lead Generation
+  Ideal Customer Profile (ICP): firmographics (company size, industry, revenue, location) + trigger events (funding, hiring, expansion)
+  LinkedIn Sales Navigator: filter by ICP, save leads, and track job changes as re-engagement triggers
+  Cold email formula: personalized first line (reference their LinkedIn post/company news) + value proposition + clear one ask
+  Cold calling script: intro (10 sec) + reason for call (pain point) + qualifying question + next step ask -- 3-minute call
+  Inbound vs. outbound: inbound (SEO, content, referrals) generates warm leads, outbound (cold email, LinkedIn) generates volume
+
+Week 2 - Discovery, Proposal & Objection Handling
+> Discovery & Proposal
+  Discovery call structure: 40% questions (SPIN), 30% listening and note-taking, 20% value articulation, 10% next step
+  Qualifying framework: MEDDIC (Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion)
+  Proposal writing: Executive Summary (problem + solution + ROI), Scope, Timeline, Investment, Terms -- 5 pages max
+  ROI calculation for proposal: quantify the problem (cost of not solving) × probability × your solution's impact = ROI
+  Case study in proposal: brief customer story (same industry/size), problem, your solution, and measurable result
+> Objection Handling
+  "It's too expensive": acknowledge → question (vs. what?/what's your budget?) → ROI reframe → payment terms
+  "I need to think about it": diagnose (what specifically?) → address specific concern → trial close → next meeting
+  "We use [competitor]": acknowledge → what's working, what's not? → differentiation focus → free pilot offer
+  "Not the right time": understand timeline → confirm pain is still real → stay connected (monthly value emails)
+  Final objection patterns: each objection is a request for more information -- listen, diagnose, and address specifically
+
+Week 3 - Closing & Negotiation
+> Closing Techniques
+  Trial close: "If we can solve [issue], would you move forward?" -- testing commitment before final close
+  Assumptive close: "Should I send the agreement for next Monday start?" -- assumes decision is made
+  Summary close: summarize all agreed-upon benefits, and then ask "Ready to get started?"
+  Urgency creation: legitimate urgency (price increase, limited implementation slots) vs. fake urgency -- only use real urgency
+  Multi-stakeholder close: identifying all decision-makers, getting consensus-buy-in, and facilitating internal champion
+> Negotiation Skills
+  BATNA (Best Alternative to Negotiated Agreement): know your walk-away point and never negotiate without an alternative
+  Value vs. price negotiation: "Our price reflects [value element] -- what specifically is over your budget?"
+  Negotiation tactics: anchoring (first number), bracketing, and splitting the difference (and why to avoid it)
+  Concession strategy: give concessions slowly, make them feel earned, and always get something in return
+  Deal structure creativity: payment terms (50/50), phased implementation, or performance-based pricing as alternatives to discount
+
+Week 4 - Business Development & Partnerships
+> Strategic Business Development
+  BD vs. Sales: Sales (individual accounts), BD (channels, partnerships, platforms that multiply sales throughput)
+  Partnership types: referral partners (2-5% commission), reseller (margin discount), integration (co-sell), and OEM (white-label)
+  BD pitch: "I have customers who need your product/service -- here is how we work together to serve them"
+  Channel partner program: recruiting criteria, training program, co-marketing, commission structure, and MDF (Market Development Fund)
+  Strategic alliances: co-hosting events, joint content, co-bidding on large contracts -- building a referral ecosystem
+> Account Management & Revenue Growth
+  Upsell vs. cross-sell: timing (after 60-day success), trigger (product usage data), and internal champion as advocate
+  Account expansion framework: land (minimal footprint), expand (add users/products), and consolidate (replace other vendors)
+  Executive sponsorship: building C-level relationships in key accounts for protection against champion turnover
+  Quarterly business review (QBR): prepare 30-minute QBR deck (results, ROI, roadmap, expansion plan, renewal discussion)
+  Capstone: complete sales campaign -- 50-contact prospecting list, 5 discovery calls, 2 proposals, and 1 close simulation
+
+
+Course #E16: Branding & Corporate Identity Design
+Domain
+Branding
+Duration
+1 Month
+Fees
+Rs.10,999
+
+Week 1 - Brand Strategy Foundations
+> What is a Brand?
+  Brand definition: the sum of all perceptions your customer has about you -- beyond logo and colors
+  Brand vs. commodity: Bisleri vs. local water, Apple vs. generic laptop -- how brand creates pricing power and loyalty
+  Brand archetypes: Tata (Sage/Caregiver), Amul (Jester/Everyman), Zomato (Jester/Outlaw) -- matching personality to audience
+  Brand positioning: what you stand for, who you are for, and what makes you different -- one-sentence positioning statement
+  Brand audit: competitor brand analysis (visual, voice, positioning), customer perception survey, and brand gap identification
+> Brand Strategy Development
+  Mission, Vision, Values: mission (why you exist today), vision (future you are building), values (non-negotiable behaviors)
+  Brand personality: 5 human personality traits (sincere, exciting, competent, sophisticated, rugged) -- your brand's personality score
+  Target audience deep dive: primary (main buyer), secondary (influencer), and tertiary (end user) -- all may differ for B2B
+  Messaging hierarchy: master message → key messages per audience → proof points per message -- consistent cascade
+  Brand story: origin story (why founded), hero (your customer), journey, and transformation -- for website and marketing
+
+Week 2 - Logo & Visual Identity Design
+> Logo Design Process
+  Logo types: wordmark (Google, IBM), lettermark (IBM, HP), icon mark (Apple, Twitter), combination mark, and emblem (Starbucks)
+  Design brief: company name, industry, target audience, personality (3-5 adjectives), colors to avoid, and inspiration logos
+  Canva logo maker: starting from scratch, and selecting professional templates for SME businesses in India
+  Adobe Express: more design control than Canva, logo resize for different uses, and brand kit feature
+  AI logo tools: Looka, Brandmark, Wix Logo Maker -- and when AI-generated logos are sufficient vs. hiring a designer
+> Color, Typography & Visual System
+  Color psychology: Blue (trust, tech), Green (health, finance), Red (energy, food), and Orange (creativity, affordable)
+  Color palette: primary brand color, secondary color, accent color, and neutral colors -- and HEX/RGB/CMYK values
+  Typography pairing: heading font (personality/brand) + body font (readability), and font licensing for commercial use
+  Visual consistency: same filter preset for Instagram photos, same illustration style, and consistent icon library
+  Brand mood board: collecting 20 visual references on Pinterest that capture your brand feel before design execution
+
+Week 3 - Brand Applications & Style Guide
+> Brand Collateral Design
+  Business card: standard size (3.5 x 2 inches), front (logo, name, title, contact), back (tagline or QR code to website)
+  Letterhead and email signature: company letterhead (MS Word template), and HTML email signature (WiseStamp or Canva)
+  Social media templates: Instagram post (1080x1080), story (1080x1920), LinkedIn banner (1584x396) -- brand-consistent
+  Presentation template: PowerPoint/Google Slides master template with brand colors, fonts, and logo placement
+  Packaging design basics: label design (if applicable), box design, and brand consistency on physical product packaging
+> Brand Style Guide Creation
+  Style guide sections: logo usage (clear space, minimum size, dark/light versions), colors, typography, photography style
+  Logo misuse examples: do not stretch, do not change colors, do not add effects, do not place on busy background
+  Tone of voice guide: formal vs. casual, how to write (active voice, short sentences), words to use and avoid
+  Template library: packaging Canva links, font download links, and color palette (HEX codes) in one shareable document
+  Brand style guide tools: Frontify, Brandfolder, or simple Google Slides/Notion for SME brand books
+
+Week 4 - Brand Launch & Management
+> Brand Launch Strategy
+  Internal brand launch: team training on brand values, tone of voice, and visual usage before external launch
+  Soft launch: updating website, social media profiles, email signatures, and business cards -- before PR announcement
+  PR and media kit: press release template (who, what, when, where, why, quote), high-res logo, founder photo, and company fact sheet
+  Brand introduction post: LinkedIn/Instagram announcement post (story of why rebrand/new brand, what it means), and community response
+  Customer communication: email to existing customers explaining new brand, consistency message, and same product/service
+> Brand Consistency & Evolution
+  Brand guardianship: one person (brand manager or founder) approves all external materials for consistency
+  Brand monitoring: Google Alerts for brand name, social listening (Mention.com free), and managing brand reputation
+  Brand evolution vs. rebrand: refreshing visuals (Pepsi, Zomato) vs. complete rebrand -- when and why
+  Capstone: complete brand identity project -- brand strategy document, logo in 3 versions, color palette, typography, style guide PDF, and 5 branded social media templates
+  Feedback presentation: present brand identity to peer group for structured critique and iteration
+
+
+Course #E19: Public Speaking & Executive Communication
+Domain
+Communication
+Duration
+1 Month
+Fees
+Rs.8,999
+
+Week 1 - Communication Fundamentals
+> Science of Effective Communication
+  Communication model: sender, message, channel, receiver, feedback -- and where most breakdowns occur
+  Mehrabian's 7-38-55 rule: 7% words, 38% tonality, 55% body language -- and why delivery matters as much as content
+  Listening types: passive (hearing), active (attention + acknowledgment), and empathic (understanding feeling + content)
+  Communication styles: assertive (clear, direct, respectful), passive (avoidant), aggressive (dominating), and passive-aggressive
+  Storytelling science: dopamine (anticipation), oxytocin (empathy and trust), and cortisol (tension) -- chemicals of a good story
+> Voice & Delivery
+  Voice modulation: pitch (high = excitement/question, low = authority/statement), pace (slow for emphasis, fast for excitement)
+  Pause as power: the deliberate pause (3 seconds) communicates confidence and gives audience time to absorb
+  Diction and articulation: tongue twisters for warm-up, enunciation exercises, and recording yourself for self-analysis
+  Accent neutralization: Indian English clarity -- rhoticity, syllable stress, and common pronunciation patterns for global audience
+  Breathing for speaking: diaphragmatic breathing, 4-7-8 breathing before presentations, and managing voice under stress
+
+Week 2 - Presentation Skills
+> Structuring Presentations
+  Presentation frameworks: Problem-Solution-Call to Action, STAR (Situation, Task, Action, Result), and Monroe's Motivated Sequence
+  Opening techniques: startling statistic, rhetorical question, story (first 90 seconds = make or break), and audience poll
+  Slide design for speakers: minimal text (5 words per bullet, 5 bullets max), full-bleed images, and presenter notes
+  Closing techniques: callback to opening, 3-point summary, memorable one-liner, and clear call to action
+  Practice methodology: recording every practice session, watching without sound (body language), and timing to ±30 seconds
+> Managing Presentation Anxiety
+  Anxiety reframe: symptoms (heart rate, adrenaline) are identical to excitement -- tell yourself "I am excited" not "I am nervous"
+  Preparation cure: over-prepare content (know 2x what you will say), practice the first 2 minutes until automatic
+  Power posing: 2 minutes of expansive posture before speaking -- Amy Cuddy's research on cortisol and testosterone
+  Progressive desensitization: start with 2-person conversation, then small group, then 10 people, then 50+
+  Visualization: mentally rehearsing a successful presentation (specific detail: room, faces, confident delivery, applause)
+
+Week 3 - Business Communication Scenarios
+> High-Stakes Communication
+  Board presentations: BLUF (conclusion first), 10-slide maximum, anticipate top 5 questions, and pre-reading 48 hours before
+  Investor pitch delivery: confidence in numbers (instant recall), managing skeptical questions, and follow-up email post-meeting
+  Sales presentation: discovery before presenting, customer-language (not company jargon), and demo-driven with minimal slides
+  Media interview training: bridging technique (answer then redirect to key message), flagging (marking key points), and the pause
+  Town hall and all-hands: transparent (share real numbers), two-way (Q&A), and inspiring (connect work to vision)
+> Interpersonal Communication
+  Feedback delivery: SBI model (Situation, Behavior, Impact) for specific, actionable, and respectful feedback
+  Difficult conversations: preparation (specific outcome desired), leading with empathy, using "I" statements, and collaborative solution
+  Negotiation communication: active listening to understand their priority, and yes-and (not yes-but) collaborative framing
+  Cross-cultural communication: high-context (India, Japan) vs. low-context (USA, Germany) -- direct vs. indirect communication
+  Virtual communication: camera presence (eye contact at camera, not screen), lighting, background, and engagement cues in video calls
+
+Week 4 - Leadership Communication
+> Executive Presence
+  Executive presence: gravitas (substance, assertiveness), communication (speaking up, commanding a room), and appearance (professional polish)
+  Commanding a room: entering with confidence, occupying space (no shrinking), scanning the room, and speaking to the back row
+  Communication in a crisis: acknowledge, express empathy, take responsibility (if appropriate), share action steps, and follow up
+  Thought leadership communication: writing one opinion article per month (LinkedIn or media), and speaking at 1 event per quarter
+  Storytelling for leaders: company origin story, company purpose story, and customer transformation story -- mastering all three
+> Capstone & Performance Review
+  Capstone speech: 5-minute prepared speech on your business or a chosen topic, recorded and peer-reviewed
+  Impromptu speaking: PREP (Point, Reason, Example, Point) for 2-minute impromptu on random business topic
+  Self-assessment: reviewing recorded speech against rubric (structure, delivery, content, body language, time), and identifying top 3 improvements
+  360 feedback: peer feedback form (what landed well, what to improve, one memorable line from your speech)
+  Action plan: one speaking opportunity in next 30 days (team meeting, client pitch, or local event), and continued practice roadmap
+
+
+Course #E20: Leadership & Team Management
+Domain
+Management
+Duration
+1 Month
+Fees
+Rs.11,999
+
+Week 1 - Leadership Foundations
+> Leadership Styles & Theories
+  Situational leadership: Directing (S1) for low skill/low will, Coaching (S2) for low skill/high will, Supporting (S3) for high skill/low will, Delegating (S4) for high skill/high will
+  Leadership styles: Autocratic (fast decisions), Democratic (team buy-in), Laissez-faire (expert teams), and Transformational (inspire change)
+  Servant leadership: listening, empathy, healing, awareness, persuasion, conceptualization, foresight, stewardship, commitment, and community building
+  Emotional Intelligence (EQ): self-awareness, self-regulation, motivation, empathy, and social skills -- and developing each
+  Leaders vs. managers: leaders (vision + inspire), managers (plan + execute) -- and why startups need founder-CEOs to do both
+> Self-Leadership & Feedback
+  Personal leadership assessment: Strengths (Clifton StrengthsFinder), leadership style survey, and 360-degree feedback gathering
+  Growth mindset: Carol Dweck's research -- "I can't do this yet" vs. "I can't do this," and failure as learning
+  Decision-making: first principles thinking (Elon Musk), second-order thinking (consequences of consequences), and reversible vs. irreversible decisions
+  Time management for leaders: Eisenhower Matrix (urgent/important), time blocking, and protecting strategic thinking time
+  Personal board of directors: 5 advisors who challenge you (not just support) -- mentor, peer, coach, domain expert, contrarian
+
+Week 2 - Building & Managing Teams
+> Team Building & Culture
+  Hiring for values: behavioral interview questions (STAR format), culture fit vs. culture add, and reference check structure
+  Team dynamics: Tuckman's stages (Forming, Storming, Norming, Performing) -- and leader's role at each stage
+  Psychological safety: Amy Edmondson's research -- teams that feel safe to take risks outperform, and how to create it
+  OKR framework: Objectives (inspiring goal) + Key Results (measurable outcomes), quarterly OKR setting, and weekly check-ins
+  Team charter: team purpose, working norms (meeting times, communication channels, decision rights), and conflict resolution
+> Performance Management
+  1-on-1 meetings: weekly 30-minute 1-on-1, agenda (their agenda first, then yours), and keeping notes in shared doc
+  Performance review: annual + mid-year, using OKRs as backbone, and separating compensation conversation from development
+  Performance Improvement Plan (PIP): when to use, structure (specific behaviors, measurable goals, timeline, support offered)
+  Recognition and reward: immediate (verbal praise within 24 hours), public recognition (all-hands), and symbolic (growth opportunity)
+  Managing remote/hybrid: async-first communication, documentation discipline, and building connection without in-person serendipity
+
+Week 3 - Communication & Conflict
+> Leader Communication
+  Vision communication: connecting daily work to company mission, inspiring narrative, and repeating vision consistently
+  All-hands meeting: structure (business update, wins, challenges, roadmap, Q&A) and creating psychological safety for questions
+  Difficult conversation framework: prepare (outcome, empathy, facts), open empathetically, state impact, listen, collaborative solution
+  Giving feedback: SBI model (Situation, Behavior, Impact), within 24 hours of observation, private for criticism, public for praise
+  Receiving feedback: thanking (not defending), clarifying questions, reflecting before responding, and closing the loop
+> Conflict Resolution
+  Conflict types: task conflict (productive - improves decisions), relationship conflict (destructive - hurts team), and process conflict
+  Conflict resolution styles: Competing, Accommodating, Avoiding, Compromising, Collaborating -- and when to use each
+  Mediating team conflict: neutral facilitator role, facts vs. feelings separation, and focusing on shared goals
+  Difficult employee types: the "brilliant jerk" (high performer, poor values), the "spirited debater" (good), and the chronic under-performer
+  Preventing conflict: clear role definitions (RACI matrix), transparent decision-making process, and regular check-ins
+
+Week 4 - Strategic Leadership & Growth
+> Strategic Leadership
+  Strategic planning: SWOT for team (Strengths, Weaknesses, Opportunities, Threats) and quarterly planning rhythm
+  Delegation mastery: what to delegate (routine, developable), how (outcome + authority + resources + check-in), and letting go
+  Creating leaders: identifying high-potentials, stretch assignments, mentoring and sponsorship (active advocacy for them)
+  Change management: Kotter's 8-step model, leading through uncertainty (acknowledge, explain, listen, act), and preventing change fatigue
+  Innovation culture: running mini experiments, celebrating failures as learning, and allocating 20% time for exploration
+> Founder-CEO Transition
+  Transition from founder to CEO: from doing to enabling, and the hardest part (trusting others with your baby)
+  Building management layer: first manager hire (Head of Sales, Head of Engineering), and onboarding managers effectively
+  Board relationship: reporting to a board as CEO, board meeting preparation, and building board trust over time
+  Stakeholder management: investors, employees, customers, and community -- allocating CEO time across all stakeholders
+  Capstone: leadership case study presentation -- describe a real leadership challenge, actions taken, results, and lessons learned
+
+
+Course #E21: Human Resource Management for MSMEs
+Domain
+HR Management
+Duration
+1 Month
+Fees
+Rs.10,999
+
+Week 1 - HR Foundations & Recruitment
+> HR for Small Business
+  HR functions: recruitment, onboarding, performance management, payroll, compliance, and employee relations
+  HR policy framework: employee handbook must-haves (leave policy, code of conduct, grievance, and confidentiality)
+  Organizational structure: flat vs. hierarchical, and right structure for 5/20/50-employee companies
+  MSME HR compliance: Shops & Establishments Act (state-specific), labor law applicability thresholds, and documentation
+  HR tech for SMEs: Zoho People (affordable, India GST-compliant), Keka, Darwinbox free tier, and greytHR
+> Recruitment Process
+  Job analysis: job description (role, responsibilities, requirements), job specification (qualifications, skills, experience)
+  Sourcing channels: LinkedIn Jobs (premium), Naukri, Indeed, college placement cells, and employee referral program
+  Interview process: 3-round standard (HR screening call, technical/functional, culture fit with founder)
+  Offer letter: compensation structure (fixed, variable, PF, gratuity), joining date, and offer acceptance confirmation
+  Background verification: previous employment verification, educational qualification check, and criminal record check for sensitive roles
+
+Week 2 - Payroll & Statutory Compliance
+> Payroll Management
+  CTC structure: Basic (40-50% of CTC), HRA (40-50% of basic), Special Allowance, PF (12% employer), and medical allowance
+  Gross to Net calculation: Gross - TDS - PF employee (12%) - PT (state-specific) - ESI (0.75%) = Net take-home
+  TDS on salary: Form 12BB (investment declarations), regime selection (old vs. new), and monthly TDS deduction
+  Form 16: Part A (TDS deposited by employer), Part B (salary details), and issuing by June 15 each year
+  Payroll software: greytHR (India-specific, PF/ESI/TDS integrated), Zoho Payroll, and Keka Payroll -- comparison
+> PF, ESI & Gratuity
+  PF (Provident Fund): 12% employee + 12% employer (8.33% to EPS + 3.67% to EPF), UAN, and ECR filing monthly
+  ESIC registration: applicable for 10+ employees with <Rs.21,000 gross salary, and 0.75% employee + 3.25% employer
+  Gratuity: applicable after 5 years of service, calculation (15/26 × last salary × years), and Payment of Gratuity Act 1972
+  Labour Welfare Fund: state-specific, deducted bi-annually, and varies from Rs.6 to Rs.60+ depending on state
+  Full and Final Settlement: PF withdrawal/transfer, gratuity, leave encashment, and relieving letter procedures
+
+Week 3 - Performance Management & Employee Relations
+> Performance Management System
+  Goal setting: SMART goals, OKR for teams, and cascading company goals to individual KPIs
+  Performance review cycle: quarterly check-ins, mid-year review, and annual appraisal with compensation decision
+  360-degree feedback: peer feedback collection (Google Form), anonymized sharing, and development conversation
+  Performance Improvement Plan (PIP): trigger criteria, structure, timeline (30-60-90 days), and documentation
+  Promotions and career ladders: creating a simple 3-level career ladder (Junior, Senior, Lead) for each function
+> Employee Relations & Retention
+  Employee engagement: annual engagement survey (Culture Amp, SurveyMonkey), action planning, and communication back
+  Grievance handling: open door policy, HR escalation path, and POSH committee (mandatory for 10+ employees)
+  POSH (Prevention of Sexual Harassment): Internal Complaints Committee (ICC), annual training, and complaint procedure
+  Exit interview: structured 10-question exit interview, analyzing exit data for patterns, and retention improvements
+  Retention levers: compensation benchmarking (Aon, Mercer salary surveys), learning budget, flexibility, and recognition programs
+
+Week 4 - HR Strategy & Employer Brand
+> HR Strategy for Growth
+  Manpower planning: hiring forecast based on revenue plan, lead time (3-6 months for senior roles), and succession planning
+  Compensation benchmarking: using Naukri/LinkedIn salary insights, and positioning at P50 (median) to start, P75 for key roles
+  Learning & Development: skills gap analysis, L&D budget (1-3% of payroll), and online learning platforms (Coursera for Business)
+  HR scorecard: key metrics (time to hire, offer acceptance rate, 90-day attrition, eNPS) tracked monthly
+  HR automation: using Keka or greytHR workflows for leave approval, expense reimbursement, and performance review routing
+> Employer Brand & Capstone
+  Employer Value Proposition (EVP): why great people should work for you -- mission, growth, culture, and comp
+  Glassdoor and AmbitionBox: managing reviews, responding publicly (professional tone), and improving ratings
+  Hiring brand: LinkedIn company page, careers page (culture video, team testimonials), and GitHub/Behance for tech/creative
+  Internship program: structured 2-month internship (mini-project, mentor, stipend), pipeline for future full-time hires
+  Capstone: complete HR manual for a 20-employee MSME including policies, payroll structure, and performance management cycle
+
+
+Course #E22: Recruitment & Talent Acquisition
+Domain
+HR
+Duration
+1 Month
+Fees
+Rs.10,999
+
+Week 1 - Recruitment Strategy & Job Profiling
+> Talent Acquisition Strategy
+  TA strategy: build (develop internally), buy (hire externally), borrow (contractors/consultants), or bot (AI/automation)
+  Recruitment funnel metrics: sourced → applied → screened → interviewed → offered → joined → 90-day retention
+  Cost per hire calculation: agency fees + job board costs + sourcer/TA salary + interviewer time = total cost per hire
+  Time to fill vs. time to hire: time to fill (requisition to offer), time to hire (application to offer) -- tracking both
+  Hiring manager partnership: kick-off meeting, job brief, interview panels, feedback SLA, and offer collaboration
+> Job Profiling & JD Writing
+  Job analysis methods: structured interviews with current employees, observation, and benchmarking against similar roles
+  Job description formula: About Company (3 lines), Role Summary (2 lines), Responsibilities (6-8 bullets), Requirements (5-7), Perks
+  Competency mapping: defining 3-5 must-have competencies per role, and behavioral indicators for each competency
+  Salary benchmarking: Naukri Salary Insights, LinkedIn Salary, and TimesJobs salary tool for CTC range
+  Removing bias from JDs: gender-neutral language (Textio-style), removing unnecessary requirements ("must have 10+ years")
+
+Week 2 - Sourcing & Assessment
+> Multi-Channel Sourcing
+  Active sourcing: LinkedIn Recruiter Lite (InMail credits, Talent Insights), Boolean search on LinkedIn and Google
+  Passive sourcing: employee referral program (Rs.10,000-25,000 referral bonus), and alumni network outreach
+  Job portals: Naukri.com (most volume for India), LinkedIn Jobs (quality), Indeed, Shine, Monster India, and iimjobs (senior roles)
+  Campus recruitment: placement cells for tier-2/3 engineering colleges, MBA campuses, and pre-placement offer strategy
+  Social recruiting: Instagram for creative roles, GitHub for tech (active on repos), and Twitter for thought leaders
+> Assessment & Screening
+  CV screening: 6-second scan (current company, title, education, career progression, tenure, skills) and ATS keyword filtering
+  Telephonic screening: 15-minute call (STAR qualification, notice period, salary expectation, relocation, interest level)
+  Technical assessment tools: Hackerrank, Codility, Mercer Mettl for aptitude, and TestGorilla for domain knowledge
+  Structured interview: behavioral (STAR), situational, technical, and values-based questions -- and scoring rubric per question
+  Video interviews: HireVue (async video), Zoom interview etiquette, and AI-assisted candidate ranking platforms
+
+Week 3 - Interview Process & Selection
+> Interview Design
+  Interview panel composition: technical assessor, hiring manager, peer, and culture/values interviewer (minimum 3 interviewers)
+  Interview types: case study (consulting/strategy), technical coding round, portfolio review (design), and role-play (sales)
+  Competency-based interview: designing 3 behavioral questions per competency, and follow-up probing questions
+  Interview scorecard: rating each competency 1-5 per interviewer, debrief meeting, and consensus decision
+  Candidate experience: day-of-interview briefing, water and wait time, post-interview feedback (same day), and ghosting prevention
+> Selection & Offer Management
+  Offer strategy: offer construction (base, variable, ESOPs, joining bonus for notice buyout), and negotiation room
+  Background check: employment verification (reference check with previous managers), education, and criminal record
+  Offer letter to joining: Day 1 engagement (pre-joining kit, team introduction email, buddy assignment)
+  Negotiation handling: counter-offer management, competing offer handling, and when to walk away
+  Offer acceptance to joining: 30-60 day pre-joining engagement (calls, team events, office visit) to prevent no-shows
+
+Week 4 - Onboarding & HR Tech
+> Structured Onboarding
+  30-60-90 day onboarding plan: Day 1 (paperwork, IT setup, culture), Week 1 (team introductions, role clarity), Month 1 (small win)
+  Onboarding buddy: same-level peer assigned for 30 days, daily check-in, and buddy feedback on new hire progress
+  New hire orientation: company history, vision/mission/values, organizational structure, and HR policies overview
+  Role-specific onboarding: product training, client introductions, process walkthroughs, and first project assignment
+  New hire survey: 30-day and 90-day pulse survey (expectations met, manager support, culture fit, would I refer a friend?)
+> ATS & HR Tech
+  ATS (Applicant Tracking System): Keka Recruit (India-friendly), Zoho Recruit (free tier), Lever, and Greenhouse for mid-sized teams
+  ATS configuration: pipeline stages, email templates, SLA reminders, and sourcing channel attribution tracking
+  LinkedIn Recruiter: using projects, InMail sequences, and team collaboration on candidate notes
+  Data analytics for TA: weekly hiring dashboard (sourced, in-process, offers, accepted, rejected), and funnel conversion rates
+  AI in recruitment: ChatGPT for JD writing, screening automation, and interview question generation -- and bias risks to manage
+
+
+Course #E23: Payroll & Labour Law Compliance
+Domain
+HR Compliance
+Duration
+1 Month
+Fees
+Rs.9,999
+
+Week 1 - Labour Law Framework
+> Indian Labour Law Overview
+  Labour code consolidation: 4 Labour Codes replacing 29 laws (Wage Code, Industrial Relations Code, Social Security Code, OSH Code)
+  Applicability thresholds: Factories Act (10+ workers with power), Shops & Establishments Act (1+ employee, state-specific)
+  Employee vs. contractor classification: control test, economic dependence test, and consequences of misclassification
+  Central vs. state labour laws: which laws are central (PF, ESI, Gratuity, Maternity) vs. state (Shops Act, PT)
+  Employer register: Form B (Shops Act), muster roll, wage register, and leave register maintenance requirements
+> Wages & Working Hours
+  Minimum Wages Act: VDA (Variable Dearness Allowance), state-specific rates by skill category, and revision cycle
+  Payment of Wages Act: wage payment deadline (7th for <1000 employees, 10th for others), and prohibited deductions
+  Working hours: 9 hours/day, 48 hours/week (Factories Act), compensatory off for overtime, and double rate for Sundays
+  Weekly offs and holidays: mandatory 1 weekly off, national holiday (3 mandatory), and negotiated festival holidays
+  Overtime calculation: OT = (Basic + DA / 26 days / 8 hours) × 2 × OT hours, and compliance record keeping
+
+Week 2 - PF, ESI, Gratuity & Maternity
+> PF & ESI Deep Dive
+  EPF registration: mandatory for 20+ employees, online EPFO portal, and PF code assignment
+  ECR (Electronic Challan cum Return): monthly filing (15th of next month), wage component reporting, and UAN management
+  PF withdrawal and transfer: Form 19 (withdrawal), Form 10C (EPS), Form 13 (transfer), and online claim portal
+  ESIC registration: 10+ employees, online portal, branch code, and IP (Insured Person) card issuance
+  ESIC benefits: medical (unlimited), sickness (70% of wages), maternity (100% wages for 26 weeks), and disablement
+> Gratuity & Maternity Benefits
+  Gratuity calculation: (Last salary × 15 / 26) × years of service -- and qualifying for gratuity (5 years, or death/disability)
+  Payment of Gratuity Act: timeline (30 days from due date), dispute resolution, and gratuity fund insurance
+  Maternity Benefit Act: 26 weeks (2 children), 12 weeks (3+ children), and 12 weeks for adopting mothers
+  Creche facility: mandatory for 50+ female employees, at/near work premises, and within 500 meters or transport provided
+  Maternity payroll: full wages during maternity leave, and prohibition of dismissal during maternity leave period
+
+Week 3 - Payroll Processing & Tax Compliance
+> Payroll Cycle & Processing
+  Monthly payroll timeline: attendance finalization (26th), payroll calculation (28th), approval (30th), and bank transfer (1st)
+  Payroll inputs: attendance data, leave records, new joiners, exits (F&F), salary revisions, and statutory changes
+  LOP (Loss of Pay) calculation: Basic / working days in month × absent days, and impact on PF/PT/ESI
+  F&F (Full & Final) settlement: last salary, leave encashment, gratuity, bonus (if applicable), and deductions
+  Payroll audit: monthly reconciliation of payroll register vs. bank transfer vs. statutory payments
+> TDS on Salary & Professional Tax
+  Form 12BB: investment declaration collection (January), proofs verification (March), and TDS computation
+  Tax regime: old regime (with deductions 80C, HRA, LTA) vs. new regime (lower slabs, fewer deductions) -- employee choice
+  Monthly TDS: equal monthly deduction strategy, adjustment for last-quarter variances, and avoiding surcharge
+  Professional Tax: Karnataka (Rs.200/month for >Rs.15,000), Maharashtra (slab-based), and 10+ states with PT
+  Form 24Q and Form 16: quarterly TDS return filing (24Q), and Form 16 issuance by June 15 -- penalties for delay
+
+Week 4 - Labour Law Compliance & Software
+> Industrial Relations & Compliance
+  Industrial Disputes Act: applicable for 100+ workers, dispute notice (21 days), conciliation, and tribunal
+  Shops & Establishments registration: state-specific form, fee, display requirement, and renewal
+  Contract Labour (R&A) Act: principal employer registration, contractor registration, and compliance audit
+  Fixed Term Employment: introduced in Labour Code -- same benefits as permanent employees, and seasonal industries
+  Compliance calendar: PF (15th), ESIC (15th), TDS (7th), PT (state-specific), advance tax (quarterly) -- monthly tracker
+> Payroll Software & Capstone
+  greytHR: India's most popular HRMS -- payroll run, PF/ESI challan generation, Form 16, and employee self-service portal
+  Keka HR: integrated payroll, attendance, and leave -- statutory compliance automation and report generation
+  Zoho Payroll: SME-friendly, GST-compliant invoicing, bank transfer integration, and mobile app for payslip access
+  Darwinbox: enterprise-grade, attendance integration (biometric/geofencing), and multi-state compliance management
+  Capstone: process a full payroll cycle for a 25-employee company -- attendance, calculation, TDS, PF/ESI, and payslip
+
+
+Course #E24: Office Administration & SOP Development
+Domain
+Operations
+Duration
+1 Month
+Fees
+Rs.9,999
+
+Week 1 - Office Administration Essentials
+> Office Management Systems
+  Office admin scope: facilities, procurement, vendor management, travel, and administrative support
+  Facility management: office maintenance checklist (weekly, monthly, quarterly), AMC contracts, and utility management
+  Vendor management: approved vendor list, vendor evaluation matrix, and annual contract renewal process
+  Asset management: asset register (IT, furniture, vehicles), depreciation tracking, and disposal procedure
+  Mail and communication: incoming mail log, courier tracking, and archival policy (physical and digital)
+> Procurement & Inventory
+  Purchase process: Purchase Request (PR) → PR Approval → RFQ to 3 vendors → PO creation → delivery → GRN → invoice → payment
+  Vendor negotiation: bulk discount, payment terms (Net 30/45), annual rate contract, and emergency procurement process
+  Stationery management: consumption tracking, reorder level (safety stock), and budget vs. actual monthly
+  IT asset procurement: hardware specs standardization, vendor empanelment (Dell/HP), and software license management
+  Petty cash management: imprest system (fixed float), petty cash book, weekly reimbursement, and surprise audit
+
+Week 2 - SOP Development
+> Writing Effective SOPs
+  SOP purpose: eliminate guesswork, ensure consistency, enable training, and provide audit trail for compliance
+  SOP types: step-by-step procedures, hierarchical (major steps with sub-steps), flowchart, and checklist format
+  SOP sections: Title, Purpose, Scope, Definitions, Responsibilities, Procedure, Related Documents, Revision History
+  Writing clarity: active voice, numbered steps (not paragraphs), one action per step, and specific (not "check system" but "login to Zoho and click Reports tab")
+  SOP review process: author writes draft → subject matter expert reviews → manager approves → annual review cycle
+> Key Business SOPs
+  Customer onboarding SOP: steps from signed contract to active user, owner for each step, and SLA per step
+  Invoice approval SOP: invoice receipt → verification (PO match) → approver notification → payment instruction → vendor update
+  Employee leave approval SOP: leave application → manager approval → HR records update → payroll adjustment
+  Incident reporting SOP: incident detection → immediate action → escalation → investigation → corrective action → documentation
+  IT support SOP: issue logging (ticketing), priority classification (P1/P2/P3), resolution SLA, and escalation path
+
+Week 3 - Digital Tools for Administration
+> Productivity & Collaboration Tools
+  Google Workspace: Gmail, Drive (folder structure), Docs (collaborative editing), Sheets (trackers), and Meet (video calls)
+  Notion for operations: company wiki, SOP database, meeting notes, and onboarding tracker -- all in one tool
+  ClickUp or Asana: task management, project tracking, recurring task setup, and workload view for team
+  Slack for internal comms: channel structure (#admin, #IT-support, #travel), etiquette, and integrations (Google Drive, Jira)
+  Zoom vs. Google Meet: license comparison, recording storage, and virtual background policy for professional calls
+> Document Management & Compliance
+  Document control: version numbering (v1.0, v1.1, v2.0), access control (view only vs. edit), and archive policy
+  DMS (Document Management System): Google Drive folder taxonomy, SharePoint for larger teams, and Notion for SMEs
+  Legal document storage: contracts (5 years after expiry), financial records (7 years), HR records (3 years after exit)
+  Business continuity: backup policy (3-2-1: 3 copies, 2 media types, 1 offsite), and recovery time objective
+  GDPR/PDPB India compliance: data minimization, consent management, and data subject request handling procedure
+
+Week 4 - Administration Excellence & Capstone
+> Executive Assistance & Travel Management
+  Executive calendar management: blocking focus time, meeting preparation notes, and 15-minute prep briefing before key meetings
+  Travel management: policy (approval, class of travel, hotel cap), booking tools (MakeMyTrip for Business, Cleartrip Corporate)
+  Expense management: Zoho Expense (mobile receipt capture, auto-categorization, approval workflow, and policy compliance)
+  Event management: internal events (town hall, team lunch, training), vendor coordination, and RSVP tracking
+  Meeting management: agenda setting, room booking, AV setup, minutes distribution within 24 hours, and action item follow-up
+> Capstone & Certification
+  Admin audit: evaluate a sample company's admin processes, identify gaps, and present improvement recommendations
+  SOP writing project: write 3 complete SOPs for different business processes with flowcharts
+  Tool implementation: set up a Notion workspace for a sample company (wiki, task tracker, SOP library, meeting notes)
+  Vendor negotiation simulation: role-play vendor negotiation with rate card, counteroffer, and final agreed terms
+  Certification: Fillip Technologies Office Administration certificate + SOP template kit (15 ready-to-use SOP templates)
+
+
+Course #E25: Business Process Automation
+Domain
+Operations
+Duration
+1 Month
+Fees
+Rs.14,999
+
+Week 1 - Automation Strategy & No-Code Tools
+> Business Automation Framework
+  Automation maturity model: Manual (all human) → Tool-assisted (spreadsheets) → Automated (Zapier/Make) → AI-powered → Autonomous
+  Process selection: high volume, repetitive, rule-based, low exception rate -- ideal candidates for automation
+  Automation ROI: (hours saved/month × hourly cost) - tool subscription = monthly net savings, and payback period
+  Change management for automation: involving the team in identifying candidates, addressing job security fears, and upskilling
+  Automation stack for SMEs: Zapier (no-code, 6000+ apps), Make.com (visual, complex workflows), and n8n (self-hosted, free)
+> Zapier for Business Automation
+  Zapier basics: Zap structure (trigger + action), testing, multi-step Zaps, and Zapier Tables for simple database
+  Lead capture automation: form submission (Typeform/Jotform) → CRM (HubSpot) → welcome email (Mailchimp) → Slack notification
+  Invoice automation: Razorpay payment → create invoice in Zoho Books → send to customer → update CRM deal as won
+  Social media automation: schedule posts (Buffer/Later via Zapier), auto-crosspost from Instagram to LinkedIn
+  Reporting automation: Google Sheets data → automated weekly summary email with charts every Monday 9 AM
+
+Week 2 - CRM & Marketing Automation
+> CRM Workflow Automation
+  HubSpot workflows: enrollment triggers (form submitted, deal stage changed, contact property updated), and action types
+  Lead nurturing: 5-touch email sequence (Day 1, 3, 7, 14, 21), personalization tokens, and unsubscribe compliance
+  Sales automation: automatic task creation for follow-up (2 days after proposal sent), and deal stage advancement triggers
+  Customer onboarding: automated kickoff email (24h after close), onboarding checklist task assignment, and check-in reminders
+  Churn prevention: health score drop trigger → create task for customer success → send personalized check-in email
+> Marketing Automation
+  Email drip campaigns: Mailchimp automation (trigger: subscribed, tag, date, activity), and list segmentation
+  WhatsApp automation: Interakt/Wati flows (welcome → catalog browse → cart add → purchase → post-purchase review request)
+  Social media automation: Metricool, Publer, or Buffer for content scheduling, and approval workflows for team content
+  SEO automation: Semrush weekly rank tracking report, Google Search Console API data pull, and automated alerts
+  Content repurposing automation: YouTube upload → Zapier → caption generation (Whisper API) → LinkedIn post draft
+
+Week 3 - Finance & Operations Automation
+> Finance Process Automation
+  Invoice processing: Zoho Books or QuickBooks automation (recurring invoices, payment reminders, overdue follow-up sequence)
+  Expense automation: Expensify or Zoho Expense (receipt OCR, auto-categorization, and approval routing by amount)
+  Financial reporting: automated P&L snapshot (Google Sheets + Supermetrics) emailed to founders every Monday
+  Bank reconciliation automation: Zoho Books bank feeds (auto-import, rule-based categorization, one-click reconcile)
+  Tax payment reminders: Zapier date-based Zap → GST filing due date → Slack reminder 5 days before → email 2 days before
+> HR & Operations Automation
+  Leave management: Google Form → Zapier → update Google Sheet → manager email approval → calendar block
+  Onboarding checklist: new hire added to HubSpot → Asana/ClickUp project created → tasks assigned → IT ticketing
+  Inventory alerts: Google Sheets stock level → Zapier check → if below reorder level → email purchase manager
+  Customer support ticket: contact form submission → Freshdesk ticket creation → auto-reply to customer → agent assignment
+  Daily standup automation: Geekbot (Slack app) → morning standup questions → aggregated report → channel post
+
+Week 4 - AI Automation & Capstone
+> AI-Powered Automation
+  ChatGPT API in workflows: Make.com or Zapier ChatGPT step for email drafting, content summarization, and classification
+  AI document processing: Nanonets or Google Document AI for invoice data extraction → auto-import to accounting software
+  Sentiment analysis automation: customer feedback → ChatGPT sentiment classification → Slack alert if negative → ticket created
+  Personalization at scale: customer name + purchase history → ChatGPT → personalized email → Mailchimp send
+  AI chatbot: Tidio or Intercom Fin (GPT-4 powered) for website customer support, reducing 60-70% of repetitive queries
+> Automation Governance & Capstone
+  Documentation: automation flowchart (Lucidchart), trigger/action documentation, error handling, and ownership assignment
+  Monitoring: Zapier task history, error notifications (Slack alert on failure), and monthly usage/cost review
+  Security: API key rotation (every 6 months), access review (who has which Zapier connections), and data privacy audit
+  Vendor risk: multi-vendor strategy (not dependent on single automation tool), and local backup of critical data
+  Capstone: build 5 live automations for a sample business -- lead capture, nurturing, invoicing, HR onboarding, and reporting
+
+
+Course #E27: Inventory & Warehouse Management
+Domain
+Operations
+Duration
+1 Month
+Fees
+Rs.11,999
+
+Week 1 - Inventory Management Fundamentals
+> Inventory Basics & Classification
+  Inventory types: raw material, WIP (Work In Progress), finished goods, MRO (Maintenance, Repair, Operations)
+  ABC analysis: A items (80% value, 20% items -- tight control), B items (15% value), C items (5% value, loose control)
+  Inventory valuation methods: FIFO (First In First Out), LIFO (Last In First Out), and Weighted Average Cost -- and tax implications
+  Inventory KPIs: Inventory Turnover Ratio (COGS / Average Inventory), Days Inventory Outstanding (DIO), and carrying cost %
+  Demand forecasting: simple moving average, weighted moving average, and seasonal adjustment for festive demand peaks
+> Reorder & Safety Stock
+  Reorder Point (ROP): (Lead Time × Average Daily Demand) + Safety Stock -- never stockout calculation
+  Safety stock formula: Z × σ(lead time demand) where Z = 1.65 for 95% service level
+  Economic Order Quantity (EOQ): square root of (2 × Annual Demand × Ordering Cost / Holding Cost per unit)
+  Min-Max system: minimum stock level triggers reorder, maximum stock level is order ceiling -- simple for SMEs
+  Just-In-Time (JIT): zero inventory goal, supplier reliability requirement, and risk (stockout on supply disruption)
+
+Week 2 - Warehouse Operations
+> Warehouse Layout & Processes
+  Warehouse layout principles: receiving dock → inspection → put-away → storage → picking → packing → shipping dock
+  Slotting optimization: fast-moving (A items) near shipping, heavy items at floor level, and fragile items in designated zone
+  Racking systems: pallet racking (bulk), shelving (small items), drive-in racking (LIFO), and mezzanine for pick-pack
+  Barcode and QR labeling: GS1 barcode standards, location labels, bin labels, and handheld scanner system setup
+  5S methodology: Sort (remove unnecessary), Set in order (designate location), Shine (clean), Standardize (SOP), and Sustain (habits)
+> Receiving, Put-Away & Picking
+  Receiving process: PO matching (3-way match: PO, GRN, invoice), quality inspection, damage recording, and barcode scanning
+  Put-away: directed put-away (WMS assigns location), bulk storage, and cross-docking for fast-moving items
+  Order picking methods: single order picking, batch picking (multiple orders together), zone picking, and wave picking
+  Pick accuracy: barcode confirmation scan, weight check, and photo documentation for high-value items
+  Packing standards: box selection (weight and dimension), dunnage, sealing, labeling (shipping label, packing list), and fragile marking
+
+Week 3 - Inventory Software & Returns
+> Inventory Management Software
+  Zoho Inventory: multi-warehouse, purchase orders, sales orders, barcode scanning, and Shopify/Amazon integration
+  QuickBooks Commerce (TradeGecko): B2B portal, wholesale pricing, and multi-currency for export businesses
+  Unicommerce: India's leading e-commerce fulfillment platform -- multi-channel inventory sync (Amazon, Flipkart, Meesho, Shopify)
+  Vyapar App: simple inventory for small traders -- GST invoice, stock management, and basic accounting
+  Excel-based inventory: when to use (< 50 SKUs, 1 location), VLOOKUP/XLOOKUP template, and limitations
+> Returns & Quality Management
+  Returns management: return reason capture, condition assessment (resalable, refurbish, scrap), and restocking process
+  Reverse logistics: customer return → warehouse receipt → inspection → disposition (restock/refurbish/dispose)
+  Defect tracking: quality control sampling (AQL - Acceptable Quality Level), defect tagging, and supplier scorecards
+  Dead stock management: identification (no movement in 180 days), discounting strategy, donation, and write-off process
+  Shrinkage control: cycle counting (count 10% of SKUs daily), investigating variance, and theft prevention procedures
+
+Week 4 - Advanced Topics & Capstone
+> Supply Chain Integration
+  Supplier management: approved vendor list, lead time tracking, on-time delivery rate, and quality rejection rate per supplier
+  Demand-supply balancing: S&OP (Sales & Operations Planning) monthly meeting, consensus forecast, and capacity constraint resolution
+  Drop-shipping: supplier-direct fulfillment, inventory risk elimination, and margin impact (lower than owned inventory)
+  3PL (Third Party Logistics): when to outsource fulfillment (>500 orders/month), 3PL selection criteria, and SLA agreement
+  GeM (Government e-Marketplace) inventory requirements: catalog creation, quantity management, and order fulfillment timeline
+> Capstone & Certification
+  Inventory audit simulation: physical count procedure, variance identification, and adjustment journal entry
+  Reorder analysis: given demand data, calculate ROP, EOQ, and safety stock for 10 SKUs
+  WMS setup: configure Zoho Inventory for a sample company (2 warehouses, 50 SKUs, 3 suppliers, and e-commerce channel)
+  KPI dashboard: build an inventory performance dashboard in Google Sheets (Turnover, DIO, Accuracy, Shrinkage %)
+  Certification: Fillip Technologies Inventory Management certificate + Excel inventory template kit
+
+
+Course #E29: Tender Management & Government e-Procurement
+Domain
+Government Business
+Duration
+1 Month
+Fees
+Rs.14,999
+
+Week 1 - Government Procurement Overview
+> Government e-Procurement Ecosystem
+  Government procurement size: Rs.30+ Lakh Crore annual government spending -- the largest buyer in India
+  Procurement types: Works (construction), Goods (products), Services (consulting, IT) -- and different rules for each
+  Procurement stages: NIT/RFP publication → bid submission → technical evaluation → financial bid → LoA → contract → execution
+  GeM (Government e-Marketplace): DPIIT initiative, 50,000+ categories, Rs.4 Lakh Crore+ orders, and mandatory for central government
+  Central procurement portals: CPPP (Central Public Procurement Portal), GePNIC, MSTC, and Railways (IREPS)
+> GeM Registration & Catalog
+  GeM seller registration: PAN, Aadhaar, GSTIN, bank account, and MCA company data -- 30-minute online process
+  GeM catalog: product/service addition, HSN/SAC code selection, brand declaration, and pricing (no MRP violation)
+  GeM brand registration: for manufacturers and brand owners to prevent unauthorized sellers from misusing brand
+  GeM product quality: QCI/BIS compliance, and GeM product certification (for mandatory categories)
+  GeM seller dashboard: orders, bids, queries, and performance metrics (order completion rate, rating) monitoring
+
+Week 2 - Tender Identification & Evaluation
+> Finding & Evaluating Tenders
+  Tender sources: CPPP.gov.in, GeM, state portals (e-Tendering Maharashtra, KEONICS Karnataka), and sector-specific portals
+  Tender scanning tools: TenderTiger, BidAssist, and MyTenders.in for aggregated tender notifications by keyword/category
+  Tender evaluation criteria: eligibility (turnover, experience, certifications), qualification criteria (EMD, documents), and evaluation method (L1, QCBS)
+  Bid-no-bid decision: win probability score (eligibility fit 30%, competition 20%, client relationship 20%, margin 15%, capacity 15%)
+  Tender timeline: notice period (minimum 30 days for large tenders), pre-bid meeting attendance, and submission deadline
+> Technical Bid Preparation
+  Technical bid components: company profile, experience certificates (past project completion), financial statements (3 years), and certifications
+  Work experience: project completion certificates, client letters, and work order copies -- authenticity and format requirements
+  Turnover certificate: CA-certified annual turnover for last 3 years, and format variations per department requirement
+  ISO certification: IS/ISO 9001:2015 (quality), and sector-specific certifications (BIS, FSSAI, NABL, NABH)
+  Consortium bidding: lead partner responsibility, partner eligibility, consortium agreement, and work share declaration
+
+Week 3 - Financial Bid & e-Tendering
+> Financial Bid Strategy
+  Cost estimation: direct cost (material, labor), indirect cost (overhead), and profit margin -- detailed BoQ pricing
+  L1 strategy: understanding why being L1 (lowest bidder) doesn't always win -- quality weight matters in QCBS
+  Rate analysis: rate schedule breakdown for works contracts, and market rate vs. government schedule of rates (SOR)
+  EMD (Earnest Money Deposit): 2-3% of estimated cost, BG from scheduled bank, validity (6 months typically)
+  PBG (Performance Bank Guarantee): 5-10% of contract value, invokable on non-performance, and validity post-completion
+> e-Tendering Process
+  Digital Signature Certificate (DSC): Class 3 DSC mandatory for e-tender submission, and emSigner plugin
+  CPPP submission: uploading technical and financial bid documents, DSC signing, and pre-submission checklist
+  GeM bidding: L1 reverse auction participation, countdown timer, and auto-acceptance of L1 bid by buyers
+  Tender portal registration: state e-procurement portals (one-time registration, revalidation yearly)
+  Pre-bid meeting: mandatory attendance for large tenders, query submission format, and corrigendum tracking
+
+Week 4 - Contract Execution & GeM Advanced
+> Contract Management
+  Letter of Award (LoA): acceptance, performance guarantee submission (within 15 days), and contract agreement signing
+  Contract clauses: penalty (0.5%/week for delay, max 10%), dispute resolution (arbitration clause), and variation order process
+  Running account bills (RA bills): measurement book, quantity certification, deduction (income tax 2%, GST TDS), and payment timeline
+  Defect Liability Period (DLP): typically 1 year post-completion, retention money (5-10%), and release on expiry
+  Contract closeout: final bill, completion certificate, performance guarantee release, and defects rectification
+> GeM Advanced & Capstone
+  GeM DirectCare: government buyer can directly purchase from verified GeM sellers without tender for up to Rs.25,000
+  GeM Custom Bids: for product/service not listed on GeM, buyer creates custom bid, and sellers can respond
+  GeM Annual Reporting: seller performance dashboard, order history export, and MIS for accounts submission
+  Startup India and MSME preferences: 25% procurement preference for MSMEs, L1+15% protection, and startup exception
+  Capstone: complete a mock tender submission -- company profile, experience documents, financial bid for a sample NIT
+
+
+Course #E30: Government Project Proposal & DPR Writing
+Domain
+Consulting
+Duration
+1 Month
+Fees
+Rs.15,999
+
+Week 1 - Understanding Government Projects
+> Government Project Framework
+  Project types: infrastructure (roads, buildings, bridges), social sector (education, health, water), and IT/digital (e-governance, DPIIT)
+  Funding sources: central government schemes (PM Gati Shakti, Smart Cities, AMRUT), state budgets, and multilateral loans (World Bank, ADB)
+  Project lifecycle: Concept → DPR → Approval → Procurement → Execution → Handover → Operation
+  Key stakeholders: Project Implementing Agency (PIA), state government counterpart, central government ministry, and third-party quality auditors
+  Success factors: feasibility (technical + financial), community acceptance, environmental clearance, and political alignment
+> Government Scheme Landscape
+  Smart Cities Mission: 100 cities, Rs.2.05 Lakh Crore, projects in mobility, energy, water, and e-governance
+  PMGSY (Rural Roads): rural road connectivity, DPR format (PMGSY-specific), and quality monitoring system
+  Jal Jeevan Mission: tap water connections, DPR for piped water supply, and fund flow (60:40 Centre:State)
+  PM SVANidhi: street vendor loans, and micro-credit project proposal for urban local bodies
+  State-specific schemes: BRGF (Bihar), APART (Assam), and other state-level programs -- and their DPR requirements
+
+Week 2 - DPR Components & Structure
+> DPR Structure & Format
+  Standard DPR sections: Executive Summary, Introduction, Project Description, Feasibility Analysis, Technical Design, Cost Estimate, Financial Analysis, Implementation Plan, Risk Assessment, and Annexures
+  Executive summary: 2-page summary for senior officials -- problem, solution, cost, benefit, and timeline
+  Situation analysis: present condition with data (quantitative -- existing coverage, population, deficiency), and problem severity
+  Baseline data collection: primary survey (field visits, household survey), secondary data (census, district reports), and GIS mapping
+  Technical specifications: IS codes, material quality standards, design standards (IRC for roads, CPHEEO for water), and safety standards
+> Technical Design & Drawings
+  Concept design: layout plan, flow diagram, and conceptual schematic -- for non-technical stakeholders
+  Detailed engineering drawings: plan, section, elevation -- using AutoCAD or free tools (FreeCAD, LibreCAD)
+  Site survey: topographic survey, soil investigation (bore holes, plate load test), and environmental assessment
+  Utility mapping: existing underground utilities, OFC routes, and avoiding conflict in design
+  Design review: peer review checklist, compliance with relevant IRC/IS standards, and PE (Project Engineer) certification
+
+Week 3 - Cost Estimation & Financial Analysis
+> Cost Estimation
+  Bill of Quantities (BoQ): item-wise quantity takeoff from drawings, schedule of rates (SOR), and contingency (5-10%)
+  SOR (Schedule of Rates): state-specific, CPWD SOR for central projects, and updating for material cost inflation
+  Cost variation provision: price escalation formula (typically: base + inflation indices for labor, steel, cement)
+  Cost benchmarking: per unit cost comparison (Rs./km for road, Rs./KLD for STP) against national/state norms
+  Third-party cost verification: DPR cost vetted by independent technical agency (ITA) or state PWD for large projects
+> Financial Analysis
+  Project financial model: capital expenditure (CAPEX), operating expenditure (OPEX), revenue (if any), and viability gap funding
+  IRR and NPV analysis: at 12% discount rate for infrastructure -- and sensitivity analysis for cost overrun scenarios
+  Cost-Benefit Analysis (CBA): quantifying social benefits (reduced travel time, improved health outcomes) in monetary terms
+  Revenue model: user charges (Rs./KL water tariff, toll), grant-based (no revenue, central scheme funding), and PPP models
+  Financial sustainability: O&M cost recovery, maintenance fund creation, and long-term operation plan for the project
+
+Week 4 - Proposal Writing & Approval
+> Project Proposal Writing
+  Project proposal vs. DPR: proposal (concept-level, 10-20 pages), DPR (detailed, 100-500 pages + drawings + estimates)
+  Writing style: simple language (Class 8 reading level), tables for data, maps for location, and photographs for current state
+  Infographics: project location map, process flow diagram, before-after visual, and funding flow chart
+  Regulatory clearances: environment clearance (EIA for large projects), forest clearance, and land acquisition status
+  Stakeholder consultation: beneficiary meeting minutes, local government resolution (Panchayat/ULB), and MP/MLA support letter
+> Approval Process & Capstone
+  Appraisal process: technical appraisal (state/central technical committee), financial appraisal, and DPR sanction order
+  DPAP (District Planning and Appraisal Process): district-level approval, collector recommendation, and state government sanction
+  Common rejection reasons: poor cost justification, missing drawings, unrealistic timeline, and inadequate land availability
+  Online submission: PM Gati Shakti portal, Smart Cities Mission portal, and state e-tendering for DPR submission
+  Capstone: write a 20-page project proposal for a hypothetical infrastructure project with BoQ, financial model, and timeline
+
+
+Course #E34: Amazon, Flipkart & ONDC Seller Program
+Domain
+E-Commerce
+Duration
+1 Month
+Fees
+Rs.12,999
+
+Week 1 - Amazon Seller Mastery
+> Amazon India Seller Setup
+  Seller Central account: individual vs. professional plan (Rs.999/month), GST requirement, bank account, and category approval
+  Product listing: ASIN creation, title (200 chars, keyword formula), bullet points (5, features + benefits), and description
+  Amazon product photography: main image (white background, >85% frame fill), lifestyle, infographic, and video requirement
+  Backend search terms: 500-byte limit, no repetition, competitor brand (only if truthful), and synonym strategy
+  Winning the Buy Box: price competitiveness, FBA preference, seller rating (>4.5), order defect rate (<1%), and in-stock rate
+> Amazon PPC & Advertising
+  Sponsored Products: automatic (harvest keywords) → manual (exact match, phrase match bid optimization) campaign strategy
+  Keyword research: Amazon search bar suggestions, Jungle Scout, Helium 10, and brand analytics search query report
+  Bid optimization: ACoS target (= gross margin%), and using search term report to add negatives and optimize bids
+  Sponsored Brands: video ads, headline search, and brand store linking for brand awareness above the fold
+  Lightning Deals: eligibility (>3 stars, >5 reviews), deal fee (Rs.300-600), and timing (before Diwali, Prime Day)
+
+Week 2 - Amazon FBA & Account Health
+> FBA (Fulfillment by Amazon)
+  FBA benefits: Prime badge, Buy Box advantage, and customer returns handled by Amazon -- conversion rate boost
+  FBA fees: referral fee (5-15% by category) + fulfillment fee (by weight/size) + storage fee (Rs.22-38/cubic foot/month)
+  FBA shipment creation: dimensions, weight, barcode labeling (FNSKU), and appointment-based delivery to FC
+  FBA vs. FBM/MFN: cost comparison, control over packaging (FBM allows), and customer service responsibility
+  IPI (Inventory Performance Index): >500 to avoid storage limits, tracking excess inventory, stranded inventory, and sell-through rate
+> Account Health & Reviews
+  Account Health dashboard: ODR (Order Defect Rate <1%), CR (Cancellation Rate <2.5%), and LSRP (Late Shipment Rate <4%)
+  IP (Intellectual Property) complaints: avoiding listing issues, not using brand images without permission, and resolving complaints
+  Review strategy: Request a Review button (automated by Helium 10/Jungle Scout), product insert with QR code, and early reviewer program
+  Feedback management: responding to negative feedback (under 65 chars visible), and getting Amazon to remove manipulative feedback
+  Brand Registry: trademark requirement, A+ Content access, Brand Analytics, and counterfeit protection benefits
+
+Week 3 - Flipkart Seller & ONDC
+> Flipkart Seller Mastery
+  Flipkart Seller Hub: registration, catalog upload (category template CSV), and listing quality score improvement
+  Flipkart Smart ROI Ads: auto ads (algorithm decides), product ads, and campaign optimization using ROAS target
+  Flipkart Plus and Flipkart Assured: eligibility requirements, customer trust badges, and conversion rate uplift data
+  Flipkart Fulfillment (FF): similar to FBA, warehouse-based fulfillment, and returns handling by Flipkart
+  Flipkart Big Billion Days: seller participation strategy, deal submission (60 days in advance), and inventory planning
+> ONDC (Open Network for Digital Commerce)
+  ONDC overview: open protocol (like UPI for e-commerce), network participants (buyer app, seller app, logistics)
+  Seller onboarding: registering through an ONDC seller app (Mystore, Paytm, eSahay, Protean eGov), and catalog upload
+  ONDC vs. Amazon/Flipkart: no exclusivity, buyer apps show your products (Magicpin, ONDC-powered Paytm), and lower commission
+  Product catalog on ONDC: Beckn protocol format, category taxonomy, and integration with existing inventory system
+  ONDC growth opportunity: 100+ cities coverage, government push, and early mover advantage in tier-2/3 markets
+
+Week 4 - Analytics & Multi-Channel Management
+> Seller Analytics & Tools
+  Amazon Brand Analytics: Search Query Performance (your brand rank for top keywords), and Repeat Purchase Behavior report
+  Helium 10: keyword research (Cerebro, Magnet), listing optimizer (Scribbles), and rank tracker (Keyword Tracker)
+  Jungle Scout: product database, opportunity finder, and sales estimator for new product research
+  Flipkart analytics: listing quality report, return rate analysis, and review sentiment analysis
+  Unified reporting: building a Google Sheets dashboard pulling data from Amazon, Flipkart, and website for combined view
+> Multi-Channel Scaling & Capstone
+  Inventory sync: Unicommerce, ChannelAdvisor, or Vinculum for real-time inventory sync across Amazon + Flipkart + ONDC
+  Pricing strategy: channel-specific pricing, MAP (Minimum Advertised Price) policy for brand sellers, and repricer tools
+  International expansion: Amazon Global Selling (UAE, UK, USA) -- FBA Export, tax compliance, and currency management
+  Quick Commerce opportunity: listing on Blinkit, Zepto, Swiggy Instamart (10-minute delivery) for fast-moving categories
+  Capstone: set up a complete seller account, create 5 optimized listings, run a PPC campaign, and present first-week analytics
+
+
+Course #E35: Franchise Business Development
+Domain
+Business Growth
+Duration
+1 Month
+Fees
+Rs.13,999
+
+Week 1 - Franchise Fundamentals
+> Franchise Business Model
+  Franchise definition: license to use brand, business system, and support in exchange for fees (royalty + franchise fee)
+  Franchise types: product franchise (vehicle dealer), business format franchise (McDonald's), and conversion franchise (hotel affiliation)
+  Franchisor vs. franchisee obligations: brand standards, training, supply chain (franchisor) vs. investment, operations, royalty payment (franchisee)
+  Franchise advantages: proven system, brand recognition, training support, and lower failure rate vs. independent business
+  Franchise disadvantages: less autonomy, ongoing royalty (4-8% of gross revenue), territory restrictions, and contract termination risk
+> Evaluating a Franchise Opportunity
+  FDD (Franchise Disclosure Document): 23-item disclosure document -- finances, litigation history, franchisee contacts, and obligations
+  Financial performance representation: Item 19 of FDD -- average unit volume, top/median/bottom franchisee performance
+  Franchisee validation: calling 10+ current franchisees (satisfaction, support, actual vs. projected earnings, would they do it again?)
+  Investment breakdown: franchise fee (Rs.5-50 Lakh), fit-out cost (Rs.10-100 Lakh), equipment, working capital, and grand total
+  Break-even analysis: (monthly investment cost / gross margin %) = required monthly revenue to break even
+
+Week 2 - Building a Franchise System
+> Creating a Franchisable Business
+  Franchisability criteria: proven model (3+ years, profitable), replicable (documented systems), scalable, and differentiated
+  Operations manual: 5-volume framework (brand, operations, equipment, marketing, people) -- total 300+ pages for QSR
+  System documentation: every customer touchpoint defined, trained, and audited -- the franchise is the manual
+  Trademark registration: registered trademark is foundation of franchising -- trademark in all relevant classes
+  Pilot franchise: running 1-2 company-owned units before franchising to test the system and gather performance data
+> Franchise Legal & Financial Structure
+  Franchise agreement: territory (exclusive/non-exclusive), term (5-10 years), renewal, transfer, and termination conditions
+  Royalty structure: % of gross sales (4-8%), flat monthly fee, or tiered -- and typical India franchise royalty benchmarks
+  Franchise fee: one-time payment (Rs.3-25 Lakh range for India SME franchise), and what it covers (training, setup support, rights)
+  FDD preparation (India equivalent): disclosure document for legal compliance, and CA-certified financial statements
+  Area Development Agreement: multi-unit development rights, development schedule, and development fee structure
+
+Week 3 - Franchise Recruitment & Training
+> Franchisee Recruitment
+  Franchisee profile: ideal franchisee attributes (capital, local network, business acumen, values alignment) vs. just money
+  Marketing for franchise recruitment: FranConnect, Franchising.in, Franchise India, and LinkedIn for qualified prospects
+  Franchise discovery process: inquiry → information session → site visit → FDD review → application → interview → award
+  Franchisee selection criteria: net worth (2x total investment), liquid capital (30% of investment), market knowledge, and motivation
+  Financial vetting: bank statements, ITR (3 years), and net worth statement -- and credit check for higher-investment models
+> Training & Standards
+  Initial training program: classroom training (brand, operations, financials) + on-the-job (in company unit), and certification
+  Opening support: site selection criteria (demographic, visibility, accessibility), lease negotiation assistance, and fit-out project management
+  Operations manual delivery: physical (printed, controlled) vs. digital (password-protected portal), and version control
+  Quality audit: monthly mystery shopping, quarterly field audit (operations checklist), and annual brand review score
+  Ongoing training: regional conferences, webinar series, best practice sharing, and annual franchisee convention
+
+Week 4 - Franchise Operations & Growth
+> Franchise Operations Management
+  Franchise operations team: Field Business Consultants (1 per 15-20 franchisees), ZM (Zonal Manager), and National Manager
+  Performance monitoring: weekly sales report (franchisee submission), monthly franchisee P&L review, and KPI dashboard
+  Franchisee support: helpdesk (8 AM - 8 PM), regional manager visits (monthly), and peer network (WhatsApp group)
+  Royalty collection: automated payment (standing instruction), and handling late payments (interest, and final termination)
+  Renewal and termination: renewal process (performance gate, updated training, revised agreement), and termination procedure (notice, cure period)
+> Franchise Growth & Capstone
+  Network growth strategy: territory mapping (India divide into 500+ franchise territories), and target of 50 units Year 1
+  International franchising: master franchise model for international (country rights), FEMA compliance for royalty receipt
+  Franchise success metrics: AUV (Average Unit Volume), SRR (Same Restaurant Renewal Rate), and net unit growth YoY
+  Indian franchise brands: case study of Chai Point, Naturals Ice Cream, and First Cry franchise expansion strategy
+  Capstone: design a complete franchise package for a sample business -- operations manual outline, FDD, royalty model, and training plan
+
+
+Course #E39: Real Estate Business Management
+Domain
+Real Estate
+Duration
+1 Month
+Fees
+Rs.15,999
+
+Week 1 - Real Estate Market & Legal Framework
+> Indian Real Estate Market
+  Market segments: residential (affordable, mid, luxury), commercial (office, retail, industrial), and alternative (warehousing, data centers)
+  Real estate market cycle: expansion, peak, contraction, trough -- and identifying current position for buy/sell decisions
+  Major markets: MMR (Mumbai), Delhi-NCR, Bengaluru, Hyderabad, Pune, and Chennai -- market characteristics and growth drivers
+  Tier-2 opportunity: Ahmedabad, Jaipur, Lucknow, Patna, and Bhubaneswar -- infrastructure-driven demand and price appreciation
+  Real estate as investment: yield (rental income / property value), capital appreciation, and comparison with equity and debt returns
+> Real Estate Legal Framework
+  RERA (Real Estate Regulatory Authority): project registration, builder obligations, allottee rights, and complaint redressal
+  Sale deed vs. agreement to sell: difference, registration requirement, stamp duty (5-7% of value), and importance of title verification
+  Title due diligence: 30-year title search, encumbrance certificate, mutation records, and tax paid receipts
+  Property registration: process at Sub-Registrar Office, documents required, stamp duty and registration fee calculation
+  Landlord-tenant law: Rent Control Act (state-specific), leave and license agreement, and eviction procedure
+
+Week 2 - Property Valuation & Finance
+> Property Valuation
+  Valuation methods: Comparative Market Analysis (CMA), Income Approach (cap rate), and Cost Approach (for new properties)
+  Cap rate: Net Operating Income / Property Value × 100 -- and typical cap rates by city and segment (India: 6-9%)
+  Gross Rent Multiplier (GRM): property price / annual gross rent -- quick screening tool for investment properties
+  Government value: Ready Reckoner / Circle Rate -- minimum value for stamp duty, and its gap with market value
+  Registered Valuer: IBBI registered valuer for bank financing, legal disputes, and tax assessments
+> Real Estate Finance
+  Home loan structure: principal + interest, EMI calculation (P × r × (1+r)^n / ((1+r)^n - 1)), and total interest over tenure
+  Loan to Value (LTV): banks lend 75-90% of market value, and making up the margin (down payment)
+  PMAY (Pradhan Mantri Awas Yojana): Credit Linked Subsidy Scheme (CLSS), subsidy amount (Rs.2.67 Lakh max), and eligibility
+  NRI property purchase: FEMA rules, repatriation limits, and NRI home loan -- and TDS deduction on NRI property purchase (20%)
+  Construction finance: project finance for developers, RERA escrow account requirement (70% collections), and construction draw schedule
+
+Week 3 - Real Estate Business Operations
+> Real Estate Agency Business
+  RERA agent registration: mandatory in all states, registration process, fee, and renewal (5 years)
+  Revenue model: 1-2% on purchase (from buyer/seller), 1 month's rent on leasing (from landlord), and referral fee
+  CRM for real estate: Salesforce, HubSpot, or India-specific (Selldo, Sales CRM by PropTiger) for lead management
+  Lead generation: Google Ads (location-specific keywords), Meta Ads (location + demographics), housing.com, 99acres.com
+  Property portal listings: MagicBricks, 99acres, Housing.com -- listing optimization, photo quality, and response rate impact
+> Property Development Business
+  Development process: land acquisition → zoning verification → design → approvals → construction → marketing → possession
+  RERA project registration: before marketing or accepting bookings, escrow account (70%), and quarterly updates
+  Land due diligence: conversion (agricultural to non-agricultural), layout approval, and environmental clearance
+  Construction management: contractor selection, project monitoring, quality inspection (RCC, MEP, finishing), and OC (Occupancy Certificate)
+  Real estate marketing: project branding, site office setup, digital campaigns, channel partner network, and launch event
+
+Week 4 - Emerging Trends & Capstone
+> PropTech & Emerging Trends
+  Virtual tours: Matterport 3D tours, video walkthroughs, and drone photography for project marketing
+  AI in real estate: price prediction ML models (NoBroker, 99acres), chatbots for inquiry handling, and automated valuation
+  Fractional ownership: PropShare, Asset Monastery -- commercial property fractional investment for retail investors
+  REITs (Real Estate Investment Trusts): Embassy REIT, Mindspace REIT -- structure, yield, and how to invest in listed REITs
+  Co-living and co-working: Stanza Living, OYO Rooms, WeWork India -- managed accommodation and managed workspace models
+> Real Estate Investment Strategy & Capstone
+  Buy-to-rent strategy: identifying high-yield markets, calculating net yield (rental income - expenses / property cost)
+  Fix and flip: buying distressed properties, renovation budget, and selling at markup -- typical timelines and returns
+  Portfolio diversification: mixing residential (stability) with commercial (yield), and geographic diversification
+  Tax planning: Section 24 (home loan interest deduction), Section 80C (principal), long-term capital gain (20% with indexation)
+  Capstone: complete property investment analysis -- market research, valuation, financial model, and investment recommendation report
+
+
+Course #E43: Business Analytics for Decision Making
+Domain
+Analytics
+Duration
+1 Month
+Fees
+Rs.14,999
+
+Week 1 - Analytics Foundations & Excel
+> Data-Driven Decision Making
+  Analytics maturity: Descriptive (what happened?), Diagnostic (why?), Predictive (what will happen?), Prescriptive (what should we do?)
+  Decision making with data: hypothesis-first approach, avoiding confirmation bias, and statistical significance vs. practical significance
+  Key metrics by function: Sales (pipeline, win rate, ACV), Marketing (CAC, MQL, conversion), Ops (cycle time, defect rate), Finance (EBITDA, working capital)
+  Data quality: completeness, accuracy, consistency, timeliness -- and garbage in = garbage out principle
+  Analytics charter: defining business questions, data sources, frequency, owner, and action tied to each KPI
+> Excel for Business Analytics
+  Power Query: connecting to multiple data sources (CSV, SQL, SharePoint), transforming (unpivot, merge, custom column), and scheduled refresh
+  Advanced formulas: XLOOKUP, INDEX-MATCH, SUMPRODUCT, OFFSET, INDIRECT -- and when to use each
+  Dynamic arrays: FILTER, SORT, UNIQUE, SEQUENCE, CHOOSECOLS, TEXTSPLIT -- transforming data without macros
+  Pivot Table deep dive: multi-level grouping, calculated fields/items, GETPIVOTDATA, and Power Pivot data model
+  Excel dashboards: slicer/timeline controls, conditional formatting heatmaps, sparklines, and camera tool for dynamic layouts
+
+Week 2 - SQL & Python for Analytics
+> SQL for Business Questions
+  Business SQL: customer cohort analysis (join date grouping, retention %), product mix analysis, and sales rep performance
+  Time series SQL: LAG/LEAD for period-over-period, DATE_TRUNC for monthly bucketing, and running totals with window functions
+  Funnel analysis: counting users at each funnel stage, stage-to-stage conversion rate, and time-to-complete per stage
+  Customer segmentation: RFM scoring with SQL (NTILE for quartile segmentation), and segment-based action triggers
+  Database connection: Google BigQuery, MySQL, and PostgreSQL -- free cloud options for analytics practice
+> Python Analytics Basics
+  Pandas for business: read_csv, groupby, pivot_table, merge, and creating a weekly business report in 20 lines of code
+  Data cleaning: handling nulls, duplicate records, data type issues, and outlier detection (IQR method)
+  Descriptive analytics: describe(), value_counts(), corr(), and building a statistical summary for management review
+  Matplotlib charts: line chart (trend), bar chart (comparison), scatter plot (correlation), and saving to PDF for reports
+  Automating reports: scheduling Python script (cron/Task Scheduler), emailing report PDF with smtplib, and Excel output (openpyxl)
+
+Week 3 - Power BI & Data Visualization
+> Power BI for Business
+  Power BI Desktop: connecting data (Excel, SQL, API), data model (star schema), and relationships between tables
+  DAX basics: SUM, CALCULATE, FILTER, DIVIDE, COUNTROWS, and creating measures for KPIs
+  Report design: choosing right visual (table for detail, line for trend, bar for comparison, gauge for single KPI)
+  Power BI Service: publishing, sharing (workspace), row-level security for different audience, and scheduling data refresh
+  Power BI Mobile: mobile layout design, KPI visual, and consuming reports on phone for on-the-go decisions
+> Data Storytelling
+  Data storytelling framework: Big Idea (1 sentence insight), supporting evidence (3 data points), and so what (action)
+  Chart junk: removing gridlines, borders, 3D effects, and chart elements that distract from the message
+  Color strategy: one data series one color, highlight only the important data point, and using red/green carefully
+  Annotation: adding context to charts (why did the spike happen?, circle the important point, add average line)
+  Executive dashboard: single page, 5-7 KPIs, traffic-light status (RAG), trend indicators, and drill-down capability
+
+Week 4 - Predictive Analytics & Capstone
+> Predictive Analytics for Business
+  Forecasting: Excel FORECAST.ETS for time series, seasonality adjustment, and confidence intervals for planning
+  Linear regression: understanding correlation, building simple regression (LINEST in Excel), and interpreting R-squared
+  Segmentation: K-means clustering concept, and implementing in Python (sklearn) for customer segmentation
+  Churn prediction: logistic regression concept, feature selection (tenure, activity, support tickets), and model interpretation
+  Scenario modeling: best/base/worst case in Excel, Monte Carlo simulation (1000 iterations with random inputs), and decision trees
+> Analytics Project & Capstone
+  Analytics project structure: business question → data collection → cleaning → analysis → insight → recommendation → action
+  Sales analytics project: analyzing 12 months of sales data, identifying top/bottom SKUs, seasonal patterns, and forecasting
+  Marketing analytics: channel attribution, CAC by channel, and budget reallocation recommendation with projected ROI impact
+  Operations analytics: identifying process bottlenecks, supplier performance trends, and inventory optimization recommendations
+  Capstone presentation: 10-slide analytics report with executive summary, 3 key insights, supporting visuals, and specific recommendations
+
+
+Course #E44: Power BI for Business Executives
+Domain
+Analytics
+Duration
+1 Month
+Fees
+Rs.12,999
+
+Week 1 - Power BI Foundations
+> Power BI Desktop Setup
+  Installation and workspace: Power BI Desktop (free), service (Pro/Premium), and mobile app -- when to use each
+  Data connection: connecting to Excel, CSV, SQL Server, SharePoint, and REST API -- and choosing correct connector
+  Query Editor (Power Query): applied steps, data type changes, filter rows, split column, and merge queries
+  Data model: tables, relationships (one-to-many, many-to-many), cross-filter direction, and star schema vs. snowflake
+  Calculated columns vs. measures: when to use each (calculated column = row-level, measure = aggregated at filter context)
+> Your First Dashboard
+  Adding visuals: drag field to canvas, changing visual type, and visual interactions (cross-filter, cross-highlight)
+  Format pane: title formatting, legend placement, data labels, axis formatting, and conditional formatting
+  Slicers: date slicer, list slicer, dropdown slicer, and syncing slicers across pages
+  Card visual: KPI display, callout value, trend axis, and color-coded goal comparison
+  Page layout: canvas size, background color, image background, and grouping visuals for alignment
+
+Week 2 - DAX & Data Modeling
+> DAX Fundamentals
+  Basic DAX: SUM(), COUNT(), AVERAGE(), DISTINCTCOUNT(), MIN(), MAX() -- and using them in measures
+  CALCULATE: the most important DAX function -- adding/modifying filter context, and common patterns
+  Time intelligence: DATEADD, SAMEPERIODLASTYEAR, TOTALYTD, DATESYTD, and creating a date table (CALENDAR function)
+  Variables in DAX: VAR keyword for readable and efficient measures, and using RETURN for complex calculations
+  DIVIDE: safe division avoiding divide-by-zero errors, and alternate result parameter
+> Data Modeling Best Practices
+  Star schema: fact table (numeric, transactional) + dimension tables (descriptive attributes) = optimal query performance
+  Relationships: managing multiple relationships, active vs. inactive, and USERELATIONSHIP in DAX
+  Row-level security: static (role-filter), dynamic (USERNAME() or USERPRINCIPALNAME() in filter table)
+  Performance optimization: reducing column cardinality, using summary tables, and disabling auto date/time
+  Data refresh: scheduled refresh (Power BI Service), incremental refresh (only new data), and DirectQuery mode
+
+Week 3 - Business Reports for Executives
+> Sales & Financial Reports
+  Sales dashboard: total revenue, revenue by product/region/channel, MoM growth, YTD vs. target, and top 10 customers
+  Pipeline report: deals by stage, pipeline value, win rate trend, and sales rep leaderboard (conditional formatting ranking)
+  P&L dashboard: Revenue, COGS, Gross Profit %, EBITDA, and waterfall chart for variance analysis (actual vs. budget)
+  Financial KPIs: Current Ratio, Debt-Equity Ratio, Return on Equity, and trend lines with benchmark comparison
+  Cash Flow dashboard: operating cash flow, accounts receivable aging, payable aging, and rolling 13-week cash forecast
+> Operations & HR Reports
+  Operations dashboard: production output, quality (rejection rate), machine efficiency (OEE), and on-time delivery %
+  Inventory report: stock turnover, days on hand, stockouts, slow-moving items (conditional formatting), and reorder alerts
+  HR dashboard: headcount by department, attrition rate, open positions aging, and eNPS trend over 12 months
+  Customer service: ticket volume, first contact resolution rate, CSAT score, and average resolution time
+  Capacity planning: resource utilization by team/month, project pipeline, and capacity vs. demand gap chart
+
+Week 4 - Advanced Power BI & Sharing
+> Advanced Visualizations
+  Custom visuals: AppSource marketplace, Charticulator for custom chart shapes, and Zebra BI for financial charts
+  Decomposition tree: root cause analysis visual, analyzing metric by multiple dimensions interactively
+  Key influencer visual: AI-powered visual showing what factors most influence a KPI -- for automated insight
+  Smart narrative: auto-generated natural language summary of your data, and customizing the generated text
+  Power BI Q&A: natural language queries on your dataset, training Q&A with synonyms, and embedding Q&A in reports
+> Collaboration, Publishing & Capstone
+  Power BI Service: workspaces, dataset sharing, report sharing (view only), and embedding in Teams/SharePoint
+  Power BI Apps: packaging multiple reports + dashboards as an App for organizational distribution
+  Subscriptions and alerts: email subscription (attach PDF/PPT of report), and data-driven alert for threshold breach
+  Export options: PPT with live data, PDF, Excel (underlying data export), and Analyze in Excel connection
+  Capstone: build a complete executive business dashboard for a sample company with Sales, Finance, HR, and Operations tabs

@@ -1,10 +1,23 @@
 import fs from "fs";
 import { SiteConfig } from "../models/siteConfig.model.js";
+import { Course } from "../models/course.model.js";
 import { getOrSet, cacheDel } from "../utils/cache.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
 import { ApiError } from "../utils/ApiError.js";
 
 const SITE_CONFIG_KEY = "site-config";
+
+// The "Courses Available" milestone is shown as the LIVE count of published
+// courses instead of a hand-typed number, rounded DOWN to a tidy figure (nearest
+// 10, then a "+") so the headline always understates rather than overstates.
+const roundDownTidy = (n) => (n >= 10 ? `${Math.floor(n / 10) * 10}+` : `${n}+`);
+
+const applyLiveCourseCount = async (config) => {
+  const milestone = config?.milestones?.find((m) => /courses?\s+available/i.test(m?.label || ""));
+  if (!milestone) return;
+  const count = await Course.countDocuments({ isPublished: true }); // soft-deleted auto-excluded
+  milestone.value = roundDownTidy(count);
+};
 
 export const DEFAULT_CONFIG = {
   milestones: [
@@ -39,8 +52,12 @@ export const DEFAULT_CONFIG = {
 export const getSiteConfigService = async () => {
   // Public, hit on every homepage load, changes rarely → cache 1h.
   return getOrSet(SITE_CONFIG_KEY, 3600, async () => {
-    const config = await SiteConfig.findOne();
-    return config || DEFAULT_CONFIG;
+    const doc = await SiteConfig.findOne();
+    // Work on a plain object so we can overlay the live course count without
+    // mutating/saving the stored document (and so the default is safe to edit).
+    const config = doc ? doc.toObject() : structuredClone(DEFAULT_CONFIG);
+    await applyLiveCourseCount(config);
+    return config;
   });
 };
 

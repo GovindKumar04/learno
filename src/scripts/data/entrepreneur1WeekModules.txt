@@ -1,0 +1,835 @@
+Course #E2: Business Model Canvas Professional
+Domain
+Business Strategy
+Duration
+1 Week
+Fees
+Rs.5,999
+
+Day 1 - Value Proposition & Customer Segments
+> Crafting a Compelling Value Proposition
+  Value Proposition Canvas: customer jobs (functional, social, emotional), pains, gains, and mapping product/service to each
+  Differentiation types: price, quality, convenience, customization, brand/status, and performance -- selecting your axis
+  Value proposition statement formula: For [target customer] who [need/opportunity], our [product] is [category] that [key benefit] unlike [alternative]
+  Pain relievers vs. gain creators: articulating how specifically your product addresses each pain and creates each gain
+  Testing value propositions: landing page MVP (Google Ads traffic), customer interviews, and pre-sales as validation signal
+> Customer Segments & Market Sizing
+  Segmentation variables: demographic, geographic, psychographic, behavioral -- and B2B firmographic segmentation
+  TAM/SAM/SOM framework: Total Addressable Market, Serviceable Addressable Market, and realistic year-1 target
+  Beachhead market: selecting the smallest defensible segment, winning it completely, then expanding (Geoffrey Moore strategy)
+  ICP (Ideal Customer Profile): job title, company size, industry, pain intensity, and willingness to pay for B2B
+  Customer persona creation: name, demographics, goals, frustrations, preferred channels, and buying triggers
+
+Day 2 - Channels, Revenue & Cost Structure
+> Channels & Customer Relationships
+  Channel types: direct (website, sales team), indirect (resellers, distributors), and digital (social, email, SEO)
+  Channel phases: Awareness, Evaluation, Purchase, Delivery, After-sales -- and best channel for each phase
+  Owned vs. rented channels: building owned channels (email list, WhatsApp) vs. dependency on rented platforms (Instagram)
+  Customer relationship types: self-service, automated, communities, personal assistance, co-creation -- fit to segment
+  Customer acquisition cost (CAC) by channel: tracking CAC per source and blended CAC, and CAC:LTV target (>3:1)
+> Revenue Models & Cost Structure
+  Revenue model types: one-time sale, subscription (MRR/ARR), freemium, marketplace (take rate), licensing, usage-based
+  Pricing psychology: anchor pricing, decoy pricing (3-tier), charm pricing (Rs.999 vs. Rs.1000), and value-based pricing
+  Cost structure: fixed costs (rent, salaries), variable costs (COGS, commission), and economies of scale analysis
+  Unit economics: contribution margin per unit = Revenue per unit - Variable cost per unit, and break-even units
+  Gross margin targets by industry: SaaS (70-80%), e-commerce (40-60%), services (30-50%), and hardware (20-40%)
+
+Day 3 - Key Activities, Resources & Partners
+> Key Activities & Resources
+  Key activities mapping: production activities, platform/network activities, and problem-solving activities -- which are core
+  Resource types: physical (equipment, location), intellectual (IP, brand, data), human (key talent), financial (credit, cash)
+  Build vs. Buy vs. Partner: make-or-buy analysis for activities outside core competency, and risk assessment
+  Minimum Viable Resources: what resources are truly essential for the MVP phase vs. scaling phase
+  Operational processes: documenting 3-5 core processes as SOPs early, and identifying automation opportunities
+> Key Partnerships & Validation
+  Partnership types: strategic alliances (non-competitors), coopetition (competitors cooperating), joint ventures, buyer-supplier
+  Partnership value: acquiring resources, reducing risk/uncertainty, and activities you choose not to do yourself
+  OEM/White-label: building on existing infrastructure vs. building from scratch -- speed and margin tradeoffs
+  BMC validation: 5 customer interviews per segment, smoke test landing page, and Wizard of Oz MVP for complex products
+  Full BMC presentation: creating a single-page BMC poster and presenting to 3 potential customers for feedback
+
+Day 4 - Competitive Analysis & Lean Validation
+> Competitive Landscape Analysis
+  Competitor mapping: direct competitors, indirect competitors, substitutes, and potential new entrants
+  Competitive advantage analysis: cost leadership, differentiation, focus strategy (Porter), and VRIO framework (Value, Rarity, Imitability, Organization)
+  Blue Ocean Strategy: eliminate-reduce-raise-create (ERRC) grid and new value curve plotting
+  Feature/benefit matrix: compare your offering vs. top 3 competitors on 10 dimensions customers care about
+  Perceptual maps: positioning on 2 axes (price vs. quality, speed vs. cost) and finding white spaces
+> Lean Validation & Iteration
+  Lean Startup methodology: Build-Measure-Learn loop, pivot types (zoom-in, zoom-out, customer, platform)
+  Riskiest assumption test (RAT): identifying the single assumption that, if false, kills the business model
+  Concierge MVP: doing manually what the product will automate -- and learning before building technology
+  Problem-solution fit: 5 customer interviews, problem ranking, and willingness to pay signal before building
+  Pivoting: Slack (gaming to workplace chat), Instagram (Burbn to photo sharing), and YouTube (dating videos) case studies
+
+Day 5 - Financial Projections & Pitch
+> Financial Planning Basics
+  Revenue projection: bottom-up model (units x price, not top-down market %), monthly for year 1, quarterly for years 2-3
+  Expense budget: startup costs (one-time), monthly operating expenses, and 6-month runway calculation
+  Break-even analysis: fixed costs / (price - variable cost per unit) = break-even units, and break-even timeline
+  Cash flow statement: inflows (sales, investment), outflows (expenses), and end-of-month cash balance forecast
+  Funding requirement: runway calculation (monthly burn / monthly revenue growth), and when to raise vs. bootstrap
+> BMC Pitch Preparation
+  One-page business plan: vision, problem, solution, target market, revenue model, traction, team, and ask
+  Elevator pitch (60 seconds): hook (problem in 1 sentence), solution, who it is for, and why now
+  Storytelling for business: hero journey framework (customer is the hero, product is the guide/tool)
+  Pitch practice: 3-minute BMC presentation in front of cohort, feedback using Stanford design critique method
+  Assignment: complete full BMC for your own business idea and present with 3 validation data points
+
+Day 6 - Real-World Application & Certification
+> Industry-Specific BMC Application
+  SaaS BMC: recurring revenue, network effects, and churn as the key metric to track and reduce
+  E-commerce BMC: marketplace fees, logistics costs, and customer LTV as key sustainability metrics
+  Service business BMC: hourly vs. project vs. retainer pricing, productizing services, and scalability constraints
+  Social enterprise BMC: triple bottom line (profit, people, planet), and impact measurement alongside revenue
+  Franchise BMC: franchisor vs. franchisee model, royalty structure, and territorial exclusivity agreements
+> Certification & Action Plan
+  BMC software tools: Strategyzer online, Canvanizer (free), Miro BMC template, and Notion BMC database
+  Iteration workflow: hypothesis board + experiment log + validated learning documentation cycle
+  Lean Canvas (Ash Maurya): BMC adapted for startups -- adds Problem, Solution, Unfair Advantage, and Key Metrics blocks
+  Action plan: 30-day post-program checklist (5 customer interviews, landing page live, first revenue experiment)
+  Certification: Strategyzer BMC Fundamentals online test + program completion certificate from Fillip Technologies
+
+
+Course #E4: Business Registration & Legal Compliance
+Domain
+Legal & Compliance
+Duration
+1 Week
+Fees
+Rs.4,999
+
+Day 1 - Business Structures in India
+> Choosing the Right Legal Structure
+  Sole Proprietorship: simplest form, no separate legal entity, unlimited liability, PAN-based, and ideal for very small businesses
+  Partnership Firm: Partnership Act 1932, registered vs. unregistered, partnership deed requirements, and unlimited liability
+  LLP (Limited Liability Partnership): LLP Act 2008, partners have limited liability, LLP Agreement, Form 2/3 filing
+  Private Limited Company: Companies Act 2013, minimum 2 directors/shareholders, separate legal entity, and limited liability
+  OPC (One Person Company): single-member company, nominee requirement, conversion to Pvt Ltd at threshold, and annual compliance
+> Comparison & Selection Framework
+  Compliance burden comparison: Sole Prop (minimal) vs. Partnership (moderate) vs. LLP (moderate) vs. Pvt Ltd (high)
+  Tax implications: pass-through taxation (Prop/Partnership) vs. corporate tax (Pvt Ltd/LLP) and dividend distribution
+  Fundraising capability: Pvt Ltd can issue equity shares (VC/angel funding), LLP can only take equity from partners
+  Foreign investment: FDI allowed in Pvt Ltd (with FEMA compliance), and restrictions in LLP for certain sectors
+  Startup India recognition: eligibility (Pvt Ltd or LLP, <10 years, <Rs.100 Cr turnover), benefits (tax exemption, fast-track IP)
+
+Day 2 - Company Incorporation Process
+> MCA Registration Process
+  Digital Signature Certificate (DSC): Class 3 DSC, Certifying Authorities (eMudhra, Sify), and documents required
+  Director Identification Number (DIN): apply via MCA portal (DIR-3), documents needed, and lifetime validity
+  Name reservation: RUN (Reserve Unique Name) application, prohibited words, trademark check, and SPICe+ for company formation
+  SPICe+ form: Part A (name reservation), Part B (incorporation, DIN, PAN, TAN, EPFO, ESIC, Bank account, GST in single form)
+  Certificate of Incorporation: CIN (Corporate Identification Number), name availability, and MCA21 portal access
+> Post-Incorporation Requirements
+  Share capital: authorised vs. paid-up capital, minimum paid-up (no minimum for Pvt Ltd), and stamp duty on share certificates
+  Registered office: proof of address (utility bill + NOC from owner), and change of registered office procedure
+  First Board Meeting: within 30 days of incorporation, items to be covered, minutes preparation, and quorum
+  Statutory Registers: Register of Members, Register of Directors, Register of Charges -- maintenance requirements
+  Bank account: opening current account (documents required), and first allotment of shares documentation
+
+Day 3 - GST, PAN, TAN & Labour Registrations
+> GST Registration & Compliance
+  GST registration threshold: Rs.40 Lakh turnover (goods), Rs.20 Lakh (services), and mandatory cases (inter-state, e-commerce)
+  GST registration process: documents, GSTIN structure (15-digit: state code + PAN + entity code + check digit)
+  GST returns: GSTR-1 (outward supplies), GSTR-3B (monthly summary), GSTR-9 (annual), and due dates
+  Input Tax Credit (ITC): eligible vs. ineligible credits, time limit for claiming ITC, and reconciliation with GSTR-2B
+  E-invoicing: applicability threshold (Rs.5 Cr turnover), IRN generation, QR code, and B2B e-invoice mandate
+> Labour & Other Registrations
+  Shops & Establishment Act: state-specific registration, working hours, leave, and closure notice requirements
+  ESIC (Employees State Insurance): applicable if 10+ employees, employer contribution (3.25%), employee (0.75%)
+  EPFO (Provident Fund): applicable if 20+ employees, employer contribution (12%), and Universal Account Number (UAN)
+  Professional Tax: state-specific (Maharashtra, Karnataka etc.), slabs, and monthly payment to state government
+  MSME Udyam Registration: free online registration, benefits (priority lending, collateral-free loans, GeM seller preference)
+
+Day 4 - Intellectual Property & Contracts
+> Intellectual Property Protection
+  Trademark registration: classes of goods/services (45 classes), online application (IP India portal), and TM vs. R symbol
+  Trademark search: IP India public search, identifying conflicting marks, and conducting clearance before filing
+  Copyright: automatic protection (no registration needed), registration benefits (prima facie evidence), and works covered
+  Patent: types (utility, design, plant), patentability criteria (novelty, non-obvious, utility), and basic application process
+  Trade secret protection: NDA (Non-Disclosure Agreement), internal access controls, and not sharing with former employees
+> Business Contracts Essentials
+  Essential contract elements: offer, acceptance, consideration, legal capacity, and free consent (no coercion/fraud)
+  Founder Agreement: equity split, vesting schedule (4 years, 1-year cliff), roles, and IP assignment clause
+  NDA types: unilateral vs. mutual, confidentiality definition, exclusions, and term (typically 2-5 years)
+  Client contract: scope of work, payment terms (milestone-based), intellectual property ownership, and limitation of liability
+  Employment vs. freelancer: control test for classification, consequences of misclassification, and contractor agreement essentials
+
+Day 5 - Compliance Calendar & Financial Compliance
+> Annual Compliance Requirements
+  ROC compliance: Annual Return (MGT-7), Financial Statements (AOC-4), Board meetings (minimum 4 per year) requirements
+  Director KYC: DIR-3 KYC annual filing (September deadline), and consequences of non-compliance (DIN deactivation)
+  Statutory audit: mandatory for all companies, appointment of auditor (Form ADT-1), and auditor independence requirements
+  Tax audit: applicability (turnover >Rs.1 Cr for business, Rs.50 Lakh for profession), Form 3CD, and CA certificate
+  Event-based filings: change of directors (DIR-12), allotment of shares (PAS-3), and charge creation (CHG-1 within 30 days)
+> Financial Compliance & Penalties
+  Income Tax: advance tax schedule (15% by June 15, 45% by Sep 15, 75% by Dec 15, 100% by Mar 15) for companies
+  TDS: applicable sections (194C contractors, 194J professionals, 194H commission), rates, and quarterly return (26Q/27Q)
+  Transfer pricing: arm-length pricing for transactions with related parties, documentation, and Form 3CEB
+  Penalty framework: late filing penalties (ROC filings), interest on delayed tax payments, and prosecution for serious defaults
+  Compliance calendar: monthly, quarterly, annual task list for a typical Pvt Ltd company -- a practical one-page reference
+
+Day 6 - Practical Filing & Certification
+> Hands-On Portal Practice
+  MCA21 v3 portal: account setup, company search, master data view, and filing e-forms with DSC
+  GST portal: profile setup, return filing simulation (GSTR-3B), ITC ledger, and e-invoice generation demo
+  Income Tax portal: ITR filing for business (ITR-3, ITR-5, ITR-6), tax payment (Challan 280), and TDS filing
+  Udyam portal: online registration walkthrough, certificate download, and updating information
+  Startup India portal: recognition application, certificate, and accessing benefits (DPIIT recognition)
+> Practical Tools & Certification
+  Compliance management tools: Vakilsearch, Razorpay Rize, Cleartax for GST/ITR, and MyLegalAdvice for startups
+  DIY vs. CA/CS: when to hire a professional, typical CA fees for compliance, and finding a good startup-friendly CA
+  Common mistakes: not filing zero-returns (GST), missing DIN KYC, not issuing share certificates, and informal equity splits
+  Case study: walk through full compliance journey for a 6-month-old Pvt Ltd startup
+  Certification: program completion certificate and compliance checklist tool from Fillip Technologies
+
+
+Course #E5: Company Formation & ROC Compliance
+Domain
+Legal & Compliance
+Duration
+1 Week
+Fees
+Rs.5,999
+
+Day 1 - Company Law & MCA Overview
+> Companies Act 2013 Framework
+  Key definitions: company, body corporate, holding/subsidiary, associate company, and related party under Companies Act
+  Types of companies: public, private, OPC, small company, Section 8 (not-for-profit), Nidhi, and producer company
+  MCA (Ministry of Corporate Affairs): role of MCA, Registrar of Companies (ROC) jurisdiction, and NCLT/NCLAT
+  Company classification: based on liability (limited by shares, guarantee, unlimited), and based on number of members
+  Recent amendments: Companies Amendment Act 2020, decriminalization of offences, and ease of doing business improvements
+> Memorandum & Articles of Association
+  Memorandum of Association (MOA): clauses (name, registered office, objects, liability, capital, subscription), and alteration
+  Main objects vs. incidental objects: importance of broad objects clause for future business activities
+  Articles of Association (AOA): internal management rules, share transfer restrictions, meeting procedures, and voting rights
+  Model Articles: Table F for companies limited by shares -- when to use model articles vs. custom articles
+  Alteration of MOA: special resolution, ROC approval for object clause change, and Central Government approval for name change
+
+Day 2 - Incorporation Process Deep Dive
+> Step-by-Step Incorporation
+  Pre-incorporation checklist: director DSCs, proposed name options, address proof, and capital structure decision
+  SPICe+ (INC-32): integrated form for name + DIN + incorporation + PAN + TAN + GSTIN + bank account (zero-stamp states)
+  AGILE-PRO-S: linked with SPICe+ for GSTIN, EPFO, ESIC, Professional Tax, and bank account simultaneously
+  INC-9: declaration by subscribers and first directors, self-declaration, and professional certification requirement
+  Certificate of Incorporation: reading the certificate (CIN structure, date of incorporation, jurisdiction), and what comes next
+> First 30 Days Post-Incorporation
+  First Board Meeting: Notice (at least 7 days), agenda (register office, appoint bankers, first auditor), and minutes
+  First Auditor appointment: within 30 days, Board resolution, ADT-1 filing on MCA (within 15 days of AGM)
+  Share allotment: Board resolution, share application money, Form PAS-3 within 30 days, and share certificates (SH-1)
+  Statutory registers: setup Register of Members (MGT-1), Directors and KMP (MBP-1), Charges (CHG-7) -- format and maintenance
+  Company seal: optional after 2015 amendment, but useful for formal documents -- storage and custody procedures
+
+Day 3 - Board Meetings & General Meetings
+> Board Meetings Compliance
+  Board meeting requirements: minimum 4 per year, gap not exceeding 120 days, and First Board meeting within 30 days
+  Notice requirements: 7 clear days written notice, agenda items, and shorter notice for urgent matters
+  Quorum: 1/3rd of total strength or 2 directors (whichever is higher), and quorum at every item of business
+  Minutes: recording within 30 days, signing by Chairman, entering in Minutes Book, and inspection rights
+  Video conferencing participation: permitted for most items, excluded items (UPSI before announcement, committee decisions), and attendance log
+> Annual General Meeting
+  AGM requirements: first AGM within 9 months of year-end, subsequent AGMs within 6 months, and gap not exceeding 15 months
+  AGM business: ordinary business (accounts, auditor appointment, dividend) and special business items
+  Notice of AGM: 21 clear days, explanatory statement for special business, and shorter notice consent (95% members)
+  Resolutions: ordinary resolution (simple majority), special resolution (3/4 majority), and Section 180 approvals
+  e-AGM: SEBI circular for listed companies, MCA guidance for Pvt Ltd, and virtual meeting platform requirements
+
+Day 4 - ROC Forms & Annual Compliance
+> Key ROC Forms
+  MGT-7 (Annual Return): members list, shareholding pattern, debt, board changes -- due within 60 days of AGM
+  AOC-4 (Financial Statements): balance sheet, P&L, directors report, auditor report -- due within 30 days of AGM
+  ADT-1 (Auditor Appointment): every year at AGM, within 15 days of AGM, and Form ADT-3 for resignation
+  DIR-12 (Director changes): appointment (32 days), resignation (30 days), and disqualification reporting
+  MGT-14 (Board Resolutions): certain special resolutions and agreements must be filed within 30 days
+> Event-Based Filings
+  Share allotment: PAS-3 within 30 days, Return of Allotment, and share certificate issuance within 2 months
+  Charge creation: CHG-1 within 30 days of creation, charge satisfaction (CHG-4), and ROC charge register
+  Registered office change: INC-22 within 30 days, INC-23 for state change (approval required), and publication requirement
+  Director address change: DIR-3, DIR-6 for KYC -- annual KYC (DIR-3 KYC) by September 30 each year
+  Form 20A (Commencement of Business): within 180 days of incorporation, declaration by director, and bank statement proof
+
+Day 5 - Strike Off, Revival & Special Compliance
+> Company Strike Off & Revival
+  Voluntary strike off: STK-2 form, conditions (nil liabilities, no pending litigation), and board/shareholder resolutions
+  NCLT-based voluntary winding up: liquidator appointment, liquidation process, and dissolution order
+  ROC-initiated strike off: grounds (non-filing, dormancy), notice (STK-1), and consequences for directors
+  Revival of struck-off company: NCLT application (Section 252), time limit (20 years), and restoration procedure
+  Director disqualification: Section 164 (default for 3 consecutive years), Form DIR-8 declaration, and DIN deactivation
+> Dormant Company & Small Company Benefits
+  Dormant company status: INC-20A lapse, application for dormant status (MSC-1), and reduced compliance
+  Small Company: paid-up capital <Rs.4 Cr AND turnover <Rs.40 Cr -- relaxations (MGT-7A, no mandatory rotation of auditor)
+  One Person Company compliance: MGT-7A, AOC-4, and mandatory conversion to Pvt Ltd on exceeding threshold
+  LLP compliance: Form 8 (Statement of Account), Form 11 (Annual Return), and difference from company compliance
+  MSME dispute resolution: MSME Samadhaan portal for delayed payments, 45-day payment mandate, and filing process
+
+Day 6 - MCA Portal Practice & Certification
+> MCA21 Portal Hands-On
+  MCA21 v3 portal: business user registration, company search (CIN lookup), and director details (DIN search)
+  Filing simulation: practice SPICe+ form walkthrough, MGT-7 data entry, and AOC-4 attachment requirements
+  Payment modes: online payment (credit card/UPI) vs. offline (challan), fee calculator for forms, and SRN tracking
+  DSC attachment: attaching DSC using emSigner utility, troubleshooting common DSC errors, and extension of emSigner
+  CS/CA professional: understanding CS (Company Secretary) role, when to hire a CS, and typical retainer costs
+> Compliance Tools & Certification
+  Compliance software: Cleartax Corporate, ClearOne, Taxmann, and CS Professional for ROC compliance management
+  Compliance calendar: monthly (DIR-3 KYC, TDS payment), quarterly (advance tax), annual (MGT-7, AOC-4) for reference
+  ROC inspection: public documents available on MCA (free), and professional access for detailed records
+  Case study: analyze compliance history of a public company on MCA and identify any default patterns
+  Certification: program completion certificate and ROC compliance checklist from Fillip Technologies
+
+
+Course #E10: Startup Pitch Deck & Investor Presentation
+Domain
+Fundraising
+Duration
+1 Week
+Fees
+Rs.6,999
+
+Day 1 - Investor Psychology & Pitch Structure
+> Understanding Investor Mindset
+  Investment thesis: how VCs build a portfolio (10x on 20%, returning the fund), and what they actually look for
+  Angel vs. VC vs. Family Office: check size, decision speed, involvement level, and strategic value comparison
+  Stage-based expectations: Pre-seed (idea + team), Seed (PMF signal), Series A (repeatable growth), and due diligence depth
+  Portfolio thinking: investors expect most bets to fail -- your job is to sound like the 10x exception, not safe
+  Indian startup ecosystem: top VCs (Sequoia India, Accel, Matrix, Blume, Elevation), angels, and accelerators (YC India, 100X.VC)
+> 10-Slide Pitch Deck Structure
+  Sequoia pitch deck format: problem, solution, market size, product, traction, team, business model, competition, financials, ask
+  Guy Kawasaki 10/20/30 rule: 10 slides, 20 minutes, 30pt font minimum -- and why this forces clarity
+  Airbnb/Uber original decks: dissecting what made them work -- simplicity, clarity, and audacity of the vision
+  Slide purpose: every slide must answer one of (Why this? Why now? Why us? Why will it work?) for the investor
+  Common pitch mistakes: too much text, weak problem framing, no traction, vague ask, and not knowing the numbers
+
+Day 2 - Problem, Solution & Market Slides
+> Problem & Solution Slides
+  Problem slide: make investor feel the pain (customer quote, data point, your personal story), not just describe it
+  Problem validation evidence: number of interviews, survey results, lost deals to "no solution," and current workarounds
+  Solution slide: show, don't tell (product screenshot/demo GIF > paragraph description), and 3-second clarity test
+  Unique insight: what do you know that others don't? (Contrarian insight drives the "why now" narrative)
+  Before-after-bridge: clearly show customer life before your product, after, and the bridge (your product) in 3 visuals
+> Market Size Slides
+  TAM/SAM/SOM: build bottom-up (number of customers x price x purchasing frequency) not top-down market reports
+  Market sizing mistakes: "1% of a $100B market" is red flag -- investors want to see you understand your actual beachhead
+  Growing market: show the trend (why market is growing), and your timing (why this is the right moment to enter
+  Category creation: if you are creating a new category, reference analogous markets and show size trajectory
+  India-specific sizing: using government data (MCA, RBI, MOSPI), NASSCOM reports, and international comparable data
+
+Day 3 - Traction, Product & Business Model
+> Traction & Product Slides
+  Traction metrics by stage: Pre-seed (waitlist, LOIs), Seed (MRR/users, retention), Series A (growth rate, NPS, LTV:CAC)
+  Showing growth: month-over-month growth chart, hockey stick vs. linear -- and explaining dips with context
+  Product slides: wireframes (pre-launch), screenshots (post-launch), or demo video embed link -- and product roadmap
+  Key metrics dashboard: single most important metric (OMTM) prominently featured, and 3-5 supporting KPIs
+  Social proof: notable customers, brand logos (even in pilot), awards, press coverage, and advisor logos
+> Business Model & Financials
+  Revenue model clarity: how you charge, who pays, how much, and unit economics (LTV, CAC, payback period)
+  Gross margin: actual or projected gross margin, and path to target gross margin by year 3
+  Financial projections: 3-year P&L (revenue, gross profit, EBITDA), monthly for year 1 -- and key assumptions visible
+  Burn rate and runway: current monthly burn, months of runway, and use of proceeds from this raise
+  Financial model credibility: bottom-up revenue build (not "if we capture 1% of market"), and sensible cost structure
+
+Day 4 - Team, Competition & Ask
+> Team & Competition Slides
+  Team slide: founder-market fit (why are YOU the right people?), domain expertise, prior exits, and complementary skills
+  Advisor board: relevant industry advisors, and what specific value they add (not just logos for credibility theater)
+  Org chart (if needed): current team + first 5 hires post-funding, and recruitment plan for the next 18 months
+  Competition slide: honest competitive matrix (feature comparison), and your defensible advantages clearly stated
+  Competitive moats: network effects, data advantages, switching costs, brand, patents, and regulatory barriers
+> The Ask & Closing Slide
+  Investment ask: clear amount (Rs.2 Cr / $500K), not a range -- ambiguity signals you do not know your needs
+  Pre-money valuation: how to think about valuation at early stage (revenue multiple, comparable rounds, dilution target)
+  Use of funds: specific allocation (30% product, 40% sales, 20% marketing, 10% ops) tied to milestones achieved
+  18-month milestones: what 3-5 things will this funding enable, and what metrics will you hit to raise the next round
+  Contact and closing: memorable closing line restating the vision, clear contact, and QR code to deck/data room
+
+Day 5 - Design, Delivery & Q&A Prep
+> Pitch Deck Design
+  Design principles: one idea per slide, visual hierarchy (headline > visual > supporting text), and consistent color palette
+  Tools: Canva (startup deck templates), Google Slides (collaboration), Figma (pixel-perfect), and Pitch.com (for sharing)
+  Typography: one headline font (bold), one body font (clean sans-serif), and max 2 fonts per deck
+  Charts: always label your axes, use color sparingly to highlight the key point, and include data source
+  Data room preparation: deck PDF, financial model, cap table, product demo, customer references, and legal documents
+> Pitch Delivery & Q&A
+  Delivery: 10-minute pitch target (not reading slides), eye contact, pacing (not rushing), and owning the room
+  Investor Q&A preparation: top 20 questions (market size, competition, unit economics, team, CAC, churn) with crisp answers
+  Data room: organize Google Drive/Notion data room, and send secure link (DocSend for tracking who views what)
+  Follow-up protocol: same-day thank you email, send deck + data room link, and 2-week follow-up cadence
+  Mock pitch: full 10-minute pitch with peer feedback using structured rubric (clarity, conviction, credibility)
+
+Day 6 - Capstone Pitch & Certification
+> Live Pitch Presentation
+  Full pitch deck: each participant presents a complete 10-slide deck for their own venture or assigned case study
+  Investor panel simulation: mentor panel gives live feedback on problem, solution, traction, team, and ask slides
+  Peer critique: structured feedback form (1 thing that excited me, 1 question I would ask as an investor, 1 improvement)
+  Deck iteration: 30-minute revision based on feedback, and re-presenting the improved opening 3 slides
+  Video recording: record your pitch for portfolio and practice watching yourself for delivery improvements
+> Fundraising Resources & Certification
+  Fundraising platforms: LetsVenture, AngelList India, Tyke (retail investors), and India Accelerator programs (list)
+  Termsheet basics: pre-money valuation, dilution, liquidation preference, anti-dilution, pro-rata rights, and SAFE notes
+  Convertible instruments: SAFE (Y Combinator), iSAFE (India), and Convertible Note -- when to use each
+  Building investor relationships: warm introductions via LinkedIn, founder referrals, and investor updates (monthly, 5 min read)
+  Certification: program completion certificate + pitch deck reviewed and signed off by mentor panel
+
+
+Course #E12: AI for Entrepreneurs
+Domain
+AI & Business
+Duration
+1 Week
+Fees
+Rs.6,999
+
+Day 1 - AI Landscape & Business Opportunities
+> AI for Business: What Actually Works
+  AI capabilities in 2025: language (text, code, voice), vision (images, video), and structured data (prediction, anomaly)
+  AI limitations: hallucination, knowledge cutoff, no real-time data without tools, and not suitable for mission-critical decisions alone
+  Where AI creates ROI: content creation (10x output), customer service (24/7 at low cost), data analysis, and code generation
+  AI adoption stages: tool user, workflow integrator, AI-first business model -- and which stage to target first
+  India AI opportunity: vernacular content, agriculture AI, EdTech personalization, healthcare diagnostics, and government service automation
+> Identifying AI Opportunities in Your Business
+  AI opportunity audit: map all tasks employees do, classify as rule-based (automatable), judgment-based (AI-augmented), creative (AI-assisted)
+  ROI calculation: (time saved per week x hourly cost) - AI tool subscription cost = weekly net value
+  Quick wins vs. transformation: starting with 3-5 tasks that take >2 hours/week and are repetitive
+  Department mapping: AI in marketing (content), sales (lead scoring), ops (automation), finance (forecasting), and HR (screening)
+  Competitive analysis: which of your competitors are using AI, what tools, and how to differentiate with better AI adoption
+
+Day 2 - ChatGPT & Claude for Business
+> Prompt Engineering for Entrepreneurs
+  System prompts for business: setting AI as your "Chief of Staff" -- defining context, constraints, and communication style
+  Prompt frameworks: RISEN (Role, Instructions, Steps, End goal, Narrowing), and STAR (Situation, Task, Action, Result)
+  Business writing prompts: investor email, customer proposal, vendor negotiation, and employee performance review templates
+  Research prompts: competitive analysis, market sizing, customer interview synthesis, and financial model assumptions
+  Iterative prompting: treating AI as a junior analyst -- brief, review, refine, and direct to produce final deliverable
+> ChatGPT Advanced Features
+  Custom GPTs: building a GPT for your business (customer FAQs, HR policy, product catalog assistant)
+  GPT memory: context persistence across sessions, and managing memory for consistent business persona
+  Code interpreter: uploading CSV/Excel data for instant analysis, chart creation, and pattern identification
+  DALL-E image generation: product concept images, social media visuals, and presentation graphics without a designer
+  ChatGPT API for business: connecting to your CRM/email/Slack via Zapier or direct API integration basics
+
+Day 3 - AI Tools Ecosystem for Entrepreneurs
+> Content & Marketing AI Tools
+  Jasper AI: long-form content, brand voice training, team campaigns, and content templates for blogs/social/ads
+  Copy.ai: sales emails, product descriptions, ad copy variants, and GTM (go-to-market) planner workflows
+  Canva AI: Magic Design, text-to-image, background remover, and AI presentation generation for pitch decks
+  HeyGen: AI avatar videos for product demos, onboarding, and training content without camera setup
+  Perplexity AI: real-time research with citations, competitive analysis, and market research with source verification
+> Operations & Productivity AI
+  Notion AI: meeting notes synthesis, project documentation, database generation, and AI-powered Q&A on your docs
+  Otter.ai / Fireflies: auto-transcribe meetings, action item extraction, CRM sync, and meeting summary automation
+  Zapier + AI: connecting 6000+ apps, Zapier AI Actions (ChatGPT step), and building no-code AI workflows
+  Make.com (Integromat): visual automation builder, HTTP requests, and building complex AI-powered workflows
+  Gamma AI: instant presentation creation from a prompt, slide customization, and one-click publish to web
+
+Day 4 - AI for Sales, HR & Finance
+> AI in Sales & Customer Service
+  AI-powered CRM: HubSpot AI (email suggestions, meeting prep brief, conversation intelligence), and Salesforce Einstein
+  Lead scoring with AI: training a simple ML model on past won/lost deals, and using ChatGPT for lead research briefs
+  AI chatbots: Intercom Fin (GPT-4 powered), Freshdesk Freddy, and building a custom chatbot on your website in <1 hour
+  Cold email with AI: Clay.com for prospect research + personalized email generation at scale, and AI A/B testing
+  Customer sentiment analysis: analyzing reviews/feedback with ChatGPT batch processing and surfacing actionable insights
+> AI in HR & Finance
+  AI for recruitment: JD generation with AI, CV screening (HireVue, Workday Illuminate), and bias-aware screening prompts
+  AI for HR communications: offer letter drafting, policy Q&A chatbot (Claude + Notion), and exit interview synthesis
+  Financial forecasting with AI: Excel + ChatGPT for P&L projections, scenario modeling, and variance analysis
+  AI for accounting: auto-categorizing expenses (QuickBooks AI, Zoho Books AI), and invoice data extraction (Nanonets)
+  Tax and compliance AI: TaxGPT for Indian tax queries, Cleartax AI features, and AI-assisted GST reconciliation
+
+Day 5 - Building AI-Powered Products
+> No-Code AI Product Development
+  Bubble.io + AI: building a web app with GPT-4 API integration, user authentication, and database in 1 day
+  FlutterFlow: mobile app with AI features (chatbot, image recognition), and Google Firebase backend
+  Glide Apps: spreadsheet-to-app, adding AI columns (GPT summaries, categorization), and publishing mobile app
+  Voiceflow: conversational AI design, multi-turn dialogue flows, and deploying to WhatsApp/web/Alexa
+  Softr: build client portals, internal tools, and directories from Airtable/Google Sheets with AI features
+> AI Business Model Innovation
+  AI-as-a-Feature: embedding AI into existing product (recommendation engine, AI search, personalization)
+  AI-as-a-Service: building a vertical AI SaaS for a specific industry (legal AI, medical AI, farm AI in India)
+  AI-powered services: using AI to productize professional services (AI-enhanced consulting, AI legal review, AI accounting)
+  Data flywheel: how proprietary data becomes a moat as you collect more customer data to improve your AI model
+  Pricing AI products: per-query, per-seat, outcome-based (% of savings), and freemium-to-premium conversion for AI tools
+
+Day 6 - AI Strategy & Certification
+> Building Your AI Strategy
+  AI policy for your company: acceptable use policy, data privacy (what not to input into public AI), and employee guidelines
+  AI governance: human-in-the-loop for high-stakes decisions, audit trail for AI-generated content, and bias monitoring
+  Upskilling your team: AI Champions program, lunch-and-learn sessions, and measuring AI adoption rate
+  AI roadmap: quick wins (Month 1), process automation (Months 2-3), AI-native workflows (Months 4-6), and AI product (Year 1)
+  Staying updated: following AI newsletters (The Rundown AI, AI Breakfast), and LinkedIn communities for entrepreneurs
+> Capstone & Certification
+  AI audit of participant's business: identify 5 tasks to automate/augment, tools to use, and ROI estimate
+  Live demo: build one AI-powered automation (Zapier + ChatGPT) for your own business use case in 30 minutes
+  AI tool stack recommendation: curated 5-tool AI stack for the participant's specific business type and budget
+  Resource library: bookmarked prompt library, tool comparison sheet, and AI use case bank for reference
+  Certification: Fillip Technologies AI for Entrepreneurs certificate + LinkedIn badge + tool discount codes
+
+
+Course #E13: ChatGPT & AI Business Automation
+Domain
+AI & Business
+Duration
+1 Week
+Fees
+Rs.7,999
+
+Day 1 - Automation Foundations & Zapier
+> Business Automation Mindset
+  Automation ROI: calculating hours saved per week, wage cost, tool cost, and net monthly ROI for each automation
+  Process classification: fully automatable (rule-based, no exceptions), augmentable (AI + human), and human-only
+  Automation tools landscape: no-code (Zapier, Make), low-code (n8n, Retool), and custom code (Python, Node.js)
+  Trigger-action model: every automation has a trigger (event) and one or more actions -- identifying them in your workflow
+  Error handling in automation: what happens when automation fails, notification setup, and fallback procedures
+> Zapier Fundamentals
+  Zapier Zap creation: trigger app, trigger event, action app, action event, and field mapping
+  Multi-step Zaps: chaining multiple actions, conditional logic (Filter + Paths), and formatter (date, text, number)
+  Zapier Tables and Interfaces: built-in database and simple UI for internal tools without external apps
+  Zapier AI Actions (ChatGPT step): generating text, summarizing, classifying, and using AI output to route workflow
+  Testing and debugging Zaps: test data, Zap history, task usage, and troubleshooting field mapping errors
+
+Day 2 - Make.com & n8n Advanced Automation
+> Make.com Automation
+  Make.com scenarios: modules (app integrations), connections, routers, aggregators, and iterators for complex workflows
+  Webhooks in Make: instant trigger (webhook URL), data parsing, and connecting to any app without native integration
+  Error handling: error routes, break on error, resume module, and rollback for transaction-like scenarios
+  Data transformation: tools module (set variable, sleep, JSON parse/stringify), and using math/text functions
+  AI modules in Make: OpenAI (chat, embeddings), Anthropic Claude, and Google Gemini for AI steps in workflows
+> n8n Self-Hosted Automation
+  n8n setup: Docker installation (docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n), and cloud n8n setup
+  Nodes: trigger nodes, action nodes, and AI agent nodes (LangChain integration) for agentic workflows
+  Code node: JavaScript/Python in n8n for custom logic beyond what built-in nodes provide
+  AI Agent in n8n: LangChain agent node, tool configuration (HTTP Request, code), memory, and agent looping
+  n8n vs. Zapier vs. Make: self-hosted privacy, complex logic (n8n), ease of use (Zapier), balance (Make)
+
+Day 3 - ChatGPT API Integration
+> OpenAI API for Business
+  API setup: API key, organization ID, usage limits, rate limits (RPM, TPM), and billing dashboard monitoring
+  Chat Completions API: messages array (system/user/assistant roles), model selection (gpt-4o vs. gpt-4o-mini), and parameters
+  Structured outputs: JSON mode, json_schema response_format for extracting structured data reliably from any text
+  Function calling / Tool use: defining tools (name, description, parameters), and agentic tool-use workflows
+  Batch API: submitting batch jobs for offline, large-scale processing at 50% cost reduction vs. real-time API
+> Building ChatGPT-Powered Workflows
+  Email automation: Zapier reads incoming email + ChatGPT classifies/extracts data + routes to CRM or ticket system
+  Document processing: PDF text extraction + GPT analysis + structured JSON output + Google Sheets append
+  Customer feedback analysis: survey responses + GPT sentiment/category tagging + dashboard auto-update
+  Content pipeline: keyword list + GPT blog outline generation + human review + CMS publishing via API
+  Invoice processing: OCR (Nanonets) + GPT extraction (vendor, amount, date) + accounting software entry
+
+Day 4 - WhatsApp & CRM Automation
+> WhatsApp Business Automation
+  WhatsApp Business API: official API (Meta), WABA account setup, and approved BSPs (Interakt, Wati, AiSensy) for India
+  Message templates: template categories (utility, marketing, authentication), variable parameters, and approval process
+  Automated flows: welcome message, catalog sharing, order status, appointment booking, and FAQ bot with keyword triggers
+  ChatGPT + WhatsApp: using AI to generate personalized responses within WhatsApp bot conversations
+  Broadcast and campaign: segmented broadcast, opt-in management, and WhatsApp marketing compliance (DND)
+> CRM Automation
+  HubSpot automation: workflows (enrollment triggers, if/then branches, delays, actions like email/task/property update)
+  Zoho CRM automation: workflow rules, blueprints (sales process enforcement), and CommandCenter for cross-module flows
+  Lead enrichment: Clay.com or Clearbit integration to enrich new leads with company data, LinkedIn URL, and intent data
+  Sales sequence automation: multi-touch (email + LinkedIn + call) sequence with automatic unenrollment on reply
+  Reporting automation: scheduled Slack/email reports from CRM dashboard data -- daily pipeline, weekly leads, monthly revenue
+
+Day 5 - AI Agents & Advanced Automation
+> Building AI Agents
+  AI agent definition: LLM + tools + memory + planning loop -- agents can take multi-step actions autonomously
+  n8n AI Agent: configuring tools (Google Calendar, Gmail, Notion), memory (buffer window), and testing agent tasks
+  LangChain agents: ReAct agent, tool definition, AgentExecutor, and verbose mode for debugging agent steps
+  AutoGPT / CrewAI: multi-agent systems, agent roles (researcher, writer, critic), and task delegation
+  Use cases: research agent (Perplexity + synthesis), social media agent (monitor + respond), and reporting agent
+> Automation Security & Governance
+  Data privacy: what data flows through third-party automation tools, and GDPR/PDPB India implications
+  API key security: storing in environment variables (not hardcoded), rotation schedule, and principle of least privilege
+  Monitoring automations: execution logs, error notifications (Slack alert on failure), and usage dashboards
+  Versioning: maintaining automation documentation, change log, and testing before deploying updates
+  Automation audit: quarterly review of all active automations for relevance, cost, and security compliance
+
+Day 6 - Capstone Build & Certification
+> Capstone Automation Project
+  Each participant builds: one end-to-end automation using ChatGPT API + Zapier/Make for their business use case
+  Examples: lead capture form + AI qualification + CRM entry + personalized email + sales team Slack notification
+  Demo session: 5-minute live demo of completed automation, explanation of trigger, AI step, and actions
+  Troubleshooting workshop: common issues (webhook timeouts, API rate limits, field mapping errors) and resolutions
+  Automation playbook: document your automation with flowchart (Miro), description, and maintenance notes
+> Resources & Certification
+  Automation library: 20 ready-to-import Zap/Make templates for common business automations
+  AI tool integration map: visual map of 50 business tools and which AI automation is possible with each
+  ROI tracker template: Google Sheet template to track automation savings per workflow per month
+  Community: Fillip Technologies alumni WhatsApp group for sharing automation templates and getting help
+  Certification: Fillip Technologies AI Business Automation certificate + Zapier Automation Certificate guidance
+
+
+Course #E17: Personal Branding for Entrepreneurs
+Domain
+Marketing & Branding
+Duration
+1 Week
+Fees
+Rs.5,999
+
+Day 1 - Personal Brand Strategy
+> Why Personal Brand Matters
+  Personal brand as business asset: Ratan Tata, Ritesh Agarwal, and Falguni Nayar -- how founders become brand ambassadors
+  Trust economy: people buy from people they trust, and personal brand builds trust at scale before the first conversation
+  Niche vs. broad positioning: specialist authority (digital marketing for Indian D2C brands) vs. generalist (digital marketer)
+  Brand archetype: 12 Jungian archetypes -- Hero, Sage, Creator, Ruler, Explorer -- and selecting your authentic archetype
+  Personal brand audit: Google yourself, audit LinkedIn, Instagram, and existing content for consistency and gaps
+> Defining Your Brand Identity
+  Ikigai for entrepreneurs: intersection of (what you love, what you are good at, what world needs, what you are paid for)
+  Core message: one-sentence brand statement ("I help [audience] achieve [result] through [method]")
+  Brand voice: tone descriptors (authoritative, warm, contrarian, inspiring), and dos/don'ts for your content
+  Visual identity: personal brand colors (2-3), fonts, photo style (professional headshots, context photos), and logo if needed
+  Pillars of content: 3-5 topics you will consistently speak about -- expertise content, process content, and personal story content
+
+Day 2 - LinkedIn Personal Branding
+> LinkedIn Profile Optimization
+  Profile photo: professional, good lighting, friendly smile, and consistent with your brand aesthetic (not company logo)
+  Headline: beyond job title ("Founder at X") -- use value + audience ("Helping Bihar MSMEs grow with AI | Founder @Fillip")
+  About section: hook (first 3 lines before "see more"), your story (problem you solve + credibility + social proof), and clear CTA
+  Featured section: best post, article, YouTube video, or lead magnet -- 3-4 items that showcase authority
+  Experience section: achievement-focused bullets (not responsibilities), with metrics where possible (grew revenue 3x)
+> LinkedIn Content Strategy
+  Post formats that work: text posts (story + insight), carousels (10-slide how-to), polls, and newsletters
+  Content calendar: 3x per week minimum, rotating pillars (expertise Monday, story Wednesday, opinion Friday)
+  Hook writing: first line decides if people read the rest -- pattern interrupt, contrarian take, or bold claim hooks
+  Engagement strategy: commenting on 10 target accounts per day (value-add comments, not generic "Great post!")
+  LinkedIn algorithm: early engagement (1-hour golden window), dwell time, and content that generates comments > likes
+
+Day 3 - Content Creation & Storytelling
+> Storytelling for Personal Brand
+  StoryBrand framework (Donald Miller): you are the guide, your audience is the hero, and your product is the sword
+  Origin story: what problem led you to start your business? How does that connect to your audience's problem?
+  Transformation stories: before/after client stories (with permission), and your own business transformation narrative
+  Failure stories: sharing mistakes and lessons learned -- counterintuitively builds more credibility than success stories
+  The Rule of One: one message, one reader, one desired action per piece of content -- avoid trying to say everything
+> Content Repurposing System
+  Content pyramid: one long-form piece (blog/podcast/video) broken into 10+ social media posts per week
+  LinkedIn to YouTube: LinkedIn carousel post expanded into a YouTube video script and short-form Reels
+  Thread to newsletter: Twitter/X thread becomes email newsletter issue with expanded context and examples
+  Tools: Notion for content calendar, Canva for visuals, Descript for video editing, and Buffer for scheduling
+  Batching content creation: 2-hour weekly content block produces 3x LinkedIn posts + 1 newsletter + 5 short-form clips
+
+Day 4 - Social Platforms & Speaking
+> Multi-Platform Personal Brand
+  Platform selection: LinkedIn (B2B, professional), Instagram (B2C, visual brand), YouTube (authority, long-form), Twitter/X (thought leadership)
+  Instagram for entrepreneurs: behind-the-scenes Reels, founder journey stories, and product/service highlight carousels
+  YouTube channel: weekly or bi-weekly content, playlist structure (how-to, opinion, vlog), and SEO for search discovery
+  Podcast appearances: pitching yourself as a guest (one-pager: bio, topics, audience fit), and building speaking portfolio
+  Twitter/X threads: daily insight threads, retweeting with valuable context, and building an engaged following
+> Public Speaking & Visibility
+  Speaking opportunities: local NASSCOM events, CII/FICCI panels, startup meetups (Headstart, TechSparks), and college events
+  Speaking profile: 1-page speaker profile (bio, topics, testimonials, previous events), and one-sheet PDF
+  TEDx application: how to apply for TEDx talks (idea worth spreading, research local TEDx events, and application tips)
+  Webinar and masterclass: hosting free webinars on your expertise topic as lead generation and authority building
+  Media coverage: HARO for journalists, local newspaper quotes, and media kit (bio, photo, press clippings PDF)
+
+Day 5 - Email List & Monetization
+> Building Your Email List
+  Lead magnets: free resource (checklist, template, mini-course) that solves one specific problem for your ICP
+  Landing page: headline (what they get), bullet points (specific benefits), social proof, and simple opt-in form
+  Email platforms: Mailchimp (free to 500), Substack (newsletter + paid subscription), ConvertKit (creator-friendly)
+  Welcome sequence: 5-email welcome series (thank you, your story, free value, common mistakes, soft offer)
+  Newsletter strategy: weekly newsletter format, consistency, and growing from 100 to 1000 subscribers in 90 days
+> Monetizing Personal Brand
+  Consulting/coaching: positioning as a premium consultant, discovery call process, and retainer model pricing
+  Digital products: e-book, template pack, mini-course (Gumroad/Teachable) -- low effort, passive income
+  Online course: Udemy, Teachable, or cohort-based (Maven/Cohort.in) for higher ticket structured learning
+  Sponsorships: newsletter sponsorships, podcast sponsorships, and Instagram/LinkedIn sponsored content standards
+  Community: paid community (WhatsApp/Circle) for your audience, membership pricing, and community content calendar
+
+Day 6 - Brand Audit & Action Plan
+> Brand Consistency Audit
+  Cross-platform audit: consistent name, photo, bio, color scheme, and messaging across LinkedIn, Instagram, and YouTube
+  SEO for personal brand: Googling your name, optimizing LinkedIn for search, and building a personal website (Webflow/Carrd)
+  Google Knowledge Panel: how to get featured, Wikipedia article (if notable), and Google Business Profile for personal brand
+  Reputation management: monitoring brand mentions (Google Alerts, Mention.com), and responding to reviews/comments
+  Brand protection: trademark your name if building a media company around it, and consistent handle across all platforms
+> 90-Day Personal Brand Action Plan
+  Days 1-30: optimize LinkedIn profile, create content pillars, post 3x/week, and build 5 relationships per week
+  Days 31-60: launch newsletter (1st issue to personal contacts), guest on 1 podcast, and host 1 webinar
+  Days 61-90: create first digital product (free template/checklist), launch lead magnet, and pitch first speaking gig
+  Metrics to track: LinkedIn follower growth, post impressions, email subscribers, website visitors, and inbound leads
+  Certification: Fillip Technologies Personal Branding certificate + reviewed LinkedIn profile + 90-day plan document
+
+
+Course #E18: LinkedIn & Professional Networking
+Domain
+Networking & Career
+Duration
+1 Week
+Fees
+Rs.4,999
+
+Day 1 - LinkedIn Profile Masterclass
+> Profile Optimization
+  Profile completeness: LinkedIn's algorithm favors All-Star profiles -- photo, headline, summary, experience, skills, recommendations
+  Professional photo: lighting (natural or ring light), background (plain or branded), expression, and photo editing tools
+  Banner image: Canva template for 1584x396 banner, brand colors, tagline, website URL, and social proof logos
+  Skills section: top 5 skills (keyword match for recruiter/client search), endorsements, and skill assessment badges
+  Recommendations: requesting and writing recommendations, reciprocal recommendations, and strategic placement on profile
+> LinkedIn Search Optimization
+  LinkedIn SEO: keywords in headline (80 chars), about section (first 300 chars), experience titles, and skills matching
+  Headline formula options: Role + Niche + Value ("LinkedIn Trainer | Helping Indian Founders Build Authority")
+  Location optimization: correct location setting for local visibility, and "Open to Work" vs. "Open to Opportunities" green frame
+  Custom URL: linkedin.com/in/yourname -- setting custom URL, and using it on business cards, email signature, and bio
+  Creator mode: follow button replaces connect, access to creator analytics, creator hashtags, and newsletter feature
+
+Day 2 - Content Strategy & Algorithm
+> LinkedIn Content That Gets Reach
+  Post types by engagement: text posts (highest dwell), carousels (saved, reshared), native video (watch time), and polls (quick engagement)
+  Hook formula: first 2 lines before "see more" must stop the scroll -- curiosity gap, contrarian, relatable frustration, or bold stat
+  Content pillars: expertise (what you know), process (how you work), lessons (what you learned), and personal (who you are)
+  Carousel posts: PDF uploaded as document post, 10-12 slides, hook slide, value slides, and follow/connect CTA last slide
+  Comment strategy: commenting first on your own post (adds to thread), and responding to every comment within 1 hour
+> LinkedIn Algorithm Decoded
+  Dwell time: LinkedIn measures time spent on your post -- longer, valuable content scores higher than click-bait
+  Early engagement window: first 60-90 minutes of post are critical -- scheduling posts when your audience is active
+  External links: LinkedIn suppresses posts with external links (YouTube, website) -- put links in first comment
+  Hashtag strategy: 3-5 relevant hashtags (not more), mix of niche (1K-10K followers) and broad (100K+)
+  Reshare vs. repost: commenting with insight when resharing dramatically increases your reach vs. silent repost
+
+Day 3 - Networking & Relationship Building
+> Strategic Connection Building
+  Connection strategy: connect with ICP (clients), peers (similar stage founders), aspirational (investors, mentors), and local leaders
+  Connection request note: personalized note (why connecting, shared interest, mutual connection), 300-char limit -- vs. blank requests
+  Warm vs. cold outreach: warm (comment on their content first for 2 weeks), then connect with specific reference to their post
+  InMail best practices: subject line = their interest, body = ultra-short (2-3 sentences), and clear one ask (not multiple)
+  Connection rejection handling: no is a redirect, and following up after 3 months with new context or value
+> LinkedIn Networking Systems
+  CRM for LinkedIn: Notion or HubSpot free CRM to track connections, conversations, follow-ups, and relationship stage
+  Follow-up sequence: connect → warm message (2 days) → value share (1 week) → soft offer (2 weeks) → follow-up (1 month)
+  DM conversation starters: commenting on their recent post, sharing a relevant article, or asking a genuine question (not pitching)
+  LinkedIn groups: active groups in your industry, adding value in discussions (not promotions), and connecting with engaged members
+  Events on LinkedIn: attending virtual LinkedIn events, LinkedIn Live, and creating your own LinkedIn Audio event
+
+Day 4 - LinkedIn for Sales & Lead Generation
+> LinkedIn Sales Navigator
+  Sales Navigator: Lead filters (title, seniority, company size, geography, industry), and saved search alerts
+  Account-based selling: targeting 50-100 dream accounts, mapping stakeholders, and multi-threaded outreach
+  Social selling index (SSI): Professional Brand (25), Find Right People (25), Engage with Insights (25), Build Relationships (25)
+  TeamLink: warm introductions through team connections, and requesting introductions with context
+  Sales Navigator alerts: job change alerts, company growth alerts, and content engagement alerts for timely outreach
+> Lead Generation Strategies
+  Content-led leads: post expertise content, get DMs from interested prospects, and have warm conversation before pitch
+  Webinar/event strategy: LinkedIn event for free webinar, collect emails, and follow up with attendees
+  Gated content: LinkedIn post offering free template/checklist via DM with keyword, and capturing leads in spreadsheet
+  LinkedIn Ads for B2B: Sponsored Content (document ads work best), Lead Gen Forms (auto-fill LinkedIn data), and ABM campaigns
+  Prospecting workflow: 30 minutes daily -- 10 comments, 5 connection requests, 2 personalized DMs, 1 post
+
+Day 5 - Personal Brand & Company Page
+> Building LinkedIn Authority
+  Thought leadership: original research (survey your audience, share results), contrarian takes, and prediction posts
+  LinkedIn Newsletter: weekly or bi-weekly, subscribe button on profile, and promoted to your followers by LinkedIn
+  LinkedIn Live: going live from desktop (Streamyard/Restream), simulcast to personal + company page, and post-live highlights
+  Collaboration posts: co-authoring posts with peers (mentions), interview-style Q&A, and joint LinkedIn events
+  Article vs. posts: LinkedIn articles (SEO indexed, long-form), newsletter issues, and posts for reach and engagement
+> Company Page Management
+  Company Page setup: logo, banner, description (keyword-rich, first 156 chars important), and specialties section
+  Posting cadence for Company Page: 3-5x per week, mix of thought leadership, product, team culture, and industry news
+  Employee advocacy: activating employees to share Company Page content, Org-Boost, and internal content guidelines
+  LinkedIn Analytics: visitor analytics, follower analytics, content analytics, and competitor comparison
+  Company Page ads: boosting organic posts (minimum viable audience), and LinkedIn Campaign Manager setup basics
+
+Day 6 - 30-Day Action Plan & Certification
+> LinkedIn Growth System
+  Morning routine (20 min): respond to notifications, comment on 5 posts, accept/send 5 connections, check DMs
+  Evening routine (10 min): write and schedule tomorrow's post, check post performance, and follow 3 target accounts
+  Weekly review: follower growth, post impressions, profile views, search appearances, and connection acceptance rate
+  Monthly goals: +200 connections/month, 50K impressions/month, 5 qualified leads/month -- tracking in Notion
+  Tools: Shield Analytics (paid, detailed LinkedIn analytics), Taplio (AI LinkedIn content), and LinkedIn native scheduling
+> Capstone & Certification
+  Profile review: mentor reviews each participant's optimized LinkedIn profile with structured feedback form
+  Live post: write and publish a LinkedIn post live, implement feedback, and observe early engagement in real-time
+  Connection challenge: send 10 personalized connection requests to target ICP and report acceptance rate
+  Networking assignment: have 3 meaningful DM conversations with new connections in the next 7 days
+  Certification: Fillip Technologies LinkedIn Mastery certificate + reviewed LinkedIn profile + 30-day plan
+
+
+Course #E31: Business Documentation & Corporate Communication
+Domain
+Business Communication
+Duration
+1 Week
+Fees
+Rs.5,999
+
+Day 1 - Business Writing Fundamentals
+> Principles of Clear Business Writing
+  Plain language principle: write at 8th-grade reading level, avoid jargon, and test with Hemingway App for clarity
+  Pyramid structure: lead with the conclusion (BLUF - Bottom Line Up Front), then supporting details, then background
+  Sentence and paragraph discipline: max 25 words per sentence, max 5 lines per paragraph, and one idea per paragraph
+  Active vs. passive voice: "The team completed the report" (active) vs. "The report was completed by the team" (passive)
+  Editing process: first draft fast (no editing), second pass for clarity, third pass for grammar, and read aloud final check
+> Business Email Mastery
+  Email subject line: specific and action-oriented ("Proposal for Digital Marketing Campaign - Review by Friday")
+  Email structure: greeting, purpose (1 sentence), context (2-3 sentences), ask/action (clear CTA), and professional closing
+  Response time standards: same-day (urgent), within 24h (normal), and when to use OOO and delegation
+  Email etiquette: CC vs. BCC usage, Reply All discipline, and when to pick up the phone instead of email
+  Email templates: meeting request, project update, client follow-up, complaint response, and vendor negotiation
+
+Day 2 - Business Proposals & Reports
+> Business Proposal Writing
+  Proposal types: sales proposal (external), project proposal (internal), and grant proposal (funding application)
+  Executive Summary: 1-page summary covering problem, proposed solution, key benefits, investment, and timeline
+  Proposal structure: Introduction, Problem Statement, Proposed Solution, Methodology, Timeline (Gantt), Investment, About Us, and Terms
+  Visual elements: tables for comparison, infographics for process flows, and charts for ROI projections
+  Winning proposals: personalization (reference their specific challenges), social proof (similar client results), and clear differentiators
+> Business Report Writing
+  Report types: progress report, financial report, market research report, incident report, and feasibility report
+  Report structure: title page, executive summary, table of contents, body (sections), conclusions, recommendations, and appendices
+  Data presentation: tables for exact figures, charts for trends and comparisons, and choosing the right chart type
+  Executive report vs. detailed report: same data, different depth -- one-page dashboard for executives, full report for teams
+  Report review checklist: accuracy of data, logical flow, clarity of recommendations, and professional formatting
+
+Day 3 - SOPs, Policies & Official Documents
+> SOP (Standard Operating Procedure) Writing
+  SOP purpose: consistency, quality, training, and compliance -- why every business process needs documentation
+  SOP format: title, purpose, scope, responsibility, materials/tools, step-by-step procedure (numbered), and quality checks
+  SOP examples: customer onboarding SOP, invoice approval SOP, social media posting SOP, and employee leave request SOP
+  Process mapping: drawing flowcharts (Lucidchart, draw.io) before writing SOP to identify steps and decision points
+  SOP maintenance: version control (v1.0, v1.1), review schedule (annual), and change log documentation
+> HR & Company Policies
+  Leave policy: types of leave (CL, SL, EL, maternity/paternity), accrual, carry-forward, and encashment terms
+  Code of conduct: professional behavior standards, conflict of interest, social media policy, and disciplinary process
+  HR letter formats: offer letter, appointment letter, confirmation letter, increment letter, and relieving letter templates
+  NDA and confidentiality: what to include (definition, term, exclusions, remedies), and standard India NDA template
+  Policy communication: announcing new policies, obtaining employee acknowledgment, and policy update notifications
+
+Day 4 - Financial & Legal Documents
+> Financial Documents for Business
+  Invoice format: GST-compliant invoice (GSTIN, HSN/SAC code, tax breakup, payment terms), and proforma invoice
+  Purchase Order: PO number, vendor details, line items, delivery terms, payment terms, and authorization signatures
+  Quotation: formal quotation format, validity period, commercial terms, and difference between quotation and estimate
+  MOU (Memorandum of Understanding): non-binding nature, terms of cooperation, and when to upgrade to a formal contract
+  Financial summary report: monthly P&L summary for management, cash position report, and accounts receivable aging report
+> Legal & Official Correspondence
+  Legal notice: structure of legal notice (through advocate), demand letter (without advocate), and when to use each
+  Affidavit: self-declaration format, notarization requirement, and common business uses (address proof, ownership declaration)
+  Board Resolution: format, resolution language ("Resolved that..."), passing by circulation, and minute book entry
+  Government correspondence: application to government authority, RTI application format, and objection filing procedure
+  Tender document: EMD (Earnest Money Deposit), eligibility criteria, technical bid, financial bid -- understanding the structure
+
+Day 5 - Presentations & Meeting Documentation
+> Business Presentation Design
+  Slide design principles: one message per slide, visual hierarchy, and consistent brand colors/fonts throughout
+  Data slides: choose chart type by message (bar for comparison, line for trend, pie for composition <6 slices)
+  Presentation opening: Hook (question/stat), problem framing, and preview of what they will learn -- first 90 seconds matter
+  Presenting to leadership: BLUF (conclusion first), then supporting evidence, and anticipate top 3 questions in advance
+  PowerPoint + Canva templates: customizing professional templates for company branding and download-ready format
+> Meeting Documentation
+  Meeting agenda: sent 24 hours before, time-boxed items, pre-read materials attached, and objective clearly stated
+  Minutes of Meeting (MoM): attendees, decisions made, action items (owner + due date), and next meeting date
+  Action item tracking: tools (Notion, ClickUp, Jira), owner accountability, due date discipline, and follow-up protocol
+  Virtual meeting etiquette: camera on policy, background standards, muting discipline, and screen share best practices
+  Meeting types and duration: daily standup (15 min), weekly review (30 min), monthly business review (60 min), and quarterly planning (half day)
+
+Day 6 - Templates, Tools & Certification
+> Document Template Library
+  Google Workspace: Docs (business letter, proposal templates), Sheets (financial model, tracker), Slides (deck templates)
+  MS Office: Word (letterhead, NDA), Excel (invoice, cash flow), PowerPoint (brand deck), and OneDrive for sharing
+  Notion for documentation: SOPs in Notion database, linked databases for cross-referencing, and public page sharing
+  Document management: file naming convention (YYYYMMDD_DocumentType_Version), folder structure, and access permissions
+  Version control: using Google Docs version history, comment and suggest mode, and final document freezing
+> Communication Tools & Certification
+  Slack for business: channel structure (#general, #announcements, #department, #projects), etiquette, and Huddle vs. Zoom
+  WhatsApp Business: broadcast lists, quick replies, catalog, and Away message for professional business use
+  Grammarly Business: grammar, tone, clarity suggestions, and plagiarism check for professional documents
+  AI writing tools: using ChatGPT and Claude for first-draft business documents, then human editing for accuracy
+  Certification: Fillip Technologies Business Communication certificate + template kit (20 business document templates)
