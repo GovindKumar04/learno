@@ -82,6 +82,7 @@ const SORT_MAP = {
   rating:   { averageRating: -1, totalReviews: -1 },
   trending: { viewCount: -1, totalStudentsEnrolled: -1 },
   newest:   { createdAt: -1 },
+  recent:   { publishedAt: -1, createdAt: -1 },
 };
 const resolveSort = (s) => SORT_MAP[s] || SORT_MAP.newest;
 
@@ -136,6 +137,7 @@ export const createCourseService = async ({ body, file, userId }) => {
     totalLiveClasses: Number(totalLiveClasses) || 0,
     ...(parsedModes && { modes: parsedModes }),
     isPublished: willPublish,
+    ...(willPublish && { publishedAt: new Date() }),
     thumbnail, thumbnailPublicId,
     createdBy: userId,
   });
@@ -148,6 +150,7 @@ export const getAllCoursesService = async ({ query, user }) => {
   const limitNum = Number(query.limit) || 10;
   const { search, category, level, sort } = query;
   const isAdmin = user && user.role === "admin";
+  const withinDays = Number(query.publishedWithinDays) || 0;
 
   const runQuery = async () => {
     const filter = {};
@@ -157,6 +160,12 @@ export const getAllCoursesService = async ({ query, user }) => {
     if (search && search.trim()) {
       const regex = { $regex: escapeRegex(search.trim()), $options: "i" };
       filter.$or = [{ title: regex }, { category: regex }, { description: regex }];
+    }
+    // Recently-published window (e.g. dashboard's last-30-days list). Forces
+    // published-only regardless of role and scopes to the publish timestamp.
+    if (withinDays > 0) {
+      filter.isPublished = true;
+      filter.publishedAt = { $gte: new Date(Date.now() - withinDays * 24 * 60 * 60 * 1000) };
     }
 
     const [courses, total] = await Promise.all([
@@ -170,8 +179,27 @@ export const getAllCoursesService = async ({ query, user }) => {
   // Admins see drafts and edit constantly → never cache. Public catalog is
   // identical for everyone, so cache it (5 min) keyed by the query variant.
   if (isAdmin) return runQuery();
-  const key = await nsKey(COURSES_NS, `list:${pageNum}:${limitNum}:${category || ""}:${level || ""}:${search || ""}:${sort || ""}`);
+  const key = await nsKey(COURSES_NS, `list:${pageNum}:${limitNum}:${category || ""}:${level || ""}:${search || ""}:${sort || ""}:${withinDays}`);
   return getOrSet(key, 300, runQuery);
+};
+
+// Course counts for stat displays (e.g. the admin dashboard). Cheaper than
+// fetching the full catalog just to `.length` it. Deleted courses are scoped
+// out automatically by the countDocuments pre-hook. Admins get total/published/
+// draft; non-admins only ever see published, so total === published for them.
+export const getCourseCountsService = async ({ user } = {}) => {
+  const isAdmin = user && user.role === "admin";
+
+  if (!isAdmin) {
+    const published = await Course.countDocuments({ isPublished: true });
+    return { total: published, published, draft: 0 };
+  }
+
+  const [total, published] = await Promise.all([
+    Course.countDocuments({}),
+    Course.countDocuments({ isPublished: true }),
+  ]);
+  return { total, published, draft: total - published };
 };
 
 export const getCourseCategoriesService = async (user) => {
@@ -216,6 +244,8 @@ export const updateCourseService = async ({ courseId, body, file }) => {
   const course = await Course.findById(courseId);
   if (!course) throw new ApiError(404, "Course not found");
 
+  const wasPublished = course.isPublished;
+
   const scalarFields = [
     "title", "description", "category", "level", "price",
     "isPublished", "language", "duration", "priceOnline", "priceOffline", "priceLive", "discountPercent",
@@ -258,6 +288,10 @@ export const updateCourseService = async ({ courseId, body, file }) => {
     const hasPrice = course.price > 0 || course.priceOnline > 0 || course.priceOffline > 0;
     if (!hasPrice) throw new ApiError(400, "Assign a price before publishing this course");
   }
+
+  // Stamp the publish time on the draft → published transition so "recently
+  // published" views are accurate. Unpublishing keeps the last publish time.
+  if (course.isPublished && !wasPublished) course.publishedAt = new Date();
 
   await course.save();
   await bumpNs(COURSES_NS);

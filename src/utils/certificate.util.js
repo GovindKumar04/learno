@@ -296,15 +296,16 @@ export const generateCertificatePDF = async ({
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Format a certificate number from a global sequence value + the issue date:
-//   FTCTF-<YYMMDD>-<AA00>-5C<N>
+// Format a certificate number from a per-series sequence value + the issue date:
+//   <PREFIX>-<YYMMDD>-<AA00>-5C<N>
+//   • PREFIX  — series prefix (FTCTF for internship / FSACTF for training)
 //   • YYMMDD  — issue date (year last-2, month, day)
 //   • AA00    — two CAPITAL letters + two digits, advancing with the sequence
 //   • 5C<N>   — literal "5C" + a number that starts at 3 and keeps rising (3–100000)
 // `seq` comes from an atomic Counter (see nextCertSeq), so every part is
 // monotonic, never reused when certificates are deleted, and collision-free.
 // ─────────────────────────────────────────────────────────────────────────────
-export const buildCertificateNo = (seq, date = new Date()) => {
+export const buildCertificateNo = (seq, date = new Date(), prefix = "FTCTF") => {
   const d = new Date(date);
   const yy = String(d.getFullYear()).slice(-2);
   const mm = String(d.getMonth() + 1).padStart(2, "0");
@@ -317,5 +318,5 @@ export const buildCertificateNo = (seq, date = new Date()) => {
                 String.fromCharCode(65 + (li % 26)) + digits;
   const num = 3 + (m % 99998);                                     // 3–100000, rising
 
-  return `FTCTF-${yy}${mm}${dd}-${alpha}-5C${num}`;
+  return `${prefix}-${yy}${mm}${dd}-${alpha}-5C${num}`;
 };

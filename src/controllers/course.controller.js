@@ -3,6 +3,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import {
   createCourseService,
   getAllCoursesService,
+  getCourseCountsService,
   getCourseCategoriesService,
   getCourseByIdService,
   getCourseBySlugService,
@@ -31,6 +32,12 @@ const createCourse = asyncHandler(async (req, res) => {
 const getAllCourses = asyncHandler(async (req, res) => {
   const data = await getAllCoursesService({ query: req.query, user: req.user });
   return res.json(new ApiResponse(200, data));
+});
+
+// GET /courses/count — total / published / draft counts (admin-aware)
+const getCourseCounts = asyncHandler(async (req, res) => {
+  const counts = await getCourseCountsService({ user: req.user });
+  return res.json(new ApiResponse(200, counts));
 });
 
 // GET /courses/categories — distinct categories (published only for non-admins)
@@ -122,7 +129,7 @@ const logSearch = asyncHandler(async (req, res) => {
 });
 
 export {
-  createCourse, getAllCourses, getCourseCategories, getCourseById, getCourseBySlug, updateCourse, deleteCourse,
+  createCourse, getAllCourses, getCourseCounts, getCourseCategories, getCourseById, getCourseBySlug, updateCourse, deleteCourse,
   getDeletedCourses, restoreCourse, permanentlyDeleteCourse,
   getTrending, getTopRated, getRecommended, getBecauseYouViewed, recordCourseView, logSearch,
 };

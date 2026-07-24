@@ -116,13 +116,24 @@ async function hasCompleted(userId, courseId) {
 // the certificate rows, sequence values are NEVER reused when certificates are
 // deleted, and concurrent issuance can't collide. buildCertificateNo() turns the
 // value into the printed FTCTF-… number.
-const nextCertSeq = async () => {
+const nextCertSeq = async (counterId = "cert-seq") => {
   const counter = await Counter.findByIdAndUpdate(
-    "cert-seq",
+    counterId,
     { $inc: { seq: 1 } },
     { new: true, upsert: true }
   );
   return counter.seq;
+};
+
+// Each certificate kind has an independent number series: its own atomic counter
+// and printed prefix. Internship (Fillip Technologies) keeps the original
+// "cert-seq"/FTCTF series; training completions (Fillip Skill Academy) get their
+// own "cert-seq-fsa"/FSACTF series, which starts at 0 (the counter auto-creates).
+// A distinct prefix means FSA can safely restart at 0 without ever colliding with
+// historical FTCTF numbers.
+const CERT_SERIES = {
+  internship: { counter: "cert-seq",     prefix: "FTCTF"  },
+  completion: { counter: "cert-seq-fsa", prefix: "FSACTF" },
 };
 
 export const getEligibleStudentsService = async () => {
@@ -239,9 +250,13 @@ export const issueCertificatesService = async ({ items, issuedBy }) => {
       if (!course) throw new Error("Course not found");
 
       const existing = await Certificate.findOne({ userId, courseId }).select("certificateNo");
+      // Bulk issuance is always for course completions → the FSA training series.
       // Reserve a fresh number only for a genuinely new certificate; re-issuing
       // keeps the original number so a student's certificate id never changes.
-      const certificateNo = existing ? existing.certificateNo : buildCertificateNo(await nextCertSeq());
+      const { counter, prefix } = CERT_SERIES.completion;
+      const certificateNo = existing
+        ? existing.certificateNo
+        : buildCertificateNo(await nextCertSeq(counter), new Date(), prefix);
 
       const issuedAt = new Date();
       const pdfBuffer = await generateCertificatePDF({
@@ -337,7 +352,9 @@ export const issueManualCertificateService = async ({
   const cleanEmail = (email || "").trim();
 
   const issuedAt = new Date();
-  const certificateNo = buildCertificateNo(await nextCertSeq(), issuedAt);
+  // Number from the series matching this certificate's kind (FT / FSA).
+  const { counter, prefix } = CERT_SERIES[certType];
+  const certificateNo = buildCertificateNo(await nextCertSeq(counter), issuedAt, prefix);
 
   const pdfBuffer = await generateCertificatePDF({
     studentName: name,

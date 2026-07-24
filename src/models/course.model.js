@@ -263,7 +263,15 @@ const courseSchema = new mongoose.Schema(
       },
     ],
 
-    // ── Recycle bin (soft delete) ─────────────────────────────────────────────
+      // Timestamp of the most recent transition to published (set by the create/
+    // update services). Drives "recently published" dashboard views. null = the
+    // course has never been published.
+    publishedAt: {
+      type: Date,
+      default: null,
+    },
+
+  // ── Recycle bin (soft delete) ─────────────────────────────────────────────
     // Deleting a course soft-deletes it: this timestamp is set and the course is
     // hidden everywhere (the query-scope hook below excludes it) but KEPT — with
     // its modules/materials intact — so an admin can restore it. A daily sweep
@@ -278,6 +286,8 @@ const courseSchema = new mongoose.Schema(
 
 // Public catalog only ever queries published courses (often newest-first).
 courseSchema.index({ isPublished: 1, createdAt: -1 });
+// "Recently published" dashboard listing (published, newest publish first).
+courseSchema.index({ isPublished: 1, publishedAt: -1 });
 // Discovery sorts on the home page (highest-rated / most-popular / trending).
 courseSchema.index({ isPublished: 1, averageRating: -1 });
 courseSchema.index({ isPublished: 1, totalStudentsEnrolled: -1 });
