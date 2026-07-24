@@ -104,8 +104,7 @@ function parseCourses(text) {
     let sub = null;   // current subtopic { heading, bullets:[] }
     const flushSub = () => {
       if (cur && sub) {
-        const topic = sub.bullets.length ? `${sub.heading} — ${sub.bullets.join("; ")}` : sub.heading;
-        cur.topics.push(topic);
+        cur.topics.push(sub.heading, ...sub.bullets);
         cur.headings.push(sub.heading);
       }
       sub = null;

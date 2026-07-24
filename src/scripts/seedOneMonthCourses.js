@@ -84,7 +84,9 @@ function parseCourses(text) {
     const block = lines.slice(start, end);
 
     const name = block[0].trim().replace(/^\d{1,2}\.\s+/, "").trim();
-    const duration = labelValue(block, "Duration") || "1 Month (4 Weeks)";
+    // Normalise the duration: drop any redundant "(4 Weeks)"-style parenthetical.
+    const duration = (labelValue(block, "Duration") || "1 Month")
+      .replace(/\s*\((?:[^)]*\b(?:week|day)s?\b[^)]*)\)/gi, "").trim();
     const fee = parseFee(labelValue(block, "Fees (Bihar)"));
     const eligibility = labelValue(block, "Eligibility");
     const career = labelValue(block, "Career Opportunities");
@@ -96,8 +98,7 @@ function parseCourses(text) {
     let sub = null;         // current ✦ subtopic { heading, bullets:[] }
     const flushSub = () => {
       if (cur && sub) {
-        const topic = sub.bullets.length ? `${sub.heading} — ${sub.bullets.join("; ")}` : sub.heading;
-        cur.topics.push(topic);
+        cur.topics.push(sub.heading, ...sub.bullets);
         cur.headings.push(sub.heading);
       }
       sub = null;
@@ -109,7 +110,7 @@ function parseCourses(text) {
       const wk = line.match(/^Week\s+(\d+)\s*[—–-]\s*(.+)$/);
       if (wk) {
         flushModule();
-        cur = { order: Number(wk[1]), title: `Week ${wk[1]} — ${wk[2].trim()}`, focus: wk[2].trim(), topics: [], headings: [] };
+        cur = { order: Number(wk[1]), title: wk[2].trim(), focus: wk[2].trim(), topics: [], headings: [] };
         continue;
       }
       if (!cur) continue;
@@ -165,8 +166,8 @@ async function run() {
     const weekTitles = c.modules.map((m) => m.focus);
     const learnPoints = c.modules.flatMap((m) => m.headings);
     const description =
-      `${c.name} is a hands-on 1-month (4-week) professional certification. ` +
-      `Week by week you'll cover ${weekTitles.slice(0, 3).join(", ")}, then complete a capstone project, ` +
+      `${c.name} is a hands-on 1-month professional certification. ` +
+      `You'll cover ${weekTitles.slice(0, 3).join(", ")}, then complete a capstone project, ` +
       `assessment and career preparation. Ideal for ${(c.eligibility || "learners").toLowerCase()} ` +
       `aiming for roles such as ${c.career || "industry professionals"}.`;
 

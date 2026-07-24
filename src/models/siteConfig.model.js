@@ -46,6 +46,17 @@ const siteConfigSchema = new mongoose.Schema({
   whyChooseUs: [whyChooseSchema],
   faqs:        [faqSchema],
   offers:      [offerSchema],
+  // Two-level ordering of the home-page course carousels: an ordered list of
+  // discovery tiers (see backend/src/config/courseCategories.js CATEGORY_TIERS),
+  // each with an ordered list of categories to prioritise WITHIN that tier.
+  // Empty/absent → the code default order is used.
+  courseRanking: {
+    type: [new mongoose.Schema({
+      key:        { type: String, required: true },
+      categories: { type: [String], default: [] },
+    }, { _id: false })],
+    default: undefined,
+  },
   logos: {
     navbar: { type: logoSchema, default: () => ({}) },
     footer: { type: logoSchema, default: () => ({}) },

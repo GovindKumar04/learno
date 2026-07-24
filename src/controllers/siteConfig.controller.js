@@ -2,12 +2,19 @@ import fs from "fs";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
-import { getSiteConfigService, updateSiteConfigService, updateLogoService } from "../services/siteConfig.service.js";
+import { getSiteConfigService, updateSiteConfigService, updateLogoService, getCourseRankingService } from "../services/siteConfig.service.js";
 
 // GET /site-config  — public
 const getSiteConfig = asyncHandler(async (req, res) => {
   const config = await getSiteConfigService();
   return res.json(new ApiResponse(200, config));
+});
+
+// GET /site-config/course-ranking  — admin only — the two-level course ranking
+// resolved against the live category set (for the admin priority-order editor).
+const getCourseRanking = asyncHandler(async (req, res) => {
+  const ranking = await getCourseRankingService();
+  return res.json(new ApiResponse(200, ranking));
 });
 
 // PUT /site-config  — admin only
@@ -35,4 +42,4 @@ const updateLogo = asyncHandler(async (req, res) => {
   }
 });
 
-export { getSiteConfig, updateSiteConfig, updateLogo };
+export { getSiteConfig, getCourseRanking, updateSiteConfig, updateLogo };

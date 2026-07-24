@@ -25,7 +25,7 @@ import { User } from "../models/user.model.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = path.join(__dirname, "data", "oneWeekModules.txt");
 const PUBLISH = process.env.SEED_PUBLISH === "true";
-const DURATION = "1 Week (6 Days)";
+const DURATION = "1 Week";
 
 const toSlug = (str) =>
   str.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -88,8 +88,7 @@ function parseCourses(text) {
     let cur = null, sub = null;
     const flushSub = () => {
       if (cur && sub) {
-        const topic = sub.bullets.length ? `${sub.heading} — ${sub.bullets.join("; ")}` : sub.heading;
-        cur.topics.push(topic);
+        cur.topics.push(sub.heading, ...sub.bullets);
         cur.headings.push(sub.heading);
       }
       sub = null;
@@ -153,8 +152,8 @@ async function run() {
     const dayTitles = c.modules.map((m) => m.focus);
     const learnPoints = c.modules.flatMap((m) => m.headings);
     const description =
-      `${c.name} is a hands-on 1-week (6-day) professional certification. ` +
-      `Day by day you'll cover ${dayTitles.slice(0, 3).join(", ")}, then complete a mini project, ` +
+      `${c.name} is a hands-on 1-week professional certification. ` +
+      `You'll cover ${dayTitles.slice(0, 3).join(", ")}, then complete a mini project, ` +
       `assessment and career guidance. Ideal for ${(c.eligibility || "learners").toLowerCase()} ` +
       `aiming for roles such as ${c.career || "industry professionals"}.`;
 

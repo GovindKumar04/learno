@@ -13,6 +13,8 @@ import { ApiError } from "../utils/ApiError.js";
 import { hasOnlineCourseAccess, stripMaterialUrls } from "../utils/courseAccess.js";
 import { verifyAdminPassword, assertNoDependents, escapeRegex } from "../utils/deleteGuard.util.js";
 import { getOrSet, nsKey, bumpNs } from "../utils/cache.js";
+import { getSiteConfigService } from "./siteConfig.service.js";
+import { resolveRanking, rankingToTiers } from "./courseRanking.js";
 
 // Cache namespace for public catalog reads (list + categories). Any course
 // create/update/delete bumps it, invalidating every cached variant at once.
@@ -20,6 +22,59 @@ const COURSES_NS = "courses";
 
 // How many cards a single home-page discovery carousel shows.
 const DISCOVERY_LIMIT = 12;
+
+// Build the ordered discovery tiers from the two-level ranking (tier order +
+// category order within each tier). The admin order lives on SiteConfig; it's
+// reconciled against the LIVE published-course categories (so new/renamed ones
+// auto-slot) and turned into the single-category tier list `fillDiscovery` walks,
+// ending in a global fallback so a carousel is never blank. Cached under
+// COURSES_NS — bumped whenever a course OR the ranking changes.
+const getDiscoveryTiers = async () => {
+  const key = await nsKey(COURSES_NS, "discovery-tiers");
+  return getOrSet(key, 300, async () => {
+    let saved = null;
+    try {
+      const cfg = await getSiteConfigService();
+      saved = Array.isArray(cfg?.courseRanking) ? cfg.courseRanking : null;
+    } catch {
+      // SiteConfig unavailable → resolveRanking falls back to the code default.
+    }
+    const live = await Course.distinct("category", { isPublished: true });
+    return rankingToTiers(resolveRanking(saved, live));
+  });
+};
+
+// Fill a carousel by walking ordered category "tiers": priority categories
+// first, then the rest of the CS set, then (last resort) an unfiltered global
+// fetch. Each tier only fills the remaining slots and excludes what earlier
+// tiers already returned, so priority courses always lead and the carousel is
+// never left empty. An `undefined` tier means "no category filter"; an empty
+// array tier is skipped (an empty $in would otherwise fetch everything).
+const fillDiscovery = async ({ sort, limit, tiers, exclude = [] }) => {
+  const excl = [...exclude];
+  let result = [];
+  for (const cats of tiers) {
+    if (result.length >= limit) break;
+    if (Array.isArray(cats) && cats.length === 0) continue;
+    const extra = await fetchPublishedCourses({
+      sort,
+      limit: limit - result.length,
+      categories: cats,
+      excludeIds: excl,
+    });
+    for (const c of extra) excl.push(String(c._id));
+    result = [...result, ...extra];
+  }
+  return result;
+};
+
+// Fetch a discovery carousel by walking the business-priority tiers (Development
+// → other CS → Digital Marketing → everything else, admin-reorderable), then a
+// global fallback so the section never renders empty.
+const fetchCsDiscovery = async ({ sort, limit }) => {
+  const tiers = await getDiscoveryTiers();
+  return fillDiscovery({ sort, limit, tiers });
+};
 
 // Named sort orders shared by the catalog list and the home-page carousels.
 const SORT_MAP = {
@@ -299,16 +354,18 @@ export const permanentlyDeleteCourseService = async ({ courseId, password, admin
 
 // ─── Home-page discovery ────────────────────────────────────────────────────
 
-// Trending = most viewed (with enrollments as a tie-breaker). Global + cached.
+// Trending = most viewed (with enrollments as a tie-breaker). Biased to
+// computer-science categories, with a global fallback. Cached.
 export const getTrendingCoursesService = async ({ limit = DISCOVERY_LIMIT } = {}) => {
-  const key = await nsKey(COURSES_NS, `trending:${limit}`);
-  return getOrSet(key, 300, () => fetchPublishedCourses({ sort: "trending", limit }));
+  const key = await nsKey(COURSES_NS, `trending:cs:${limit}`);
+  return getOrSet(key, 300, () => fetchCsDiscovery({ sort: "trending", limit }));
 };
 
-// Highest-rated courses. Global + cached.
+// Highest-rated courses, biased to computer-science categories, with a global
+// fallback. Cached.
 export const getTopRatedCoursesService = async ({ limit = DISCOVERY_LIMIT } = {}) => {
-  const key = await nsKey(COURSES_NS, `toprated:${limit}`);
-  return getOrSet(key, 300, () => fetchPublishedCourses({ sort: "rating", limit }));
+  const key = await nsKey(COURSES_NS, `toprated:cs:${limit}`);
+  return getOrSet(key, 300, () => fetchCsDiscovery({ sort: "rating", limit }));
 };
 
 // Pull the categories a user has engaged with (and the courses to exclude) from
@@ -328,23 +385,14 @@ const gatherSignal = async ({ user, categories = [], excludeIds = [] }) => {
   return { cats: [...new Set(cats.filter(Boolean))], excl: [...new Set(excl)] };
 };
 
-// Recommended = popular courses in the categories the user engaged with, padded
-// with globally-popular courses so the carousel is never short. Not cached
-// because it is personalised; anonymous callers pass their localStorage hints.
+// Recommended = the same business-priority tiers (Development → other CS →
+// Digital Marketing → everything else), sorted by popularity, excluding what the
+// user has recently viewed. Not cached because the exclude set is personalised;
+// anonymous callers pass their recently-viewed ids via `excludeIds`.
 export const getRecommendedCoursesService = async ({ user, categories, excludeIds, limit = DISCOVERY_LIMIT }) => {
-  const { cats, excl } = await gatherSignal({ user, categories, excludeIds });
-
-  let result = [];
-  if (cats.length) {
-    result = await fetchPublishedCourses({ sort: "popular", limit, categories: cats, excludeIds: excl });
-  }
-  if (result.length < limit) {
-    const have = new Set(result.map((c) => String(c._id)));
-    const padExclude = [...new Set([...excl, ...have])];
-    const extra = await fetchPublishedCourses({ sort: "popular", limit: limit - result.length, excludeIds: padExclude });
-    result = [...result, ...extra];
-  }
-  return result;
+  const { excl } = await gatherSignal({ user, categories, excludeIds });
+  const tiers = await getDiscoveryTiers();
+  return fillDiscovery({ sort: "popular", limit, exclude: excl, tiers });
 };
 
 // "Because you viewed" = popular courses sharing categories with what the user

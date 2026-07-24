@@ -1,9 +1,10 @@
 import fs from "fs";
 import { SiteConfig } from "../models/siteConfig.model.js";
 import { Course } from "../models/course.model.js";
-import { getOrSet, cacheDel } from "../utils/cache.js";
+import { getOrSet, cacheDel, bumpNs } from "../utils/cache.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary.util.js";
 import { ApiError } from "../utils/ApiError.js";
+import { resolveRanking, sanitizeRanking, defaultRanking } from "./courseRanking.js";
 
 const SITE_CONFIG_KEY = "site-config";
 
@@ -47,6 +48,19 @@ export const DEFAULT_CONFIG = {
     { question: "Do you provide placement support?",       answer: "Yes. We assist with resume building, mock interviews, and connecting students with our hiring partners.", order: 7 },
   ],
   offers: [],
+  courseRanking: defaultRanking(),
+};
+
+// Resolve the stored (or default) two-level ranking against the LIVE set of
+// published-course categories, for the admin editor. Computed fresh (not cached)
+// so newly-added categories appear immediately — this is admin-only and off the
+// public homepage path.
+export const getCourseRankingService = async () => {
+  const [doc, live] = await Promise.all([
+    SiteConfig.findOne().lean(),
+    Course.distinct("category", { isPublished: true }),
+  ]);
+  return resolveRanking(doc?.courseRanking, live);
 };
 
 export const getSiteConfigService = async () => {
@@ -61,12 +75,18 @@ export const getSiteConfigService = async () => {
   });
 };
 
-export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, offers, logos }) => {
+export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, offers, logos, courseRanking }) => {
   const update = {};
   if (milestones)  update.milestones  = milestones;
   if (whyChooseUs) update.whyChooseUs = whyChooseUs;
   if (faqs)        update.faqs        = faqs;
   if (offers)      update.offers      = offers;
+  // Two-level course discovery ranking (tier order + category order within each
+  // tier). Sanitised to known tier keys / string categories. "other" is the
+  // catch-all — the ranker forces it last regardless of its stored position.
+  if (Array.isArray(courseRanking)) {
+    update.courseRanking = sanitizeRanking(courseRanking);
+  }
   // Logos are uploaded via updateLogoService; here we only persist editable
   // fields (the zoom level) — never the url/publicId, so a stale client payload
   // can't wipe an uploaded logo.
@@ -77,6 +97,9 @@ export const updateSiteConfigService = async ({ milestones, whyChooseUs, faqs, o
 
   const saved = await SiteConfig.findOneAndUpdate({}, update, { new: true, upsert: true, runValidators: true });
   await cacheDel(SITE_CONFIG_KEY);
+  // A ranking change must also invalidate the cached discovery tiers (they live
+  // under the "courses" namespace, not the site-config cache key).
+  if (update.courseRanking) await bumpNs("courses");
   return saved;
 };
 
